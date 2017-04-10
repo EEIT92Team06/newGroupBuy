@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>                                                
+<!--         <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property> -->
+<!--         <property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;database=java</property> -->
+<!--         <property name="hibernate.connection.username">sa</property> -->
+<!--         <property name="hibernate.connection.password">passw0rd</property> -->
+        
+        <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+
+
+
+		<mapping resource="wish/model/WishPool.hbm.xml" />
+		<mapping resource="wish/model/WishPicture.hbm.xml" />
+		<mapping resource="wish/model/WishMsg.hbm.xml" />
+		<mapping resource="wish/model/WishInterest.hbm.xml" />
+		<mapping resource="member/model/Member.hbm.xml" />
+
+ 
+    </session-factory>
+</hibernate-configuration>
