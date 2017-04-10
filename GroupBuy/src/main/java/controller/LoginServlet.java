@@ -62,16 +62,24 @@ public class LoginServlet extends HttpServlet {
 		MemberBean memberBean = loginService.login(account, password);
 		if (memberBean != null) {
 			int statusNum = loginService.checkRegistryStatus(account);
+			String ban = loginService.AfterBanTime(memberBean.getMemberNo());
+			System.out.println("ban : " + ban);
 			if (statusNum >= 9101) {
-				session.setAttribute("loginToken", memberBean);
-				String path = request.getContextPath();
-				response.sendRedirect(path + "/secure/index.jsp");
-				return;
+				if(!loginService.checkStatus(memberBean.getMemberNo())){
+					String path = request.getContextPath();
+					response.sendRedirect(path + "/secure/ban.jsp");
+					return;
+				}else{
+					session.setAttribute("loginToken", memberBean);
+					String path = request.getContextPath();
+					response.sendRedirect(path + "/secure/index.jsp");
+					return;
+				}
 			} else {
 				String path = request.getContextPath();
 				response.sendRedirect(path + "/secure/sendregistryemail.jsp");
 			}
-		} else {
+		} else { 
 			errorMessages.put("loginError", "帳號或密碼錯誤");
 			request.getRequestDispatcher("/secure/login.jsp").forward(request, response);
 			return;
