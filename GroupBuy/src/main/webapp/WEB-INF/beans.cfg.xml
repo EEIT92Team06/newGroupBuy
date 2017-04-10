@@ -3,25 +3,58 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-
-<!-- 	<bean id="dataSource" -->
-<!-- 	class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
-<!-- 	<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"></property> -->
-<!-- 	<property name="url" -->
-<!-- 	value="jdbc:sqlserver://localhost:1433;database=GroupBuy"></property> -->
-<!-- 	<property name="username" value="sa"></property> -->
-<!-- 	<property name="password" value="passw0rd"></property> -->
-<!-- 	</bean> -->
 	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
 		<property name="jndiName" value="java:comp/env/jdbc/groupbuy"></property>
 	</bean>
-	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">	
+
+	<bean id="sessionFactory" destroy-method="destroy"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
 	</bean>
-	
-	<bean id="orderInfoDAO" class="eeit9212.model.dao.OrderInfoDAOHibernate">
+<!-- 士凱設定檔 -->
+	<bean id="searchDAO" class="searchgroup.model.dao.SearchDAOhb">
+		<constructor-arg ref="sessionFactory" />
+	</bean>
+
+	<bean id="searchService" class="searchgroup.model.SearchService">
+		<constructor-arg ref="searchDAO" />
+	</bean>
+
+	<bean id="searchDetailsDAO" class="searchgroup.model.dao.SearchDetailsDAOhb">
+		<constructor-arg ref="sessionFactory" />
+	</bean>
+
+	<bean id="searchDetailsService" class="searchgroup.model.SearchDetailsService">
+		<constructor-arg ref="searchDetailsDAO" />
+	</bean>
+
+	<bean id="groupMsgDAO" class="searchgroup.model.dao.GroupMsgDAOhb">
+		<constructor-arg ref="sessionFactory" />
+	</bean>
+
+	<bean id="groupMsgService" class="searchgroup.model.GroupMsgService">
+		<constructor-arg ref="groupMsgDAO" />
+	</bean>
+
+	<bean id="orderDAO" class="searchgroup.model.dao.OrderDAOhb">
+		<constructor-arg ref="sessionFactory" />
+	</bean>
+
+	<bean id="orderService" class="searchgroup.model.OrderService">
+		<constructor-arg ref="orderDAO" />
+	</bean>
+	<bean id="announceDAO" class="insertAnnounce.mode.dao.AnnounceDAOhb">
+		<constructor-arg ref="sessionFactory" />
+	</bean>
+
+	<bean id="announceService" class="insertAnnounce.model.AnnouncementService">
+		<constructor-arg ref="announceDAO"></constructor-arg>
+	</bean>
+
+<!-- 	政維設定檔 -->
+
+<bean id="orderInfoDAO" class="eeit9212.model.dao.OrderInfoDAOHibernate">
 		<constructor-arg ref="sessionFactory"></constructor-arg>
 	</bean>
 	
@@ -55,7 +88,6 @@
 		</constructor-arg>
 	</bean>
 
-	
 	<bean id="creditAttendanceService" class="eeit9212.model.CreditAttendanceService">
 		<constructor-arg>
 			<bean class="eeit9212.model.dao.GrouperCreditDAOHibernate">
@@ -74,14 +106,13 @@
 	<bean id="reportDAO" class="eeit9212.model.dao.ReportDAOHibernate">
 		<constructor-arg ref="sessionFactory"></constructor-arg>
 	</bean>
+	
 
-	<!-- 宇呈的設定檔 -->
+
 	
-	<bean id="groupInfoDAOJdbc" class="creategroup.model.dao.GroupInfoDAOJdbc">
-		<constructor-arg ref="dataSource" />
-	</bean>
-	<bean id="creatGroupService" class="creategroup.model.CreateGroupService">
-		<constructor-arg ref="groupInfoDAOJdbc" />
-	</bean>
+
 	
+
+
+
 </beans>

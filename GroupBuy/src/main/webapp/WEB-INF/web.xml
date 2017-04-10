@@ -14,10 +14,7 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <context-param>
-    <param-name>contextConfigLocation</param-name>
-    <param-value>/WEB-INF/eeit9212/beansHibernate.xml</param-value>
-  </context-param>
+
   <error-page>
     <error-code>404</error-code>
     <location>/errorhandler</location>
@@ -30,7 +27,14 @@
     <exception-type>java.lang.RuntimeException</exception-type>
     <location>/errorhandler</location>
   </error-page>
+
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>/WEB-INF/beans.cfg.xml</param-value>
+  </context-param>
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
+
+
 </web-app>

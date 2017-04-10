@@ -11,7 +11,6 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
-
 import org.hibernate.SessionFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
@@ -50,4 +49,5 @@ public class OpenSessionInViewFilter implements Filter {
 		ApplicationContext context=WebApplicationContextUtils.getWebApplicationContext(application);
 		sessionFactory=(SessionFactory)context.getBean("sessionFactory");
 	}
+
 }
