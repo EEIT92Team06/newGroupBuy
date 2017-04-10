@@ -24,7 +24,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebFilter(urlPatterns = { "/*" }, 
              dispatcherTypes = { DispatcherType.REQUEST }
           )
-
 public class DisableCacheFilter implements Filter {
 	public void destroy() { }
 

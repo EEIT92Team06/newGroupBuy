@@ -8,6 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="<c:url value="/secure/login.jsp"/>">登入</a>
+	<a href="<c:url value="/secure/login.jsp"/>">�餃��</a>
 </body>
 </html>

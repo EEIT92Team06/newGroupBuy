@@ -1,5 +1,6 @@
 package creategroup.model;
 
+
 import java.io.Serializable;
 
 public class GroupInfoDetailsBean  implements Serializable{
@@ -34,6 +35,5 @@ public class GroupInfoDetailsBean  implements Serializable{
 	}
 
 	
-
 
 }

@@ -3,14 +3,14 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
-	  <property name="jndiName" value="java:comp/env/jdbc/groupbuy"></property>
-	</bean>
+<!-- 	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean"> -->
+<!-- 	  <property name="jndiName" value="java:comp/env/jdbc/groupbuy"></property> -->
+<!-- 	</bean> -->
 
-    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-      <property name="dataSource" ref="dataSource"/>
-      <property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
-    </bean>
+<!--     <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"> -->
+<!--       <property name="dataSource" ref="dataSource"/> -->
+<!--       <property name="configLocation" value="classpath:hibernate.cfg.xml"></property> -->
+<!--     </bean> -->
     <bean id="groupInfoDAOHibernate" class="creategroup.model.dao.GroupInfoDAOHibernate">
       <constructor-arg ref="sessionFactory"/>
     </bean>
@@ -36,5 +36,6 @@
 	<bean id="siteMailService" class="sitemail.model.SiteMailService">
 	    <constructor-arg ref="siteMailDAOHibernate"/>
 	</bean>
+
 
 </beans>

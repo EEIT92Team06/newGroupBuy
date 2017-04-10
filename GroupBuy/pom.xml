@@ -4,14 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.iiiedu.eeit92</groupId>
 	<artifactId>GroupBuy</artifactId>
-<!-- 	C:\EEIT92_GroupBuy\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps -->
-<!-- 	\GroupBuyHibernateAndy\META-INF\maven\org.iiiedu.eeit92 -->
-<!-- 改完artifactId要來這裡面的目錄把舊的artifactid刪掉，才不會一直跑到舊的 -->
 	<packaging>war</packaging>
-	<version>ver2.0</version>
+	<version>ver1.0</version>
 	<name>Servlet 3 Web Application</name>
 	<url>http://maven.apache.org</url>
- 
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java-version>1.8</java-version>
@@ -24,17 +21,45 @@
 			<artifactId>mail</artifactId>
 			<version>1.4.5</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
 		<dependency>
-			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>
-			<version>2.2.3</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>4.3.6.RELEASE</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
+			<version>4.3.6.RELEASE</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.java-websocket/Java-WebSocket -->
+		<dependency>
+			<groupId>org.java-websocket</groupId>
+			<artifactId>Java-WebSocket</artifactId>
+			<version>1.3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.3</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.2.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>4.3.6.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
 			<version>4.3.6.RELEASE</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
@@ -49,22 +74,12 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>5.2.7.Final</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-			<version>4.3.6.RELEASE</version>
-		</dependency>
+
 		<!-- Servlet 3.0 API -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-orm</artifactId>
-			<version>4.3.6.RELEASE</version>
 		</dependency>
 	</dependencies>
 	<build>
