@@ -160,7 +160,43 @@
 	<script src="<c:url value='/js/jquery-3.1.1.min.js'/>"></script>
 	<script src="<c:url value='/js/layer/layer.js'/>"></script>
 	<script type="text/javascript">
+	
 		$(function() {
+			
+			
+			var webSocket = new WebSocket('ws://localhost:8080/GroupBuy/groupsocket');//ServerEndpoint監聽的URL.
+			
+			  webSocket.onerror = function(event) {
+			      onError(event)
+			    };
+			 
+			    webSocket.onopen = function(event) {
+			      onOpen(event)
+			    };
+			 
+			    webSocket.onmessage = function(event) {
+			      onMessage(event)
+			    };
+			//  接收到server訊息時觸發.
+			    function onMessage(event) {
+			      alert("接收到訊息:"+event.data);
+			    }
+			//  建立與server的連接.
+			    function onOpen(event) {
+			      alert("已建立連接");
+			    }
+			//  連線錯誤時觸發
+			    function onError(event) {
+			      alert(event.data);
+			    }
+			//  按下按鈕後觸發,發送訊息給server
+			    function start() {
+			      webSocket.send('hello');
+			    }
+
+			
+			
+		
 			//判斷這團的時間，即時更新團的狀態。
 			var deadLine = new Date(
 			"${selectMyAttendedByGroupInfoNo.groupInfoDeadLine}");

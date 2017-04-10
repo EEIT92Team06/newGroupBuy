@@ -174,8 +174,8 @@
 //			我的方法按上一頁如果回到剛剛調出視窗的頁面，會再彈出一次視窗，
 //			所以為了避免這問題，以下我都用replace而不是用location.href
 
-//			建立webSocket連線
-			var webSocket = new WebSocket('ws://127.0.0.1:8081/websocket/groupsocket');//ServerEndpoint監聽的URL.
+// 			建立webSocket連線
+			var webSocket = new WebSocket('ws://localhost:8080/GroupBuy/groupsocket');//ServerEndpoint監聽的URL.
 			
 			  webSocket.onerror = function(event) {
 			      onError(event)
@@ -190,12 +190,11 @@
 			    };
 			//  接收到server訊息時觸發.
 			    function onMessage(event) {
-			      alert("接收到訊息:"+event);
 			      alert("接收到訊息:"+event.data);
 			    }
 			//  建立與server的連接.
 			    function onOpen(event) {
-			      alert("已建立連接");
+			      alert("已建立連接="+event.data);
 			    }
 			//  連線錯誤時觸發
 			    function onError(event) {

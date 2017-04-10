@@ -18,8 +18,19 @@ public class GroupSocket {
 	    throws IOException, InterruptedException {
 	   
 	    System.out.println("收到訊息Received: " + message);
-	   
-	    session.getBasicRemote().sendText("Server has been received message.");
+	    for(Session sess:session.getOpenSessions()){
+	    	System.out.println("size()="+session.getOpenSessions().size());
+	    	if(sess.isOpen()){
+	    		System.out.println("session開了"+sess.getBasicRemote());
+	    		sess.getBasicRemote().sendText("Server has been received message.");
+	    	}else{
+	    		System.out.println("session沒開"+sess.getBasicRemote());
+	    	}
+	    }
+	    
+	    
+	    
+	    
 	   
 //	   int sentMessages = 1;
 //	    while(sentMessages < 4){
@@ -34,8 +45,14 @@ public class GroupSocket {
 	  }
 	   
 	  @OnOpen//client開啟連接.
-	  public void onOpen() {
+	  public void onOpen(Session session) {	 
 	    System.out.println("Client connected");
+	    System.out.println("size()="+session.getUserPrincipal());
+	    for(String s:session.getUserProperties().keySet()){
+	    	System.out.println("name="+s+"value="+session.getUserProperties().get(s));
+	    	
+	    }
+	    System.out.println("size()="+session.getUserProperties().size());
 	  }
 	 
 	  @OnClose//client關閉連接.

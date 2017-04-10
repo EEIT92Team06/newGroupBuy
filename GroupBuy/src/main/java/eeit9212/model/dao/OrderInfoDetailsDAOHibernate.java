@@ -58,7 +58,6 @@ public class OrderInfoDetailsDAOHibernate implements OrderInfoDetailsDAO {
 		try{
 			result = query.getSingleResult();
 			}catch(Exception e){
-				e.printStackTrace();
 				System.out.println("selectOneOrderInfoDetails查無資料");
 			}
 		return result;

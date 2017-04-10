@@ -16,6 +16,7 @@
 			<div class='menu'>
 <%-- 			   <c:if test="${ funcName != 'SHO' }"> --%>
 
+
                   <a href="<c:url value='/_03_listBooks/DisplayPageProducts' />" >
 				        創團 
 				  </a>
