@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="eeit9212.model.OrderInfoBean" table="selectMyGroupOrderInfo">
+
+		<id name="orderInfoNo" column="orderInfo_No">
+			
+		</id>
+
+		<property name="memberNo" column="member_No" />
+		<property name="memberName" column="member_Name" />
+		<property name="groupAttendanceTotalSuccess" column="groupAttendance_TotalSuccess" />
+		<property name="groupAttendanceTotalQt" column="groupAttendance_TotalQt" />
+		<property name="orderInfoPriceTotal" column="orderInfo_PriceTotal" />
+		<property name="orderInfoStatusNo" column="orderInfoStatus_No" />	
+		<property name="orderInfoStatus" column="orderInfoStatus" />
+		<property name="orderInfoAfterSuccessPackageNo" column="orderInfoAfterSuccess_PackageNo" />
+		<property name="orderInfoAfterSuccessPayTime" column="orderInfoAfterSuccess_PayTime" />
+		<property name="orderInfoAfterSuccessPhone" column="orderInfoAfterSuccess_Phone" />
+		<property name="orderInfoAfterSuccessDestination" column="orderInfoAfterSuccess_Destination" />
+		<property name="orderInfoAfterSuccessBankAccount" column="orderInfoAfterSuccess_BankAccount" />
+	
+	
+	</class>
+</hibernate-mapping>
