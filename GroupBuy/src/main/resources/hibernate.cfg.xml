@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+	<hibernate-configuration>
+		<session-factory>
+			<!-- <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property> -->
+			<!-- <property name="hibernate.connection.password">passw0rd</property> -->
+			<!-- <property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;database=java</property> -->
+			<!-- <property name="hibernate.connection.username">sa</property> -->
+			<!--是否要顯示實際操作資料庫時的SQL -->
+			<property name="hibernate.show_sql">true</property>
+			<property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+			<property name="hibernate.current_session_context_class">thread</property>
+
+<!-- 			士凱映射檔 -->
+			<mapping class="insertAnnounce.model.AnnouncementBean" />
+			<mapping class="searchgroup.model.GroupMsgBean" />
+			<mapping class="searchgroup.model.GroupMsgReplyBean" />
+			<mapping class="searchgroup.model.OrderBean" />
+			<mapping class="searchgroup.model.OrderDetailsBean" />
+<!-- 			政維映射檔 -->
+			<mapping resource="selectMyAttendedGroupInfo.hbm.xml" />
+			<mapping resource="selectMyCreatedGroupInfo.hbm.xml" />
+			<mapping resource="selectMyGroupOrderInfo.hbm.xml" />
+			<mapping resource="selectOrderInfoDetails.hbm.xml" />
+			<mapping resource="groupInfoPic.hbm.xml" />
+			<mapping resource="groupInfoDetails.hbm.xml" />
+			<mapping class="eeit9212.model.ReportBean" />
+<!-- 			阿賢映射檔 -->
+			<mapping resource="eeit9211/MemberInfo.hbm.xml" />
+		</session-factory>
+	</hibernate-configuration>

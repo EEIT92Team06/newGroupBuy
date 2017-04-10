@@ -13,9 +13,9 @@
 	<!-- <property name="password" value="sa123456"></property> -->
 	<!-- </bean> -->
 
-	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
-		<property name="jndiName" value="java:comp/env/jdbc/groupbuy"></property>
-	</bean>
+<!-- 	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean"> -->
+<!-- 		<property name="jndiName" value="java:comp/env/jdbc/groupbuy"></property> -->
+<!-- 	</bean> -->
 
 
 	<bean id="memberService" class="model.MemberService">

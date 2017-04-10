@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="eeit9212.model.OrderInfoDetailsBean" table="selectOrderInfoDetails">
+
+		<id name="orderInfoDetailsNo" column="orderInfoDetails_No">
+			
+		</id>
+		<property name="groupInfoDetailsProdcutName" column="groupInfoDetails_ProdcutName" />
+		<property name="productTotalPriceByQt" column="productTotalPriceByQt" />
+		<property name="orderInfoDetailsProductQt" column="orderInfoDetails_ProductQt" />
+	
+	</class>
+</hibernate-mapping>
