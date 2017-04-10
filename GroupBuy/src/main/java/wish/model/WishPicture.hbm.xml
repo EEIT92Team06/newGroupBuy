@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="wish.model.WishPictureBean" table="wishPicture" >
+        
+        <id name="wishPictureNo" column="wishPicture_No">
+            <generator class="identity"/>
+        </id>
+        
+        <property name="wishNo" column="wish_No" />
+        <property name="wishPicture" column="wishPicture" />
+        
+    </class>
+</hibernate-mapping>

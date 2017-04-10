@@ -16,9 +16,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import eeit9212.model.CreditAttendanceService;
-import eeit9212.model.AttendGroupInfoBean;
 import eeit9212.model.CreateGroupInfoBean;
+import eeit9212.model.CreditAttendanceService;
 import eeit9212.model.GroupInfoDetailsBean;
 import eeit9212.model.GroupInfoService;
 import eeit9212.model.OrderInfoBean;

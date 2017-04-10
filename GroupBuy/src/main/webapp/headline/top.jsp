@@ -15,24 +15,19 @@
 		  <td class='menuData'>
 			<div class='menu'>
 <%-- 			   <c:if test="${ funcName != 'SHO' }"> --%>
-
-
                   <a href="<c:url value='/_03_listBooks/DisplayPageProducts' />" >
 				        創團 
 				  </a>
 			</div>
 		  </td>
 		  <td class='menuData'>
-			<div class='menu'>
-<%-- 			  <c:if test="${ funcName != 'CHE' }"> --%>
-			     <a href="<c:url value='/_04_ShoppingCart/ShowCartContent.jsp' />">
+			<td class='menuData' >
+			<div class='menu' >
+			     <a  href="<c:url value="/wish/wishpool.controller" />" >
 				     許願池
 				 </a>
-<%-- 			  </c:if> --%>
-<%-- 			  <c:if test="${ funcName == 'CHE' }">  --%>
-<!--                                                結帳 -->
-<%--               </c:if> --%>
 			</div>
+		  </td>
 		  </td>
 		  <td class='menuData'>
 			<div class='menu'>

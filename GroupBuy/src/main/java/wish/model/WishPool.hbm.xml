@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="wish.model.WishPoolBean" table="wish" >
+        
+        <id name="wishNo" column="wish_No">
+            <generator class="identity"/>
+        </id>
+        
+        <property name="memberNo" column="member_No" />
+        <property name="productType" column="productType_No" />
+        <property name="title" column="wish_Title" />
+        <property name="productName" column="wish_ProductName" />
+        <property name="content" column="wish_Content" />
+        <property name="price" column="wish_ProuductPrice" />
+        <property name="source" column="wish_Source" />
+        <property name="coverPic" column="wish_CoverPic" />
+        
+    </class>
+</hibernate-mapping>

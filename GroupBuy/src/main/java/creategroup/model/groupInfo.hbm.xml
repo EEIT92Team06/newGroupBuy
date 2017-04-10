@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="creategroup.model.GroupInfoBean" table="groupInfo" >
+        
+        <id name="groupInfoNo" column="groupInfo_No">
+            <generator class="identity"/>
+        </id>
+        
+        <property name="memberNo" column="member_No" />
+        <property name="groupStatusNo" column="groupStatus_No" />
+        <property name="productTypeNo" column="productType_No" />
+        <property name="groupInfoName" column="groupInfo_Name" />
+        <property name="groupInfoMinProductQt" column="groupInfo_MinProductQt" />
+        <property name="groupInfoStartDate" column="groupInfo_StartDate" />
+        <property name="groupInfoDeadLine" column="groupInfo_DeadLine" />
+        <property name="groupInfoContent" column="groupInfo_Content" />
+        <property name="groupInfoShippingWay" column="groupInfo_ShippingWay" />
+        <property name="groupInfoBankAccount" column="groupInfo_BankAccount" />
+        <property name="groupInfoCoverPic" column="groupInfo_CoverPic"/>
+        <property name="groupInfoClickTimes" column="groupInfo_ClickTimes" />
+        
+        <set name="groupInfoDetails" table="groupInfoDetails" lazy="false" cascade="all" inverse="true" >
+          <key><column name="groupInfo_No"/></key>
+          <one-to-many class="creategroup.model.GroupInfoDetailsBean"/>
+        </set>
+        
+        
+        <set name="groupInfoPics" table="groupInfoPic" lazy="false"
+                   cascade="all" inverse="true">
+           <key><column name="groupInfo_No"/></key>
+           <one-to-many class="creategroup.model.GroupInfoPicBean"/>
+        </set>
+    </class>
+</hibernate-mapping>
+

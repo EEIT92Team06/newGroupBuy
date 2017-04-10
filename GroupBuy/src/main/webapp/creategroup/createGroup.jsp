@@ -91,7 +91,7 @@ $(function(){
   
 </script>
 
-<form action="/GroupBuyHibernate/createGroupServlet.do"  enctype="multipart/form-data" method="post">
+<form action="<c:url value="/createGroupServlet.do"/>"  enctype="multipart/form-data" method="post">
 
     <table id="table" border="1px">
       <tbody>   
@@ -173,7 +173,7 @@ $(function(){
         <tr>
           <td>
               <label>產品圖片</label>
-              <input type="file"multiple name="picture" id="file1" accept="image/*" onchange="fileViewer()" >
+              <input type="file" multiple="mutiple"name="picture" id="file1" accept="image/*" onchange="fileViewer()" >
           </td>
           
         </tr>

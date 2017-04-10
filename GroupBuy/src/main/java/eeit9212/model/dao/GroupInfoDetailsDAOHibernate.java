@@ -1,13 +1,6 @@
 package eeit9212.model.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-
-import javax.sql.DataSource;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -18,7 +11,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import eeit9212.model.GroupInfoDetailsBean;
 import eeit9212.model.GroupInfoDetailsDAO;
-import eeit9212.model.OrderInfoDetailsBean;
 
 public class GroupInfoDetailsDAOHibernate implements GroupInfoDetailsDAO {
 
@@ -46,12 +38,12 @@ public class GroupInfoDetailsDAOHibernate implements GroupInfoDetailsDAO {
 
 
 	@Override
-	public List<GroupInfoDetailsBean> selectGroupInfoDetail(int groupInfoNo){
-		String selectGroupInfoDetail="from GroupInfoDetailsBean where groupInfo_No=?";
+	public List<eeit9212.model.GroupInfoDetailsBean> selectGroupInfoDetail(int groupInfoNo){
+		String selectGroupInfoDetail="from eeit9212.model.GroupInfoDetailsBean where groupInfo_No=?";
 		
-		List<GroupInfoDetailsBean> result=null;
+		List<eeit9212.model.GroupInfoDetailsBean> result=null;
 		
-		Query<GroupInfoDetailsBean> query = this.getSession().createQuery(selectGroupInfoDetail);
+		Query<eeit9212.model.GroupInfoDetailsBean> query = this.getSession().createQuery(selectGroupInfoDetail,eeit9212.model.GroupInfoDetailsBean.class);
 		query.setParameter(0, groupInfoNo);
 		result=query.getResultList();
 		return result;
