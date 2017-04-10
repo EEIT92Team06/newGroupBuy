@@ -6,6 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=BIG5">
 <title>searchDetails</title>
+
+
 <script type="text/JavaScript">
 var newmsgNoList;
 var parameter;
@@ -26,8 +28,8 @@ window.onload = function(){
 		var Msg = document.getElementById("leaveMsg").value;
 		var queryString = "groupInfoNo="+${groupInfoNo} +"&memberNo="+${memberBean.memberNo} +"&groupMsg="+Msg;
 		var url = "GroupMsgServlet.controller?"+ queryString;
-		xhr.open("GET" , url , true);
-		xhr.send();
+		xhr.open("GET" , url , true);  
+		xhr.send();  
 		xhr.onreadystatechange = function(){  
 			// 向伺服器提出的請求已經收到回應 
 			if (xhr.readyState === 4) {      
@@ -51,8 +53,8 @@ window.onload = function(){
 					var button = document.createElement("td");
 					var inputButton = document.createElement("input");
 					inputButton.setAttribute("type","button");    
-					inputButton.setAttribute("name","reply"); 
-					inputButton.setAttribute("value","回覆留言");        
+					inputButton.setAttribute("name","reply");  
+					inputButton.setAttribute("value","回覆留言");         
 					inputButton.setAttribute("onclick", "btnreply("+initParameter+")"); 
 					button.appendChild(inputButton);
 					var tr = document.createElement("tr");
