@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/css/eDM.css" type="text/css" /> --%>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/eDM.css" type="text/css" />
 <%-- <c:set var='debug' value='true' scope='application' /> --%>
 <table class='menuOuter'>
   <tr height="48px">
@@ -20,12 +20,14 @@
 				  </a>
 			</div>
 		  </td>
-		  <td class='menuData' >
+		  <td class='menuData'>
+			<td class='menuData' >
 			<div class='menu' >
 			     <a  href="<c:url value="/wish/wishpool.controller" />" >
 				     許願池
 				 </a>
 			</div>
+		  </td>
 		  </td>
 		  <td class='menuData'>
 			<div class='menu'>
@@ -44,6 +46,41 @@
 <%-- 		      <c:if test="${ funcName != 'BMT' }"> --%>
 				<a href="<c:url value='/_20_productMaintain/DisplayPageProducts' />">
                                     實體比價
+
+                  <a href="<c:url value='/headline/SearchServlet0.controller' />" >
+				        搜團 
+				  </a>
+			</div>
+		  </td>
+		  <td class='menuData'>
+			<div class='menu'>
+<%-- 			  <c:if test="${ funcName != 'CHE' }"> --%>
+			     <a href="<c:url value='/_04_ShoppingCart/ShowCartContent.jsp' />">
+				     許願池
+				 </a>
+<%-- 			  </c:if> --%>
+<%-- 			  <c:if test="${ funcName == 'CHE' }">  --%>
+<!--                                                結帳 -->
+<%--               </c:if> --%>
+			</div>
+		  </td>
+		  <td class='menuData'>
+			<div class='menu'>
+<%-- 			  <c:if test="${ funcName != 'ORD' }"> --%>
+				 <a href="<c:url value='/_05_orderProcess/OrderList.jsp' />">
+				    會員空間
+			     </a>
+<%-- 			  </c:if> --%>
+<%-- 			  <c:if test="${ funcName == 'ORD' }">  --%>
+<!--                                                 訂單 -->
+<%--               </c:if> --%>
+			</div>
+		  </td>
+		  <td class='menuData'>
+			<div class='menu'>
+<%-- 		      <c:if test="${ funcName != 'BMT' }"> --%>
+				<a href="<c:url value='/Backstage/BackStageServlet.controller'/>">
+                                    後臺管理
                 </a>
 <%--               </c:if> --%>
 <%-- 			  <c:if test="${ funcName == 'BMT' }">  --%>
