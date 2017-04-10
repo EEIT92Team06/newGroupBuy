@@ -97,7 +97,7 @@ public class AnnounceDAOhb implements AnnounceDAO {
 	@Override
 	public int insertBan(int memberNo) {
 		Session session = this.getSession();
-		NativeQuery query = session.createNativeQuery(INSERTBAN); 
+		NativeQuery query = session.createNativeQuery(INSERTBAN);
 		query.setParameter(1, memberNo);
 		return query.executeUpdate();
 	}

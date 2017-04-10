@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="eeit9212.model.AttendGroupInfoBean" table="selectMyAttendedGroupInfo">
+
+		<id name="orderInfoNo" column="orderInfo_No">
+			
+		</id>
+
+		<property name="groupInfoNo" column="groupInfo_No" />
+		<property name="groupInfoMemberNo" column="groupInfoMember_No" />
+		<property name="memberName" column="member_Name" />
+		<property name="groupStatusNo" column="groupStatus_No" />
+		<property name="groupStatus" column="groupStatus" />
+		<property name="productType" column="productType" />
+		<property name="groupInfoName" column="groupInfo_Name" />
+		<property name="groupInfoMinProductQt" column="groupInfo_MinProductQt" />
+		<property name="groupInfoTotalProductQt" column="groupInfo_TotalProductQt" />
+		<property name="groupInfoStartDate" column="groupInfo_StartDate" />
+		<property name="groupInfoDeadLine" column="groupInfo_DeadLine" />
+		<property name="groupInfoContent" column="groupInfo_Content" />
+		<property name="groupInfoShippingWay" column="groupInfo_ShippingWay" />
+		<property name="groupInfoBankAccount" column="groupInfo_BankAccount" />
+		<property name="grouperCredit" column="grouperCredit" />
+		<property name="orderStatusNo" column="otherStatus_No" />
+		<property name="orderStatus" column="otherStatus" />
+		<property name="groupInfoCoverPic" column="groupInfo_CoverPic" />
+
+
+	</class>
+</hibernate-mapping>
