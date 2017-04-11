@@ -134,19 +134,19 @@ $("#sendReport").click(function(){
                             來源 : ${wishDetail.source}
          </div>
          <button id="report">檢舉</button>
-         <div id="reportDiv" style="display: none">
-			<input id="reportTarget" type="hidden" value="${wishDetail.wishNo}" name="reportTarget"/>
-			<div>
-				<select id="reportTypeNo" name="reportTypeNo">
-					<option value="5">檢舉許願標題</option>
-					<option value="6">檢舉許願照片</option>
-					<option value="7">檢舉許願池留言</option>
-				</select>
-			</div>
-			<label for="reportContent">檢舉內容</label>
-			<textarea id="reportContent" name="reportContent" rows="5" cols="50"></textarea>
-			<input id="sendReport" type="button" value="送出"/>
-		</div>   
+<!--          <div id="reportDiv" style="display: none"> -->
+<%-- 			<input id="reportTarget" type="hidden" value="${wishDetail.wishNo}" name="reportTarget"/> --%>
+<!-- 			<div> -->
+<!-- 				<select id="reportTypeNo" name="reportTypeNo"> -->
+<!-- 					<option value="5">檢舉許願標題</option> -->
+<!-- 					<option value="6">檢舉許願照片</option> -->
+<!-- 					<option value="7">檢舉許願池留言</option> -->
+<!-- 				</select> -->
+<!-- 			</div> -->
+<!-- 			<label for="reportContent">檢舉內容</label> -->
+<!-- 			<textarea id="reportContent" name="reportContent" rows="5" cols="50"></textarea> -->
+<!-- 			<input id="sendReport" type="button" value="送出"/> -->
+<!-- 		</div>    -->
       </c:forEach>   
 </div>
 <br>
@@ -155,7 +155,21 @@ $("#sendReport").click(function(){
 <div id="div5"><img src="../pictures/${msgDetail.memberPic}" class="memberPic" /></div>
 <div id="div6">
     ${msgDetail.nickName}<br>
-    ${msgDetail.wishMsgContent}
+    ${msgDetail.wishMsgContent}<br>
+    <button id="report">檢舉</button>
+    <div id="reportDiv" style="display: none">
+			<input id="reportTarget" type="hidden" value="${msgDetail.wishMsgNo}" name="reportTarget"/>
+			<div>
+				<select id="reportTypeNo" name="reportTypeNo">
+					<option value="7">檢舉許願池留言</option>
+					<option value="9">檢舉會員nickName</option>
+					<option value="10">檢舉會員照片</option>
+				</select>
+			</div>
+			<label for="reportContent">檢舉內容</label>
+			<textarea id="reportContent" name="reportContent" rows="5" cols="50"></textarea>
+			<input id="sendReport" type="button" value="送出"/>
+		</div> 
 </div>
 </div>
 </c:forEach>

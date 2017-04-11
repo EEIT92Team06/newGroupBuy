@@ -5,28 +5,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>許願池管理</title>
 </head>
 <body>
-		<form action="<c:url value="/Backstage/banGroupServlet" />"method="post">
+		<form action="<c:url value="/Backstage/BanWishServlet" />"method="post">
 		<table>
 			<tr>
-				<td>選擇封鎖團</td>
+				<td>刪除違規許願</td>
 			</tr>
-			<c:forEach var='bean' items='${Allgroup}'> 
+			<c:forEach var='bean' items='${AllWish}'> 
 			<tr>
-				<c:if test="${bean.groupStatus != '封鎖'}">
-					<td><input type="checkbox" name="checkbox" value=${bean.groupInfoNo}></td>
-				</c:if>
-				<c:if test="${bean.groupStatus == '封鎖'}">
-					<td></td>
-				</c:if>
-				<td>${bean.groupInfoNo}</td>
-				<td>${bean.groupInfoName}</td>
-				<td>${bean.productType}</td> 
-				<td>${bean.groupStatus}</td> 
-				<td>${bean.memberName}</td> 
-				<td>${bean.result}</td> 
+			    <td><input type="checkbox" name="checkbox" value=${bean.wishNo}></td>
+				<td>${bean.wishNo} ,</td>
+				<td>${bean.title} ,</td>
+				<td>${bean.productName} </td>
 			</tr>
 		</c:forEach>
 			<tr>

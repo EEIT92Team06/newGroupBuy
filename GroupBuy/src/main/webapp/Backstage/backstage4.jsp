@@ -24,6 +24,10 @@
 					<c:if test="${bean.reportTypeNo >8}">
 						<td><a href="<c:url value='/Backstage/backstage2.jsp' />">${bean.reportTarget}</a></td>
 					</c:if>
+					<!-- 許願池 -->
+					<c:if test="${bean.reportTypeNo >=5 && bean.reportTypeNo <=8}">
+						<td><a href="<c:url value='/Backstage/wishbackstage.jsp' />">${bean.reportTarget}</a></td>
+					</c:if>
 
 					<td>${bean.reportContent}</td>
 				</tr>
