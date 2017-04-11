@@ -15,6 +15,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import eeit9212.model.ReportBean;
 import eeit9212.model.ReportService;
+import login.model.MemberBean;
 
 
 @WebServlet("/reportajax")
@@ -34,7 +35,8 @@ public class ReportAjax extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		HttpSession session=request.getSession();
-		int memberNo=(int)session.getAttribute("loginOk");
+		MemberBean memberBean = (MemberBean) session.getAttribute("loginToken");
+		Integer memberNo=memberBean.getMemberNo();
 		String reportTypeNoTemp=request.getParameter("reportTypeNo");
 		String reportContent=request.getParameter("reportContent");
 		String reportTargetTemp=request.getParameter("reportTarget");

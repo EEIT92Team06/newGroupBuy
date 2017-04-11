@@ -23,6 +23,7 @@ import eeit9212.model.GroupInfoService;
 import eeit9212.model.OrderInfoBean;
 import eeit9212.model.OrderInfoDetailsBean;
 import eeit9212.model.OrderInfoService;
+import login.model.MemberBean;
 
 @WebServlet("/eeit9212/grouprecord/mycreatedgroupinfo.controller")
 public class MyCreatedGroupInfoServlet extends HttpServlet {
@@ -45,8 +46,8 @@ public class MyCreatedGroupInfoServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		session.setAttribute("loginOk", 1);
-		int memberNo = (int) session.getAttribute("loginOk");
+		MemberBean memberBean = (MemberBean) session.getAttribute("loginToken");
+		Integer memberNo=memberBean.getMemberNo();
 		String contextPath = request.getContextPath();
 		String groupInfoNoTemp = request.getParameter("groupInfoNo");
 		String orderInfoStatus = request.getParameter("orderInfoStatus");

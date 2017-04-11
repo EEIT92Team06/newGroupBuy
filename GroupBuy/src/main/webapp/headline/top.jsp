@@ -63,7 +63,7 @@
 					<td class='menuData'>
 						<div class='menu'>
 							<%-- 			  <c:if test="${ funcName != 'ORD' }"> --%>
-							<a href="<c:url value='/_05_orderProcess/OrderList.jsp' />">
+							<a href="<c:url value='/test.jsp' />">
 								會員空間 </a>
 							<%-- 			  </c:if> --%>
 							<%-- 			  <c:if test="${ funcName == 'ORD' }">  --%>
