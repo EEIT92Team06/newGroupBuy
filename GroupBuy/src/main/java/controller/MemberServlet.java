@@ -47,6 +47,11 @@ public class MemberServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		HttpSession session = request.getSession();
+		
+	
+		
+		
+		
 		Map<String, String> status = new HashMap<String, String>();
 		request.setAttribute("statusKey", status);
 
@@ -66,7 +71,7 @@ public class MemberServlet extends HttpServlet {
 		int loginMemberNo = -1;
 
 		try {
-			loginMemberNo = (Integer) session.getAttribute("myMemberNo"); // 拿session內memberNo
+			loginMemberNo = (Integer)((MemberBean)session.getAttribute("loginToken")).getMemberNo(); // 拿session內memberNo
 		} catch (Exception e) {
 			System.out.println("loginMemberNo Error=" + loginMemberNo);
 			e.printStackTrace();
@@ -116,7 +121,7 @@ public class MemberServlet extends HttpServlet {
 		if (urlMemberNo != null && urlMemberNo.equals(loginMemberNo)) { // 導向自己的
 			MemberBean info = memberService.selectMemberInfo(loginMemberNo);
 			session.setAttribute("MemberInfo", info);
-			RequestDispatcher rd = request.getRequestDispatcher("memberinfo.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/member/memberinfo.jsp");
 			rd.forward(request, response);
 			return;
 		} else if (urlMemberNo != null && !(urlMemberNo.equals(loginMemberNo))) { // 導向別人的-----------
@@ -125,14 +130,14 @@ public class MemberServlet extends HttpServlet {
 			request.setAttribute("FriendInfo", fdInfo);
 			request.setAttribute("MemberInfo", info);
 			session.setAttribute("otherMemberNo", urlMemberNo);
-			RequestDispatcher rd = request.getRequestDispatcher("othermemberinfo.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/member/othermemberinfo.jsp");
 			rd.forward(request, response);
 			return;
 		}
 
 		// 指向至MemberUpdate.jsp
 		if ("memberUpdate".equals(x)) {
-			RequestDispatcher rd = request.getRequestDispatcher("memberupdate.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/member/memberupdate.jsp");
 			rd.forward(request, response);
 			return;
 		}
@@ -179,7 +184,7 @@ public class MemberServlet extends HttpServlet {
 				status.put("newNumSameAsOldNum", "新密碼不可與舊密碼相同");
 			}
 			if (!(status.isEmpty())) {
-				RequestDispatcher rd = request.getRequestDispatcher("memberpasswordchange.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("/member/memberpasswordchange.jsp");
 				rd.forward(request, response);
 				return;
 			}
@@ -197,7 +202,7 @@ public class MemberServlet extends HttpServlet {
 				return;
 			} else {
 				status.put("oldNumError", "舊密碼輸入錯誤");// 回MemberInfo.jsp前要先顯示"更改成功",其跳出提示還沒研究-------------------------------------
-				RequestDispatcher rd = request.getRequestDispatcher("memberpasswordchange.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("/member/memberpasswordchange.jsp");
 				rd.forward(request, response);
 				return;
 			}

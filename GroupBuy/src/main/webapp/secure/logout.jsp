@@ -8,11 +8,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:set var="memberNickName" value="${loginToken.memberNickName}"></c:set>
-	<c:remove var="loginToken" scope="session" />
 	<%
 		session.invalidate();
 	%>
-	<jsp:forward page="/GroupBuyIndex.jsp" />
+<%-- 	<jsp:include page="/Web_02/headline.jsp"></jsp:include> --%>
+	<%-- 	<c:remove var="loginToken" scope="session" /> --%>
+
+
 </body>
+<script>
+	location.replace("${pageContext.request.contextPath}/theindex.jsp");
+
+
+</script>
 </html>
