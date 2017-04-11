@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%-- <jsp:include page="/Web_02/headline.jsp"></jsp:include> --%>
+<jsp:include page="/Web_02/headline.jsp"></jsp:include>
 <h1>login前</h1>
 	<form action="<c:url value='home.controller'/>">
 		<a href="<c:url value='member/member.controller?x=memberInfo'/>">MemberInformation</a>

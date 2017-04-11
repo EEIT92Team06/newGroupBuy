@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="/Web_02/headline.jsp"></jsp:include>
 	<table border="1px" id="groupTable">
 		<thead>
 			<tr>
@@ -240,6 +241,7 @@
 					$.get("creditajax",{"score":$(":checked[name='score']").val(),"groupInfoNo":"${selectMyAttendedByGroupInfoNo.groupInfoNo}",
 										"groupInfoMemberNo":"${selectMyAttendedByGroupInfoNo.groupInfoMemberNo}"},function(data){
 						layer.close(layerOpen);
+						webSocket.send('${selectMyAttendedByGroupInfoNo.groupInfoNo}');
 						location.replace('myattendedgroupinfo.controller?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}&orderInfoNo=${selectMyAttendedByGroupInfoNo.orderInfoNo}');
 						
 					});				
@@ -269,8 +271,6 @@
 						});
 				});
 			});		
-					
-					
 					
 					
 			//簡單的做一些驗證
@@ -304,6 +304,7 @@
 								  btn: ['確定','取消'] //按钮
 								}, function(){		
 									$("#payForm").submit();
+									webSocket.send('${selectMyAttendedByGroupInfoNo.groupInfoNo}');
 								});	
 						}
 

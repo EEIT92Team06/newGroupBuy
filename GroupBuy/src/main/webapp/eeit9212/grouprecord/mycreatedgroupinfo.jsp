@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="/Web_02/headline.jsp"></jsp:include>
 	<table border="1px">
 		<thead>
 			<tr>

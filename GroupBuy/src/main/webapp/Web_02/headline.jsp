@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>我是TITLE</title>
-  <link rel="stylesheet" href=" <c:url value='/Web_02/assets/css/amazeui.css'/>">
-  <link rel="stylesheet" href="<c:url value='/Web_02/assets/css/common.min.css'/>">
-  <link rel="stylesheet" href="<c:url value='/Web_02/assets/css/index.min.css'/>">
+  <link rel="stylesheet" href="<c:url value='/assets/css/amazeui.css'/>">
+  <link rel="stylesheet" href="<c:url value='/assets/css/common.min.css'/>">
+  <link rel="stylesheet" href="<c:url value='/assets/css/index.min.css'/>">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
