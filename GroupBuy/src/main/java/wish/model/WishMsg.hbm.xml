@@ -9,9 +9,11 @@
             <generator class="identity"/>
         </id>
         <property name="memberNo" column="member_No"></property>
-        <property name="wishNo" column="wish_No" />
         <property name="wishMsgContent" column="wishMsg_Content" />
         
+        <many-to-one name="wishPoolBean" class="wish.model.WishPoolBean" lazy="false">
+                 <column name="wish_No"></column>
+        </many-to-one>
 <!--         <many-to-one name="memberBean" class="member.model.MemberBean" lazy="false"> -->
 <!--             <column name="member_No" /> -->
 <!--         </many-to-one> -->

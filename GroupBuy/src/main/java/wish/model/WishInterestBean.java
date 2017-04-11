@@ -9,6 +9,8 @@ public class WishInterestBean implements Serializable{
 	private int wishNo;
 	private int memberNo;
 	private int count;
+	private WishPoolBean wishPoolBean;
+	
 	public int getWishNo() {
 		return wishNo;
 	}
@@ -27,9 +29,16 @@ public class WishInterestBean implements Serializable{
 	public void setCount(int count) {
 		this.count = count;
 	}
+	public WishPoolBean getWishPoolBean() {
+		return wishPoolBean;
+	}
+	public void setWishPoolBean(WishPoolBean wishPoolBean) {
+		this.wishPoolBean = wishPoolBean;
+	}
 	@Override
 	public String toString() {
-		return "WishInterestBean [wishNo=" + wishNo + ", memberNo=" + memberNo + ", count=" + count + "]";
+		return "WishInterestBean [wishNo=" + wishNo + ", memberNo=" + memberNo + ", count=" + count + ", wishPoolBean="
+				+ wishPoolBean + "]";
 	}
 	// 必須重新定義equals()與hashCode()
 	@Override

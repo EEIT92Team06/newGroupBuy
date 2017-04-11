@@ -6,7 +6,7 @@ public interface WishPictureDAO {
 
 	WishPictureBean select(int wishPicNo);
 	
-	List<WishPictureBean> selectByWishNo(int wishNo); //某個許願裡的所有圖片
+	List<Object[]> selectByWishNo(int wishNo); //某個許願裡的所有圖片
 	
 	Boolean insert(WishPictureBean bean);
 	

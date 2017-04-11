@@ -85,13 +85,13 @@ public class WishMsgDAOHibernate implements WishMsgDAO {
           sessionFactory.getCurrentSession().beginTransaction();
           WishMsgDAOHibernate wishMsgDAOHibernate = (WishMsgDAOHibernate)context.getBean("wishMsgDAOHibernate");
           
-          WishMsgBean bean = new WishMsgBean();
-          
-          bean.setWishMsgNo(5);
-          
-          bean.setMemberNo(1);
-          bean.setWishMsgContent("QQQQQQ");
-          bean.setWishNo(1);
+//          WishMsgBean bean = new WishMsgBean();
+//          
+//          bean.setWishMsgNo(5);
+//          
+//          bean.setMemberNo(1);
+//          bean.setWishMsgContent("QQQQQQ");
+//          bean.setWishNo(1);
           List<Object[]> xxx = wishMsgDAOHibernate.selectByWishNo(1);
           
           for(Object[] objArr : xxx){

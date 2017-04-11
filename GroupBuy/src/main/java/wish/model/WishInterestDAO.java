@@ -3,7 +3,7 @@ package wish.model;
 import java.util.List;
 
 public interface WishInterestDAO {
-	List<WishInterestBean> select(int wishNo); //某一許願點讚的所有人
+	List<Object[]> select(int wishNo); //某一許願點讚的所有人
 	
 	int count(int wishNo); //計算按讚人數
 	

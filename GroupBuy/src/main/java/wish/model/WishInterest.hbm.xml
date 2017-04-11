@@ -10,11 +10,5 @@
             <key-property name="memberNo" 
                           column="member_No"/>
         </composite-id>
-<!--         <id name="wishNo" column="wish_No"> -->
-           
-<!--         </id> -->
-        
-<!--         <property name="memberNo" column="member_No" /> -->
-        
     </class>
 </hibernate-mapping>
