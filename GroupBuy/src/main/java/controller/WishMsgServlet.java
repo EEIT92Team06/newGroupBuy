@@ -33,6 +33,7 @@ public class WishMsgServlet extends HttpServlet {
 		ServletContext application = this.getServletContext();
 		ApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(application);
 		wishMsgService = (WishMsgService)context.getBean("wishMsgService");
+		wishInterestService = (WishInterestService)context.getBean("wishInterestService");
 	}
 
 	@Override
@@ -96,9 +97,23 @@ public class WishMsgServlet extends HttpServlet {
         	Boolean msgInsert = wishMsgService.insert(bean);
         	//取得所有留言
         	List<WishMsgBean> msgDetail = wishMsgService.getWishMsg(wishNumber);
+    		session.setAttribute("msgDetail", msgDetail);
+        	//透過wishNumber取得該許願的讚數
+    		int count = wishInterestService.likeCount(wishNumber);
+    		if (count == 0) {
+    			session.setAttribute("like", "成為第一個喜歡此商品的人!");
+    		}else{
+    			session.setAttribute("like", count+"個人對此商品有興趣!");
+    		}
+    		//判斷是否按過讚
+    		boolean result = wishInterestService.likeOrNot(wishNumber, memberNo);
+    		if(result==true){
+    			session.setAttribute("likeOrNot", "收回讚");
+    		}else{
+    			session.setAttribute("likeOrNot", "有興趣");
+    		}
 
         	if(msgInsert==true){
-        		session.setAttribute("msgDetail", msgDetail);
         		response.sendRedirect(request.getContextPath()+"/wish/wishdetail.jsp");
         		return;
         	}else{
