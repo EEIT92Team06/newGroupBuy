@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -8,7 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+<jsp:include page="headline/top.jsp"></jsp:include>
 <body>
-	<a href="<c:url value="/secure/login.jsp"/>">�餃��</a>
+	<h1>${sessionScope.loginToken.memberNickName}，您好</h1>
 </body>
 </html>

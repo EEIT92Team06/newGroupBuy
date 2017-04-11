@@ -14,34 +14,34 @@
  <form action="<c:url value="/loginServlet.do"/>" method="get">
  <div style="width: 800px;height: 300px;border: 1px solid;">
    <div style="float: left;border: 1px solid;width: 350px;margin:10px;">
-      <h5>雿輻�沁roupBuy撣唾���餃��</h5>
+      <h5>GroupBuy帳號登入</h5>
       <div>
-        <input type="text" name="account" value="${param.account}" placeholder="隢�頛詨�亙董��"/><label>${errorMessages.accountError}${errorMessages.loginError}</label>
+        <input type="text" name="account" value="${param.account}" placeholder="請輸入帳號"/><label>${errorMessages.accountError}${errorMessages.loginError}</label>
       </div>
       <div>
-        <input type="password" name="password" value=""placeholder="隢�頛詨�亙�蝣�"/><label>${errorMessages.passwordError}</label>
+        <input type="password" name="password" value=""placeholder="請輸入密碼"/><label>${errorMessages.passwordError}</label>
       </div>
       <div>
-        <label><input name="remember" type="checkbox" checked="checked" />閮�雿���</label>
+        <label><input name="remember" type="checkbox" checked="checked" />記住密碼</label>
       </div>
       <div>
-        <input type="submit" value="�餃��"><input type="button" value="��瘨�">
+        <input type="submit" value="登入"><input type="button" value="取消">
       </div>
       <div>
-        <a href="">敹�閮�撖�蝣�</a>
-        <a href="<c:url value="/secure/registry.jsp"/>">��鞎餉酉��</a>
+        <a href="">忘記密碼</a>
+        <a href="<c:url value="/secure/registry.jsp"/>">免費註冊</a>
        
       </div>
    </div>
    <div style="float: left;border: 1px solid;margin:10px;">
-     <h5>雿輻�函洵銝��孵董���餃��</h5>
-      <label>�餃�亥酉����隤�霅�嚗�蝡��喲����嚗�</label><br>
+     <h5>使用第三方帳號登入</h5>
+      <label>登入註冊免認證，立即開通！</label><br>
           <a class="btn  btn-social btn-google"   href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/GroupBuy/googleLoginServlet.do&response_type=code&client_id=111067976661-usc5t395cjrcsvfcsqnkvf4snj7q704c.apps.googleusercontent.com&approval_prompt=force">
-          <i class="fa fa-google-plus" aria-hidden="true"></i>Google撣唾���餃��
+          <i class="fa fa-google-plus" aria-hidden="true"></i>Google帳號登入
+          </a>
           </a>
    </div>
   </div>
   </form>
->>>>>>> branch 'master' of https://github.com/EEIT92Team06/newGroupBuy.git
 </body>
 </html>

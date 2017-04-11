@@ -34,7 +34,7 @@ window.onload = function(){
 				// 伺服器回應成功
 				if (xhr.status === 200) {
 					var data = JSON.parse(xhr.responseText);
-					newmsgNoList= data.msgNoList;   　
+					newmsgNoList= data.msgNoList;   　 
 //		 	<tr> 
 // 					<td>${bean.memberName}</td>
 // 					<td>${bean.groupMsgContent}</td> 

@@ -5,7 +5,6 @@ import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
-
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
@@ -49,5 +48,4 @@ public class OpenSessionInViewFilter implements Filter {
 		ApplicationContext context=WebApplicationContextUtils.getWebApplicationContext(application);
 		sessionFactory=(SessionFactory)context.getBean("sessionFactory");
 	}
-
 }
