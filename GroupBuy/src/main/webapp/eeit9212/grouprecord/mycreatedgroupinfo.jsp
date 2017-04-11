@@ -175,13 +175,14 @@
 //			所以為了避免這問題，以下我都用replace而不是用location.href
 
 // 			建立webSocket連線
-			var webSocket = new WebSocket('ws://localhost:8080/GroupBuy/groupsocket');//ServerEndpoint監聽的URL.
+			var webSocket = new WebSocket('ws://localhost:8080/GroupBuy/groupsocket/${selectGroupInfoByGroupInfoNo.groupInfoNo}');//ServerEndpoint監聽的URL.
 			
 			  webSocket.onerror = function(event) {
 			      onError(event)
 			    };
 			 
 			    webSocket.onopen = function(event) {
+			    	
 			      onOpen(event)
 			    };
 			 
@@ -190,19 +191,15 @@
 			    };
 			//  接收到server訊息時觸發.
 			    function onMessage(event) {
-			      alert("接收到訊息:"+event.data);
+// 			      alert("接收到訊息:"+event.data);
 			    }
 			//  建立與server的連接.
 			    function onOpen(event) {
-			      alert("已建立連接="+event.data);
+// 			      alert("已建立連接");
 			    }
 			//  連線錯誤時觸發
 			    function onError(event) {
 			      alert(event.data);
-			    }
-			//  按下按鈕後觸發,發送訊息給server
-			    function start() {
-			      webSocket.send('hello');
 			    }
 
 
@@ -308,7 +305,6 @@
 			}
 			function click() {
 
-				
 				var orderInfoNo = $(this).parents("tr").find("input").val();
 				var Status = this.value;
 				if (Status == "accept") {
@@ -320,7 +316,7 @@
 									+ "&orderInfoNo="
 									+ orderInfoNo
 									+ "&groupInfoNo=${selectGroupInfoByGroupInfoNo.groupInfoNo}");
-							start();
+							webSocket.send(orderInfoNo);
 							layer.close(checkOrder);
 							
 						});	
