@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<jsp:include page="/Web_02/headline.jsp"></jsp:include>
 	<table border="1px">
 		<thead>
 			<tr>
@@ -39,12 +40,12 @@
 				<c:if test="${bean.groupStatusNo==2||bean.groupStatusNo==6}">
 					<c:set var="groupName"
 						value="${groupName}${bean.groupInfoName}，<br>" />
-				</c:if>
+				</c:if> 
 				<c:if test="${bean.groupStatusNo==8}">
 					<c:set var="needCheckPayGroupName"
 						value="${needCheckPayGroupName}${bean.groupInfoName}，<br>" />
 				</c:if>
-			</c:forEach>
+			</c:forEach>	
 		</tbody>
 	</table>
 	<script src="<c:url value='/js/jquery-3.1.1.min.js'></c:url>"></script>
