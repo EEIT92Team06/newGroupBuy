@@ -11,8 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>${sessionScope.loginToken.memberNickName}，您好</h1>
-	<a href="<c:url value="/overViewMailServlet.do"/>">信箱</a>
-	<a href="<c:url value="/secure/logout.jsp"/>">登出</a>
+
+<%-- 	<a href="<c:url value="/secure/logout.jsp"/>">登出</a> --%>
 </body>
 </html>
