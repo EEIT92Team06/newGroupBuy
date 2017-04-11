@@ -84,7 +84,12 @@
               </li>
               
               <li><a href="<c:url value='/Backstage/BackStageServlet.controller'/>">後臺管理</a></li>
+             <c:if test="${empty loginToken}">
               <li><a href="<c:url value='/secure/login.jsp'/>">登入</a></li>
+             </c:if>  
+             <c:if test="${!empty loginToken}">
+              <li><a href="<c:url value='/secure/logout.jsp'/>">登出</a></li>
+             </c:if>
             </ul>
           </div>
         </div>

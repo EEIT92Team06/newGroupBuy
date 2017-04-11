@@ -9,6 +9,7 @@
 </head>
 <body>
 <jsp:include page="/Web_02/headline.jsp"></jsp:include>
+${loginToken.memberNickName}，你好
 <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
 <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
 <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
@@ -21,5 +22,6 @@
 <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
 <p>aaaaaaaaassssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
 <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+
 </body>
 </html>
