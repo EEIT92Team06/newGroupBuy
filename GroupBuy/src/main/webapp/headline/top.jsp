@@ -7,52 +7,20 @@
 		<!--     <td width="60px" rowspan='2'><img width="60px" height="40px" -->
 		<%--       src="${pageContext.request.contextPath}/images/BookStore.gif"> --%>
 		<!--     </td> -->
-		<td>
+		<td> 
 			<table class='menuInner'>
 				<tr>
 					<td class='menuData'>
 						<div class='menu'>
 							<%-- 			   <c:if test="${ funcName != 'SHO' }"> --%>
-							<a href="<c:url value='/_03_listBooks/DisplayPageProducts' />">
+							<a href="<c:url value="/creategroup/createGroup.jsp"/>">
 								創團 </a>
 						</div>
 					</td>
 					<td class='menuData'>
 						<div class='menu'>
 							<%-- 			  <c:if test="${ funcName != 'CHE' }"> --%>
-							<a href="<c:url value='/_04_ShoppingCart/ShowCartContent.jsp' />">
-								許願池 </a>
-							<%-- 			  </c:if> --%>
-							<%-- 			  <c:if test="${ funcName == 'CHE' }">  --%>
-							<!--                                                結帳 -->
-							<%--               </c:if> --%>
-						</div>
-					</td>
-					<td class='menuData'>
-						<div class='menu'>
-							<%-- 			  <c:if test="${ funcName != 'ORD' }"> --%>
-							<a href="<c:url value='/_05_orderProcess/OrderList.jsp' />">
-								會員空間 </a>
-							<%-- 			  </c:if> --%>
-							<%-- 			  <c:if test="${ funcName == 'ORD' }">  --%>
-							<!--                                                 訂單 -->
-							<%--               </c:if> --%>
-						</div>
-					</td>
-					<td class='menuData'>
-						<div class='menu'>
-							<%-- 		      <c:if test="${ funcName != 'BMT' }"> --%>
-							<a
-								href="<c:url value='/_20_productMaintain/DisplayPageProducts' />">
-								實體比價 <a
-								href="<c:url value='/headline/SearchServlet0.controller' />">
-									搜團 </a>
-						</div>
-					</td>
-					<td class='menuData'>
-						<div class='menu'>
-							<%-- 			  <c:if test="${ funcName != 'CHE' }"> --%>
-							<a href="<c:url value='/_04_ShoppingCart/ShowCartContent.jsp' />">
+							<a href="<c:url value="/wish/wishpool.controller" />">
 								許願池 </a>
 							<%-- 			  </c:if> --%>
 							<%-- 			  <c:if test="${ funcName == 'CHE' }">  --%>
@@ -69,6 +37,13 @@
 							<%-- 			  <c:if test="${ funcName == 'ORD' }">  --%>
 							<!--                                                 訂單 -->
 							<%--               </c:if> --%>
+						</div>
+					</td>
+					<td class='menuData'>
+						<div class='menu'>
+							<%-- 		      <c:if test="${ funcName != 'BMT' }"> --%>
+							<a href="<c:url value='/headline/SearchServlet0.controller' />">
+									搜團 </a>
 						</div>
 					</td>
 					<td class='menuData'>

@@ -36,11 +36,11 @@ public class WishPictureDAOHibernate implements WishPictureDAO {
 		return this.getSession().get(WishPictureBean.class, wishPicNo);
 	}
 
-	private static final String SELECT_BY_WISH_NO="select*from wishPicture where wish_No=?";
+	private static final String SELECT_BY_WISH_NO="select*from wishPicture where wish_No= :wishNo";
 	@Override
-	public List<WishPictureBean> selectByWishNo(int WishNo) {
-		Query query = this.getSession().createQuery("from WishPictureBean where wishNo=?");
-		query.setParameter(0, WishNo);
+	public List<Object[]> selectByWishNo(int wishNo) {
+		Query query = this.getSession().createNativeQuery(SELECT_BY_WISH_NO);
+		query.setParameter("wishNo", wishNo);
 		return query.getResultList();
 	}
 
@@ -81,21 +81,27 @@ public class WishPictureDAOHibernate implements WishPictureDAO {
 		return false;
 	}
 
-//	public static void main(String[] args) {
-//		ApplicationContext context = new AnnotationConfigApplicationContext(WishJavaConfiguration.class);
-//		SessionFactory sessionFactory = (SessionFactory)context.getBean("sessionFactory");
-//		sessionFactory.getCurrentSession().beginTransaction();
-//		WishPictureDAOHibernate dao = (WishPictureDAOHibernate)context.getBean("wishPictureDAOHibernate");
-//		
+	public static void main(String[] args) {
+		ApplicationContext context = new AnnotationConfigApplicationContext(WishJavaConfiguration.class);
+		SessionFactory sessionFactory = (SessionFactory)context.getBean("sessionFactory");
+		sessionFactory.getCurrentSession().beginTransaction();
+		WishPictureDAOHibernate dao = (WishPictureDAOHibernate)context.getBean("wishPictureDAOHibernate");
+	
 //		WishPictureBean bean = new WishPictureBean(); 
 //		bean.setWishPictureNo(3);
 //		bean.setWishNo(1);
 //		bean.setWishPicture("ooo.jpg");
-//		Boolean xxx = dao.delete(3);
-//		System.out.println(xxx);
-//		
-//		sessionFactory.getCurrentSession().getTransaction().commit();
-//		((ConfigurableApplicationContext)context).close();
-//	}
+		List<Object[]> xxx = dao.selectByWishNo(2);
+		for(Object[] objArr : xxx){
+  			for(int i=0;i<objArr.length;i++){
+  				System.out.println(objArr[i]);
+  			}
+  		}
+		
+		
+		
+		sessionFactory.getCurrentSession().getTransaction().commit();
+		((ConfigurableApplicationContext)context).close();
+	}
 
 }

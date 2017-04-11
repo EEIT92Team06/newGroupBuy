@@ -18,5 +18,20 @@
         <property name="source" column="wish_Source" />
         <property name="coverPic" column="wish_CoverPic" />
         
+        <set name="pictures" table="wishPicture" lazy="false"
+                              cascade="all" inverse="true" >
+                      <key><column name="wish_No" /></key>
+                      <one-to-many class="wish.model.WishPictureBean"/>      
+        </set>
+        <set name="msgs" table="wishMsg" lazy="false"
+                              cascade="all" inverse="true" >
+                      <key><column name="wish_No" /></key>
+                      <one-to-many class="wish.model.WishMsgBean"/>      
+        </set>
+        <set name="interests" table="wishInterestMember" lazy="false"
+                              cascade="all" inverse="true" >
+                      <key><column name="wish_No" /></key>
+                      <one-to-many class="wish.model.WishInterestBean"/>      
+        </set>
     </class>
 </hibernate-mapping>

@@ -1,5 +1,5 @@
 package wish.model.dao;
-
+ 
 
 import java.util.List;
 
@@ -127,10 +127,10 @@ public class WishPoolDAOHibernate implements WishPoolDAO {
 		sessionFactory.getCurrentSession().beginTransaction();
 
 		WishPoolDAOHibernate dao = (WishPoolDAOHibernate) context.getBean("wishPoolDAOHibernate");
-		WishPoolBean select = dao.select(10);
-		System.out.println(select);
+//		WishPoolBean select = dao.select(12);
+//		System.out.println(select);
 //        WishPoolBean bean = new WishPoolBean();
-//        bean.setWishNo(6);
+//        bean.setWishNo(11);
 //        bean.setMemberNo(3);
 //        bean.setProductType(1);
 //        bean.setTitle("ABC");
@@ -139,10 +139,10 @@ public class WishPoolDAOHibernate implements WishPoolDAO {
 //        bean.setPrice(100);
 //        bean.setSource("QQ");
 //        bean.setCoverPic("xxx.jpg");
-////        WishPoolBean update = dao.update(bean);
-////        System.out.println(update);
-//        Boolean delete = dao.delete(6);
-//        System.out.println(delete);
+//        Boolean ins = dao.insert(bean);
+//        System.out.println(ins);
+        Boolean delete = dao.delete(3);
+        System.out.println(delete);
         
 		sessionFactory.getCurrentSession().getTransaction().commit();
 		// context.close();
