@@ -18,7 +18,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.google.gson.Gson;
 
-import member.model.MemberBean;
+import login.model.MemberBean;
 import wish.model.WishInterestBean;
 import wish.model.WishInterestService;
 
@@ -49,11 +49,8 @@ public class WishInterestServlet extends HttpServlet {
 		Gson gson = new Gson();
 		Map<String, String> map = new HashMap<>();
 		// 接收資料
-		MemberBean memberBean = new MemberBean();
-		memberBean.setMemberNo(3);
 		HttpSession session = request.getSession();
-		session.setAttribute("LoginOK", memberBean);
-		MemberBean member = (MemberBean) session.getAttribute("LoginOK");
+		MemberBean member = (MemberBean) session.getAttribute("loginToken");
 
 		memberNo = member.getMemberNo();
 		String wishNo = request.getParameter("wishNo");

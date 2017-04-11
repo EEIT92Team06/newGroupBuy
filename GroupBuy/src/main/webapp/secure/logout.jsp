@@ -11,13 +11,13 @@
 	<%
 		session.invalidate();
 	%>
-	<jsp:include page="/Web_02/headline.jsp"></jsp:include>
+<%-- 	<jsp:include page="/Web_02/headline.jsp"></jsp:include> --%>
 	<%-- 	<c:remove var="loginToken" scope="session" /> --%>
 
 
 </body>
 <script>
-	location.replace("${pageContext.request.contextPath}/Web_02/theindex.jsp");
+	location.replace("${pageContext.request.contextPath}/theindex.jsp");
 
 
 </script>

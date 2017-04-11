@@ -24,7 +24,7 @@ import javax.servlet.http.Part;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import member.model.MemberBean;
+import login.model.MemberBean;
 import wish.model.WishPictureBean;
 import wish.model.WishPictureService;
 import wish.model.WishPoolBean;
@@ -67,11 +67,8 @@ public class WishFormServlet extends HttpServlet {
 		Map<String, String> errorMsg = new HashMap<String, String>();
 		request.setAttribute("errorMsg", errorMsg);
 		// 接收資料
-		MemberBean memberBean = new MemberBean();
-		memberBean.setMemberNo(1);
 		HttpSession session = request.getSession();
-		session.setAttribute("LoginOK", memberBean);
-		MemberBean member = (MemberBean) session.getAttribute("LoginOK");// 取得MemberNo
+		MemberBean member = (MemberBean) session.getAttribute("loginToken");// 取得MemberNo
 
 		memberNo = member.getMemberNo(); //Integer
 		String title = request.getParameter("title");
@@ -91,7 +88,6 @@ public class WishFormServlet extends HttpServlet {
 				//如果沒上傳圖片,陣列會塞入空值""，所以要擋掉
 				if (part.getSubmittedFileName() != "") {
 					//替所有圖片加入會員編號及時間，避免檔案同名造成覆蓋
-					System.out.println(123);
 					String picture = memberNo.toString() + new SimpleDateFormat("yyyyMMddHH").format(new Date()) + part.getSubmittedFileName();
 					pictures.add(picture);
 				}

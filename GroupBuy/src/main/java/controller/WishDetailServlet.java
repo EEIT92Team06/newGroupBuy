@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import member.model.MemberBean;
+import login.model.MemberBean;
 import wish.model.WishInterestBean;
 import wish.model.WishInterestService;
 import wish.model.WishMsgBean;
@@ -57,11 +57,8 @@ public class WishDetailServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
         //接收資料
-		MemberBean memberBean = new MemberBean();
-		memberBean.setMemberNo(3);
 		HttpSession session = request.getSession();
-		session.setAttribute("LoginOK", memberBean);
-		MemberBean member = (MemberBean) session.getAttribute("LoginOK");
+		MemberBean member = (MemberBean) session.getAttribute("loginToken");
 
 		memberNo = member.getMemberNo();
 		String wishNo = request.getParameter("wishNo");

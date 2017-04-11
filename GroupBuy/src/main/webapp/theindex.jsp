@@ -9,7 +9,9 @@
 </head>
 <body>
 <jsp:include page="/Web_02/headline.jsp"></jsp:include>
-${loginToken.memberNickName}，你好
+<c:if test="${not empty loginToken}">
+<h1>${sessionScope.loginToken.memberNickName}，您好</h1>
+</c:if>
 <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
 <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
 <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
