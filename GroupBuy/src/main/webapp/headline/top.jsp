@@ -7,7 +7,7 @@
 		<!--     <td width="60px" rowspan='2'><img width="60px" height="40px" -->
 		<%--       src="${pageContext.request.contextPath}/images/BookStore.gif"> --%>
 		<!--     </td> -->
-		<td>
+		<td> 
 			<table class='menuInner'>
 				<tr>
 					<td class='menuData'>
