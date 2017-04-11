@@ -62,9 +62,43 @@ $(function() {
 
 });
 </script>
+<script src="<c:url value='/js/jquery-3.1.1.min.js'></c:url>"></script>
+<script src="<c:url value='/js/layer/layer.js'/>"></script>
+<script>
+$(function() {
+	
+var reportOpen;
+$("#report").click(function(){
+	reportOpen = layer.open({
+		type : 1,
+		title:'檢舉',
+		skin : 'layui-layer-rim', //加上边框
+		area : [ '400px', '250px' ], //宽高
+		content : $("#reportDiv")
+	});
+});
+$("#sendReport").click(function(){
+	$.get("<%=request.getContextPath()%>/reportajax", {
+				"reportTarget" : $("#reportTarget").val(),
+				"reportTypeNo" : $("#reportTypeNo").val(),
+				"reportContent" : $("#reportContent").val()
+			}, function(data) {
+				var reportAlert = layer.alert(data, {
+					skin : 'layui-layer-molv' //样式类名
+					,
+					closeBtn : 0
+				}, function() {
+					layer.close(reportAlert);
+					layer.close(reportOpen);
+				});
+			});
+		});
+	});
+</script>
 </head>
 <body>
 <jsp:include page="../headline/top.jsp" /> 
+
 <div id="div1">
       <c:forEach var="wishDetail" items="${wishDetail}">
          <div id="div3">
@@ -98,7 +132,21 @@ $(function() {
              ${wishDetail.content}<br><br>
                             原價 : ${wishDetail.price}<br><br>
                             來源 : ${wishDetail.source}
-         </div>   
+         </div>
+         <button id="report">檢舉</button>
+         <div id="reportDiv" style="display: none">
+			<input id="reportTarget" type="hidden" value="${wishDetail.wishNo}" name="reportTarget"/>
+			<div>
+				<select id="reportTypeNo" name="reportTypeNo">
+					<option value="5">檢舉許願標題</option>
+					<option value="6">檢舉許願照片</option>
+					<option value="7">檢舉許願池留言</option>
+				</select>
+			</div>
+			<label for="reportContent">檢舉內容</label>
+			<textarea id="reportContent" name="reportContent" rows="5" cols="50"></textarea>
+			<input id="sendReport" type="button" value="送出"/>
+		</div>   
       </c:forEach>   
 </div>
 <br>

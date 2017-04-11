@@ -17,15 +17,17 @@ import javax.servlet.http.HttpSession;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import member.model.MemberBean;
+import login.model.MemberBean;
+import wish.model.WishInterestService;
 import wish.model.WishMsgBean;
 import wish.model.WishMsgService;
+import wish.model.WishPoolBean;
 
 @WebServlet("/wish/wishMsg.controller")
 public class WishMsgServlet extends HttpServlet {
 	Integer memberNo;
 	private WishMsgService wishMsgService;
-
+    private WishInterestService wishInterestService;
 	@Override
 	public void init() throws ServletException {
 		ServletContext application = this.getServletContext();
@@ -52,17 +54,14 @@ public class WishMsgServlet extends HttpServlet {
 		Map<String, String> errorMsg = new HashMap<String, String>();
 		request.setAttribute("errorMsg", errorMsg);
 		// 接收資料
-		MemberBean memberBean = new MemberBean();
-		memberBean.setMemberNo(3);
 		HttpSession session = request.getSession();
-		session.setAttribute("LoginOK", memberBean);
-		MemberBean member = (MemberBean) session.getAttribute("LoginOK");
+		MemberBean member = (MemberBean) session.getAttribute("loginToken");
 
 		memberNo = member.getMemberNo();
 		String wishNo = request.getParameter("wishNo");
 		String msg = request.getParameter("content");
 		String send = request.getParameter("send");
-
+        System.out.println(memberNo);
 		// 驗證資料
 		if ("確認送出".equals(send)) {
 			if (msg == null || msg.trim().length()==0) {
@@ -87,13 +86,17 @@ public class WishMsgServlet extends HttpServlet {
 		
 		// 呼叫model, 根據Model執行結果呼叫View
 		WishMsgBean bean = new WishMsgBean();
+		WishPoolBean wishPoolBean = new WishPoolBean();
+		wishPoolBean.setWishNo(wishNumber);
 		bean.setMemberNo(memberNo);
-		bean.setWishNo(wishNumber);
+		bean.setWishPoolBean(wishPoolBean);
         bean.setWishMsgContent(msg);
         
         if("確認送出".equals(send)){
         	Boolean msgInsert = wishMsgService.insert(bean);
+        	//取得所有留言
         	List<WishMsgBean> msgDetail = wishMsgService.getWishMsg(wishNumber);
+
         	if(msgInsert==true){
         		session.setAttribute("msgDetail", msgDetail);
         		response.sendRedirect(request.getContextPath()+"/wish/wishdetail.jsp");

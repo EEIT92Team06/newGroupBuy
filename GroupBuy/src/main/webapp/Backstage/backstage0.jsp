@@ -18,6 +18,9 @@
 		<a href="<c:url value='/Backstage/backstage3.jsp' />">團管理</a>
 	</div>
 	<div>
+		<a href="<c:url value='/Backstage/wishbackstage.jsp' />">許願池管理</a>
+	</div>
+	<div>
 		<a href="<c:url value='/Backstage/backstage4.jsp' />">檢舉管理</a>
 	</div>
 </body>
