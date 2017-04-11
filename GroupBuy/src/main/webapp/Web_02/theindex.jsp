@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="/Web_02/headline.jsp"></jsp:include>
+<%-- <jsp:include page="/Web_02/headline.jsp"></jsp:include> --%>
 <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
 <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
 <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
