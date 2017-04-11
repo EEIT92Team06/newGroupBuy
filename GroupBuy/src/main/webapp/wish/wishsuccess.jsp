@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>許願成功</title>
 </head>
-<jsp:include page="headline/top.jsp"></jsp:include>
 <body>
-	<h1>${sessionScope.loginToken.memberNickName}，您好</h1>
+許願成功!!!<br>
+<a href="<c:url value="/wish/wishpool.controller" />">點擊前往許願池</a>
 </body>
 </html>

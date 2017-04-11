@@ -173,6 +173,40 @@
 // 			location.replace('url');使用他瀏覽器不會紀錄歷史紀錄，所以不能回到上一頁，
 //			我的方法按上一頁如果回到剛剛調出視窗的頁面，會再彈出一次視窗，
 //			所以為了避免這問題，以下我都用replace而不是用location.href
+
+// 			建立webSocket連線
+			var webSocket = new WebSocket('ws://localhost:8080/GroupBuy/groupsocket');//ServerEndpoint監聽的URL.
+			
+			  webSocket.onerror = function(event) {
+			      onError(event)
+			    };
+			 
+			    webSocket.onopen = function(event) {
+			      onOpen(event)
+			    };
+			 
+			    webSocket.onmessage = function(event) {
+			      onMessage(event)
+			    };
+			//  接收到server訊息時觸發.
+			    function onMessage(event) {
+			      alert("接收到訊息:"+event.data);
+			    }
+			//  建立與server的連接.
+			    function onOpen(event) {
+			      alert("已建立連接="+event.data);
+			    }
+			//  連線錯誤時觸發
+			    function onError(event) {
+			      alert(event.data);
+			    }
+			//  按下按鈕後觸發,發送訊息給server
+			    function start() {
+			      webSocket.send('hello');
+			    }
+
+
+
 			var deadLine = new Date(
 			"${selectGroupInfoByGroupInfoNo.groupInfoDeadLine}");
 			var nowTime = new Date();
@@ -286,6 +320,7 @@
 									+ "&orderInfoNo="
 									+ orderInfoNo
 									+ "&groupInfoNo=${selectGroupInfoByGroupInfoNo.groupInfoNo}");
+							start();
 							layer.close(checkOrder);
 							
 						});	

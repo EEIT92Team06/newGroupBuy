@@ -46,5 +46,11 @@
 		<mapping class="sitemail.model.SiteMailCanBean" />
 		<mapping class="sitemail.model.MailBean" />
 		<mapping class="sitemail.model.AnnouncementBean" />
+		<!-- 仲文映射檔 -->
+		<mapping resource="wish/model/WishPool.hbm.xml" />
+		<mapping resource="wish/model/WishPicture.hbm.xml" />
+		<mapping resource="wish/model/WishMsg.hbm.xml" />
+		<mapping resource="wish/model/WishInterest.hbm.xml" />
+		<mapping resource="member/model/Member.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

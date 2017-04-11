@@ -44,7 +44,7 @@ public class SearchServlet0 extends HttpServlet {
 		
 		//以下是推薦團的程式	
 		MemberBean mb = new MemberBean();
-		mb.setMemberNo(1);
+		mb.setMemberNo(4);
 		mb.setMemberPic("eeit9211.jpg");
 		session.setAttribute("loginOK", mb);
 		MemberBean memberBean = (MemberBean)session.getAttribute("loginOK");

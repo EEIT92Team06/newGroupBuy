@@ -3,14 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-<!-- 	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean"> -->
-<!-- 	  <property name="jndiName" value="java:comp/env/jdbc/groupbuy"></property> -->
-<!-- 	</bean> -->
 
-<!--     <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"> -->
-<!--       <property name="dataSource" ref="dataSource"/> -->
-<!--       <property name="configLocation" value="classpath:hibernate.cfg.xml"></property> -->
-<!--     </bean> -->
     <bean id="groupInfoDAOHibernate" class="creategroup.model.dao.GroupInfoDAOHibernate">
       <constructor-arg ref="sessionFactory"/>
     </bean>
@@ -36,6 +29,30 @@
 	<bean id="siteMailService" class="sitemail.model.SiteMailService">
 	    <constructor-arg ref="siteMailDAOHibernate"/>
 	</bean>
-
-
+    <!-- 邱的 -->
+    	<bean id="wishPoolDAOHibernate"	class="wish.model.dao.WishPoolDAOHibernate">
+		<constructor-arg ref="sessionFactory"></constructor-arg>
+	</bean>
+	<bean id="wishPictureDAOHibernate"	class="wish.model.dao.WishPictureDAOHibernate">
+		<constructor-arg ref="sessionFactory"></constructor-arg>
+	</bean>
+	<bean id="wishMsgDAOHibernate"	class="wish.model.dao.WishMsgDAOHibernate">
+		<constructor-arg ref="sessionFactory"></constructor-arg>
+	</bean>
+	<bean id="wishInterestDAOHibernate"	class="wish.model.dao.WishInterestDAOHibernate">
+		<constructor-arg ref="sessionFactory"></constructor-arg>
+	</bean>
+	
+	<bean id="wishPoolService" class="wish.model.WishPoolService">
+	    <constructor-arg ref="wishPoolDAOHibernate"></constructor-arg>
+	</bean>
+	<bean id="wishPictureService" class="wish.model.WishPictureService">
+	    <constructor-arg ref="wishPictureDAOHibernate"></constructor-arg>
+	</bean>
+	<bean id="wishMsgService" class="wish.model.WishMsgService">
+	    <constructor-arg ref="wishMsgDAOHibernate"></constructor-arg>
+	</bean>
+	<bean id="wishInterestService" class="wish.model.WishInterestService">
+	    <constructor-arg ref="wishInterestDAOHibernate"></constructor-arg>
+	</bean>
 </beans>
