@@ -72,7 +72,7 @@ public class LoginServlet extends HttpServlet {
 				}else{
 					session.setAttribute("loginToken", memberBean);
 					String path = request.getContextPath();
-					response.sendRedirect(path + "/GroupBuyIndex.jsp");
+					response.sendRedirect(path + "/theindex.jsp");
 					return;
 				}
 			} else {
