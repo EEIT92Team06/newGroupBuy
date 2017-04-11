@@ -174,7 +174,8 @@
         </div>
         <div class="am-u-sm-5 am-u-end">
           <div class="m-logo">
-            <a href=""><img src="assets/images/logo.png" alt=""></a>
+            <a href=""><img src="<c:url value='/assets/images/logo.png'/>" alt=""></a>
+            
           </div>
         </div>
       </div>
@@ -235,9 +236,9 @@
           </div>
 <div>
 </div>
-  <script src="assets/js/jquery-2.1.0.js" charset="utf-8"></script>
-  <script src="assets/js/amazeui.js" charset="utf-8"></script>
-  <script src="assets/js/common.js" charset="utf-8"></script>
+  <script src="<c:url value='/assets/js/jquery-2.1.0.js'/>" charset="utf-8"></script>
+  <script src="<c:url value='/assets/js/amazeui.js'/>" charset="utf-8"></script>
+  <script src="<c:url value='/assets/js/common.js'/>" charset="utf-8"></script>
 
 
 
