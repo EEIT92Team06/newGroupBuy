@@ -71,9 +71,11 @@
 									<li><a href="<c:url value='/wish/wishpool.controller'/>">許願池</a></li>
 									<li><a href="<c:url value='/test'/>">會員空間</a> <!-- sub-menu start-->
 										<ul class="sub-menu">
-										
-											<li class="menu-item"><a href="<c:url value='/member/member.controller?memberNo=${loginToken.memberNo}'/>">基本資料</a></li>
-											<li class="menu-item"><a href="<c:url value='/friend/friend.controller?x=friend'/>">好友</a></li>
+
+											<li class="menu-item"><a
+												href="<c:url value='/member/member.controller?memberNo=${loginToken.memberNo}'/>">基本資料</a></li>
+											<li class="menu-item"><a
+												href="<c:url value='/friend/friend.controller?x=friend'/>">好友</a></li>
 											<li class="menu-item"><a
 												href="<c:url value='/eeit9212/grouprecord/mycreatedgroupinfo.controller'/>">我創的團</a></li>
 											<li class="menu-item"><a
@@ -81,7 +83,12 @@
 										</ul> <!-- sub-menu end--></li>
 									<li><a
 										href="<c:url value='/Backstage/BackStageServlet.controller'/>">後臺管理</a></li>
-									<li><a href="<c:url value='/secure/login.jsp'/>">登入</a></li>
+									<c:if test="${empty loginToken}">
+										<li><a href="<c:url value='/secure/login.jsp'/>">登入</a></li>
+									</c:if>
+									<c:if test="${!empty loginToken}">
+										<li><a href="<c:url value='/secure/logout.jsp'/>">登出</a></li>
+									</c:if>
 								</ul>
 							</div>
 						</div>
@@ -91,119 +98,123 @@
 			</div>
 		</div>
 
-		<!--mobile header start-->
-		<div class="m-header">
-			<div class="am-g am-show-sm-only">
-				<div class="am-u-sm-2">
-					<div class="menu-bars">
-						<a href="#doc-oc-demo1" data-am-offcanvas="{effect: 'push'}"><i
-							class="am-menu-toggle-icon am-icon-bars"></i></a>
-						<!-- 側邊欄內容 -->
-						<nav data-am-widget="menu"
-							class="am-menu  am-menu-offcanvas1 am-no-layout"
-							data-am-menu-offcanvas=""> <a href="javascript: void(0)"
-							class="am-menu-toggle am-active"></a>
+	</div>
+	</div>
+	</div>
+	</div>
 
-						<div class="am-offcanvas"
-							style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-							<div class="am-offcanvas-bar am-offcanvas-bar-overlay">
-								<ul class="am-menu-nav am-avg-sm-1">
-									<li><a href="./index.html" class="">HOMEPAGE</a></li>
-									<li class=""><a href="html/about.html" class="">創團</a></li>
+	<!--mobile header start-->
+	<div class="m-header">
+		<div class="am-g am-show-sm-only">
+			<div class="am-u-sm-2">
+				<div class="menu-bars">
+					<a href="#doc-oc-demo1" data-am-offcanvas="{effect: 'push'}"><i
+						class="am-menu-toggle-icon am-icon-bars"></i></a>
+					<!-- 側邊欄內容 -->
+					<nav data-am-widget="menu"
+						class="am-menu  am-menu-offcanvas1 am-no-layout"
+						data-am-menu-offcanvas=""> <a href="javascript: void(0)"
+						class="am-menu-toggle am-active"></a>
 
-									<li class=""><a href="html/example.html" class="">搜團</a></li>
-									<li class=""><a href="html/solution.html" class="">許願池</a></li>
-									<li class="am-parent"><a
-										href="<c:url value='/creategroup/createGroup.jsp'/>">會員空間</a>
-										<ul class="am-menu-sub am-collapse" style="height: 0.8px;">
-											<li class=""><a href="html/product1.html" class="">基本資料</a>
-											</li>
-											<li class=""><a href="html/product2.html" class="">好友</a>
-											</li>
-											<li class=""><a href="html/product3.html" class="">我創的團</a>
-											</li>
-											<li class=""><a href="html/product3.html" class="">參加的團</a>
-											</li>
-										</ul></li>
-									<li class=""><a href="html/join.html" class="">後台管理</a></li>
-									<li class=""><a href="html/contact.html" class="">登入</a></li>
-									<li class="am-parent"><a href=""
-										class="nav-icon nav-icon-globe">Language</a>
-										<ul class="am-menu-sub am-collapse" style="height: 0.8px;">
-											<li><a href="#">English</a></li>
-											<li class=""><a href="#">Chinese</a></li>
-										</ul></li>
-									<li class="nav-share-contain">
-										<div class="nav-share-links">
-											<i class="am-icon-facebook"></i> <i class="am-icon-twitter"></i>
-											<i class="am-icon-google-plus"></i> <i
-												class="am-icon-pinterest"></i> <i class="am-icon-instagram"></i>
-											<i class="am-icon-linkedin"></i> <i
-												class="am-icon-youtube-play"></i> <i class="am-icon-rss"></i>
-										</div>
-									</li>
-								</ul>
-
-							</div>
-						</div>
-						</nav>
-
-					</div>
-				</div>
-				<div class="am-u-sm-5 am-u-end">
-					<div class="m-logo">
-						<a href=""><img src="<c:url value='/assets/images/logo.png'/>"
-							alt=""></a>
-
-					</div>
-				</div>
-			</div>
-			<!--mobile header end-->
-		</div>
-
-
-
-
-		<!--===========layout-container================-->
-		<div class="layout-container">
-			<div class="index-page">
-				<div data-am-widget="tabs"
-					class="am-tabs am-tabs-default am-no-layout">
-					<div class="am-tabs-bd"
+					<div class="am-offcanvas"
 						style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-						<div data-tab-panel-0="" class="am-tab-panel am-active"></div>
-						<div data-tab-panel-1="" class="am-tab-panel ">
-							<div class="index-banner">
-								<div class="index-mask">
-									<div class="container">
-										<div class="am-g">
-											<div class="am-u-md-10 am-u-sm-centered">
-												<h1 class="slide_simple--title">企业移动化，首选云适配</h1>
-												<p class="slide_simple--text am-text-left">
-													全球领先的HTML5企业移动化解决方案供应商，安全高效的帮助您的企业移动化。云适配企业浏览器Enterploer,让企业安全迈进移动办公时代！
-												</p>
-												<div class="slide_simple--buttons">
-													<button type="button" class="am-btn am-btn-danger">了解更多</button>
-												</div>
+						<div class="am-offcanvas-bar am-offcanvas-bar-overlay">
+							<ul class="am-menu-nav am-avg-sm-1">
+								<li><a href="./index.html" class="">HOMEPAGE</a></li>
+								<li class=""><a href="html/about.html" class="">創團</a></li>
+
+								<li class=""><a href="html/example.html" class="">搜團</a></li>
+								<li class=""><a href="html/solution.html" class="">許願池</a></li>
+								<li class="am-parent"><a
+									href="<c:url value='/creategroup/createGroup.jsp'/>">會員空間</a>
+									<ul class="am-menu-sub am-collapse" style="height: 0.8px;">
+										<li class=""><a href="html/product1.html" class="">基本資料</a>
+										</li>
+										<li class=""><a href="html/product2.html" class="">好友</a>
+										</li>
+										<li class=""><a href="html/product3.html" class="">我創的團</a>
+										</li>
+										<li class=""><a href="html/product3.html" class="">參加的團</a>
+										</li>
+									</ul></li>
+								<li class=""><a href="html/join.html" class="">後台管理</a></li>
+								<li class=""><a href="html/contact.html" class="">登入</a></li>
+								<li class="am-parent"><a href=""
+									class="nav-icon nav-icon-globe">Language</a>
+									<ul class="am-menu-sub am-collapse" style="height: 0.8px;">
+										<li><a href="#">English</a></li>
+										<li class=""><a href="#">Chinese</a></li>
+									</ul></li>
+								<li class="nav-share-contain">
+									<div class="nav-share-links">
+										<i class="am-icon-facebook"></i> <i class="am-icon-twitter"></i>
+										<i class="am-icon-google-plus"></i> <i
+											class="am-icon-pinterest"></i> <i class="am-icon-instagram"></i>
+										<i class="am-icon-linkedin"></i> <i
+											class="am-icon-youtube-play"></i> <i class="am-icon-rss"></i>
+									</div>
+								</li>
+							</ul>
+
+						</div>
+					</div>
+					</nav>
+
+				</div>
+			</div>
+			<div class="am-u-sm-5 am-u-end">
+				<div class="m-logo">
+					<a href=""><img src="<c:url value='/assets/images/logo.png'/>"
+						alt=""></a>
+
+				</div>
+			</div>
+		</div>
+		<!--mobile header end-->
+	</div>
+
+
+
+
+	<!--===========layout-container================-->
+	<div class="layout-container">
+		<div class="index-page">
+			<div data-am-widget="tabs"
+				class="am-tabs am-tabs-default am-no-layout">
+				<div class="am-tabs-bd"
+					style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+					<div data-tab-panel-0="" class="am-tab-panel am-active"></div>
+					<div data-tab-panel-1="" class="am-tab-panel ">
+						<div class="index-banner">
+							<div class="index-mask">
+								<div class="container">
+									<div class="am-g">
+										<div class="am-u-md-10 am-u-sm-centered">
+											<h1 class="slide_simple--title">企业移动化，首选云适配</h1>
+											<p class="slide_simple--text am-text-left">
+												全球领先的HTML5企业移动化解决方案供应商，安全高效的帮助您的企业移动化。云适配企业浏览器Enterploer,让企业安全迈进移动办公时代！
+											</p>
+											<div class="slide_simple--buttons">
+												<button type="button" class="am-btn am-btn-danger">了解更多</button>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div data-tab-panel-2="" class="am-tab-panel ">
-							<div class="index-banner">
-								<div class="index-mask">
-									<div class="container">
-										<div class="am-g">
-											<div class="am-u-md-10 am-u-sm-centered">
-												<h1 class="slide_simple--title">企业移动化，首选云适配</h1>
-												<p class="slide_simple--text am-text-left">
-													全球领先的HTML5企业移动化解决方案供应商，安全高效的帮助您的企业移动化。云适配企业浏览器Enterploer,让企业安全迈进移动办公时代！
-												</p>
-												<div class="slide_simple--buttons">
-													<button type="button" class="am-btn am-btn-danger">了解更多</button>
-												</div>
+					</div>
+					<div data-tab-panel-2="" class="am-tab-panel ">
+						<div class="index-banner">
+							<div class="index-mask">
+								<div class="container">
+									<div class="am-g">
+										<div class="am-u-md-10 am-u-sm-centered">
+											<h1 class="slide_simple--title">企业移动化，首选云适配</h1>
+											<p class="slide_simple--text am-text-left">
+												全球领先的HTML5企业移动化解决方案供应商，安全高效的帮助您的企业移动化。云适配企业浏览器Enterploer,让企业安全迈进移动办公时代！
+											</p>
+											<div class="slide_simple--buttons">
+												<button type="button" class="am-btn am-btn-danger">了解更多</button>
 											</div>
 										</div>
 									</div>
@@ -214,11 +225,12 @@
 				</div>
 			</div>
 		</div>
-		<div></div>
-		<script src="<c:url value='/assets/js/jquery-2.1.0.js'/>"
-			charset="utf-8"></script>
-		<script src="<c:url value='/assets/js/amazeui.js'/>" charset="utf-8"></script>
-		<script src="<c:url value='/assets/js/common.js'/>" charset="utf-8"></script>
+	</div>
+	<div></div>
+	<script src="<c:url value='/assets/js/jquery-2.1.0.js'/>"
+		charset="utf-8"></script>
+	<script src="<c:url value='/assets/js/amazeui.js'/>" charset="utf-8"></script>
+	<script src="<c:url value='/assets/js/common.js'/>" charset="utf-8"></script>
 
 
 

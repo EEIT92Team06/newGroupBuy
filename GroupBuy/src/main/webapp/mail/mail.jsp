@@ -13,6 +13,7 @@
 .td {
 	border: 1px solid;
 }
+
 </style>
 <script type="text/javascript">
   function checkAll(obj,allMail,announceMail){
@@ -27,15 +28,15 @@
   } 
 
 </script>
+
 </head>
 <body>
 	<a href="<c:url value="/overViewMailServlet.do"/>">信箱</a>
 	<a href="<c:url value="/secure/logout.jsp"/>">登出</a><br>
 	<form action="<c:url value="/specificMailServlet.do"/>"><input type="text" name="searchKeyWord"><input type="submit" value="搜尋"></form>
 
-	
 	<form action="<c:url value="/specificMailServlet.do"/>">
-		<table style="border: 1px solid;">
+		<table style="border: 1px solid;" id="table1">
 			<thead>
 				<tr>
 					<th class="td">
