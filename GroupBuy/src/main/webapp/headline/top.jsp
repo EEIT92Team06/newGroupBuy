@@ -20,7 +20,7 @@
 					<td class='menuData'>
 						<div class='menu'>
 							<%-- 			  <c:if test="${ funcName != 'CHE' }"> --%>
-							<a href="<c:url value='/_04_ShoppingCart/ShowCartContent.jsp' />">
+							<a href="<c:url value="/wish/wishpool.controller" />">
 								許願池 </a>
 							<%-- 			  </c:if> --%>
 							<%-- 			  <c:if test="${ funcName == 'CHE' }">  --%>

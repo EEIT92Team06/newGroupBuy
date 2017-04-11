@@ -29,11 +29,11 @@ public class WishInterestDAOHibernate implements WishInterestDAO {
 		return sessionFactory.getCurrentSession();
 	}
 	
-	private static final String SELECT_BY_WISH_NO="select * from wishInterestMember where wish_No = ?";
+	private static final String SELECT_BY_WISH_NO="select * from wishInterestMember where wish_No= :wishNo";
 	@Override
-	public List<WishInterestBean> select(int wishNo) {
-		Query query = this.getSession().createQuery("from WishInterestBean where wish_No=?",WishInterestBean.class);
-		query.setParameter(0, wishNo);
+	public List<Object[]> select(int wishNo) {
+		Query query = this.getSession().createNativeQuery(SELECT_BY_WISH_NO);
+		query.setParameter("wishNo", wishNo);
 		return query.getResultList();
 	}
 
@@ -92,11 +92,19 @@ public class WishInterestDAOHibernate implements WishInterestDAO {
 		sessionFactory.getCurrentSession().beginTransaction();
 		WishInterestDAOHibernate dao = (WishInterestDAOHibernate)context.getBean("wishInterestDAOHibernate");
         WishInterestBean bean = new WishInterestBean();
-		bean.setWishNo(1);
-		bean.setMemberNo(1);
-		Boolean xxx = dao.delete(bean);
-		System.out.println(xxx);
+		bean.setWishNo(3);
+		bean.setMemberNo(2);
 		
+		Boolean xxx = dao.insert(bean);
+        System.out.println(xxx);
+        
+        
+//        for(Object[] objArr : xxx){
+//			for(int i=0;i<objArr.length;i++){
+//				System.out.println(objArr[i]);
+//			}
+//		}
+        
 		sessionFactory.getCurrentSession().getTransaction().commit();
 		((ConfigurableApplicationContext)context).close();
 	}

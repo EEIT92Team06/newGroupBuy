@@ -7,6 +7,7 @@ public class WishMsgBean {
 	private String wishMsgContent;
 	private String nickName;
 	private String memberPic;
+	private WishPoolBean wishPoolBean;
 	public int getWishMsgNo() {
 		return wishMsgNo;
 	}
@@ -43,9 +44,16 @@ public class WishMsgBean {
 	public void setMemberPic(String memberPic) {
 		this.memberPic = memberPic;
 	}
+	public WishPoolBean getWishPoolBean() {
+		return wishPoolBean;
+	}
+	public void setWishPoolBean(WishPoolBean wishPoolBean) {
+		this.wishPoolBean = wishPoolBean;
+	}
 	@Override
 	public String toString() {
 		return "WishMsgBean [wishMsgNo=" + wishMsgNo + ", wishNo=" + wishNo + ", memberNo=" + memberNo
-				+ ", wishMsgContent=" + wishMsgContent + ", nickName=" + nickName + ", memberPic=" + memberPic + "]";
+				+ ", wishMsgContent=" + wishMsgContent + ", nickName=" + nickName + ", memberPic=" + memberPic
+				+ ", wishPoolBean=" + wishPoolBean + "]";
 	}
 }

@@ -1,5 +1,8 @@
 package wish.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class WishPoolBean {
 	private int wishNo;
 	private int memberNo;
@@ -10,6 +13,11 @@ public class WishPoolBean {
 	private Double price;
 	private String source;
 	private String coverPic;
+	
+	private Set<WishPictureBean>pictures = new HashSet<>();
+	private Set<WishInterestBean>interests = new HashSet<>();
+	private Set<WishMsgBean>msgs = new HashSet<>();
+	
 	public int getWishNo() {
 		return wishNo;
 	}
@@ -46,10 +54,10 @@ public class WishPoolBean {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public double getPrice() {
+	public Double getPrice() {
 		return price;
 	}
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 	public String getSource() {
@@ -64,10 +72,30 @@ public class WishPoolBean {
 	public void setCoverPic(String coverPic) {
 		this.coverPic = coverPic;
 	}
+	public Set<WishPictureBean> getPictures() {
+		return pictures;
+	}
+	public void setPictures(Set<WishPictureBean> pictures) {
+		this.pictures = pictures;
+	}
+	public Set<WishInterestBean> getInterests() {
+		return interests;
+	}
+	public void setInterests(Set<WishInterestBean> interests) {
+		this.interests = interests;
+	}
+	public Set<WishMsgBean> getMsgs() {
+		return msgs;
+	}
+	public void setMsgs(Set<WishMsgBean> msgs) {
+		this.msgs = msgs;
+	}
 	@Override
 	public String toString() {
 		return "WishPoolBean [wishNo=" + wishNo + ", memberNo=" + memberNo + ", productType=" + productType + ", title="
 				+ title + ", productName=" + productName + ", content=" + content + ", price=" + price + ", source="
 				+ source + ", coverPic=" + coverPic + "]";
 	}
+	
+	
 }

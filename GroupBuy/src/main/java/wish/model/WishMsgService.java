@@ -71,12 +71,12 @@ public class WishMsgService {
 		SessionFactory sessionFactory = (SessionFactory)context.getBean("sessionFactory");
 		sessionFactory.getCurrentSession().beginTransaction();
 		WishMsgService wishMsgService = (WishMsgService)context.getBean("wishMsgService");
-		WishMsgBean bean = new WishMsgBean();
-		bean.setWishMsgNo(6);
-		bean.setWishNo(1);
-		bean.setMemberNo(1);
-		bean.setWishMsgContent("XXXXXXXXx");
-		List<WishMsgBean> xxx = wishMsgService.getWishMsg(3);
+//		WishMsgBean bean = new WishMsgBean();
+//		bean.setWishMsgNo(6);
+//		bean.setWishNo(1);
+//		bean.setMemberNo(1);
+//		bean.setWishMsgContent("XXXXXXXXx");
+		List<WishMsgBean> xxx = wishMsgService.getWishMsg(10);
 		System.out.println(xxx);
 		
 		sessionFactory.getCurrentSession().getTransaction().commit();

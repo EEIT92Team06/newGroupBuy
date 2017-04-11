@@ -18,11 +18,18 @@ public class WishPictureService {
 	}
 	
 	public List<WishPictureBean> getWishPic(int wishNo){
-		List<WishPictureBean> result = wishPictureDAO.selectByWishNo(wishNo);
-		if(result!=null){
-			return result;
-		}
-		return null;
+		List<WishPictureBean> list=null;
+		List<Object[]> results = wishPictureDAO.selectByWishNo(wishNo);
+        list = new ArrayList<WishPictureBean>();
+        for(Object[] result : results){
+        	 WishPictureBean bean = new WishPictureBean();
+        	 bean.setWishPictureNo(Integer.parseInt(result[0].toString()));
+        	 bean.setWishNo(Integer.parseInt(result[1].toString()));
+        	 bean.setWishPicture(result[2].toString());
+        	 
+        	 list.add(bean);
+        }
+		return list;	
 	}
 	
 	public Boolean insertPic(WishPictureBean bean){
@@ -33,20 +40,20 @@ public class WishPictureService {
 		return false;
 	}
 	
-//	public static void main (String[] arg){
-//		ApplicationContext context = new AnnotationConfigApplicationContext(WishJavaConfiguration.class);
-//		SessionFactory sessionFactory = (SessionFactory)context.getBean("sessionFactory");
-//		sessionFactory.getCurrentSession().beginTransaction();
-//		WishPictureService wishPictureService = (WishPictureService)context.getBean("wishPictureService");
-//		
-//		WishPictureBean bean = new WishPictureBean();
+	public static void main (String[] arg){
+		ApplicationContext context = new AnnotationConfigApplicationContext(WishJavaConfiguration.class);
+		SessionFactory sessionFactory = (SessionFactory)context.getBean("sessionFactory");
+		sessionFactory.getCurrentSession().beginTransaction();
+		WishPictureService wishPictureService = (WishPictureService)context.getBean("wishPictureService");
+		
+		WishPictureBean bean = new WishPictureBean();
 //		bean.setWishNo(1);
 //		bean.setWishPicture("QQ0.jpg");
-//		Boolean xxx = wishPictureService.insertPic(bean);
-//		System.out.println(xxx);
-//		
-//		sessionFactory.getCurrentSession().getTransaction().commit();
-//		((ConfigurableApplicationContext)context).close();
-//	}
+		List<WishPictureBean> xxx = wishPictureService.getWishPic(16);
+		System.out.println(xxx);
+		
+		sessionFactory.getCurrentSession().getTransaction().commit();
+		((ConfigurableApplicationContext)context).close();
+	}
 	
 }
