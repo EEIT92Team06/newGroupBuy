@@ -92,7 +92,8 @@
                   </li>
                   <li><a href="#specification">來源</a>
                   </li>
-                  
+                  <li><a href="#review">檢舉許願池</a>
+                  </li>
                 </ul>
                 <div class="tab-content">
                   <div class="tab-pane active" id="description">
@@ -105,6 +106,23 @@
                       ${wishDetail.source}
                     </ul>
                   </div>
+                  <div class="tab-pane " id="specification">
+                    <ul class="productinfo">
+                      ${wishDetail.source}
+                    </ul>
+                  </div>
+                  <div class="tab-pane" id="review">
+                      <button id="report">檢舉</button>
+                      <div id="reportDiv" style="display: none">
+			          <input id="reportTarget" type="hidden" value="${wishDetail.wishNo}" name="reportTarget"/>
+			            <div>
+				          <select id="reportTypeNo" name="reportTypeNo">
+					         <option value="5">檢舉許願標題</option>
+					         <option value="6">檢舉許願照片</option>
+					         <option value="7">檢舉許願池留言</option>
+				          </select>
+			            </div>
+                     </div>
                 </div>
               </div>
             </div>
@@ -222,6 +240,38 @@ function likeForWish(){
 // 		alert("xhr.readyState : " + xhr.readyState);
 	}
 }
+</script>
+<!-- 以下是檢舉的js -->
+<script>
+$(function() {
+	
+var reportOpen;
+$("#report").click(function(){
+	reportOpen = layer.open({
+		type : 1,
+		title:'檢舉',
+		skin : 'layui-layer-rim', //加上边框
+		area : [ '400px', '250px' ], //宽高
+		content : $("#reportDiv")
+	});
+});
+$("#sendReport").click(function(){
+	$.get("<%=request.getContextPath()%>/reportajax", {
+				"reportTarget" : $("#reportTarget").val(),
+				"reportTypeNo" : $("#reportTypeNo").val(),
+				"reportContent" : $("#reportContent").val()
+			}, function(data) {
+				var reportAlert = layer.alert(data, {
+					skin : 'layui-layer-molv' //样式类名
+					,
+					closeBtn : 0
+				}, function() {
+					layer.close(reportAlert);
+					layer.close(reportOpen);
+				});
+			});
+		});
+	});
 </script>
 </body>
 </html>
