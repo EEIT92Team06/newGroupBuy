@@ -47,12 +47,12 @@ public class WishPoolService {
 		return null;
 	}
 	
-	public List<WishPoolBean> search(String titleKeyWord,int productType){
+	public List<WishPoolBean> search(int productType){
 		List<WishPoolBean> result = null;
 		if(productType==0){
-			result = wishPoolDAO.selectForSearch(titleKeyWord);
+			result = wishPoolDAO.select();
 		}else{
-			result = wishPoolDAO.selectForSearch(titleKeyWord, productType);
+			result = wishPoolDAO.selectForSearch(productType);
 		}
 		return result;
 	}
@@ -63,6 +63,14 @@ public class WishPoolService {
 			result = wishPoolDAO.insert(bean);
 		}
 		return result;
+	}
+	
+	public Boolean delete(int wishNo){
+		if(wishNo!=0){
+			wishPoolDAO.delete(wishNo);
+			return true;
+		}
+		return false;
 	}
 	
 	
@@ -79,11 +87,12 @@ public class WishPoolService {
 //        bean.setTitle("ABC");
 //        bean.setProductName("xxx");
 //        bean.setContent("123");
-//        bean.setPrice(100);
+//        bean.setPrice(100.0);
 //        bean.setSource("QQ");
 //        bean.setCoverPic("xxx.jpg");
 //		
-//        
+//        List<WishPoolBean> xxx = wishPoolService.search(0);
+//        System.out.println(xxx);
 //		
 //		sessionFactory.getCurrentSession().getTransaction().commit();
 //		((ConfigurableApplicationContext)context).close();

@@ -43,7 +43,7 @@ public class SearchServlet extends HttpServlet {
 
 //		//以下做update click groupType值  
 		HttpSession session = request.getSession();
-		MemberBean memberBean = (MemberBean)session.getAttribute("loginOK");
+		MemberBean memberBean = (MemberBean)session.getAttribute("loginToken");
 		Integer memberNo = memberBean.getMemberNo();
 		System.out.println("memberNo : "+memberNo);
 		int insertResult = searchService.insertClickTimes

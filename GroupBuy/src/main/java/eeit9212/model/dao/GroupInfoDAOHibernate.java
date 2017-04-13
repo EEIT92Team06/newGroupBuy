@@ -1,11 +1,6 @@
 package eeit9212.model.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -16,7 +11,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import creategroup.model.GroupInfoBean;
 import eeit9212.model.AttendGroupInfoBean;
 import eeit9212.model.CreateGroupInfoBean;
 import eeit9212.model.GroupInfoDAO;
@@ -40,40 +34,43 @@ public class GroupInfoDAOHibernate implements GroupInfoDAO {
 		GroupInfoDAO groupInfoDAOJdbc = new GroupInfoDAOHibernate(sessionFactory);
 		// System.out.println(groupInfoDAOJdbc.updateGroupInfoDeadLine(10,new
 		// Timestamp(new java.util.Date().getTime()+86400000)));
-		// System.out.println(groupInfoDAOJdbc.updateGroupStatus(5, 15));
+		
 
 		 CreateGroupInfoBean selectGroupInfoByGroupInfoNo = groupInfoDAOJdbc.selectGroupInfoByGroupInfoNo(1);
 		 System.out.println(selectGroupInfoByGroupInfoNo);
-		
-		AttendGroupInfoBean selectMyAttendedByGroupInfoNo = groupInfoDAOJdbc.selectMyAttendedByGroupInfoNo(1, 3);
-		System.out.println(selectMyAttendedByGroupInfoNo);
-		 List<AttendGroupInfoBean> selectMyAttendedGroupInfo =
-		 groupInfoDAOJdbc.selectMyAttendedGroupInfo(1);
-		  System.out.println(selectMyAttendedGroupInfo);
-		 for (AttendGroupInfoBean bean : selectMyAttendedGroupInfo) {
-		 System.out.print(bean.getGroupInfoNo() + " ");
-		 System.out.print(bean.getOrderInfoNo() + " ");
-		 System.out.print(bean.getGroupInfoMemberNo() + " ");
-		 System.out.print(bean.getMemberName() + " ");
-		 System.out.print(bean.getGroupStatusNo() + " ");
-		 System.out.print(bean.getGroupStatus() + " ");
-		 System.out.print(bean.getProductType() + " ");
-		 System.out.print(bean.getGroupInfoName() + " ");
-		 System.out.print(bean.getGroupInfoMinProductQt() + " ");
-		 System.out.print(bean.getGroupInfoTotalProductQt() + " ");
-		 System.out.print(bean.getGroupInfoStartDate() + " ");
-		 System.out.print(bean.getGroupInfoDeadLine() + " ");
-		 System.out.print(bean.getGroupInfoContent() + " ");
-		 System.out.print(bean.getGroupInfoShippingWay() + " ");
-		 System.out.print(bean.getGroupInfoBankAccount() + " ");
-		 System.out.print(bean.getGrouperCredit() + " ");
-		 System.out.print(bean.getOrderStatusNo() + " ");
-		 System.out.print(bean.getOrderStatus() + " ");
-		 System.out.println(bean.getGroupInfoCoverPic());
-		
-		 }
-		
-		  List<CreateGroupInfoBean> selectMyCreatedGroupInfo = groupInfoDAOJdbc.selectMyCreatedGroupInfo(1);
+		 System.out.println(groupInfoDAOJdbc.updateGroupStatus(1, 7));
+		 CreateGroupInfoBean selectGroupInfoByGroupInfoNo1 = groupInfoDAOJdbc.selectGroupInfoByGroupInfoNo(1);
+		 System.out.println(selectGroupInfoByGroupInfoNo1);
+		 
+//		AttendGroupInfoBean selectMyAttendedByGroupInfoNo = groupInfoDAOJdbc.selectMyAttendedByGroupInfoNo(1, 3);
+//		System.out.println(selectMyAttendedByGroupInfoNo);
+//		 List<AttendGroupInfoBean> selectMyAttendedGroupInfo =
+//		 groupInfoDAOJdbc.selectMyAttendedGroupInfo(1);
+//		  System.out.println(selectMyAttendedGroupInfo);
+//		 for (AttendGroupInfoBean bean : selectMyAttendedGroupInfo) {
+//		 System.out.print(bean.getGroupInfoNo() + " ");
+//		 System.out.print(bean.getOrderInfoNo() + " ");
+//		 System.out.print(bean.getGroupInfoMemberNo() + " ");
+//		 System.out.print(bean.getMemberName() + " ");
+//		 System.out.print(bean.getGroupStatusNo() + " ");
+//		 System.out.print(bean.getGroupStatus() + " ");
+//		 System.out.print(bean.getProductType() + " ");
+//		 System.out.print(bean.getGroupInfoName() + " ");
+//		 System.out.print(bean.getGroupInfoMinProductQt() + " ");
+//		 System.out.print(bean.getGroupInfoTotalProductQt() + " ");
+//		 System.out.print(bean.getGroupInfoStartDate() + " ");
+//		 System.out.print(bean.getGroupInfoDeadLine() + " ");
+//		 System.out.print(bean.getGroupInfoContent() + " ");
+//		 System.out.print(bean.getGroupInfoShippingWay() + " ");
+//		 System.out.print(bean.getGroupInfoBankAccount() + " ");
+//		 System.out.print(bean.getGrouperCredit() + " ");
+//		 System.out.print(bean.getOrderStatusNo() + " ");
+//		 System.out.print(bean.getOrderStatus() + " ");
+//		 System.out.println(bean.getGroupInfoCoverPic());
+//		
+//		 }
+//		
+		  List<CreateGroupInfoBean> selectMyCreatedGroupInfo = groupInfoDAOJdbc.selectMyCreatedGroupInfo(3);
 		  System.out.println(selectMyCreatedGroupInfo);
 		 for (CreateGroupInfoBean bean1 : selectMyCreatedGroupInfo) {
 		 System.out.print(bean1.getGroupInfoNo() + " ");
@@ -119,6 +116,8 @@ public class GroupInfoDAOHibernate implements GroupInfoDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		this.getSession().getTransaction().commit();
+		this.getSession().beginTransaction();
 		return result;
 	}
 
