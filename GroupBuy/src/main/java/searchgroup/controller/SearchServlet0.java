@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import searchgroup.model.MemberBean;
+import login.model.MemberBean;
 import searchgroup.model.SearchService;
 
 @WebServlet("/headline/SearchServlet0.controller")
@@ -43,14 +43,11 @@ public class SearchServlet0 extends HttpServlet {
 		String contextPath = getServletContext().getContextPath();
 		
 		//以下是推薦團的程式	
-		MemberBean mb = new MemberBean();
-		mb.setMemberNo(4);
-		mb.setMemberPic("eeit9211.jpg");
-		session.setAttribute("loginOK", mb);
-		MemberBean memberBean = (MemberBean)session.getAttribute("loginOK");
+		MemberBean memberBean = (MemberBean)session.getAttribute("loginToken");
+		System.out.println("memberNo : " + memberBean.getMemberNo());
 		Integer memberNo = memberBean.getMemberNo();
 		int groupTypeNo = searchService.selectRecommendTable(memberNo);
-		 List<Map<String, String>> recommendGroup = searchService.select(groupTypeNo);
+		List<Map<String, String>> recommendGroup = searchService.select(groupTypeNo);
 		session.setAttribute("recommendGroup", recommendGroup);
 		
 		response.sendRedirect(response

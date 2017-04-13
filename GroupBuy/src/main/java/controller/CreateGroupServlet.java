@@ -29,6 +29,7 @@ import creategroup.model.GlobalService;
 import creategroup.model.GroupInfoBean;
 import creategroup.model.GroupInfoDetailsBean;
 import creategroup.model.GroupInfoPicBean;
+import login.model.MemberBean;
 
 @WebServlet("/createGroupServlet.do")
 @MultipartConfig
@@ -227,7 +228,8 @@ public class CreateGroupServlet extends HttpServlet {
 			response.sendRedirect(path + "/creategroup/createGroup.jsp");
 			return;
 		}
-		groupInfoBean.setMemberNo(1);
+		MemberBean bean=(MemberBean)session.getAttribute("loginToken");
+		groupInfoBean.setMemberNo(bean.getMemberNo());
 		groupInfoBean.setGroupStatusNo(1);
 		groupInfoBean.setProductTypeNo(productTypeNo);
 		groupInfoBean.setGroupInfoName(groupName);

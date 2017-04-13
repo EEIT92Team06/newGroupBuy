@@ -91,6 +91,7 @@ public class WishFormServlet extends HttpServlet {
 				//如果沒上傳圖片,陣列會塞入空值""，所以要擋掉
 				if (part.getSubmittedFileName() != "") {
 					//替所有圖片加入會員編號及時間，避免檔案同名造成覆蓋
+					System.out.println(123);
 					String picture = memberNo.toString() + new SimpleDateFormat("yyyyMMddHH").format(new Date()) + part.getSubmittedFileName();
 					pictures.add(picture);
 				}
@@ -184,9 +185,13 @@ public class WishFormServlet extends HttpServlet {
 					}
 				}
 				if (pictures != null) {
-					WishPictureBean picBean = new WishPictureBean();
+					
+					WishPoolBean wishPoolBean = new WishPoolBean();
 					for (int i = 0; i < pictures.size(); i++) {
-						picBean.setWishNo(wishPoolService.getWishNo(cover));
+						WishPictureBean picBean = new WishPictureBean();
+						System.out.println(666);
+						wishPoolBean.setWishNo(wishPoolService.getWishNo(cover));
+						picBean.setWishPoolBean(wishPoolBean);
                         picBean.setWishPicture(pictures.get(i));
 						wishPictureService.insertPic(picBean);
 					}

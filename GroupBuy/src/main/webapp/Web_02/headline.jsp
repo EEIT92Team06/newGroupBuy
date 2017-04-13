@@ -84,7 +84,12 @@
               </li>
               
               <li><a href="<c:url value='/Backstage/BackStageServlet.controller'/>">後臺管理</a></li>
+             <c:if test="${empty loginToken}">
               <li><a href="<c:url value='/secure/login.jsp'/>">登入</a></li>
+             </c:if>  
+             <c:if test="${!empty loginToken}">
+              <li><a href="<c:url value='/secure/logout.jsp'/>">登出</a></li>
+             </c:if>
             </ul>
           </div>
         </div>
@@ -174,7 +179,8 @@
         </div>
         <div class="am-u-sm-5 am-u-end">
           <div class="m-logo">
-            <a href=""><img src="assets/images/logo.png" alt=""></a>
+            <a href=""><img src="<c:url value='/assets/images/logo.png'/>" alt=""></a>
+            
           </div>
         </div>
       </div>
@@ -235,9 +241,9 @@
           </div>
 <div>
 </div>
-  <script src="assets/js/jquery-2.1.0.js" charset="utf-8"></script>
-  <script src="assets/js/amazeui.js" charset="utf-8"></script>
-  <script src="assets/js/common.js" charset="utf-8"></script>
+  <script src="<c:url value='/assets/js/jquery-2.1.0.js'/>" charset="utf-8"></script>
+  <script src="<c:url value='/assets/js/amazeui.js'/>" charset="utf-8"></script>
+  <script src="<c:url value='/assets/js/common.js'/>" charset="utf-8"></script>
 
 
 

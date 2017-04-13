@@ -72,11 +72,11 @@ public class CreditAjax extends HttpServlet {
 		}
 		
 		if(creditAttendanceService.updateGrouperCredit(groupInfoMemberNo, score)){
-			System.out.println("更新主糾評分groupInfoMemberNo="+groupInfoMemberNo);
-			orderInfoService.updateOrderInfoStatus(1202, orderInfoNo);
-			System.out.println("更新訂單狀態orderInfoNo="+orderInfoNo);
+			System.out.println("更新主糾評分groupInfoMemberNo="+groupInfoMemberNo);	
 			creditAttendanceService.updateGroupAttendance(memberNo, 1);
 			System.out.println("更新出席率memberNo="+memberNo);
+			orderInfoService.updateOrderInfoStatus(1202, orderInfoNo);
+			System.out.println("更新訂單狀態orderInfoNo="+orderInfoNo);
 //			GroupInfoBean selectMyAttendedByGroupInfoNo = groupInfoService.selectMyAttendedByGroupInfoNo(memberNo,
 //					groupInfoNo);		
 //			session.setAttribute("selectMyAttendedByGroupInfoNo", selectMyAttendedByGroupInfoNo);

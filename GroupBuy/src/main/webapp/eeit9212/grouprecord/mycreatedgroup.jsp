@@ -33,7 +33,11 @@
 					<td>${bean.groupInfoName}</td>
 					<td>${bean.groupStatus}</td>
 					<td>${bean.productType}</td>
-					<td>${bean.groupInfoTotalProductQt}/${bean.groupInfoMinProductQt}</td>
+					
+					<td>
+					<c:if test="${empty bean.groupInfoTotalProductQt}">0</c:if>
+					<c:if test="${not empty bean.groupInfoTotalProductQt}">${bean.groupInfoTotalProductQt}</c:if>/${bean.groupInfoMinProductQt}
+					</td>
 					<td>${bean.groupInfoDeadLine}</td>
 
 				</tr>

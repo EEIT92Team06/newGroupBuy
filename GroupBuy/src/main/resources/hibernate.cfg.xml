@@ -35,6 +35,7 @@
 		<mapping resource="groupInfoPic.hbm.xml" />
 		<mapping resource="groupInfoDetails.hbm.xml" />
 		<mapping class="eeit9212.model.ReportBean" />
+		<mapping class="eeit9212.model.OrderInfoAfterSuccessBean" />
 		<!-- 阿賢映射檔 -->
 		<mapping resource="eeit9211/MemberInfo.hbm.xml" />
 		<!-- 宇呈映射檔 -->
