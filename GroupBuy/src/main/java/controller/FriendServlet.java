@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import login.model.MemberBean;
 import model.FriendBean;
 import model.FriendService;
 
@@ -65,7 +66,7 @@ public class FriendServlet extends HttpServlet {
 			}
 		}
 		
-		int loginMemberNo = (Integer) session.getAttribute("myMemberNo"); // 拿session內memberNo
+		int loginMemberNo = (Integer)((MemberBean)session.getAttribute("loginToken")).getMemberNo(); // 拿session內memberNo
 		//好友列表
 		if ("friend".equals(x)) {
 			list = friendService.selectRelationList(loginMemberNo, 2101);
@@ -132,9 +133,6 @@ public class FriendServlet extends HttpServlet {
 			request.setAttribute("blockade", 1);
 		}
 		
-//		if(!("Search".equals(relationBtn))){
-//			session.removeAttribute("searchMark");
-//		}
 		if (list != null) {
 			if(searchMark!=null){
 				list=friendService.selectMember(loginMemberNo, searchMark);

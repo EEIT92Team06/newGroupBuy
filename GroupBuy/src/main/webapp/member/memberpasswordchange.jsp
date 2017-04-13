@@ -76,7 +76,7 @@ img {
 				<tr>
 				
 					<td><input type="button" name="cancel" value="CANCEL"
-					onclick=location.replace("<c:url value='/member/member.controller?memberNo=${myMemberNo}'/>")></td>
+					onclick=location.replace("<c:url value='/member/member.controller?memberNo=${loginToken.memberNo}'/>")></td>
 <%-- 					onclick=location.href="<c:url value='/member/member.controller?memberNo=${myMemberNo}'/>"></td> --%>
 <!-- 						onclick="window.history.back()"></td> -->
 					<td><input id="updatePassword" type="submit" name="updatePassword" value="UPDATE"></td>

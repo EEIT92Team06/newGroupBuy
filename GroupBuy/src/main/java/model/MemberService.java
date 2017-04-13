@@ -36,7 +36,7 @@ public class MemberService {
 	}
 
 	public MemberBean updateMemberPic(int memberNo, String memberPic) {
-		MemberBean result=null;
+		MemberBean result=memberDAO.updateMemberPic(memberNo, memberPic);
 		return result;
 	}
 

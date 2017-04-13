@@ -43,7 +43,7 @@ public class MemberDAOHibernate implements MemberDAO {
 	@Override
 	public MemberBean selectMemberInfo(int memberNo) {
 //		B車可select但看不懂*
-		String selectMemberInfo= "FROM MemberBean WHERE member_No=?";
+		String selectMemberInfo= "FROM model.MemberBean WHERE member_No=?";
 		MemberBean result = null;
 		 Query<MemberBean> query = this.getSession().createQuery(selectMemberInfo);
 //		 只有B車問號從0開始
