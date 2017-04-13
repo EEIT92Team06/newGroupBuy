@@ -47,7 +47,7 @@ public class WishPoolServlet extends HttpServlet {
 		if(select!=null){
 			HttpSession session = request.getSession();
 			session.setAttribute("wishCollection", select);
-			response.sendRedirect(request.getContextPath()+"/wish/wishpool2.jsp");
+			response.sendRedirect(request.getContextPath()+"/wish/wishpool.jsp");
 			return;
 		}
 	}

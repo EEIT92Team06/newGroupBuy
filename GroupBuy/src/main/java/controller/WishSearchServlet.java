@@ -65,7 +65,7 @@ public class WishSearchServlet extends HttpServlet {
 			List<WishPoolBean> search = wishPoolService.search(pType);
 			if (search != null) {
 				request.setAttribute("wishCollection", search);
-				request.getRequestDispatcher("/wish/wishpool2.jsp").forward(request, response);
+				request.getRequestDispatcher("/wish/wishpool.jsp").forward(request, response);
 				return;
 			}
 		
