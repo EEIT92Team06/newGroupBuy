@@ -6,42 +6,135 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Display</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<link href="../css/bootstrap.css" rel="stylesheet">
+<link href="../css/bootstrap-responsive.css" rel="stylesheet">
+<link href="../css/style.css" rel="stylesheet">
+<link href="../css/flexslider.css" type="text/css" media="screen"
+	rel="stylesheet" />
+<link href="../css/jquery.fancybox.css" rel="stylesheet">
+<link href="../css/cloud-zoom.css" rel="stylesheet">
 </head>
 <body>
-	<c:forEach var="bean" items="${groupType}">
-		
-		<a href='<c:url value="/searchgroup/search.controller?productTypeNo=${bean.productTypeNo}"/>'>
-			<div>${bean.productType}</div>
-		</a>
-		
-	</c:forEach>
+	<jsp:include page="/Web_02/headline.jsp"></jsp:include>
 	<form action="<c:url value="/searchgroup/search.controller" />"
 		method="post">
 		<table>
-			<tr>
-				<td>搜尋</td>
-			</tr>
-			<tr>
-				<td><input type="text" name="name" placeholder="請輸入 商品 關鍵字" autocomplete="off" value="${param.name}"></td>
-			<tr>
-				<td>
-					<input type="submit" name="searchGroupAction" value="搜尋">
-				</td>
-			</tr>
-
+		<div style="padding-left:70px">
+			<div style="padding:15px ; width:300px ; float:left">
+				<input type="text" name="name" placeholder="請輸入 商品 關鍵字" autocomplete="off" value="${param.name}">
+			</div>
+			<div style="float:left ;padding-top: 10px">
+				<input type="submit" name="searchGroupAction" style="background-color:	#FFA488 ; color:white" value="搜尋">
+			</div>
+		</div>
 		</table>
 	</form>
-	<c:forEach var="bean" items="${groupInfo}">
- 	<table border='2' witdth='820' margin='10px'>
- 		<tr><td><img height='100' width='80' src='${pageContext.servletContext.contextPath}/searchImg/getImage?id=${bean.groupInfoNo}&type=groupCover'><tr><td> 
-		<tr><td><a href="searchDetailsServlet.controller?groupInfoNo=${bean.groupInfoNo}">團名 : ${bean.groupInfoName}</a></td></tr>
-		<tr><td>類別 : ${bean.productType}</td></tr>
-		<tr><td>狀態 : ${bean.groupStatus}</td></tr>
-		<tr><td>創團者 : ${bean.memberName}</td></tr>
-		<tr><td>評分 : ${bean.result}</td></tr>
-		<tr><td>No: ${bean.groupInfoNo}</td></tr>
-	</table>
-	</c:forEach>
+
+	
+	<div id="maincontainer">
+		<section id="product">
+		<div class="container">
+			<!--  breadcrumb -->
+			<ul class="breadcrumb">
+<!-- 				<li class="active">Blog</li> -->
+			</ul>
+			<div class="row">
+				<aside class="span2"> 
+				
+				<div class="sidewidt">
+					<h2 class="heading2">
+						<span>Categories</span>
+					</h2>
+					<ul class="nav nav-list categories">
+						<c:forEach var="bean" items="${groupType}">
+		
+						<li><a href='<c:url value="/searchgroup/search.controller?productTypeNo=${bean.productTypeNo}"/>'>
+								${bean.productType}</a></li>
+						</c:forEach>
+					</ul>
+				</div>
+				</aside>
+				<!-- Sidebar End-->
+				<!-- Blog listing-->
+				<div class="span10 bloggrid">
+					<h1 class="heading1">
+						<span class="maintext">搜尋結果</span><span class="subtext"></span>
+					</h1>
+					<c:forEach var="bean" items="${groupInfo}">
+					<div style="float:left">
+					<ul class="thumbnails">
+						<li class="span3">
+							<div class="thumbnail">
+								<a
+									href="${pageContext.servletContext.contextPath}/searchImg/getImage?id=${bean.groupInfoNo}&type=groupCover"
+									class="fancyboxpopup"><img alt=""
+									src="${pageContext.servletContext.contextPath}/searchImg/getImage?id=${bean.groupInfoNo}&type=groupCover"><span
+									class="viewfancypopup">&nbsp;</span></a>
+								<div class="caption">
+									<a href="#" class="bloggridtitle">${bean.groupInfoName}</a>
+									<div class="author">
+										類別 : <a href="#"> ${bean.productType}</a>
+									</div>
+									<div class="author">
+										狀態 : <a href="#"> ${bean.groupStatus}</a>
+									</div>
+									<div class="author">
+										評分 : <a href="#"> ${bean.result}</a>
+									</div>
+									<div>
+
+										<span class="mr10"> <a href="searchDetailsServlet.controller?groupInfoNo=${bean.groupInfoNo}"> Go !</a>
+										</span>
+									</div>
+
+								</div>
+							</div>
+						</li>
+
+					</ul>
+					</div>
+					</c:forEach>
+				</div>
+
+			</div>
+		</div>
+		</section>
+	</div>
+	
+	
+	
+	
+	
+<!-- 	<div class="wrapper style3"> -->
+<!-- 		<div id="highlights" class="container"> -->
+<!-- 			<div class="row 150%"> -->
+<%-- 				<c:forEach var="bean" items="${groupInfo}"> --%>
+<!-- 				<div class="4u 12u(mobile)"> -->
+<!-- 					<section class="highlight"> <a href="#" -->
+<%-- 						class="image featured"><img src="${pageContext.servletContext.contextPath}/searchImg/getImage?id=${bean.groupInfoNo}&type=groupCover" alt="" /></a> --%>
+<!-- 					<h3> -->
+<%-- 						${bean.groupInfoName} --%>
+<!-- 					</h3> -->
+<%-- 					<p>類別 : ${bean.productType}</p> --%>
+<%-- 					<p>狀態 : ${bean.groupStatus}</p> --%>
+<%-- 					<p>創團者 : ${bean.memberName}</p> --%>
+<%-- 					<p>評分 : ${bean.result}</p> --%>
+<!-- 					<ul class="actions"> -->
+<%-- 						<li><a href="searchDetailsServlet.controller?groupInfoNo=${bean.groupInfoNo}" class="button style1">前往團購</a></li> --%>
+<!-- 					</ul> -->
+<!-- 					</section> -->
+<!-- 				</div> -->
+<%-- 				</c:forEach> --%>
+			
+			
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
 
 </body>
 </html>

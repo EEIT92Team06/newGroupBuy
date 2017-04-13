@@ -37,12 +37,14 @@ public class GroupMsgService {
 			map.put("groupMsgNo", result[0].toString());
 			map.put("memberName", result[1].toString());
 			map.put("groupMsgContent", result[2].toString());
+			map.put("memberPic", result[3].toString());
 			List<Object[]> replyResults = groupMsgDAO.selectReplyMsg(Integer.parseInt(result[0].toString()));
 			List<Map<String,String>> replylist = new ArrayList<Map<String,String>>();
 			for(Object[] replyResult : replyResults){
 				Map<String, String>replymap = new HashMap<String, String>();
 				replymap.put("memberName", replyResult[0].toString());
 				replymap.put("groupMsgReplyContent", replyResult[1].toString());
+				replymap.put("memberReplyPic", replyResult[2].toString());
 				replylist.add(replymap);
 			}
 			map.put("groupReplyMsg", replylist);
