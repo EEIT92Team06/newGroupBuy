@@ -46,17 +46,10 @@ public class WishSearchServlet extends HttpServlet {
 		 Map<String,String>errorMsg = new HashMap<String,String>();
 		 request.setAttribute("errorMsg",errorMsg);
 		 //接收資料
-		 String titleKeyWord = request.getParameter("keyWord");
 		 String productType = request.getParameter("productType");
-		 String btn = request.getParameter("search");
-		 
-		 //驗證資料
-		 if("搜尋".equals(btn)){
-			 if(titleKeyWord==null || titleKeyWord.trim().length()==0){
-				 errorMsg.put("keyWord", "請輸入搜尋內容!");
-			 }
-		 }
-		 
+		 System.out.println("===============================");
+		 System.out.println(productType);
+		 System.out.println("===============================");
 		 //轉換資料
 		 int pType=0;
 		 try {
@@ -69,14 +62,13 @@ public class WishSearchServlet extends HttpServlet {
 			 return;
 		 }
 		// 呼叫model, 根據Model執行結果呼叫View
-		if ("搜尋".equals(btn)) {
-			List<WishPoolBean> search = wishPoolService.search(titleKeyWord, pType);
+			List<WishPoolBean> search = wishPoolService.search(pType);
 			if (search != null) {
 				request.setAttribute("wishCollection", search);
 				request.getRequestDispatcher("/wish/wishpool.jsp").forward(request, response);
 				return;
 			}
-		}
+		
 
 	}
 }

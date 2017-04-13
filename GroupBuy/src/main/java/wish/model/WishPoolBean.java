@@ -13,11 +13,11 @@ public class WishPoolBean {
 	private Double price;
 	private String source;
 	private String coverPic;
+	private String memberNickName;
 	
 	private Set<WishPictureBean>pictures = new HashSet<>();
 	private Set<WishInterestBean>interests = new HashSet<>();
 	private Set<WishMsgBean>msgs = new HashSet<>();
-	
 	public int getWishNo() {
 		return wishNo;
 	}
@@ -72,6 +72,12 @@ public class WishPoolBean {
 	public void setCoverPic(String coverPic) {
 		this.coverPic = coverPic;
 	}
+	public String getMemberNickName() {
+		return memberNickName;
+	}
+	public void setMemberNickName(String memberNickName) {
+		this.memberNickName = memberNickName;
+	}
 	public Set<WishPictureBean> getPictures() {
 		return pictures;
 	}
@@ -94,8 +100,7 @@ public class WishPoolBean {
 	public String toString() {
 		return "WishPoolBean [wishNo=" + wishNo + ", memberNo=" + memberNo + ", productType=" + productType + ", title="
 				+ title + ", productName=" + productName + ", content=" + content + ", price=" + price + ", source="
-				+ source + ", coverPic=" + coverPic + "]";
+				+ source + ", coverPic=" + coverPic + ", memberNickName=" + memberNickName + "]";
 	}
-	
-	
+
 }

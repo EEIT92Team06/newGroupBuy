@@ -57,11 +57,11 @@ public class WishPoolDAOHibernate implements WishPoolDAO {
 		return (Integer) query.getSingleResult();
 	}
 
-	private static final String SEARCH_ALL = "select * from wish where wish_Title like ? order by wish_No DESC";
+	private static final String SEARCH_ALL = "select * from wish where productType_No=? order by wish_No DESC";
     @Override
-	public List<WishPoolBean> selectForSearch(String titleKeyWord) {
-		Query query = this.getSession().createQuery("from WishPoolBean where title like ? order by wishNo desc",WishPoolBean.class);
-		query.setParameter(0, "%"+titleKeyWord+"%");
+	public List<WishPoolBean> selectForSearch(int productType) {
+		Query query = this.getSession().createQuery("from WishPoolBean where productType=? order by wishNo desc",WishPoolBean.class);
+		query.setParameter(0, productType);
     	return query.getResultList();
 	}
 
@@ -141,9 +141,9 @@ public class WishPoolDAOHibernate implements WishPoolDAO {
 //        bean.setCoverPic("xxx.jpg");
 //        Boolean ins = dao.insert(bean);
 //        System.out.println(ins);
-        Boolean delete = dao.delete(3);
-        System.out.println(delete);
-        
+//        List<WishPoolBean> xxx = dao.selectForSearch(1);
+//        System.out.println(xxx);
+     
 		sessionFactory.getCurrentSession().getTransaction().commit();
 		// context.close();
 		((ConfigurableApplicationContext) context).close();

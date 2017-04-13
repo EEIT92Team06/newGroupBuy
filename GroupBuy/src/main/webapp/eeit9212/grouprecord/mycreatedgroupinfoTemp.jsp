@@ -7,38 +7,35 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-
-<link href="<c:url value='/css/style.css'/>" rel="stylesheet">
 </head>
 <body>
 	<jsp:include page="/Web_02/headline.jsp"></jsp:include>
-
-	<div class="cart-info container">
-		<table class="table table-striped table-bordered">
+	<table border="1px">
+		<thead>
 			<tr>
-				<th class="image">圖片</th>
-				<th class="name">創團日期</th>
-				<th class="model">團名</th>
-				<th class="model">內容</th>
-				<th class="quantity">狀態</th>
-				<th class="quantity">類型</th>
-				<th class="quantity">目前產品數量</th>
-				<th class="quantity">寄送方式</th>
-				<th class="quantity">匯款帳號</th>
-				<th class="quantity">結束日期</th>
+
+				<th>圖片</th>
+				<th>創團日期</th>
+				<th>團名</th>
+				<th>內容</th>
+				<th>狀態</th>
+				<th>目前產品數量</th>
+				<th>類型</th>
+				<th>寄送方式</th>
+				<th>匯款帳號</th>
+				<th>結束日期</th>
 
 			</tr>
-
+		</thead>
+		<tbody>
 			<tr>
-				<td class="image"><a href="#"><img title="product"
-						alt="product"
-						src="<c:url value='/eeit9212/getimage?groupInfoNo=${selectGroupInfoByGroupInfoNo.groupInfoNo}'/>"
-						height="50" width="50"></a></td>
-				<td class="name">${selectGroupInfoByGroupInfoNo.groupInfoStartDate}</td>
-				<td class="model">${selectGroupInfoByGroupInfoNo.groupInfoName}</td>
-				<td class="quantity">${selectGroupInfoByGroupInfoNo.groupInfoContent}</td>
-				<td class="quantity">${selectGroupInfoByGroupInfoNo.groupStatus}</td>
-				<td class="quantity">${selectGroupInfoByGroupInfoNo.productType}</td>
+
+				<td><img
+					src="<c:url value='/eeit9212/getimage?groupInfoNo=${selectGroupInfoByGroupInfoNo.groupInfoNo}'/>" /></td>
+				<td>${selectGroupInfoByGroupInfoNo.groupInfoStartDate}</td>
+				<td>${selectGroupInfoByGroupInfoNo.groupInfoName}</td>
+				<td>${selectGroupInfoByGroupInfoNo.groupInfoContent}</td>
+				<td>${selectGroupInfoByGroupInfoNo.groupStatus}</td>
 				<c:if
 					test="${empty selectGroupInfoByGroupInfoNo.groupInfoTotalProductQt}">
 					<c:set var="groupInfoTotalProductQt" value="0" />
@@ -48,19 +45,11 @@
 					<c:set var="groupInfoTotalProductQt"
 						value="${selectGroupInfoByGroupInfoNo.groupInfoTotalProductQt}" />
 				</c:if>
-				<td class="quantity">${groupInfoTotalProductQt}/${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}</td>
-				<td class="quantity">${selectGroupInfoByGroupInfoNo.groupInfoShippingWay}</td>
-				<td class="quantity">${selectGroupInfoByGroupInfoNo.groupInfoBankAccount}</td>
-				<td class="quantity">${selectGroupInfoByGroupInfoNo.groupInfoDeadLine}</td>
-
-			</tr>
-		</table>
-	</div>
-
-	<table border="1px">
-		<tbody>
-			<tr>
-
+				<td>${groupInfoTotalProductQt}/${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}</td>
+				<td>${selectGroupInfoByGroupInfoNo.productType}</td>
+				<td>${selectGroupInfoByGroupInfoNo.groupInfoShippingWay}</td>
+				<td>${selectGroupInfoByGroupInfoNo.groupInfoBankAccount}</td>
+				<td>${selectGroupInfoByGroupInfoNo.groupInfoDeadLine}</td>
 			</tr>
 		</tbody>
 	</table>
@@ -99,8 +88,8 @@
 				int len = ((List<GroupInfoDetailsBean>) request.getAttribute("selectGroupInfoDetail")).size();
 				List<OrderInfoDetailsBean> list = (List<OrderInfoDetailsBean>) request
 						.getAttribute("selectOneOrderInfoDetails");
-			%>
-			<c:forEach var="bean" items="${selectMyGroupOrderInfo}">
+			%>			
+			<c:forEach var="bean" items="${selectMyGroupOrderInfo}">	
 				<c:if
 					test="${(bean.orderInfoStatusNo!=1002&&bean.orderInfoStatusNo!=1004)||bean.orderInfoStatusNo==1102||bean.orderInfoStatusNo==1103}">
 
