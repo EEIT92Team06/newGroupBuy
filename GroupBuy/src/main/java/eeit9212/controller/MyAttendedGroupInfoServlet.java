@@ -20,6 +20,7 @@ import eeit9212.model.GroupInfoService;
 import eeit9212.model.OrderInfoBean;
 import eeit9212.model.OrderInfoDetailsBean;
 import eeit9212.model.OrderInfoService;
+import login.model.MemberBean;
 
 @WebServlet("/eeit9212/grouprecord/myattendedgroupinfo.controller")
 public class MyAttendedGroupInfoServlet extends HttpServlet {
@@ -40,8 +41,9 @@ public class MyAttendedGroupInfoServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		HttpSession session = request.getSession();
-		session.setAttribute("loginOk", 4);
-		int memberNo = (int) session.getAttribute("loginOk");
+		
+		MemberBean memberBean = (MemberBean) session.getAttribute("loginToken");
+		Integer memberNo=memberBean.getMemberNo();
 		String contextPath = request.getContextPath();
 		String groupInfoNoTemp = request.getParameter("groupInfoNo");
 		String orderInfoNoTemp = request.getParameter("orderInfoNo");

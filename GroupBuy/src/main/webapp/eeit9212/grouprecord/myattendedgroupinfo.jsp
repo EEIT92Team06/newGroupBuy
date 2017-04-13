@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<jsp:include page="/Web_02/headline.jsp"></jsp:include>
 	<table border="1px" id="groupTable">
 		<thead>
 			<tr>
@@ -39,7 +40,16 @@
 				<td>${selectMyAttendedByGroupInfoNo.groupInfoName}</td>
 				<td>${selectMyAttendedByGroupInfoNo.groupStatus}</td>
 				<td>${selectMyAttendedByGroupInfoNo.productType}</td>
-				<td>${selectMyAttendedByGroupInfoNo.groupInfoTotalProductQt}/${selectMyAttendedByGroupInfoNo.groupInfoMinProductQt}</td>
+				<c:if
+					test="${empty selectMyAttendedByGroupInfoNo.groupInfoTotalProductQt}">
+					<c:set var="groupInfoTotalProductQt" value="0" />
+				</c:if>
+				<c:if
+					test="${not empty selectMyAttendedByGroupInfoNo.groupInfoTotalProductQt}">
+					<c:set var="groupInfoTotalProductQt"
+						value="${selectMyAttendedByGroupInfoNo.groupInfoTotalProductQt}" />
+				</c:if>
+				<td>${groupInfoTotalProductQt}/${selectMyAttendedByGroupInfoNo.groupInfoMinProductQt}</td>
 				<td>${selectMyAttendedByGroupInfoNo.groupInfoDeadLine}</td>
 				<td>${selectMyAttendedByGroupInfoNo.orderStatus}</td>
 				<td>${selectMyAttendedByGroupInfoNo.groupInfoShippingWay}
@@ -88,13 +98,12 @@
 		<form id="payForm"
 			action="<c:url value='/eeit9212/grouprecord/myattendedgroupinfo.controller'/>"
 			method="post">
+			<input type="hidden" name="groupInfoNo"
+				value="${selectMyAttendedByGroupInfoNo.groupInfoNo}" /> <input
+				type="hidden" name="orderInfoNo"
+				value="${selectMyAttendedByGroupInfoNo.orderInfoNo}" />
 			<div>
-
-				<input type="hidden" name="groupInfoNo"
-					value="${selectMyAttendedByGroupInfoNo.groupInfoNo}" /> <input
-					type="hidden" name="orderInfoNo"
-					value="${selectMyAttendedByGroupInfoNo.orderInfoNo}" /> <label
-					for="account">帳號末五碼:</label><input id="account" type="text"
+				<label for="account">帳號末五碼:</label><input id="account" type="text"
 					name="account" value="${param.account}" /><span style="color: red"
 					id="accountSp"></span>
 			</div>
@@ -143,20 +152,22 @@
 			type="button" value="評分" id="scoreButton" />
 	</div>
 	<div id="reportDiv" style="display: none">
-			<input id="reportTarget" type="hidden" value="${selectMyAttendedByGroupInfoNo.groupInfoNo}" name="reportTarget"/>
-			<div>
-				<select id="reportTypeNo" name="reportTypeNo">
-					<option value="1">檢舉團名</option>
-					<option value="2">檢舉團產品照片</option>
-					<option value="3">檢舉開團留言</option>
-					<option value="4">檢舉開團留言回覆</option>
-				</select>
-			</div>
-			<label for="reportContent">檢舉內容</label>
-			<textarea id="reportContent" name="reportContent" rows="5" cols="50"></textarea>
-			<input id="sendReport" type="button" value="送出"/>
+		<input type="hidden"
+			value="${selectMyAttendedByGroupInfoNo.groupInfoNo}"
+			name="reportTarget" />
+		<div>
+			<select name="reportTypeNo">
+				<option value="1">檢舉團名</option>
+				<option value="2">檢舉團產品照片</option>
+				<option value="3">檢舉開團留言</option>
+				<option value="4">檢舉開團留言回覆</option>
+			</select>
+		</div>
+		檢舉內容
+		<textarea name="reportContent" rows="5" cols="50"></textarea>
+		<input id="sendReport" type="button" value="送出" />
 	</div>
-	
+
 	<script src="<c:url value='/js/jquery-3.1.1.min.js'/>"></script>
 	<script src="<c:url value='/js/layer/layer.js'/>"></script>
 	<script type="text/javascript">
@@ -164,7 +175,7 @@
 		$(function() {
 			
 			
-			var webSocket = new WebSocket('ws://localhost:8080/GroupBuy/groupsocket');//ServerEndpoint監聽的URL.
+			var webSocket = new WebSocket('ws://localhost:8080/GroupBuy/groupsocket/${selectMyAttendedByGroupInfoNo.orderInfoNo}/${selectMyAttendedByGroupInfoNo.groupInfoNo}');//ServerEndpoint監聽的URL.
 			
 			  webSocket.onerror = function(event) {
 			      onError(event)
@@ -179,55 +190,48 @@
 			    };
 			//  接收到server訊息時觸發.
 			    function onMessage(event) {
-			      alert("接收到訊息:"+event.data);
+			    	 location.reload();
 			    }
 			//  建立與server的連接.
 			    function onOpen(event) {
-			      alert("已建立連接");
+// 			      alert("已建立連接");
 			    }
 			//  連線錯誤時觸發
 			    function onError(event) {
-			      alert(event.data);
-			    }
-			//  按下按鈕後觸發,發送訊息給server
-			    function start() {
-			      webSocket.send('hello');
-			    }
+// 			      alert(event.data);
+				}
 
-			
-			
-		
 			//判斷這團的時間，即時更新團的狀態。
 			var deadLine = new Date(
 			"${selectMyAttendedByGroupInfoNo.groupInfoDeadLine}");
 			var nowTime = new Date();
 			console.log(deadLine - nowTime);
 			
-			if(${selectMyAttendedByGroupInfoNo.groupStatusNo==1}){
-				var timeout = setTimeout(timeout, deadLine - nowTime);
-			}
-			if(${selectMyAttendedByGroupInfoNo.groupStatusNo==3}){
-				var againTimeout = setTimeout(againTimeout, deadLine - nowTime);
-			}
-			function timeout() {
-				layer.alert('截止日期已到，等待主揪處理中。', {
-					  skin: 'layui-layer-molv' //样式类名
-					  ,closeBtn: 0
-					},function(){
-						location.replace('myattendedgroupinfo.controller?locationFrom=timeout&groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}&orderInfoNo=${selectMyAttendedByGroupInfoNo.orderInfoNo}');
-					});
+// 			if(${selectMyAttendedByGroupInfoNo.groupStatusNo==1}){
+// 				var timeout = setTimeout(timeout, deadLine - nowTime);
+// 			}
+// 			if(${selectMyAttendedByGroupInfoNo.groupStatusNo==3}){
+// 				var againTimeout = setTimeout(againTimeout, deadLine - nowTime);
+// 			}
+// 			function timeout() {
+// 				layer.alert('截止日期已到，等待主揪處理中。', {
+// 					  skin: 'layui-layer-molv' //样式类名
+// 					  ,closeBtn: 0
+// 					},function(){
+// 						location.replace('myattendedgroupinfo.controller?locationFrom=timeout&groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}&orderInfoNo=${selectMyAttendedByGroupInfoNo.orderInfoNo}');
+// 					});
 				
-			}
-			function againTimeout() {
-				layer.alert('延期截止日期已到，等待主揪處理中。', {
-					  skin: 'layui-layer-molv' //样式类名
-					  ,closeBtn: 0
-					},function(){
-						location.replace('myattendedgroupinfo.controller?locationFrom=againTimeout&groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}&orderInfoNo=${selectMyAttendedByGroupInfoNo.orderInfoNo}');
+// 			}
+// 			function againTimeout() {
+// 				layer.alert('延期截止日期已到，等待主揪處理中。', {
+// 					  skin: 'layui-layer-molv' //样式类名
+// 					  ,closeBtn: 0
+// 					},function(){
+// 						location.replace('myattendedgroupinfo.controller?locationFrom=againTimeout&groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}&orderInfoNo=${selectMyAttendedByGroupInfoNo.orderInfoNo}');
 						
-					});
+// 					});
 							
-			}
+// 			}
 			
 					//彈出評分視窗
 			$("#stuffSub").click(function() {
@@ -244,6 +248,7 @@
 					$.get("creditajax",{"score":$(":checked[name='score']").val(),"groupInfoNo":"${selectMyAttendedByGroupInfoNo.groupInfoNo}",
 										"groupInfoMemberNo":"${selectMyAttendedByGroupInfoNo.groupInfoMemberNo}"},function(data){
 						layer.close(layerOpen);
+						webSocket.send('${selectMyAttendedByGroupInfoNo.groupInfoNo}');
 						location.replace('myattendedgroupinfo.controller?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}&orderInfoNo=${selectMyAttendedByGroupInfoNo.orderInfoNo}');
 						
 					});				
@@ -258,12 +263,16 @@
 					type : 1,
 					title:'檢舉',
 					skin : 'layui-layer-rim', //加上边框
-					area : [ '400px', '250px' ], //宽高
+					area : [ '400px', '300px' ], //宽高
 					content : $("#reportDiv")
 				});
 			});
 			$("#sendReport").click(function(){
-				$.get("${pageContext.request.contextPath}/reportajax",{"reportTarget":$("#reportTarget").val(),"reportTypeNo":$("#reportTypeNo").val(),"reportContent":$("#reportContent").val()},function(data){
+				var reportTarget=$(this).parent().find("input[name='reportTarget']").val();
+				var reportTypeNo=$(this).parent().find("select[name='reportTypeNo']").val();
+				var reportContent=$(this).parent().find("textarea[name='reportContent']").val();
+
+				$.get("${pageContext.request.contextPath}/reportajax",{"reportTarget":reportTarget,"reportTypeNo":reportTypeNo,"reportContent":reportContent},function(data){
 					var reportAlert=layer.alert(data, {
 						  skin: 'layui-layer-molv' //样式类名
 						  ,closeBtn: 0
@@ -275,8 +284,6 @@
 			});		
 					
 					
-					
-					
 			//簡單的做一些驗證
 			$("#paySub").click(
 					function() {
@@ -285,7 +292,10 @@
 						var address = $("#address");
 						var accountSp = $("#accountSp");
 						var phoneSp = $("#phoneSp");
-						var addressSp = $("#addressSp");
+						var addressSp = $("#addressSp");	
+						var groupInfoNo=$(this).parent().find("input[name='groupInfoNo']").val();
+						var orderInfoNo=$(this).parent().find("input[name='orderInfoNo']").val();
+					
 						if (account.val().length == 0) {
 							accountSp.text("請輸入帳號末5碼");
 						} else {
@@ -304,14 +314,19 @@
 						if (account.val().length != 0
 								&& phone.val().length != 0
 								&& address.val().length != 0) {					
-							layer.confirm('檢查資料確認後請按確定', {
+							var payConfirm=layer.confirm('檢查資料確認後請按確定', {
 								  btn: ['確定','取消'] //按钮
-								}, function(){		
-									$("#payForm").submit();
+								}, function(){								
+									$.get("${pageContext.request.contextPath}/eeit9212/grouprecord/myattendedgroupinfo.controller",{"groupInfoNo":groupInfoNo,"orderInfoNo":orderInfoNo,"account":account.val(),"phone":phone.val(),"address":address.val()},function(data){							
+										webSocket.send('${selectMyAttendedByGroupInfoNo.groupInfoNo}');	
+										layer.close(payConfirm);
+										location.reload();			
+									});
+									
 								});	
 						}
 
-					})
+					});
 
 		});
 	</script>

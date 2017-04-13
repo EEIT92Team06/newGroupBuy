@@ -17,7 +17,7 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import searchgroup.model.GroupMsgService;
-import searchgroup.model.MemberBean;
+import login.model.MemberBean;
 import searchgroup.model.SearchDetailsService;
 
 /**
@@ -43,7 +43,7 @@ public class SearchDetailsServlet extends HttpServlet {
 		response.setContentType("UTF-8");
 		//從session中取的現在用戶是誰，要將member_No丟出去
 		HttpSession session = request.getSession();		
-		MemberBean memberBean = (MemberBean)session.getAttribute("loginOK");
+		MemberBean memberBean = (MemberBean)session.getAttribute("loginToken");
 
 		//接受來自searchResult.jsp的參數 groupInfoNo
 		System.out.println("this is SearchDetailsServlet & SearchGroupMsg!");

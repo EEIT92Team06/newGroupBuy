@@ -23,6 +23,7 @@ import eeit9212.model.GroupInfoService;
 import eeit9212.model.OrderInfoBean;
 import eeit9212.model.OrderInfoDetailsBean;
 import eeit9212.model.OrderInfoService;
+import login.model.MemberBean;
 
 @WebServlet("/eeit9212/grouprecord/mycreatedgroupinfo.controller")
 public class MyCreatedGroupInfoServlet extends HttpServlet {
@@ -45,8 +46,8 @@ public class MyCreatedGroupInfoServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		session.setAttribute("loginOk", 1);
-		int memberNo = (int) session.getAttribute("loginOk");
+		MemberBean memberBean = (MemberBean) session.getAttribute("loginToken");
+		Integer memberNo=memberBean.getMemberNo();
 		String contextPath = request.getContextPath();
 		String groupInfoNoTemp = request.getParameter("groupInfoNo");
 		String orderInfoStatus = request.getParameter("orderInfoStatus");
@@ -54,6 +55,9 @@ public class MyCreatedGroupInfoServlet extends HttpServlet {
 		String locationFrom = request.getParameter("locationFrom");
 		System.out.println("groupInfoNoTemp="+groupInfoNoTemp);
 		System.out.println("locationFrom="+locationFrom);
+		
+		CreateGroupInfoBean selectGroupInfoByGroupInfoNo=null;
+		
 		int orderInfoNo = -1;
 		if (orderInfoNoTemp != null && orderInfoNoTemp.length() != 0) {
 			orderInfoNo = Integer.parseInt(orderInfoNoTemp);
@@ -95,17 +99,16 @@ public class MyCreatedGroupInfoServlet extends HttpServlet {
 					orderInfoService.updateOrderInfoStatusByOrderStatusNo(groupInfoNo, 1005, 1104);
 					orderInfoService.updateOrderInfoStatusByOrderStatusNo(groupInfoNo, 1005, 1003);
 					orderInfoService.updateOrderInfoStatusByOrderStatusNo(groupInfoNo, 1005, 1001);
-					
-					
-					
+				
 				}
-				if("groupStart".equals(locationFrom)){
-					CreateGroupInfoBean selectGroupInfoByGroupInfoNo = groupInfoService.selectGroupInfoByGroupInfoNo(groupInfoNo);
+				if("groupStart".equals(locationFrom)){	
+					selectGroupInfoByGroupInfoNo = groupInfoService.selectGroupInfoByGroupInfoNo(groupInfoNo);
 					if(selectGroupInfoByGroupInfoNo.getGroupStatusNo()==2||selectGroupInfoByGroupInfoNo.getGroupStatusNo()==6){
 					groupInfoService.updateGroupStatus(groupInfoNo, 7);
 					groupInfoService.updateGroupInfoDeadLine(groupInfoNo,new Timestamp( new java.util.Date().getTime()));
 					orderInfoService.updateOrderInfoStatusByOrderStatusNo(groupInfoNo,1101,1003);
 					orderInfoService.updateOrderInfoStatusByOrderStatusNo(groupInfoNo,1002,1001);
+					System.out.println("團開始了");
 					}
 				}	
 				
@@ -128,12 +131,15 @@ public class MyCreatedGroupInfoServlet extends HttpServlet {
 						}catch(Exception e){
 							System.out.println("deadLineTemp格式錯誤="+deadLineTemp);
 						}
-					}
-					
-					
+					}				
 				}
-				CreateGroupInfoBean selectGroupInfoByGroupInfoNo = groupInfoService.selectGroupInfoByGroupInfoNo(groupInfoNo);
+				if("groupEnd".equals(locationFrom)){
+					groupInfoService.updateGroupStatus(groupInfoNo, 11);
+				}
+				
+				selectGroupInfoByGroupInfoNo = groupInfoService.selectGroupInfoByGroupInfoNo(groupInfoNo);
 				request.setAttribute("selectGroupInfoByGroupInfoNo", selectGroupInfoByGroupInfoNo);
+				System.out.println("團狀態="+selectGroupInfoByGroupInfoNo.getGroupStatusNo());
 				List<GroupInfoDetailsBean> selectGroupInfoDetail = groupInfoService.selectGroupInfoDetail(groupInfoNo);
 				request.setAttribute("selectGroupInfoDetail", selectGroupInfoDetail);
 				List<OrderInfoBean> selectMyGroupOrderInfo = orderInfoService.selectMyGroupOrderInfo(groupInfoNo);
@@ -148,6 +154,7 @@ public class MyCreatedGroupInfoServlet extends HttpServlet {
 					}
 				}
 				
+				
 				request.setAttribute("selectOneOrderInfoDetails", selectOneOrderInfoDetails);
 				//為了讓賣家能按F5看到新的訂單，所以也使用forward，按F5重新檢查有沒有新的訂單。
 				RequestDispatcher rd = request.getRequestDispatcher("/eeit9212/grouprecord/mycreatedgroupinfo.jsp");
@@ -161,6 +168,7 @@ public class MyCreatedGroupInfoServlet extends HttpServlet {
 		System.out.println("從test.jsp收到請求");
 		List<CreateGroupInfoBean> selectMyCreatedGroupInfo = groupInfoService.selectMyCreatedGroupInfo(memberNo);
 		request.setAttribute("selectMyCreatedGroupInfo", selectMyCreatedGroupInfo);
+		System.out.println("selectMyCreatedGroupInfo="+selectMyCreatedGroupInfo);
 		//為了要讓使用者按F5可以改變團狀態所以改用forward，存到session的改存request。
 		RequestDispatcher rd = request.getRequestDispatcher("/eeit9212/grouprecord/mycreatedgroup.jsp");
 		rd.forward(request, response);
