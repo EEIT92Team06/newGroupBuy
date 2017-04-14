@@ -254,7 +254,7 @@ body {
 									<!-- 頭像開始 -->
 									<li class="dropdown" style="margin: 3px;"><a href="#"
 										class="" data-toggle="dropdown"> <img
-											src="<c:url value='/main/login/profile.jpg'/>" width="55px"
+											src="<c:url value='/Web_01Main/testPic.jpg'/>" width="55px"
 											style="border-radius: 50%;"></a>
 										<ul class="dropdown-menu" style="margin-top: 20px">
 											<li class="menu-item">
