@@ -6,9 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<c:if test="${empty loginToken}">
-	<c:redirect url="http://localhost:8080/GroupBuy/secure/login.jsp" />
-</c:if>
 <style type="text/css">
 .td {
 	border: 1px solid;
@@ -31,10 +28,8 @@
 
 </head>
 <body>
-	<a href="<c:url value="/overViewMailServlet.do"/>">信箱</a>
-	<a href="<c:url value="/secure/logout.jsp"/>">登出</a><br>
+    <jsp:include page="/Web_02/headline.jsp"/>
 	<form action="<c:url value="/specificMailServlet.do"/>"><input type="text" name="searchKeyWord"><input type="submit" value="搜尋"></form>
-
 	<form action="<c:url value="/specificMailServlet.do"/>">
 		<table style="border: 1px solid;" id="table1">
 			<thead>

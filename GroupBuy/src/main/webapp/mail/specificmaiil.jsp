@@ -17,8 +17,7 @@
 </style>
 </head>
 <body>
-	<a href="<c:url value="/overViewMailServlet.do"/>">信箱</a>
-	<a href="<c:url value="/secure/logout.jsp"/>">登出</a>
+<jsp:include page="/Web_02/headline.jsp"/>
 	  <c:if test="${!empty mailBean}">
 	  <table  style="border: 1px solid;width: 400px">
           <tr>

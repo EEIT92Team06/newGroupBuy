@@ -53,7 +53,6 @@ public class CreateGroupServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		Map<String, String> errorMessages = new HashMap<String, String>();
 		Map<String, String> successMessage = new HashMap<String, String>();
 		HttpSession session = request.getSession();
