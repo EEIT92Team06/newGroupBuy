@@ -50,24 +50,13 @@ public class MyCreatedGroupInfoServlet extends HttpServlet {
 		Integer memberNo=memberBean.getMemberNo();
 		String contextPath = request.getContextPath();
 		String groupInfoNoTemp = request.getParameter("groupInfoNo");
-		String orderInfoStatus = request.getParameter("orderInfoStatus");
-		String orderInfoNoTemp = request.getParameter("orderInfoNo");
 		String locationFrom = request.getParameter("locationFrom");
 		System.out.println("groupInfoNoTemp="+groupInfoNoTemp);
 		System.out.println("locationFrom="+locationFrom);
 		
 		CreateGroupInfoBean selectGroupInfoByGroupInfoNo=null;
 		
-		int orderInfoNo = -1;
-		if (orderInfoNoTemp != null && orderInfoNoTemp.length() != 0) {
-			orderInfoNo = Integer.parseInt(orderInfoNoTemp);
-			if ("reject".equals(orderInfoStatus)) {
-				orderInfoService.updateOrderInfoStatus(1002, orderInfoNo);
-
-			} else if ("accept".equals(orderInfoStatus)) {
-				orderInfoService.updateOrderInfoStatus(1003, orderInfoNo);
-			}
-		}
+		
 		int groupInfoNo = -1;
 		// 判斷是否從mycreatedgroup.jsp呼叫的，我有帶參數groupInfoNo。
 		if (groupInfoNoTemp != null && groupInfoNoTemp.length() != 0) {

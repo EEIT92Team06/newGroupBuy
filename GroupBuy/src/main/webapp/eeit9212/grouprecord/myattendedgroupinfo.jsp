@@ -9,7 +9,8 @@
 </head>
 <body>
 	<jsp:include page="/Web_02/headline.jsp"></jsp:include>
-	<table border="1px" id="groupTable">
+	<div class="cart-info container">
+	<table class="table table-striped table-bordered">
 		<thead>
 			<tr>
 				<th>圖片</th>
@@ -26,9 +27,10 @@
 			</tr>
 		</thead>
 		<tbody>
+		
 			<tr>
-				<td><img
-					src="<c:url value='/eeit9212/getimage?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}'/>" /></td>
+				<td><a href="#"><img title="product"
+						alt="product" src="<c:url value='/eeit9212/getimage?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}'/>" height="200" width="200"></a></td>
 				<td>${selectMyAttendedByGroupInfoNo.groupInfoStartDate}</td>
 				<td>${selectMyAttendedByGroupInfoNo.memberName}</td>
 				<c:if test="${selectMyAttendedByGroupInfoNo.grouperCredit!=0}">
@@ -58,6 +60,7 @@
 			</tr>
 		</tbody>
 	</table>
+	</div>
 	<div style="float: left;">
 		<c:forEach var="bean" items="${selectGroupInfoPic}">
 			<img
