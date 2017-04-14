@@ -46,7 +46,7 @@ public class SearchDetailsService {
 		Object[] result = searchDetailsDAO.selectDetails(groupInfoNo);
 		Map<String, String>map = new HashMap<String, String>();
 		map.put("memberNo", result[0].toString());
-		map.put("groupInfoName ", result[1].toString());
+		map.put("groupInfoName", result[1].toString());
 		map.put("memberName", result[2].toString());
 		map.put("groupInfoStartDate", result[3].toString());
 		map.put("groupInfoDeadLine", result[4].toString());

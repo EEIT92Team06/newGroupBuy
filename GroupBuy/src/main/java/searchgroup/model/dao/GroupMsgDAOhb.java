@@ -53,7 +53,7 @@ public class GroupMsgDAOhb implements GroupMsgDAO {
 	
 
    
-	private static String SELECT_BY_GROUPINFONO = "select groupMsg_No , member_Name , groupMsg_Content "
+	private static String SELECT_BY_GROUPINFONO = "select groupMsg_No , member_NickName , groupMsg_Content , member_Pic "
 	+ "from groupMsg join member on member.member_No = groupMsg.member_No "
 	+ "where groupInfo_No = ?";
 	@Override
@@ -64,7 +64,7 @@ public class GroupMsgDAOhb implements GroupMsgDAO {
 		return query.getResultList();
 	}
 	
-	private static String SELECT_BY_GROUPMSGNO = "select member_Name ,groupMsgReply_Content from groupMsgReply "
+	private static String SELECT_BY_GROUPMSGNO = "select member_NickName ,groupMsgReply_Content , member_Pic from groupMsgReply "
 			+"join member on member.member_No = groupMsgReply.member_No "
 			+"where  groupMsg_No= ?";
 	

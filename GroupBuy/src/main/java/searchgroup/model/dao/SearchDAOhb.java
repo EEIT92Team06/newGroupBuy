@@ -152,7 +152,7 @@ public class SearchDAOhb implements SearchDAO {
 		return query.getResultList();
 	}
 //
-	private static final String SELECT_TOP2_GROUP = "select Top 2 groupInfo_No , groupInfo_Name , productType, groupStatus , member_Name , grouperCredit_totalScore/grouperCredit_totalPeople result "
+	private static final String SELECT_TOP2_GROUP = "select Top 3 groupInfo_No , groupInfo_Name , productType, groupStatus , member_Name , grouperCredit_totalScore/grouperCredit_totalPeople result "
 			+ "from groupInfo join productType on groupInfo.productType_No = productType.productType_No "
 			+ "join groupStatus on groupInfo.groupStatus_No = groupStatus.groupStatus_No "
 			+ "join member on groupInfo.member_No = member.member_No "

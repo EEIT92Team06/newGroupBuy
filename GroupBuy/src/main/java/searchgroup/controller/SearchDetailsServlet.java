@@ -43,8 +43,6 @@ public class SearchDetailsServlet extends HttpServlet {
 		response.setContentType("UTF-8");
 		//從session中取的現在用戶是誰，要將member_No丟出去
 		HttpSession session = request.getSession();		
-		MemberBean memberBean = (MemberBean)session.getAttribute("loginToken");
-
 		//接受來自searchResult.jsp的參數 groupInfoNo
 		System.out.println("this is SearchDetailsServlet & SearchGroupMsg!");
 		String groupInfoNo = request.getParameter("groupInfoNo");
@@ -56,6 +54,7 @@ public class SearchDetailsServlet extends HttpServlet {
 		String memberNo = result.get("memberNo");
 		int iMemberNo = Integer.parseInt(memberNo);
 		System.out.println("iMemberNo : " + iMemberNo);
+		System.out.println("resulthere : " + result);
 		//insert clickTime進去table(等於該團點擊率+1)
 		
 		int insertResult = searchDetailsService.insertClickTimes(no);
@@ -65,12 +64,13 @@ public class SearchDetailsServlet extends HttpServlet {
 		String memberPic = searchDetailsService.selectmemberPic(iMemberNo);
 		System.out.println("memberPic : " + memberPic);
 		//丟出去groupInfoNo , 團資料，(多方)團明細產品資料  , (多方)團照片pk 
-		request.setAttribute("groupInfoNo", no);
-		request.setAttribute("memberBean", memberBean);
-		request.setAttribute("result", result);
-		request.setAttribute("resultMulti",resultMulti);
-		request.setAttribute("resultMulti2",resultMulti2);
-		request.setAttribute("memberPic", memberPic);
+		session.setAttribute("groupInfoNo", no);
+		MemberBean memberBean = (MemberBean)session.getAttribute("loginToken");
+		session.setAttribute("memberBean", memberBean);
+		session.setAttribute("result", result);
+		session.setAttribute("resultMulti",resultMulti);
+		session.setAttribute("resultMulti2",resultMulti2);
+		session.setAttribute("memberPic", memberPic);
 		
 		
 		List<Map<String, Object>> selectMsg = groupMsgService.selectMSG(no);
@@ -84,10 +84,10 @@ public class SearchDetailsServlet extends HttpServlet {
 		}
 //		
 		session.setAttribute("msgNoList", MsgNoList);
-		request.setAttribute("selectMsg", selectMsg);
-		
-		request.getRequestDispatcher(
-				"/searchgroup/searchDetails.jsp").forward(request, response);
+		session.setAttribute("selectMsg", selectMsg);
+		String contextPath = getServletContext().getContextPath();
+		response.sendRedirect(response
+				.encodeRedirectURL(contextPath+"/searchgroup/searchDetails.jsp"));
 		return;
 		
 	}
