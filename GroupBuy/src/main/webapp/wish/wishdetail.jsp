@@ -27,7 +27,7 @@
 </head>
 <body>
 <jsp:include page="/Web_02/headline.jsp"></jsp:include>
-<br>
+<br><br>
 <div id="maincontainer">
   <section id="product">
     <div class="container">      
@@ -63,7 +63,7 @@
         <c:forEach var="wishDetail" items="${wishDetail}">
         <div class="span7">
           <div class="row">
-            <div class="span7">
+            <div class="span7" style="margin-left: 120px;">
               <h1 class="productname"><span class="bgnone">${wishDetail.title}</span></h1>
               <div class="productprice">
                 <div class="productpageprice">
@@ -87,7 +87,7 @@
               </ul>
          <!-- Product Description tab & comments-->
          <div class="productdesc">
-                <ul class="nav nav-tabs" id="myTab">
+                <ul class="nav nav-tabs" id="myTab" style="width: 532px;">
                   <li class="active"><a href="#description">簡介</a>
                   </li>
                   <li><a href="#specification">來源</a>
@@ -95,7 +95,7 @@
                   <li><a href="#review">檢舉許願池</a>
                   </li>
                 </ul>
-                <div class="tab-content">
+                <div class="tab-content" style="width: 532px;">
                   <div class="tab-pane active" id="description">
                     <h2>${wishDetail.title}</h2>
                     ${wishDetail.content}<br>

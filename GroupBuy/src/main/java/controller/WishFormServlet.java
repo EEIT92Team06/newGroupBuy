@@ -192,7 +192,7 @@ public class WishFormServlet extends HttpServlet {
 						wishPictureService.insertPic(picBean);
 					}
 				}
-				response.sendRedirect(request.getContextPath() + "/wish/wishsuccess.jsp");
+				response.sendRedirect(request.getContextPath() + "/wish/wishpool.controller");
 				return;
 			} else {
 				errorMsg.put("fail", "系統忙碌中，請5分鐘後後再次許願");
