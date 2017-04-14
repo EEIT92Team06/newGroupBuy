@@ -218,7 +218,7 @@ body {
 									<a href="<c:url value='/secure/login.jsp'/>"
 										style="color: white;">登入</a>
 								</c:if>
-								<%-- <c:if test="${not empty loginToken}"> --%>
+								<c:if test="${not empty loginToken}">
 								<!-- 通知 ---- 通知 ---- 通知 ---- 通知 ---- 通知 ---- 通知 ---- 通知 ---- 通知 -->
 								<ul class="notifications" id="ss1">
 									<li class="dropdown"><a href="#"
@@ -254,7 +254,7 @@ body {
 									<!-- 頭像開始 -->
 									<li class="dropdown" style="margin: 3px;"><a href="#"
 										class="" data-toggle="dropdown"> <img
-											src="<c:url value='/main/login/profile.jpg'/>" width="55px"
+											src="<c:url value='/Web_01Main/testPic.jpg'/>" width="55px"
 											style="border-radius: 50%;"></a>
 										<ul class="dropdown-menu" style="margin-top: 20px">
 											<li class="menu-item">
@@ -263,12 +263,12 @@ body {
 											<li class="menu-item"><a
 												href="<c:url value='/friend/friend.controller?x=friend'/>">好友</a></li>
 											<li class="menu-item"><a
-												href="<c:url value='/friend/friend.controller?x=friend'/>">登出</a></li>
+												href="<c:url value='/secure/logout.jsp'/>">登出</a></li>
 										</ul></li>
 									<!-- 頭像結束 -->
 								</ul>
 
-								<%-- </c:if> --%>
+								</c:if>
 							</div>
 							<!-- 通知 ---- 通知 ---- 通知 ---- 通知 ---- 通知 ---- 通知 ---- 通知 ---- 通知 -->
 						</div>
