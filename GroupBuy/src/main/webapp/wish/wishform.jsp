@@ -8,6 +8,10 @@
 <title>Wish Form</title>
 <style type="text/css">
     #success_message{ display: none;}
+     .thumb {
+            height: 75px;
+            margin: 5px;
+        }
 </style>
 <link rel='stylesheet prefetch' href='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
 <link rel='stylesheet prefetch' href='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css'>
@@ -105,12 +109,16 @@
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="fa fa-file-image-o" aria-hidden="true"></i></span>
-  <input id="file1" name="picUpload" placeholder="檔案上傳" value="upload" class="form-control"  type="file" accept="image/*" multiple="multiple">
+  <input id="file1" name="picUpload" placeholder="檔案上傳" value="upload" class="form-control"  type="file" accept="image/*" multiple="multiple" onchange="fileViewer()">
     </div>
     <small data-bv-validator="notEmpty" data-bv-validator-for="title" class="help-block" style="color: red;">${errorMsg.upload}</small>
+		<tr>
+		  <td></<td>
+		  <td><div id="dropZone" ><img src="" name="pic" /></div></td>
+		</tr>
   </div>
 </div>
-
+            
 <!-- Text area -->
   
 <div class="form-group">
@@ -168,6 +176,58 @@
 
 
 //# sourceURL=pen.js
+</script>
+<script>
+        function fileViewer() {    //在DIV中顯示上傳的圖片
+        	document.getElementById("dropZone").innerHTML='';  //重新上傳時,刪掉原先顯示的圖片
+        	var count=0;  //id的初始值
+            var files = document.getElementById("file1").files
+            var filesLen = files.length;
+            for (var i = 0; i < filesLen; i++) {
+                
+                var reader = new FileReader();
+                reader.readAsDataURL(files[i]);
+                reader.onload = function (e) {
+                    var fileContent=e.target.result;
+
+                    var imgObj = document.createElement("img");
+                    imgObj.setAttribute("id",count);
+                    imgObj.setAttribute("src", fileContent);
+                    imgObj.setAttribute("class", "thumb");
+                    imgObj.setAttribute("name","pic");
+                    imgObj.setAttribute("onclick","choseCover(this)"); //將這個圖片物件傳到choseCover
+              
+                    document.getElementById("dropZone").appendChild(imgObj);
+                    count++; 
+                }
+            }
+        }
+         function choseCover(obj) {
+        	id=obj.id;
+        	var imgs = document.getElementsByTagName("img"); //取得img陣列
+            for(var i=0;i<imgs.length;i++){ //移除原先選取的圖片的外框及value
+            	imgs.item(i).setAttribute("style","");
+            }
+        	//附加外框
+         	document.getElementById(id).setAttribute("style","border:5px outset yellowgreen");
+        	
+         	var xhr = new XMLHttpRequest();
+    		var queryString = "picNo="+id;
+    		var url = "wishform.controller?"+ queryString;
+    		xhr.open("GET" , url , true);
+    		xhr.send();
+    		xhr.onreadystatechange = function(){ 
+    			// 向伺服器提出的請求已經收到回應 
+    			if (xhr.readyState === 4) {   
+    				// 伺服器回應成功
+    				if (xhr.status === 200) {
+    					
+    				}             
+    			}
+//     			alert("xhr.status: "+xhr.status);
+    		}
+//     		alert("xhr.readyState : " + xhr.readyState);
+         }
 </script>
 </body>
 </html>
