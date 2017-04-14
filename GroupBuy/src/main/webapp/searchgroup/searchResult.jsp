@@ -20,7 +20,7 @@
 <link href="../css/cloud-zoom.css" rel="stylesheet">
 </head>
 <body>
-	<jsp:include page="/Web_02/headline.jsp"></jsp:include>
+	<jsp:include page="/headline.jsp"></jsp:include>
 	<form action="<c:url value="/searchgroup/search.controller" />"
 		method="post">
 		<table>

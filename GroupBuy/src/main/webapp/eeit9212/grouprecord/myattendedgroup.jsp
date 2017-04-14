@@ -9,7 +9,8 @@
 <link href="<c:url value='/css/style.css'/>" rel="stylesheet">
 </head>
 <body>
-<jsp:include page="/Web_02/headline.jsp"></jsp:include>
+<<<<<<< HEAD
+<jsp:include page="/headline.jsp"></jsp:include>
 <div class="cart-info container">
 	<table class="table table-striped table-bordered">
 		<thead>

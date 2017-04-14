@@ -26,8 +26,8 @@
 </style>
 </head>
 <body>
-<jsp:include page="/Web_02/headline.jsp"></jsp:include>
-<br><br>
+<jsp:include page="/headline.jsp"></jsp:include>
+<br>
 <div id="maincontainer">
   <section id="product">
     <div class="container">      
