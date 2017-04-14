@@ -25,7 +25,7 @@ img {
 </style>
 </head>
 <body>
-<jsp:include page="/Web_02/headline.jsp"></jsp:include>
+<jsp:include page="/headline.jsp"></jsp:include>
 	<form action="<c:url value='member.controller'/>"
 		enctype="multipart/form-data" method="POST">
 		<table id="table1">

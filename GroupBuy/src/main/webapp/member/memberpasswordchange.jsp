@@ -38,7 +38,7 @@ img {
 
 </head>
 <body>
-<jsp:include page="/Web_02/headline.jsp"></jsp:include>
+<jsp:include page="/headline.jsp"></jsp:include>
 	<form id="updateForm" action="<c:url value='member.controller'/>">
 		<table id="table1">
 			<thead>

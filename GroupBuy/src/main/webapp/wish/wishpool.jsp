@@ -27,7 +27,7 @@
 <link rel="shortcut icon" href="assets/ico/favicon.html">
 </head>
 <body>
-<jsp:include page="/Web_02/headline.jsp"></jsp:include>
+<jsp:include page="/headline.jsp"></jsp:include>
 <br>
 
 
