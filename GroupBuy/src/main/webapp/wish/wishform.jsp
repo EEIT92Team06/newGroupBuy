@@ -191,6 +191,7 @@
                     var fileContent=e.target.result;
 
                     var imgObj = document.createElement("img");
+                   
                     imgObj.setAttribute("id",count);
                     imgObj.setAttribute("src", fileContent);
                     imgObj.setAttribute("class", "thumb");
@@ -205,7 +206,8 @@
          function choseCover(obj) {
         	id=obj.id;
         	var imgs = document.getElementsByTagName("img"); //取得img陣列
-            for(var i=0;i<imgs.length;i++){ //移除原先選取的圖片的外框及value
+        	 console.log(imgs);
+            for(var i=1;i<imgs.length;i++){ //移除原先選取的圖片的外框及value
             	imgs.item(i).setAttribute("style","");
             }
         	//附加外框
