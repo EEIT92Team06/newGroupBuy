@@ -103,6 +103,7 @@ public class MyAttendedGroupInfoServlet extends HttpServlet {
 			OrderInfoBean selectMyOrderInfoByNo=orderInfoService.selectMyOrderInfoByNo(orderInfoNo);
 			request.setAttribute("selectMyOrderInfoByNo", selectMyOrderInfoByNo);
 			List<OrderInfoDetailsBean> selectOrderInfoDetails = orderInfoService.selectOrderInfoDetails(orderInfoNo);
+			System.out.println(selectOrderInfoDetails);
 			request.setAttribute("selectOrderInfoDetails", selectOrderInfoDetails);
 			List<GroupInfoPicBean> selectGroupInfoPic = groupInfoService.selectGroupInfoPic(groupInfoNo);
 			request.setAttribute("selectGroupInfoPic", selectGroupInfoPic);

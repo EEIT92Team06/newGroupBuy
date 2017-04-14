@@ -13,7 +13,7 @@ public interface WishPoolDAO {
 	Integer selectByCover(String cover);//透過封面取得WishNo
 	
 	List<WishPoolBean> selectForSearch(int productType);
-	
+
 	List<WishPoolBean> selectForSearch(String titleKeyWord,int productType);
 	
     Boolean insert(WishPoolBean bean);

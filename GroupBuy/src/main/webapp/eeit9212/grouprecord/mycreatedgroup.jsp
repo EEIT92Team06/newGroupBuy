@@ -47,6 +47,7 @@
 					<c:if test="${not empty bean.groupInfoTotalProductQt}">${bean.groupInfoTotalProductQt}</c:if>/${bean.groupInfoMinProductQt}
 				</td>
 				
+
 				<td class="quantity">${bean.groupInfoDeadLine}
 				<a href="<c:url value='/eeit9212/grouprecord/mycreatedgroupinfo.controller?groupInfoNo=${bean.groupInfoNo}'/>">查看明細
 				</a>

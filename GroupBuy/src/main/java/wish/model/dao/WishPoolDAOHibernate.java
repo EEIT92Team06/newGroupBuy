@@ -143,7 +143,7 @@ public class WishPoolDAOHibernate implements WishPoolDAO {
 //        System.out.println(ins);
 //        List<WishPoolBean> xxx = dao.selectForSearch(1);
 //        System.out.println(xxx);
-        
+     
 		sessionFactory.getCurrentSession().getTransaction().commit();
 		// context.close();
 		((ConfigurableApplicationContext) context).close();

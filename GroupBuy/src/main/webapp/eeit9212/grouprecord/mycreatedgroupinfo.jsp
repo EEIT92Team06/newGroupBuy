@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
 <link href="<c:url value='/css/style.css'/>" rel="stylesheet">
 
 <style>
@@ -96,8 +97,7 @@
 				List<OrderInfoDetailsBean> list = (List<OrderInfoDetailsBean>) request
 						.getAttribute("selectOneOrderInfoDetails");
 			%>
-			<c:forEach var="bean" items="${selectMyGroupOrderInfo}" varStatus="x">
-				
+			<c:forEach var="bean" items="${selectMyGroupOrderInfo}">
 				<c:if
 					test="${(bean.orderInfoStatusNo!=1002&&bean.orderInfoStatusNo!=1004)||bean.orderInfoStatusNo==1102||bean.orderInfoStatusNo==1103}">
 

@@ -47,6 +47,7 @@ public class WishPoolService {
 		return null;
 	}
 	
+
 	public List<WishPoolBean> search(int productType){
 		List<WishPoolBean> result = null;
 		if(productType==0){

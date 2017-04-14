@@ -1,26 +1,84 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=BIG5">
 <title>searchDetails</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<link href="../css/bootstrap.css" rel="stylesheet">
+<link href="../css/bootstrap-responsive.css" rel="stylesheet">
+<link href="../css/style.css" rel="stylesheet">
+<link href="../css/flexslider.css" type="text/css" media="screen"
+	rel="stylesheet" />
+<link href="../css/jquery.fancybox.css" rel="stylesheet">
+<link href="../css/cloud-zoom.css" rel="stylesheet">
+<style>
+.deletemargin {
+	margin: 0px;
+	padding: 0px;
+}
+
+.reply {
+	color: grey;
+	font-size: 5px;
+}
+</style>
 <script type="text/JavaScript">
 var newmsgNoList;
 var parameter;
 window.onload = function(){  
 	
+	if("${orderFail}" != ""){
+		orderFail(); 
+		<% 
+			session = request.getSession();
+			session.removeAttribute("orderFail");
+		%>
+	}
+	if("${ordersuc}" != ""){
+		orderSuc();
+		<% 
+		session = request.getSession();
+		session.removeAttribute("ordersuc");
+		%>
+		
+	}
+	
+	
+	//檢舉-----------------------------
+	
+	$("#sendReport").click(function(){
+				var reportTarget=$(this).parents("form").find("input[name='reportTarget']").val();
+				var reportTypeNo=$(this).parents("form").find("select[name='reportTypeNo']").val();
+				var reportContent=$(this).parents("form").find("textarea[name='reportContent']").val();
+
+				$.get("${pageContext.request.contextPath}/reportajax",{"reportTarget":reportTarget,"reportTypeNo":reportTypeNo,"reportContent":reportContent},function(data){
+					var reportAlert=layer.alert(data, {
+						  skin: 'layui-layer-molv' //样式类名
+						  ,closeBtn: 0
+						},function(){
+							layer.close(reportAlert);
+							layer.close(reportOpen);					
+						});
+				});
+			});	
+	
+	//---------------------------------
+	
+	
 	//取得一開始有幾個回復按鈕，為了在等一下新增回復按鈕時給index
 	//並且給予一個<tbody id="here${counter}"> 標籤　讓使用者案回復時能加一列到這
 	var initParameter;	
-	parameter = document.getElementById("store").value;
-	initParameter = parameter;
+// 	parameter = document.getElementById("store").value;
+// 	initParameter = parameter;
 	
 	var btn = document.getElementById("btn");
 	btn.onclick = function(){
-		  
-		
 		
 		var xhr = new XMLHttpRequest();
 		var Msg = document.getElementById("leaveMsg").value;
@@ -28,130 +86,57 @@ window.onload = function(){
 		var url = "GroupMsgServlet.controller?"+ queryString;
 		xhr.open("GET" , url , true);
 		xhr.send();
-		xhr.onreadystatechange = function(){  
-			// 向伺服器提出的請求已經收到回應 
-			if (xhr.readyState === 4) {      
-				// 伺服器回應成功
-				if (xhr.status === 200) {
-					var data = JSON.parse(xhr.responseText);
-					newmsgNoList= data.msgNoList;   　 
-//		 	<tr> 
-// 					<td>${bean.memberName}</td>
-// 					<td>${bean.groupMsgContent}</td> 
-// 					<td><input type="button" name="reply" value="回覆留言" onclick="btnreply(${counter})></td> 
-// 			</tr>
-// 			<tbody id="newRow"+initParameter></tbody>// 一開始存在一個
-//         	<tbody id="here${counter}">
-// 			<tbody id="there${counter}">
-// 			<tbody id="newRow"+initParameter></tbody>
-					var memberName = document.createElement("td"); 
-					memberName.insertAdjacentHTML("BeforeEnd", "${memberBean.memberName}");
-					var groupMsgContent = document.createElement("td");
-					groupMsgContent.insertAdjacentHTML("BeforeEnd", data.groupMsg); 
-					var button = document.createElement("td");
-					var inputButton = document.createElement("input");
-					inputButton.setAttribute("type","button");    
-					inputButton.setAttribute("name","reply"); 
-					inputButton.setAttribute("value","回覆留言");        
-					inputButton.setAttribute("onclick", "btnreply("+initParameter+")"); 
-					button.appendChild(inputButton);
-					var tr = document.createElement("tr");
-					tr.appendChild(memberName); 
-					tr.appendChild(groupMsgContent);  
-					tr.appendChild(button); 
-					var newRow = document.getElementById("newRow"+initParameter); 
-					//每次重新新增一個newRow+initParameter讓他變成一包一包的
-// 					<tbody id="newRow"+initParameter></tbody>
-					newRow.appendChild(tr);  
-					var thereid = "there" + initParameter;
-					initParameter++;
-					var newRowid = "newRow"+initParameter;
-					newRow.insertAdjacentHTML('AfterEnd','<tbody id ='+newRowid+'></tbody>');
-					newRow.insertAdjacentHTML('AfterEnd','<tbody id ='+thereid+'></tbody>');
+		xhr.onreadystatechange = function(){   
+			// 向伺服器提出的請求已經收到回應  
+			if (xhr.readyState === 4) {       
+				// 伺服器回應成功  
+				if (xhr.status === 200) { 
+					var data = JSON.parse(xhr.responseText);  
+
+// 				<li><a class="avtar thumbnail"><img class="img-circle" 
+// 						src="../pictures/${bean.memberPic}" alt=""></a>
+// 						<a class="blogtitle">${bean.memberName}</a>
+// 						<div style="width: 1000px;">
+// 							<p>${bean.groupMsgContent}</p>
+// 						</div> 
+// 				</li>
+					var aimg = document.createElement("a");
+					aimg.setAttribute("class","avatar thumbnail");
+					var img= document.createElement("img");
+					img.setAttribute("class" , "img-circle");
+					img.setAttribute("width" , "60px");
+					img.setAttribute("src","../pictures/${memberBean.memberPic}");
+					img.setAttribute("alt" ,"");
+					img.setAttribute("align","left");
+					aimg.appendChild(img); 
+					
+					var aa = document.createElement("a");
+					aa.setAttribute("class","blogtitle");
+					aa.insertAdjacentHTML("BeforeEnd","${memberBean.memberNickName}"); 
+					aa.setAttribute("style","margin:10px");
+					
+					var divis = document.createElement("div");
+					divis.setAttribute("style","width:1000px");
+					var p = document.createElement("p");
+					p.insertAdjacentText("BeforeEnd", data.groupMsg);
+					p.setAttribute("style","margin-left:70px");
+					divis.appendChild(p); 
+					
+					var li = document.createElement("Li");
+					li.appendChild(aimg);
+					li.appendChild(aa);
+					li.appendChild(divis); 
+					
 					 
+					var msgContent = document.getElementById("msgContent"); 
+					msgContent.appendChild(li); 
 					
 				}             
-			}    
+			}     
 		}
 	}    
 //End//btn.onclick = function(){   
 } 
-
-//<tr>
-//<td><textarea cols="95" id="replytext＋index"></textarea></td>
-//<td><input type="button" id="replygo＋index" value="送出"  onclick="insertMsgreply(id)"></td>
-//</tr>
-
-function btnreply(index){
-	var td1 = document.createElement("td");
-	var textarea = document.createElement("textarea");
-	textarea.setAttribute("cols" , "95");
-	textarea.setAttribute("id" , "replytext"+index);
-	td1.appendChild(textarea);
-	
-	var td2 = document.createElement("td");
-	var input = document.createElement("input");
-	input.setAttribute("type" , "button");
-	input.setAttribute("value" , "送出");
-	input.setAttribute("id","replygo"+index);
-	input.setAttribute("onclick" , "insertMsgreply(id)");
-	td2.appendChild(input);
-	
-	var tr = document.createElement("tr");
-	tr.setAttribute("id" , index);
-	tr.appendChild(td1);
-	tr.appendChild(td2);
-	var there = document.getElementById("there"+index);
-	there.appendChild(tr);
-	
-}
-
-function insertMsgreply(index){
-
-	var index = index.substring(7);
-	if(newmsgNoList == undefined){//代表還未按過留言Ｍｓｇ功能
-		var msgNoList = ${msgNoList};
-	}else{
-		msgNoList = newmsgNoList;
-	}
-	var xhr = new XMLHttpRequest();
-	replyMsg = document.getElementById("replytext"+index).value;
-	var queryString = "msgNo="+msgNoList[index] +"&memberNo="+${memberBean.memberNo} +"&replyMsg="+replyMsg;
-	var url = "GroupMsgReplyServlet.controller?"+ queryString;
-	xhr.open("GET" , url , true);
-	xhr.send();
-	xhr.onreadystatechange = function(){
-		// 向伺服器提出的請求已經收到回應 
-		if (xhr.readyState === 4) {
-			// 伺服器回應成功
-			if (xhr.status === 200) {
-// 				<tr>
-// 					<td></td>	
-// 					<td>${bean2.memberName}</td>
-// 					<td>${bean2.groupMsgReplyContent}</td>
-// 				</tr> 
-				var td1 = document.createElement("td");
-				var td2 = document.createElement("td");
-				td2.insertAdjacentHTML("BeforeEnd", "${memberBean.memberName}");
-				var td3 = document.createElement("td");
-				td3.insertAdjacentHTML("BeforeEnd", xhr.responseText);
-				
-				var tr = document.createElement("tr");
-				tr.appendChild(td1);
-				tr.appendChild(td2);
-				tr.appendChild(td3);
-// 				if(index < parameter){
-					var there = document.getElementById("there"+index);
-// 				}else{
-// 					var there = document.getElementById("newRow");
-// 				}
-				there.appendChild(tr); 
-				var removego = document.getElementById(index);
-				removego.remove();   
-			}
-		}
-	}
-}
 
 </script>
 <script src="/GroupBuy/js/jquery-3.2.0.min.js"></script>
@@ -170,155 +155,242 @@ function confirmOrder(){
 		    btn: ['確定']
 		  });
 	});
-	
-// 	var xx = confirm("確定報名此團購 ? ");
-// 	if (xx) {
-// 		document.forms[0].submit();
-// 	} 
+}
+function orderFail(){
+	layer.msg('報名失敗請輸入數量', {icon: 2});
+}
+function orderSuc(){
+	layer.msg('報名成功', {icon: 1});
 }
 </script>
 </head>
 <body>
-	<form id="orderItems" action="<c:url value="/searchgroup/order.controller"/>"method="post">
-		<table border='2'>
-			<tr>
-				<td><img height='100' width='80'
-					src='${pageContext.servletContext.contextPath}/pictures/${memberPic}'></td>
- 			</tr>
-			<tr>
-				<c:forEach var="bean" items="${resultMulti2}">
-					<td><img height='100' width='80'
-						src='${pageContext.servletContext.contextPath}/searchImg/getImage?id=${bean.groupInfoPicNo}&type=groupPhoto'></td>
-				</c:forEach>
-			</tr>
-			<tr>
-				<td>創團者</td>
-				<td>${result.memberName}</td>
-			</tr>
-			<tr>
-				<td>團名</td>
-				<td>${result.groupInfoName}</td>
-			</tr>
-			<tr>
-				<td>評分</td>
-				<td>${result.result}</td>
-			</tr>
-			<tr>
-				<td>開始時間</td>
-				<td>${result.groupInfoStartDate}</td>
-			</tr>
-			<tr>
-				<td>截止時間</td>
-				<td>${result.groupInfoDeadLine}</td>
-			</tr>
-			<tr>
-				<td>簡介</td>
-				<td>${result.groupInfoContent}</td>
-			</tr>
-			<tr>
-				<td>寄送方式</td>
-				<td>${result.groupInfoShippingWay}</td>
-			</tr>
-			<tr>
-				<td>最低數量</td>
-				<td>${result.groupInfoMinProductQt}</td>
-			</tr>
-			<tr>
-				<td>團類別</td>
-				<td>${result.productType}</td>
-			</tr>
-			<tr>
-				<td>團狀態</td>
-				<td>${result.groupStatus}</td>
-			</tr>
-			<tr>
-				<td>開團人的No</td>
-				<td>${result.memberNo}</td>
-			</tr>
-
-
-			<c:forEach var="bean" items="${resultMulti}">
-				<tr>
-					<td>產品:${bean.groupInfoDetailsProdcutName}</td>
-				</tr>
-				<tr>
-					<td>價錢:${bean.groupInfoDetailsProductPrice}</td>
-					<td><select name='quantity'>
-							<option value="0">0</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
-							<option value="10">10</option>
-					</select></td>
-				</tr>
-				<tr>
-					<td>groupInfoDetailsNo:${bean.groupInfoDetailsNo}</td>
-				</tr>
-				<tr>
-					<td><input type="hidden" name="groupInfoDetailsNo"
-						value="${bean.groupInfoDetailsNo}"></td>
-				</tr>
-			</c:forEach>
-			<tr>
-				<td>groupInfoNo : ${groupInfoNo}</td>
-			</tr>
-			<tr>
-				<td>memberNo : ${memberBean.memberNo}</td>
-			</tr>
-
-
-			<tr>
-				<td><input type="hidden" name="memberNo" value="${memberBean.memberNo}"></td>
-			</tr>
-			<tr>
-				<td><input type="hidden" name="groupInfoNo" value="${groupInfoNo}"></td>
-			</tr>
-			<tr>
-				<td><input type="button" name="searchDetailsAct" value="餐與合購" onclick="confirmOrder()"></td>
-			</tr>
-		</table>
-	</form>
+	<c:remove var="salary"/>
 	
-	<form>
-		<table border='2'>
-			<tr>
-				<td>討論區</td>
-			</tr>
-			<tr>
-				<td><textarea cols="95" id="leaveMsg" rows="5" name="groupMsg"></textarea></td>
-				<td><input type="button" id="btn" name="groupMsg" value="留言"></td>
-			</tr>
-			<c:set var="counter" value="0"/>　
+	<jsp:include page="/Web_02/headline.jsp"></jsp:include>
+
+	<div id="maincontainer">
+		<section id="product">
+		<div class="container">
+			<!-- Product Details-->
+			<div class="row">
+				<!-- Left Image-->
+				<div class="span5">
+					<ul class="thumbnails mainimage">
+						<li class="span5"><a
+							rel="position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4"
+							class="thumbnail cloud-zoom"
+							href="${pageContext.servletContext.contextPath}/searchImg/getImage?id=${groupInfoNo}&type=groupCover">
+								<img style="width: 470px; height: 313px"
+								src="${pageContext.servletContext.contextPath}/searchImg/getImage?id=${groupInfoNo}&type=groupCover"
+								alt="" title="">
+						</a></li>
+						<c:forEach var="bean" items="${resultMulti2}">
+							<li class="span5"><a
+								rel="position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4"
+								class="thumbnail cloud-zoom"
+								href='${pageContext.servletContext.contextPath}/searchImg/getImage?id=${bean.groupInfoPicNo}&type=groupPhoto'>
+									<img style="width: 470px; height: 313px"
+									src='${pageContext.servletContext.contextPath}/searchImg/getImage?id=${bean.groupInfoPicNo}&type=groupPhoto'
+									alt="" title="">  
+							</a></li>
+						</c:forEach>
+
+					</ul>
+					<ul class="thumbnails mainimage">
+						<li class="producthtumb"><a class="thumbnail"> <img
+								src="${pageContext.servletContext.contextPath}/searchImg/getImage?id=${groupInfoNo}&type=groupCover"
+								alt="" title="">
+						</a></li>
+						<c:forEach var="bean" items="${resultMulti2}">
+						
+							<li class="producthtumb"><a class="thumbnail"> <img
+									src='${pageContext.servletContext.contextPath}/searchImg/getImage?id=${bean.groupInfoPicNo}&type=groupPhoto'
+									alt="" title="">
+							</a></li>
+							
+						</c:forEach>
+					</ul>
+				</div>
+				<!-- Right Details-->
+				<div class="span7">
+					<div class="row">
+						<div style="margin-left: 50px; margin-top: 50px" class="span7">
+							<h1 class="productname">
+								<span class="bgnone">${result.groupInfoName}</span>
+							</h1>
+
+							<form id="orderItems"
+								action="<c:url value="/searchgroup/order.controller"/>"
+								method="post">
+
+								<c:forEach var="bean" items="${resultMulti}">
+									<div class="quantitybox deletemargin">
+										<div style="float: left">
+											<h3>${bean.groupInfoDetailsProdcutName}</h3>
+										</div>
+										<div style="float: left; margin-left: 10px">
+											<h3>${bean.groupInfoDetailsProductPrice}</h3>
+										</div>
+										<div style="float: left; margin-left: 10px">
+											<!--                       <select class="selectqty"> -->
+											<!--                 	 	 <option>Select</option> -->
+											<!--               		  </select> -->
+											<select name='quantity'>
+												<option value="0">0</option>
+												<option value="1">1</option>
+												<option value="2">2</option>
+												<option value="3">3</option>
+												<option value="4">4</option>
+												<option value="5">5</option>
+												<option value="6">6</option>
+												<option value="7">7</option>
+												<option value="8">8</option>
+												<option value="9">9</option>
+												<option value="10">10</option>
+											</select> <input type="hidden" name="groupInfoDetailsNo"
+												value="${bean.groupInfoDetailsNo}">
+										</div>
+									</div>
+								</c:forEach>
+
+								<ul class="productpagecart">
+									<li><a class="cart" onclick="confirmOrder()"> 參與團購 </a></li>
+								</ul>
+								<input type="hidden" name="memberNo" value="${memberBean.memberNo}"> 
+								<input type="hidden" name="groupInfoNo" value="${groupInfoNo}">
+
+							</form>
+
+							<!-- Product Description tab & comments-->
+							<div class="productdesc">
+								<ul class="nav nav-tabs" id="myTab">
+									<li class="active"><a href="#description">簡介</a></li>
+									<li><a href="#specification">詳細資訊</a></li>
+									<li><a href="#review">檢舉</a></li>
+								</ul>
+								<div class="tab-content">
+									<div class="tab-pane active" id="description">
+										${result.groupInfoContent} <br>
+									</div>
+									<div class="tab-pane " id="specification">
+										<ul class="productinfo">
+											<li><span class="productinfoleft"> 創團者:</span>
+												${result.memberName}</li>
+											<li><span class="productinfoleft"> 團類別:</span>
+												${result.productType}</li>
+											<li><span class="productinfoleft"> 團狀態:</span>
+												${result.groupStatus}</li>
+											<li><span class="productinfoleft"> 評分:</span>
+												${result.result}</li>
+											<li><span class="productinfoleft"> 開始時間: </span>
+												${result.groupInfoStartDate}</li>
+											<li><span class="productinfoleft"> 截止時間: </span>
+												${result.groupInfoDeadLine}</li>
+											<li><span class="productinfoleft"> 寄送方式: </span>
+												${result.groupInfoShippingWay}</li>
+											<li><span class="productinfoleft"> 最低數量: </span>
+												${result.groupInfoMinProductQt}</li>
+
+
+										</ul>
+									</div>
+									<div class="tab-pane" id="review">
+										<h3>Write a Review</h3>
+										<form class="form-vertical">
+											<fieldset>
+													<div class="control-group">
+													<label class="control-label">檢舉選項</label>
+													<input type="hidden"value="${groupInfoNo}"name="reportTarget" />
+													<div class="controls">
+														<select name="reportTypeNo">
+															<option value="1">檢舉團名</option>
+															<option value="2">檢舉團產品照片</option>
+															<option value="3">檢舉開團留言</option>
+															<option value="4">檢舉開團留言回覆</option>
+														</select>
+													</div>
+												</div>
+												<div class="control-group">
+													<label class="control-label">Textarea</label>
+													<div class="controls">
+														<textarea name="reportContent" rows="3" class="span3"></textarea>
+													</div>
+												</div>
+											</fieldset>
+											<input id="sendReport" class="btn btn-orange" type="button" value="送出檢舉" />
+										</form>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</section>
+
+
+
+		<!--  Related Products-->
+		<section id="related" class="row">
+		<div class="container">
+			<h1 class="heading1">
+				<span class="maintext">留言專區</span><span class="subtext"> See
+					All Comments</span>
+			</h1>
+
+		</div>
+		</section>
+
+		<section class="commentsblog">
+		<ul id="msgContent" class="comments" style="margin-left: 145px;">
 			<c:forEach var="bean" items="${selectMsg}">
-<!-- 			第一層Msg -->
-				<tr>
-					<td>${bean.memberName}</td>
-					<td>${bean.groupMsgContent}</td>
-					<td><input type="button" id="btnReply${counter}" name="reply" value="回覆留言" onclick="btnreply(${counter})"></td>	
-				</tr>  
-<!-- 			第二層MsgReply -->			
-				<c:forEach var="bean2" items="${bean.groupReplyMsg}">
-				<tr>
-					<td></td>	
-					<td>${bean2.memberName}</td>
-					<td>${bean2.groupMsgReplyContent}</td>
-				</tr>  
-				</c:forEach>
-				<tbody id="there${counter}"></tbody>
-				
-				<c:set var="counter" value="${counter+1}"/> 
+				<!--  			第一層Msg  -->
+				<li><a class="avtar thumbnail"><img class="img-circle" 
+						src="../pictures/${bean.memberPic}" alt=""></a>
+						<a class="blogtitle">${bean.memberName}</a>
+						<div style="width: 1000px;">
+							<p>${bean.groupMsgContent}</p>
+					</div></li>
 			</c:forEach>
-			
-			<input type="hidden" id="store" value="${counter}" >
-			<tbody id="newRow${counter}"></tbody>
-				
-		</table>
-	</form>
+		</ul>
+		<br>
+		<div id="div7">
+			<form style="margin-left: 175px">
+				<textarea style="width: 1100px" id="leaveMsg" name="groupMsg"
+					rows="3" cols="400"
+					style="margin-top:0px; margin-bottom: 0px; height: 86px; width: 1180px;"></textarea>
+				<br> <br>
+				<tr>
+					<td><input id="btn" class="btn btn-orange" type="button"
+						name="groupMsg" value="留言" /></td>
+				</tr>
+			</form>
+		</div>
+		</section>
+
+	</div>
+
+
+
+	<script src="../js/jquery.js"></script>
+	<script src="../js/bootstrap.js"></script>
+	<script src="../js/respond.min.js"></script>
+	<script src="../js/application.js"></script>
+	<script src="../js/bootstrap-tooltip.js"></script>
+	<script defer src="../js/jquery.fancybox.js"></script>
+	<script defer src="../js/jquery.flexslider.js"></script>
+	<script type="text/javascript" src="../js/jquery.tweet.js"></script>
+	<script src="../js/cloud-zoom.1.0.2.js"></script>
+	<script type="text/javascript" src="../js/jquery.validate.js"></script>
+	<script type="text/javascript"
+		src="../js/jquery.carouFredSel-6.1.0-packed.js"></script>
+	<script type="text/javascript" src="../js/jquery.mousewheel.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.touchSwipe.min.js"></script>
+	<script type="text/javascript"
+		src="../js/jquery.ba-throttle-debounce.min.js"></script>
+	<script defer src="../js/custom.js"></script>
 </body>
 </html>

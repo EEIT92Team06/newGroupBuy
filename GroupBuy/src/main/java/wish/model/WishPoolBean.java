@@ -102,5 +102,5 @@ public class WishPoolBean {
 				+ title + ", productName=" + productName + ", content=" + content + ", price=" + price + ", source="
 				+ source + ", coverPic=" + coverPic + ", memberNickName=" + memberNickName + "]";
 	}
-	
+
 }
