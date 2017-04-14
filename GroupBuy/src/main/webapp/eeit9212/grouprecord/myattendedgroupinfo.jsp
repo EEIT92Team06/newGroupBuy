@@ -254,8 +254,7 @@
 					});				
 				});
 			});
-			
-					
+		
 			//按下檢舉按鈕
 			var reportOpen;
 			$("#report").click(function(){
@@ -268,9 +267,9 @@
 				});
 			});
 			$("#sendReport").click(function(){
-				var reportTarget=$(this).parent().find("input[name='reportTarget']").val();
-				var reportTypeNo=$(this).parent().find("select[name='reportTypeNo']").val();
-				var reportContent=$(this).parent().find("textarea[name='reportContent']").val();
+				var reportTarget=$(this).parents("form").find("input[name='reportTarget']").val();
+				var reportTypeNo=$(this).parents("form").find("select[name='reportTypeNo']").val();
+				var reportContent=$(this).parents("form").find("textarea[name='reportContent']").val();
 
 				$.get("${pageContext.request.contextPath}/reportajax",{"reportTarget":reportTarget,"reportTypeNo":reportTypeNo,"reportContent":reportContent},function(data){
 					var reportAlert=layer.alert(data, {
