@@ -48,6 +48,29 @@ window.onload = function(){
 		%>
 		
 	}
+	
+	
+	//檢舉-----------------------------
+	
+	$("#sendReport").click(function(){
+				var reportTarget=$(this).parents("form").find("input[name='reportTarget']").val();
+				var reportTypeNo=$(this).parents("form").find("select[name='reportTypeNo']").val();
+				var reportContent=$(this).parents("form").find("textarea[name='reportContent']").val();
+
+				$.get("${pageContext.request.contextPath}/reportajax",{"reportTarget":reportTarget,"reportTypeNo":reportTypeNo,"reportContent":reportContent},function(data){
+					var reportAlert=layer.alert(data, {
+						  skin: 'layui-layer-molv' //样式类名
+						  ,closeBtn: 0
+						},function(){
+							layer.close(reportAlert);
+							layer.close(reportOpen);					
+						});
+				});
+			});	
+	
+	//---------------------------------
+	
+	
 	//取得一開始有幾個回復按鈕，為了在等一下新增回復按鈕時給index
 	//並且給予一個<tbody id="here${counter}"> 標籤　讓使用者案回復時能加一列到這
 	var initParameter;	
@@ -204,10 +227,10 @@ function orderSuc(){
 								<c:forEach var="bean" items="${resultMulti}">
 									<div class="quantitybox deletemargin">
 										<div style="float: left">
-											<h2>${bean.groupInfoDetailsProdcutName}</h2>
+											<h3>${bean.groupInfoDetailsProdcutName}</h3>
 										</div>
 										<div style="float: left; margin-left: 10px">
-											<h2>${bean.groupInfoDetailsProductPrice}</h2>
+											<h3>${bean.groupInfoDetailsProductPrice}</h3>
 										</div>
 										<div style="float: left; margin-left: 10px">
 											<!--                       <select class="selectqty"> -->
@@ -231,7 +254,7 @@ function orderSuc(){
 									</div>
 								</c:forEach>
 
-								<ul style="margin-left: 20px" class="productpagecart">
+								<ul class="productpagecart">
 									<li><a class="cart" onclick="confirmOrder()"> 參與團購 </a></li>
 								</ul>
 								<input type="hidden" name="memberNo" value="${memberBean.memberNo}"> 
@@ -276,20 +299,26 @@ function orderSuc(){
 										<h3>Write a Review</h3>
 										<form class="form-vertical">
 											<fieldset>
-												<div class="control-group">
-													<label class="control-label">Text input</label>
+													<div class="control-group">
+													<label class="control-label">檢舉選項</label>
+													<input type="hidden"value="${groupInfoNo}"name="reportTarget" />
 													<div class="controls">
-														<input type="text" class="span3">
+														<select name="reportTypeNo">
+															<option value="1">檢舉團名</option>
+															<option value="2">檢舉團產品照片</option>
+															<option value="3">檢舉開團留言</option>
+															<option value="4">檢舉開團留言回覆</option>
+														</select>
 													</div>
 												</div>
 												<div class="control-group">
 													<label class="control-label">Textarea</label>
 													<div class="controls">
-														<textarea rows="3" class="span3"></textarea>
+														<textarea name="reportContent" rows="3" class="span3"></textarea>
 													</div>
 												</div>
 											</fieldset>
-											<input type="submit" class="btn btn-orange" value="continue">
+											<input id="sendReport" class="btn btn-orange" type="button" value="送出檢舉" />
 										</form>
 									</div>
 

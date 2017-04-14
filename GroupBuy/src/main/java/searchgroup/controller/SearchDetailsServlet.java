@@ -43,7 +43,6 @@ public class SearchDetailsServlet extends HttpServlet {
 		response.setContentType("UTF-8");
 		//從session中取的現在用戶是誰，要將member_No丟出去
 		HttpSession session = request.getSession();		
-
 		//接受來自searchResult.jsp的參數 groupInfoNo
 		System.out.println("this is SearchDetailsServlet & SearchGroupMsg!");
 		String groupInfoNo = request.getParameter("groupInfoNo");

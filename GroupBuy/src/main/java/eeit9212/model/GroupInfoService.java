@@ -48,7 +48,7 @@ public class GroupInfoService {
 
 	public int updateGroupInfoDeadLine(int groupInfoNo, Timestamp deadLine) {
 		int result = -1;
-		result = groupInfoDAO.updateGroupInfoDeadLine(groupInfoNo, new Timestamp(deadLine.getTime() + 60000));
+		result = groupInfoDAO.updateGroupInfoDeadLine(groupInfoNo, new Timestamp(new java.util.Date().getTime() + 60000));
 		return result;
 
 	}
@@ -82,6 +82,30 @@ public class GroupInfoService {
 	public CreateGroupInfoBean selectGroupInfoByGroupInfoNo(int groupInfoNo) {
 		CreateGroupInfoBean result = null;
 		result = groupInfoDAO.selectGroupInfoByGroupInfoNo(groupInfoNo);
+		boolean flag=false;
+		int count = 0;
+		int checkCount = 0;
+		if (result.getGroupStatusNo() == 9) {
+			for (OrderInfoBean orderBean : orderInfoDAO.selectMyGroupOrderInfo(result.getGroupInfoNo())) {
+				if (orderBean.getOrderInfoStatusNo() != 1004 && orderBean.getOrderInfoStatusNo() != 1002) {
+					count++;
+
+				}
+
+				if (orderBean.getOrderInfoStatusNo() == 1202) {
+					checkCount++;
+				}
+
+			}
+			if (count == checkCount) {
+				groupInfoDAO.updateGroupStatus(result.getGroupInfoNo(), 11);
+				System.out.println("已匯款的買家都已收貨+評分，團狀態改成11(成功結束)");
+				flag = true;
+			}
+		}
+		if(flag){
+			result = groupInfoDAO.selectGroupInfoByGroupInfoNo(groupInfoNo);
+		}
 		return result;
 	}
 
@@ -125,13 +149,16 @@ public class GroupInfoService {
 		boolean flag = false;
 
 		for (AttendGroupInfoBean bean : result) {
+			System.out.println(bean.getGroupInfoNo()+"號團截止日期的LONG為:"+bean.getGroupInfoDeadLine().getTime());
+			System.out.println("現在時間的LONG為:"+new java.util.Date().getTime());
+			System.out.println("時間差為:"+(bean.getGroupInfoDeadLine().getTime()-new java.util.Date().getTime()));
 			if (bean.getGroupStatusNo() == 7
 					&& bean.getGroupInfoDeadLine().getTime() - new java.util.Date().getTime() <= 86400000) {
 				orderInfoDAO.updateOrderInfoStatusByOrderStatusNo(bean.getGroupInfoNo(), 1104, 1101);
 				System.out.println("匯款時間剩不到24H，"+bean.getGroupInfoNo()+"團還未匯款的改成1104");
 				flag = true;
 			}
-
+			
 			if (bean.getGroupInfoDeadLine().getTime() - new java.util.Date().getTime() <= 0
 					&& bean.getGroupStatusNo() <= 8) {
 				if (bean.getGroupStatusNo() == 1) {
@@ -196,6 +223,9 @@ public class GroupInfoService {
 		boolean flag = false;
 
 		for (CreateGroupInfoBean bean : result) {
+			System.out.println(bean.getGroupInfoNo()+"號團截止日期的LONG為:"+bean.getGroupInfoDeadLine().getTime());
+			System.out.println("現在時間的LONG為:"+new java.util.Date().getTime());
+			System.out.println("時間差為:"+(bean.getGroupInfoDeadLine().getTime()-new java.util.Date().getTime()));
 			if (bean.getGroupStatusNo() == 7
 					&& bean.getGroupInfoDeadLine().getTime() - new java.util.Date().getTime() <= 86400000) {
 				orderInfoDAO.updateOrderInfoStatusByOrderStatusNo(bean.getGroupInfoNo(), 1104, 1101);

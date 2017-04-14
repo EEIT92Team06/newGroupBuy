@@ -1,13 +1,6 @@
 package eeit9212.model.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-
-import javax.sql.DataSource;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -18,7 +11,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import eeit9212.model.GroupInfoPicBean;
 import eeit9212.model.GroupInfoPicDAO;
-import eeit9212.model.OrderInfoDetailsBean;
 
 public class GroupInfoPicDAOHibernate implements GroupInfoPicDAO {
 
@@ -58,14 +50,13 @@ public class GroupInfoPicDAOHibernate implements GroupInfoPicDAO {
 
 	@Override
 	public GroupInfoPicBean selectGroupInfoPicByNo(int groupInfoPicNo) {
-		String selectGroupInfoPicByNo = "from GroupInfoPicBean where groupInfoPic_No=?";
+		String selectGroupInfoPicByNo = "from eeit9212.model.GroupInfoPicBean where groupInfoPic_No=?";
 		GroupInfoPicBean result=null;
 		Query<GroupInfoPicBean> query = this.getSession().createQuery(selectGroupInfoPicByNo);
 		query.setParameter(0, groupInfoPicNo);	
 		try{
 			result = query.getSingleResult();
 			}catch(Exception e){
-				e.printStackTrace();
 				System.out.println("selectGroupInfoPicByNo查無資料");
 			}
 		return result;

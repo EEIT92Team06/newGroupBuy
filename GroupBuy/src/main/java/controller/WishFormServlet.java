@@ -24,7 +24,7 @@ import javax.servlet.http.Part;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import member.model.MemberBean;
+import login.model.MemberBean;
 import wish.model.WishPictureBean;
 import wish.model.WishPictureService;
 import wish.model.WishPoolBean;
@@ -67,11 +67,8 @@ public class WishFormServlet extends HttpServlet {
 		Map<String, String> errorMsg = new HashMap<String, String>();
 		request.setAttribute("errorMsg", errorMsg);
 		// 接收資料
-		MemberBean memberBean = new MemberBean();
-		memberBean.setMemberNo(1);
 		HttpSession session = request.getSession();
-		session.setAttribute("LoginOK", memberBean);
-		MemberBean member = (MemberBean) session.getAttribute("LoginOK");// 取得MemberNo
+		MemberBean member = (MemberBean) session.getAttribute("loginToken");// 取得MemberNo
 
 		memberNo = member.getMemberNo(); //Integer
 		String title = request.getParameter("title");
@@ -184,9 +181,13 @@ public class WishFormServlet extends HttpServlet {
 					}
 				}
 				if (pictures != null) {
-					WishPictureBean picBean = new WishPictureBean();
+					
+					WishPoolBean wishPoolBean = new WishPoolBean();
 					for (int i = 0; i < pictures.size(); i++) {
-						picBean.setWishNo(wishPoolService.getWishNo(cover));
+						WishPictureBean picBean = new WishPictureBean();
+						System.out.println(666);
+						wishPoolBean.setWishNo(wishPoolService.getWishNo(cover));
+						picBean.setWishPoolBean(wishPoolBean);
                         picBean.setWishPicture(pictures.get(i));
 						wishPictureService.insertPic(picBean);
 					}

@@ -10,14 +10,13 @@
 <body>
 	<h1>login後的首頁</h1>
 	<!-- <a href="member.controller?x=memberInfo">MemberInformation</a> -->
-	<a href="<c:url value='/member/member.controller?memberNo=${myMemberNo}'/>">MemberInformation</a>
+	<a href="<c:url value='/member/member.controller?memberNo=${myMemberNo}'/>">基本資料</a>
 <%-- 	<a href="<c:url value='friend.controller?x=friend'/>">FriendList</a> --%>
-	<a href="<c:url value='/friend/friend.controller?x=friend'/>">FriendList</a>
+	<a href="<c:url value='/friend/friend.controller?x=friend'/>">好友</a>
 
 
 
 	<a href="<c:url value='/eeit9212/grouprecord/mycreatedgroupinfo.controller'></c:url>">我創的團</a>
 	<a href="<c:url value='/eeit9212/grouprecord/myattendedgroupinfo.controller'></c:url>">我參加的團</a>
-	<a href="<c:url value='/creategroup/createGroup.jsp'></c:url>">創團</a>
 </body>
 </html>

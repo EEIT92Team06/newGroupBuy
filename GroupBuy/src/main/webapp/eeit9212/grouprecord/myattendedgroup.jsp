@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="/Web_02/headline.jsp"></jsp:include>
 	<table border="1px">
 		<thead>
 
@@ -45,7 +46,8 @@
 					<td>${bean.groupInfoName}</td>
 					<td>${bean.groupStatus}</td>
 					<td>${bean.productType}</td>
-					<td>${bean.groupInfoTotalProductQt}/${bean.groupInfoMinProductQt}</td>
+					<td><c:if test="${empty bean.groupInfoTotalProductQt}">0</c:if>
+					<c:if test="${not empty bean.groupInfoTotalProductQt}">${bean.groupInfoTotalProductQt}</c:if>/${bean.groupInfoMinProductQt}</td>
 					<td>${bean.groupInfoDeadLine}</td>
 					<td>${bean.orderStatus}</td>
 					<td><a

@@ -65,6 +65,14 @@ public class WishPoolService {
 		return result;
 	}
 	
+	public Boolean delete(int wishNo){
+		if(wishNo!=0){
+			wishPoolDAO.delete(wishNo);
+			return true;
+		}
+		return false;
+	}
+	
 	
 //	public static void main(String[] arg){
 //		ApplicationContext context = new AnnotationConfigApplicationContext(WishJavaConfiguration.class);

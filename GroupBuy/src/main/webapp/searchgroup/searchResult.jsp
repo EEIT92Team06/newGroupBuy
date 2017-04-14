@@ -26,6 +26,7 @@
 		<table>
 		<div style="padding-left:70px">
 			<div style="padding:15px ; width:300px ; float:left">
+<!-- 				<i class="fa fa-search fa-2x" aria-hidden="true"></i> -->
 				<input type="text" name="name" placeholder="請輸入 商品 關鍵字" autocomplete="off" value="${param.name}">
 			</div>
 			<div style="float:left ;padding-top: 10px">
@@ -72,7 +73,7 @@
 							<div class="thumbnail">
 								<a
 									href="${pageContext.servletContext.contextPath}/searchImg/getImage?id=${bean.groupInfoNo}&type=groupCover"
-									class="fancyboxpopup"><img alt=""
+									class="fancyboxpopup"><img alt="" style="width:270px;height:200px;"  
 									src="${pageContext.servletContext.contextPath}/searchImg/getImage?id=${bean.groupInfoNo}&type=groupCover"><span
 									class="viewfancypopup">&nbsp;</span></a>
 								<div class="caption">

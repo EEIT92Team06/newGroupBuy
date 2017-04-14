@@ -20,6 +20,7 @@
 </style>
 </head>
 <body>
+<jsp:include page="/Web_02/headline.jsp"></jsp:include>
 <script type="text/javascript" src="../js/jquery-3.2.0.min.js"></script>
 <script type="text/javascript" src="../js/jquery-ui.min.js"></script>
 
@@ -93,7 +94,7 @@ $(function(){
 
 <form action="<c:url value="/createGroupServlet.do"/>"  enctype="multipart/form-data" method="post">
 
-    <table id="table" border="1px">
+    <table id="table">
       <tbody>   
       <tr>
           <td>*團名:
