@@ -168,6 +168,8 @@
 		</form>
 	</div>
 	</section>
+	
+	
 <!-- Footer -->
 <footer id="footer">
   <section class="footerlinks">
@@ -195,7 +197,6 @@
       </div>
     </div>
   </section>
-  
   <a id="gotop" href="#">Back to top</a>
 </footer>
 <!-- javascript

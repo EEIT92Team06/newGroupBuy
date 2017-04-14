@@ -12,16 +12,19 @@
 	href="<c:url value='/assets/css/common.min.css'/>">
 <link rel="stylesheet" href="<c:url value='/assets/css/index.min.css'/>">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+
+<title>我是HeadLine</title>
 </head>
 <body>
 	<div class="layout">
 		<!--===========layout-header================-->
-		<div class="layout-header am-hide-sm-only">
+		<!-- 全部變成漢堡  -->
+		<div class="layout-header am-hide-sm-only" style="border: 10px black">
 			<!--topbar start-->
 			<div class="topbar">
 				<div class="container">
 					<div class="am-g">
+						<!-- 最左  -->
 						<div class="am-u-md-3">
 							<div class="topbar-left">
 								<i class="am-icon-globe"></i>
@@ -38,40 +41,46 @@
 								</div>
 							</div>
 						</div>
+						<!-- 最右 -->
 						<div class="am-u-md-9">
 							<div class="topbar-right am-text-right am-fr">
-								Follow us <i class="am-icon-facebook"></i> <i
-									class="am-icon-twitter"></i> <i class="am-icon-google-plus"></i>
-								<i class="am-icon-pinterest"></i> <i class="am-icon-instagram"></i>
-								<i class="am-icon-linkedin"></i> <i class="am-icon-youtube-play"></i>
-								<i class="am-icon-rss"></i> <a href="html/login.html">LOGIN</a>
-								<a href="html/register.html">SIGN UP</a>
+								Follow us <i class="am-icon-facebook"></i>
+								<c:if test="${empty loginToken}">
+									<a href="<c:url value='/secure/login.jsp'/>">登入</a>
+								</c:if>
+								<c:if test="${!empty loginToken}">
+									<a href="<c:url value='/secure/logout.jsp'/>">登出</a>
+								</c:if>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			<!--topbar end-->
 
-
-
-			<div class="am-sticky-placeholder" style="height: 76px;">
-				<div class="am-sticky-placeholder"
-					style="margin: 0px; height: 76px;">
-					<div class="header-box" data-am-sticky="" style="margin: 0px;">
+			<!-- 	staybar start  -->
+			<div class="am-sticky-placeholder">
+				<div class="am-sticky-placeholder" style="margin: 0px;">
+					<div class="header-box" data-am-sticky="" style=""margin: 0px;">
 						<div class="nav-contain">
 							<div class="nav-inner">
 								<ul class="am-nav am-nav-pills am-nav-justify">
-									<li class=""><a href="<c:url value='/index.jsp'/>">我們的LOGO</a></li>
-
-									<!-- sub-menu end-->
+									<li class=""><a href="<c:url value='/theindex.jsp'/>"> <img
+											src="<c:url value='/pictures/logo.png'/>" style="width: 75px"></a></li>
 									<li><a
 										href="<c:url value='/creategroup/createGroup.jsp'/>">創團</a></li>
 									<li><a
 										href="<c:url value='/headline/SearchServlet0.controller'/>">搜團</a></li>
-									<li><a href="<c:url value='/wish/wishpool.controller'/>">許願池</a></li>
+									<!-- 4/13修改 -->
+									<li><a href="<c:url value='/wish/wishpool.controller'/>">許願池</a>
+									    <ul class="sub-menu">
+											<li class="menu-item"><a
+												href="<c:url value='/wish/wishform.jsp' />">發起許願</a></li>
+										</ul> <!-- sub-menu end-->
+									</li>
+									<!-- 4/13修改 -->
 									<li><a href="<c:url value='/test'/>">會員空間</a> <!-- sub-menu start-->
 										<ul class="sub-menu">
-
 											<li class="menu-item"><a
 												href="<c:url value='/member/member.controller?memberNo=${loginToken.memberNo}'/>">基本資料</a></li>
 											<li class="menu-item"><a
@@ -80,15 +89,16 @@
 												href="<c:url value='/eeit9212/grouprecord/mycreatedgroupinfo.controller'/>">我創的團</a></li>
 											<li class="menu-item"><a
 												href="<c:url value='/eeit9212/grouprecord/myattendedgroupinfo.controller'/>">我參加的團</a></li>
-										</ul> <!-- sub-menu end--></li>
-									<li><a
-										href="<c:url value='/Backstage/BackStageServlet.controller'/>">後臺管理</a></li>
-									<c:if test="${empty loginToken}">
-										<li><a href="<c:url value='/secure/login.jsp'/>">登入</a></li>
+										</ul></li>
+									<!-- sub-menu end-->
+									<c:if test="${not empty Controller}">
+										<li><a
+											href="<c:url value='/Backstage/BackStageServlet.controller'/>">後臺管理</a></li>
 									</c:if>
-									<c:if test="${!empty loginToken}">
-										<li><a href="<c:url value='/secure/logout.jsp'/>">登出</a></li>
-									</c:if>
+										
+										<li><i class="am-icon-globe"></i>X</li>
+										<li><i class="am-icon-globe"></i> </li>
+										<li><a href="<c:url value='/wish/wishpool.controller'/>">頭項</a></li>
 								</ul>
 							</div>
 						</div>
@@ -96,12 +106,10 @@
 					</div>
 				</div>
 			</div>
+			<!--  staybar end -->
 		</div>
+	</div>
 
-	</div>
-	</div>
-	</div>
-	</div>
 
 	<!--mobile header start-->
 	<div class="m-header">
@@ -233,7 +241,5 @@
 	<script src="<c:url value='/assets/js/common.js'/>" charset="utf-8"></script>
 
 
-
-	</div>
 </body>
 </html>

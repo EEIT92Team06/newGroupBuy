@@ -133,7 +133,7 @@ public class WishFormServlet extends HttpServlet {
 				errorMsg.put("content", "簡短介紹一下這項產品吧!");
 			}
 			if (pictures == null || pictures.size() == 0) {
-				errorMsg.put("upload", "請上傳圖片，並點擊縮圖選取封面<br>(預設封面為第一張圖)");
+				errorMsg.put("upload", "請上傳圖片");
 			}
 		}
 		// 轉換資料
