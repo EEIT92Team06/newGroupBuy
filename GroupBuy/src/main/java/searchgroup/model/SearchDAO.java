@@ -17,4 +17,6 @@ public interface SearchDAO {
 	public Object[] selectRecommendTable(int memberNo);
 //	
 	public int insertClickTimes(String INSERT_RECOMMEND_CLICKTIME);
+	
+	public int insertRecommend(int memberNo);
 }
