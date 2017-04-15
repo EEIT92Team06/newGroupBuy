@@ -319,7 +319,11 @@
 									      <a class="click1">許願池</a></li>
 									   </c:when>
 									   <c:when test="${!empty loginToken}">
-									    <a href="<c:url value='/wish/wishpool.controller'/>">許願池</a></li>
+									    <a href="<c:url value='/wish/wishpool.controller'/>">許願池</a>
+									    <ul class="sub-menu">
+											<li class="menu-item"><a
+												href="<c:url value='/wish/wishform.jsp'/>">發起許願</a></li>
+										</ul>
 									   </c:when>
 									 </c:choose>
 									 
@@ -327,10 +331,7 @@
 						             <c:choose>
 									   <c:when test="${empty loginToken}">
 									    <a class="click1">我的團購</a> <!-- sub-menu start-->
-										<ul class="sub-menu">
-											<li class="menu-item" ><a class="click1">我創的團</a></li>
-											<li class="menu-item"><a class="click1">我參加的團</a></li>
-										</ul></li>
+										</li>
 									   </c:when>
 									   <c:when test="${!empty loginToken}">
 									    <a href="<c:url value='/test'/>">我的團購</a> <!-- sub-menu start-->
