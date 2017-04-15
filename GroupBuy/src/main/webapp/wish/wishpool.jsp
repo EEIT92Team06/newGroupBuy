@@ -80,9 +80,9 @@
          <ul class="thumbnails" style="width: 932px;">
          
          <c:forEach var='wish' items="${wishCollection}">
-         <li class="span3" >
+         <li class="span3">
             <div class="thumbnail">
-              <img alt="" src="../pictures/${wish.coverPic}" style="width:270px; height:200px"><span class="viewfancypopup">&nbsp;</span>
+              <img alt="" src="../pictures/${wish.coverPic}" style="width:270px; height:170px"><span class="viewfancypopup">&nbsp;</span>
               <div class="caption">
                 <a href="<c:url value="/wish/wishdetail.controller?wishNo=${wish.wishNo}" />" class="bloggridtitle">${wish.title}</a>    
               </div>
