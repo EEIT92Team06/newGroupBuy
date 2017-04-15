@@ -65,10 +65,11 @@ public class RegistryService {
 		String address = "eeit9204@gmail.com";
 		String personal = "GroupBuy團購網";
 		String recipients = memberAccount;
-		String subject = "這是主旨";
-		String text = "Dear xxx!!這是文字內容";
+
+		String subject = "開通GroupBuy帳號";
+		String text = "Dear GroupBuy用戶";
 		String account="";
-		String context = "This is a test <h1>GroupBuy用戶您好!!請點擊下列連結開通帳號</h1>"
+		String context ="<h1>GroupBuy用戶您好!!請點擊下列連結開通帳號</h1>"
 				+ "<a href='http://localhost:8080/GroupBuy/finishedRegistryServlet.do?memberAccount="
 				+recipients
 				+ "'>"

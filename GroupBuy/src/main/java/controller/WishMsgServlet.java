@@ -92,8 +92,9 @@ public class WishMsgServlet extends HttpServlet {
 		bean.setMemberNo(memberNo);
 		bean.setWishPoolBean(wishPoolBean);
         bean.setWishMsgContent(msg);
-        
+
         if("留言".equals(send)){
+
         	Boolean msgInsert = wishMsgService.insert(bean);
         	//取得所有留言
         	List<WishMsgBean> msgDetail = wishMsgService.getWishMsg(wishNumber);

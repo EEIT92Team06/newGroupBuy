@@ -108,12 +108,13 @@ public class GoogleLoginServlet extends HttpServlet {
 				if(memberBean!=null){
 					session.setAttribute("loginToken", memberBean);
 					String path=request.getContextPath();
-					response.sendRedirect(path+"/secure/index.jsp");
+					response.sendRedirect(path+"/theindex.jsp");
 					return;
 				}
 			}
 			request.setAttribute("googleData", googleBean);
-			request.getRequestDispatcher("/secure/registry.jsp").forward(request, response);
+			request.getRequestDispatcher("/secure/newRegistry.jsp").forward(request, response);
+
 			return;
 		}
 

@@ -18,17 +18,20 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import login.model.LoginService;
 import login.model.MemberBean;
+import searchgroup.model.SearchService;
 
 @WebServlet("/loginServlet.do")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private LoginService loginService;
-
+	private SearchService searchService;
+	
 	@Override
 	public void init() throws ServletException {
 		ServletContext application = this.getServletContext();
 		ApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(application);
 		loginService = (LoginService) context.getBean("loginService");
+		searchService = (SearchService)context.getBean("searchService");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -55,12 +58,22 @@ public class LoginServlet extends HttpServlet {
 		}
 		// 空值forward到原登入畫面
 		if (!errorMessages.isEmpty()) {
-			request.getRequestDispatcher("/secure/login.jsp").forward(request, response);
+			request.getRequestDispatcher("/secure/newLogin.jsp").forward(request, response);
 			return;
 		}
 		// 驗證資料
 		MemberBean memberBean = loginService.login(account, password);
 		if (memberBean != null) {
+// 0415 Kai加的----------------------------------
+		memberBean.getMemberNo();
+		try {
+			int xxx = searchService.selectRecommendTable(memberBean.getMemberNo());
+		} catch (Exception e) {
+			int result = searchService.insertRecommend(memberBean.getMemberNo());
+			System.out.println("成功新增 " +result+"筆recommend資料");
+		}
+// 0415 Kai加的End--------------------------------
+			
 			int statusNum = loginService.checkRegistryStatus(account);
 			String ban = loginService.AfterBanTime(memberBean.getMemberNo());
 			System.out.println("ban : " + ban);
@@ -81,7 +94,7 @@ public class LoginServlet extends HttpServlet {
 			}
 		} else { 
 			errorMessages.put("loginError", "帳號或密碼錯誤");
-			request.getRequestDispatcher("/secure/login.jsp").forward(request, response);
+			request.getRequestDispatcher("/secure/newLogin.jsp").forward(request, response);
 			return;
 		}
 	}

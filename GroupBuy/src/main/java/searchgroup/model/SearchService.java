@@ -159,4 +159,8 @@ public class SearchService {
 		return searchDAO.insertClickTimes(INSERT_RECOMMEND_CLICKTIME);
 	}
 	
+	public int insertRecommend(int memberNo){
+		return searchDAO.insertRecommend(memberNo);
+	}
+	
 }

@@ -120,7 +120,7 @@ public class SiteMailDAOHibernate implements SiteMailDAO {
 		query.setParameter(1, memberNo);
 		return query.getResultList();
 	}
-	//更新未讀狀態為已讀(9301=>9302)
+
 
 	//刪除狀態信
 	@Override
@@ -146,6 +146,34 @@ public class SiteMailDAOHibernate implements SiteMailDAO {
 		  }
 		  return deleteNum;  
 		}
+	//刪除未讀狀態信
+	private static final String deleteUnReadMail = " delete  from  SiteMail  where siteMailStatus_No=9301 and siteMail_No=?";
+	@Override
+	public int deleteUnReadMail(int siteMailNo){
+	  int deleteNum=0;
+	  Query query = sessionFactory.getCurrentSession().createNativeQuery(deleteUnReadMail);
+	  query.setParameter(1, siteMailNo);
+	  deleteNum=query.executeUpdate();
+	  if(deleteNum==1){
+		  deleteNum=1;
+	  }
+	  return deleteNum;  
+	}
+	//刪除未讀公告信
+	private static final String deleteUnReadAnnounce = " delete  from  annoucement  where siteMailStatus_No=9301 and siteMail_No=?";
+	@Override
+	public int deleteUnReadAnnounce(int siteMailNo){
+	  int deleteNum=0;
+	  Query query = sessionFactory.getCurrentSession().createNativeQuery(deleteUnReadAnnounce);
+	  query.setParameter(1, siteMailNo);
+	  deleteNum=query.executeUpdate();
+	  if(deleteNum==1){
+		  deleteNum=1;
+	  }
+	  return deleteNum;  
+	}
+
+
 
 	//搜尋引擎(狀態信)
 	private static String serchEngine ="select * from mail where siteMailCan_Title like ?  and member_No=?";
@@ -220,5 +248,26 @@ public class SiteMailDAOHibernate implements SiteMailDAO {
 			updateNum = 1;
 		}
 		return updateNum;
+	}
+	//查詢狀態信已讀未讀
+	@Override
+	public SiteMailBean selectStatus(Integer siteMailNo){
+		SiteMailBean bean=null;
+		if(siteMailNo!=null){
+		Session session=sessionFactory.getCurrentSession();
+		bean=(SiteMailBean)session.get(SiteMailBean.class, siteMailNo);
+		}
+		return bean;
+	}
+	//查詢公告信已讀未讀
+	@Override
+	public AnnouncementBean selectAnnounceStatus(Integer siteMailNo){
+		AnnouncementBean bean=null;
+		if(siteMailNo!=null){
+		Session session=sessionFactory.getCurrentSession();
+		bean=(AnnouncementBean)session.get(AnnouncementBean.class, siteMailNo);
+		}
+		return bean;
+
 	}
 }

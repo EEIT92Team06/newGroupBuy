@@ -7,7 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>我是TITLE</title>
-
 <link rel="stylesheet"
 	href="<c:url value='/css/bootstrap.min.css'/>">
 <!-- <link rel="stylesheet" -->
@@ -152,6 +151,7 @@
 	width: 30px;
 	text-align: center;
 	margin: 0 5px;
+	padding-top:5px;
 }
 
 .notification-icon .badge {
@@ -220,8 +220,9 @@
 									style="padding-left: 10px; padding-right: 25px; opacity: .3;"></i>
 
 								<c:if test="${empty loginToken}">
-									<a href="<c:url value='/secure/login.jsp'/>"
-										style="color: white;">登入</a>
+<%-- 									<a href="<c:url value='/secure/newLogin.jsp'/>" --%>
+										<label class="click1" style="color: white">登入</label>
+<!-- 										</a> -->
 								</c:if>
 								<c:if test="${not empty loginToken}">
 								<!-- 通知 ---- 通知 ---- 通知 ---- 通知 ---- 通知 ---- 通知 ---- 通知 ---- 通知 -->
@@ -237,8 +238,8 @@
 											<li class="divider"></li>
 											<li><a href="#">test2</a></li>
 											<!-- 											<li data-role="listview">aaa</li> -->
-											<li><a href="#">aa</a></li>
-
+											<li><a href="<c:url value="/overViewMailServlet.do"/>">全部信件</a></li>
+                                         
 										</ul></li>
 									<!-- 信封結束 -->
 									<!-- 鈴鐺開始 -->
@@ -293,32 +294,62 @@
 											<img src="<c:url value='/pictures/logo.png'/>"
 											style="width: 75px">
 									</a></li>
-									<li><a
-										href="<c:url value='/creategroup/createGroup.jsp'/>">創團</a></li>
-									<li><a
-										href="<c:url value='/headline/SearchServlet0.controller'/>">搜團</a></li>
-									<li><a href="<c:url value='/wish/wishpool.controller'/>">許願池</a></li>
-									<li><a href="<c:url value='/test'/>">我的團購</a> <!-- sub-menu start-->
+
+									<li>
+									  <c:choose>
+									    <c:when test="${empty loginToken}">
+									       <a class="click1">創團</a></li>
+									    </c:when>
+									    <c:when test="${!empty loginToken}">
+									      <a href="<c:url value='/creategroup/createGroup.jsp'/>">創團</a></li>
+									    </c:when>
+									  </c:choose>
+									<li>
+									  <c:choose>
+									     <c:when test="${empty loginToken}">
+									       <a class="click1">搜團</a></li>
+									     </c:when>
+									     <c:when test="${!empty loginToken}">
+									       <a href="<c:url value='/headline/SearchServlet0.controller'/>">搜團</a></li>
+									     </c:when>
+						             </c:choose>
+									 <li>
+						             <c:choose>
+									   <c:when test="${empty loginToken}">
+									      <a class="click1">許願池</a></li>
+									   </c:when>
+									   <c:when test="${!empty loginToken}">
+									    <a href="<c:url value='/wish/wishpool.controller'/>">許願池</a></li>
+									   </c:when>
+									 </c:choose>
+									 
+									<li>
+						             <c:choose>
+									   <c:when test="${empty loginToken}">
+									    <a class="click1">我的團購</a> <!-- sub-menu start-->
+										<ul class="sub-menu">
+											<li class="menu-item" ><a class="click1">我創的團</a></li>
+											<li class="menu-item"><a class="click1">我參加的團</a></li>
+										</ul></li>
+									   </c:when>
+									   <c:when test="${!empty loginToken}">
+									    <a href="<c:url value='/test'/>">我的團購</a> <!-- sub-menu start-->
 										<ul class="sub-menu">
 											<li class="menu-item"><a
 												href="<c:url value='/eeit9212/grouprecord/mycreatedgroupinfo.controller'/>">我創的團</a></li>
 											<li class="menu-item"><a
 												href="<c:url value='/eeit9212/grouprecord/myattendedgroupinfo.controller'/>">我參加的團</a></li>
 										</ul></li>
+									   </c:when>
+									 </c:choose>
+									
 									<!-- sub-menu end-->
 									<c:if test="${not empty Controller}">
 										<li><a
 											href="<c:url value='/Backstage/BackStageServlet.controller'/>">後臺管理</a></li>
 									</c:if>
 								</ul>
-
-
-
 							</div>
-
-
-
-
 						</div>
 
 					</div>
@@ -412,7 +443,7 @@
 					<div data-tab-panel-1="" class="am-tab-panel ">
 						<div class="index-banner">
 							<div class="index-mask">
-								<div class="container">
+								<div class="container01">
 									<div class="am-g">
 										<div class="am-u-md-10 am-u-sm-centered">
 											<h1 class="slide_simple--title">企业移动化，首选云适配</h1>

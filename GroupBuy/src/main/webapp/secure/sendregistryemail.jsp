@@ -6,8 +6,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
+<style type="text/css">
+.full {
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	margin-left: 0;
+	margin-top: 100px;
+	text-align: center;
+}
+</style>
 </head>
 <body>
-	<h2>Hi，親愛的${sessionScope.registryTokenAccount.memberNickName}，您已完成第一部分的註冊，請到您的信箱點選驗證連結，以成為GroupBuy會員喔!!</h2>
+	<jsp:include page="/headline.jsp" />
+	<jsp:include page="/secure/newLogin.jsp"/>
+	<div class="full">
+		<h1>Hi，親愛的${sessionScope.registryTokenAccount.memberNickName}您好!!</h1>
+		您已完成第一部分的註冊，請至您的信箱開通帳號，以成為GroupBuy會員喔!!
+	</div>
 </body>
 </html>

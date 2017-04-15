@@ -30,5 +30,14 @@ public interface SiteMailDAO {
 
 	int updateAnnounceMailStatus(AnnouncementBean announcementBean);
 
+	int deleteUnReadMail(int siteMailNo);
+
+	int deleteUnReadAnnounce(int siteMailNo);
+
+	SiteMailBean selectStatus(Integer siteMailNo);
+
+	AnnouncementBean selectAnnounceStatus(Integer siteMailNo);
+
+
 
 }

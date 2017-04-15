@@ -180,4 +180,17 @@ public class SearchDAOhb implements SearchDAO {
 		NativeQuery query = session.createNativeQuery(INSERT_RECOMMEND_CLICKTIME);
 		return query.executeUpdate();
 	}
+	
+	
+	private static final String insertRecommend= 
+	"insert into recommend values(?,0,0,0,0,0,0,0,0)";
+	@Override
+	public int insertRecommend(int memberNo) {
+		Session session = this.getSession();
+		NativeQuery query = session.createNativeQuery(insertRecommend);
+		query.setParameter(1, memberNo);
+		return query.executeUpdate();
+	}
+	
+	
 }
