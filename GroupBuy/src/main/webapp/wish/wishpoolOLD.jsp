@@ -8,7 +8,7 @@
 <title>Wish Pool</title>
 </head>
 <body>
-<jsp:include page="/Web_02/headline.jsp"></jsp:include>
+<jsp:include page="/headline.jsp"></jsp:include>
 	<tr>
 		<td><a href="<c:url value='/wish/mywish.jsp' />">．我的許願</a></td>
 		<td><a href="<c:url value='/wish/wishform.jsp' />">．發起許願</a></td>

@@ -7,7 +7,7 @@
 <title></title>
 </head>
 <body>
-<jsp:include page="/Web_02/headline.jsp"></jsp:include>
+<jsp:include page="/headline.jsp"></jsp:include>
    <h2>${sessionScope.successMessage.createSuccess}</h2>
 </body>
 </html>

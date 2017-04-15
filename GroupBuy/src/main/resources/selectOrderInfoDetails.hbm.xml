@@ -9,8 +9,9 @@
 			
 		</id>
 		<property name="groupInfoDetailsProdcutName" column="groupInfoDetails_ProdcutName" />
-		<property name="productTotalPriceByQt" column="productTotalPriceByQt" />
+		<property name="groupInfoDetailsProductPrice" column="groupInfoDetails_ProductPrice" />
+		<property name="productTotalPriceByQt" column="productTotalPriceByQt" />	
 		<property name="orderInfoDetailsProductQt" column="orderInfoDetails_ProductQt" />
-	
+		
 	</class>
 </hibernate-mapping>

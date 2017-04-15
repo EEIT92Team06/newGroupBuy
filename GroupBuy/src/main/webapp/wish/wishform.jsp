@@ -19,7 +19,7 @@
 <script src="https://use.fontawesome.com/72bc13eff4.js"></script>
 </head>
 <body>
-<jsp:include page="/Web_02/headline.jsp"></jsp:include>
+<jsp:include page="/headline.jsp"></jsp:include>
 <div class="container">
 
     <form class="well form-horizontal" action="<c:url value="/wish/wishform.controller" />" method="post" enctype="multipart/form-data" id="contact_form">

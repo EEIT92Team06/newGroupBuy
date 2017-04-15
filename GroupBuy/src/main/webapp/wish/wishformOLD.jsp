@@ -22,7 +22,7 @@
 
 </head>
 <body>
-<jsp:include page="/Web_02/headline.jsp"></jsp:include>
+<jsp:include page="/headline.jsp"></jsp:include>
 發起許願   <a>${errorMsg.fail}</a>
 	<form action="<c:url value="/wish/wishform.controller" />" enctype="multipart/form-data" method="post">
 
