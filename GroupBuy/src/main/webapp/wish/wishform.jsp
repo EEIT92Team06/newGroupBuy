@@ -23,6 +23,7 @@
 <div class="container">
 
     <form class="well form-horizontal" action="<c:url value="/wish/wishform.controller" />" method="post" enctype="multipart/form-data" id="contact_form">
+<center>
 <fieldset>
 
 <!-- Form Name -->
@@ -31,7 +32,7 @@
 </center>
 <!-- Text input-->
 
-<div class="form-group">
+<div class="form-group"  style="margin-left: 230px;">
   <label class="col-md-4 control-label">標題</label>  
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
@@ -44,7 +45,7 @@
 
 <!-- Select Basic -->
    
-<div class="form-group"> 
+<div class="form-group" style="margin-left: 230px;"> 
   <label class="col-md-4 control-label">產品類別</label>
     <div class="col-md-4 selectContainer">
     <div class="input-group">
@@ -66,7 +67,7 @@
 </div>
 
 <!-- Text input-->
-       <div class="form-group">
+       <div class="form-group" style="margin-left: 230px;">
   <label class="col-md-4 control-label">品名</label>  
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
@@ -80,7 +81,7 @@
 
 <!-- Text input-->
        
-<div class="form-group">
+<div class="form-group" style="margin-left: 230px;">
   <label class="col-md-4 control-label">原價</label>  
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
@@ -93,7 +94,7 @@
 
 <!-- Text input-->
       
-<div class="form-group">
+<div class="form-group" style="margin-left: 230px;">
   <label class="col-md-4 control-label">來源</label>  
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
@@ -105,7 +106,7 @@
 
 <!-- Text input-->
  
-<div class="form-group">
+<div class="form-group" style="margin-left: 230px;">
   <label class="col-md-4 control-label">圖片上傳</label>  
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
@@ -123,7 +124,7 @@
             
 <!-- Text area -->
   
-<div class="form-group">
+<div class="form-group" style="margin-left: 230px;">
   <label class="col-md-4 control-label">內容</label>
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
@@ -134,7 +135,7 @@
   </div>
 </div>
 <!-- Button -->
-<div class="form-group">
+<div class="form-group" style="margin-left: 230px;">
   <label class="col-md-4 control-label"></label>
   <center>
   <div class="col-md-4">
@@ -143,6 +144,7 @@
   </center>
 </div>
 </fieldset>
+</center>
 </form>
 </div>
     </div><!-- /.container -->
