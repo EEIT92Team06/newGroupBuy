@@ -9,7 +9,7 @@
 <title>我是TITLE</title>
 
 <link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	href="<c:url value='/css/bootstrap.min.css'/>">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script
@@ -179,6 +179,7 @@ body {
 	line-height: 29px;
 	width: 75%;
 }
+
 </style>
 
 </head>
@@ -407,7 +408,7 @@ body {
 					<div data-tab-panel-1="" class="am-tab-panel ">
 						<div class="index-banner">
 							<div class="index-mask">
-								<div class="container">
+								<div class="container01">
 									<div class="am-g">
 										<div class="am-u-md-10 am-u-sm-centered">
 											<h1 class="slide_simple--title">企业移动化，首选云适配</h1>
