@@ -143,7 +143,7 @@
 		<li style="margin-left: 150px;"><a class="avtar thumbnail">
 		<img src="../pictures/${msgDetail.memberPic}"alt=""></a>
 			<div class="commentdetail">
-				<a class="blogtitle" href="#">${msgDetail.nickName}</a>
+				<p class="blogtitle" href="#">${msgDetail.nickName}</p>
 				<div >
 				<p>${msgDetail.wishMsgContent}</p>
 				</div>

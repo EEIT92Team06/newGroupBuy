@@ -94,7 +94,12 @@ public class WishFormServlet extends HttpServlet {
 			}
 		}
 		//從session取得使用者選取哪一張圖片作為封面
-		String picNo = (String) session.getAttribute("picNo");
+		String picNo = null;
+		try {
+			picNo = (String) session.getAttribute("picNo");
+		} catch (Exception e) {
+			errorMsg.put("upload", "");
+		}
 		String cover = null;
 		if (picNo != null && picNo.trim().length() != 0) {
 			try {

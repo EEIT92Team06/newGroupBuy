@@ -37,9 +37,9 @@
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i></span>
-  <input  name="title" placeholder="許願標題" class="form-control"  type="text" value="${param.title}">
+  <input  name="title" placeholder="許願標題" class="form-control" style="height: 29.6px;"  type="text" value="${param.title}">
     </div>
-    <small data-bv-validator="notEmpty" data-bv-validator-for="title" class="help-block" style="color: red;">${errorMsg.title}</small>
+    <small data-bv-validator="notEmpty" data-bv-validator-for="title" class="help-block" style="text-align: left;color: red;">${errorMsg.title}</small>
   </div>
 </div>
 
@@ -50,7 +50,7 @@
     <div class="col-md-4 selectContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-    <select name="productType" class="form-control selectpicker" >
+    <select name="productType" class="form-control selectpicker">
         <option value="0">選擇產品類別</option>
 		<option value="1">生鮮食品</option>
 		<option value="2">團購美食</option>
@@ -62,7 +62,7 @@
 		<option value="8">3C家電</option>
     </select>
   </div>
-  <small data-bv-validator="notEmpty" data-bv-validator-for="title" class="help-block" style="color: red;">${errorMsg.type}</small>
+  <small data-bv-validator="notEmpty" data-bv-validator-for="title" class="help-block" style="text-align: left;color: red;">${errorMsg.type}</small>
 </div>
 </div>
 
@@ -72,9 +72,9 @@
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="fa fa-product-hunt" aria-hidden="true"></i></span>
-  <input name="name" placeholder="產品名稱" class="form-control"  type="text" value="${param.name}">
+  <input name="name" placeholder="產品名稱" class="form-control" style="height: 29.6px;" type="text" value="${param.name}">
     </div>
-    <small data-bv-validator="notEmpty" data-bv-validator-for="title" class="help-block" style="color: red;">${errorMsg.name}</small>
+    <small data-bv-validator="notEmpty" data-bv-validator-for="title" class="help-block" style="text-align: left;color: red;">${errorMsg.name}</small>
   </div>
 </div>
 
@@ -86,9 +86,9 @@
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
-  <input name="price" placeholder="價格" class="form-control" type="text" value="${param.price}">
+  <input name="price" placeholder="價格" class="form-control" style="height: 29.6px;" type="text" value="${param.price}">
     </div>
-    <small data-bv-validator="notEmpty" data-bv-validator-for="title" class="help-block" style="color: red;">${errorMsg.price}</small>
+    <small data-bv-validator="notEmpty" data-bv-validator-for="title" class="help-block" style="text-align: left;color: red;">${errorMsg.price}</small>
   </div>
 </div>
 
@@ -99,7 +99,7 @@
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="fa fa-newspaper-o" aria-hidden="true"></i></span>
-  <input name="source" placeholder="來源" class="form-control" type="text" value="${param.source}">
+  <input name="source" placeholder="來源" class="form-control" style="height: 29.6px;" type="text" value="${param.source}">
     </div>
   </div>
 </div>
@@ -111,10 +111,10 @@
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="fa fa-file-image-o" aria-hidden="true"></i></span>
-  <input id="file1" name="picUpload" placeholder="檔案上傳" value="upload" class="form-control"  type="file" accept="image/*" multiple="multiple" onchange="fileViewer()">
+  <input id="file1" name="picUpload" placeholder="檔案上傳" value="upload" style="height: 29.6px;" class="form-control"  type="file" accept="image/*" multiple="multiple" onchange="fileViewer()">
 
     </div>
-    <small data-bv-validator="notEmpty" data-bv-validator-for="title" class="help-block" style="color: red;">${errorMsg.upload}</small>
+    <small data-bv-validator="notEmpty" data-bv-validator-for="title" class="help-block" style="text-align: left;color: red;">${errorMsg.upload}</small>
 		<tr>
 		  <td></<td>
 		  <td><div id="dropZone" ><img src="" name="pic" /></div></td>
@@ -131,7 +131,7 @@
         <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
         	<textarea class="form-control" name="content" placeholder="簡單介紹這項產品" value="${param.content}"></textarea>
   </div>
-  <small data-bv-validator="notEmpty" data-bv-validator-for="title" class="help-block" style="color: red;">${errorMsg.content}</small>
+  <small data-bv-validator="notEmpty" data-bv-validator-for="title" class="help-block" style="text-align: left;color: red;">${errorMsg.content}</small>
   </div>
 </div>
 <!-- Button -->
@@ -219,7 +219,7 @@
         	id=obj.id;
         	var imgs = document.getElementsByTagName("img"); //取得img陣列
         	 console.log(imgs);
-            for(var i=1;i<imgs.length;i++){ //移除原先選取的圖片的外框及value
+            for(var i=2;i<imgs.length;i++){ //移除原先選取的圖片的外框及value
             	imgs.item(i).setAttribute("style","");
             }
         	//附加外框
