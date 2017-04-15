@@ -9,9 +9,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<link href='http://fonts.useso.com/css?family=Open+Sans:400,300italic,400italic,600,600italic' rel='stylesheet' type='text/css'>
-<link href='http://fonts.useso.com/css?family=Crete+Round' rel='stylesheet' type='text/css'>
-<link href='http://fonts.useso.com/css?family=Crete+Round' rel='stylesheet' type='text/css'><link href="../css/bootstrap.css" rel="stylesheet">
+<!-- <link href='http://fonts.useso.com/css?family=Open+Sans:400,300italic,400italic,600,600italic' rel='stylesheet' type='text/css'> -->
+<!-- <link href='http://fonts.useso.com/css?family=Crete+Round' rel='stylesheet' type='text/css'> -->
+<!-- <link href='http://fonts.useso.com/css?family=Crete+Round' rel='stylesheet' type='text/css'> -->
+<link href="../css/bootstrap.css" rel="stylesheet">
 <link href="../css/bootstrap-responsive.css" rel="stylesheet">
 <link href="../css/style.css" rel="stylesheet">
 <link href="../css/flexslider.css" type="text/css" media="screen" rel="stylesheet"  />
