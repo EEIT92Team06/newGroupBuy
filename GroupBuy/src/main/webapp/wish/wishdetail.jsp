@@ -33,21 +33,21 @@
   <section id="product">
     <div class="container">      
       <!-- Product Details-->
-      <div class="row">
+      <div class="row" style="margin-left: 130px;">
        <!-- Left Image-->
         <div class="span5">
           <ul class="thumbnails mainimage" style="padding-left: 0px;">
             <c:forEach var="wishPics" items="${wishPics}">
                   <li class="span5">
-                     <a  rel="position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4" class="thumbnail cloud-zoom" href="../pictures/${wishPics.wishPicture}">
-                          <img src="../pictures/${wishPics.wishPicture}" alt="" title="" width="420" height="300">
+                     <a  rel="position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4" class="thumbnail cloud-zoom" style="width:420px ;height :300px" href="../pictures/${wishPics.wishPicture}">
+                          <img src="../pictures/${wishPics.wishPicture}" alt="" title="" style="width:420px ;height :300px">
                      </a>
                   </li>         
 			</c:forEach>
           </ul>
           <div id="leftImg"><span>點擊選取圖片</span></div>
 <!--           =============小圖===============         -->
-          <ul class="thumbnails mainimage" >
+          <ul class="thumbnails mainimage" style="padding-left: 0px;">
              <c:forEach var="wishPics" items="${wishPics}">
                 <li class="producthtumb">
                   <a class="thumbnail" >
@@ -136,15 +136,15 @@
   <!--  Related Products-->
   <section id="related" class="row">
     <div class="container">
-      <h1 class="heading1"><span class="maintext">留言專區</span><span class="subtext"> See All Comments</span></h1>
+      <h1 class="heading1" style="width: 1000px;margin-left: 150px;"><span class="maintext">留言專區</span><span class="subtext"> See All Comments</span></h1>
       <section class="commentsblog">
 	<ul class="comments" style="margin-left: 0px;padding-left: 0px;">
 	<c:forEach var="msgDetail" items="${msgDetail}">
-		<li><a class="avtar thumbnail"><img src="../pictures/${msgDetail.memberPic}"
-				alt=""></a>
+		<li style="margin-left: 150px;"><a class="avtar thumbnail">
+		<img src="../pictures/${msgDetail.memberPic}"alt=""></a>
 			<div class="commentdetail">
-				<a class="blogtitle" href="#">${msgDetail.nickName}</a>
-				<div style="width: 1000px;">
+				<p class="blogtitle" href="#">${msgDetail.nickName}</p>
+				<div >
 				<p>${msgDetail.wishMsgContent}</p>
 				</div>
 			</div></li>
@@ -152,7 +152,7 @@
 	</ul><br>
 	<div id="div7">
 		<form action="<c:url value="/wish/wishMsg.controller" />" style="margin-left: 0px; method="post">
-			<textarea name="content" rows="3" cols="500" style="margin-top: 0px;margin-bottom: 0px;height: 86px;width: 1183.6px;"></textarea>
+			<textarea name="content" rows="3" cols="500" style="margin-top: 0px;margin-bottom: 0px;height: 86px;width: 1013.6px;margin-left: 150px;"></textarea>
 			<br>
 			<br>
 			<c:forEach var="wishDetail" items="${wishDetail}">
@@ -160,7 +160,7 @@
 			</c:forEach>
 			<tr>
 				${errorMsg.message}
-				<td id="submit"><input type="submit" class="btn btn-orange" name="send" value="留言" /></td>
+				<td id="submit"><input type="submit" class="btn btn-orange" name="send" value="留言" style="margin-left: 150px;" /></td>
 			</tr>
 		</form>
 	</div>
@@ -168,37 +168,7 @@
     </div>
   </section>
 </div>
-<!-- 	<section class="commentsblog"> -->
-<!-- 	<ul class="comments" style="margin-left: 145px;"> -->
-<%-- 	<c:forEach var="msgDetail" items="${msgDetail}"> --%>
-<%-- 		<li><a class="avtar thumbnail"><img src="../pictures/${msgDetail.memberPic}" --%>
-<!-- 				alt=""></a> -->
-<!-- 			<div class="commentdetail"> -->
-<%-- 				<a class="blogtitle" href="#">${msgDetail.nickName}</a> --%>
-<!-- 				<div style="width: 1000px;"> -->
-<%-- 				<p>${msgDetail.wishMsgContent}</p> --%>
-<!-- 				</div> -->
-<!-- 			</div></li> -->
-<%-- 	</c:forEach> --%>
-<!-- 	</ul><br> -->
-<!-- 	<div id="div7"> -->
-<%-- 		<form action="<c:url value="/wish/wishMsg.controller" />" style="margin-left: 175px; method="post"> --%>
-<!-- 			<textarea name="content" rows="3" cols="500" style="margin-top: 0px; margin-bottom: 0px; height: 86px; width: 1180px;"></textarea> -->
-<!-- 			<br> -->
-<!-- 			<br> -->
-<%-- 			<c:forEach var="wishDetail" items="${wishDetail}"> --%>
-<%-- 				<input type="hidden" name="wishNo" value="${wishDetail.wishNo}"></input> --%>
-<%-- 			</c:forEach> --%>
-<!-- 			<tr> -->
-<%-- 				${errorMsg.message} --%>
-<!-- 				<td id="submit"><input type="submit" class="btn btn-orange" name="send" value="留言" /></td> -->
-<!-- 			</tr> -->
-<!-- 		</form> -->
-<!-- 	</div> -->
-<!-- 	</section> -->
 
-	
-	
 <!-- Footer -->
 <footer id="footer">
   <section class="footerlinks">

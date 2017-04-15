@@ -151,6 +151,7 @@
 	width: 30px;
 	text-align: center;
 	margin: 0 5px;
+	padding-top:5px;
 }
 
 .notification-icon .badge {
@@ -293,7 +294,7 @@
 											<img src="<c:url value='/pictures/logo.png'/>"
 											style="width: 75px">
 									</a></li>
-	
+
 									<li>
 									  <c:choose>
 									    <c:when test="${empty loginToken}">
