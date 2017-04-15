@@ -27,7 +27,7 @@
 </head>
 <body>
 <jsp:include page="/headline.jsp"></jsp:include>
-<br>
+<br><br>
 <div id="maincontainer">
   <section id="product">
     <div class="container">      

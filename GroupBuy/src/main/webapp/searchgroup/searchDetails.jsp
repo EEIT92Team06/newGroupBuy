@@ -88,7 +88,7 @@ window.onload = function(){
 		xhr.send();
 		xhr.onreadystatechange = function(){   
 			// 向伺服器提出的請求已經收到回應  
-			if (xhr.readyState === 4) {       
+			if (xhr.readyState === 4) {         
 				// 伺服器回應成功  
 				if (xhr.status === 200) { 
 					var data = JSON.parse(xhr.responseText);  
@@ -176,7 +176,7 @@ function orderSuc(){
 			<div class="row">
 				<!-- Left Image-->
 				<div class="span5">
-					<ul class="thumbnails mainimage">
+					<ul class="thumbnails mainimage" style="padding-left: 0px;">
 						<li class="span5"><a
 							rel="position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4"
 							class="thumbnail cloud-zoom"
@@ -195,8 +195,8 @@ function orderSuc(){
 									alt="" title="">  
 							</a></li>
 						</c:forEach>
-
 					</ul>
+					<div style="text-align: center;"><span>點擊選取圖片</span></div>
 					<ul class="thumbnails mainimage">
 						<li class="producthtumb"><a class="thumbnail"> <img
 								src="${pageContext.servletContext.contextPath}/searchImg/getImage?id=${groupInfoNo}&type=groupCover"
@@ -215,7 +215,7 @@ function orderSuc(){
 				<!-- Right Details-->
 				<div class="span7">
 					<div class="row">
-						<div style="margin-left: 50px; margin-top: 50px" class="span7">
+						<div style="margin-left: 120px;margin-top: 0px;" class="span7">
 							<h1 class="productname">
 								<span class="bgnone">${result.groupInfoName}</span>
 							</h1>
@@ -223,20 +223,26 @@ function orderSuc(){
 							<form id="orderItems"
 								action="<c:url value="/searchgroup/order.controller"/>"
 								method="post">
-
+                                <table>
 								<c:forEach var="bean" items="${resultMulti}">
-									<div class="quantitybox deletemargin">
+								<tr>
+									<div class="quantitybox deletemargin" style="text-align:center;">
+									    <td>
 										<div style="float: left">
-											<h3>${bean.groupInfoDetailsProdcutName}</h3>
+											<h3 style="margin-bottom: 0px;">${bean.groupInfoDetailsProdcutName}</h3>
 										</div>
+										</td>
+										<td>
 										<div style="float: left; margin-left: 10px">
-											<h3>${bean.groupInfoDetailsProductPrice}</h3>
+											<h3 style="margin-bottom: 0px;">${bean.groupInfoDetailsProductPrice}</h3>
 										</div>
+										</td>
+										<td>
 										<div style="float: left; margin-left: 10px">
 											<!--                       <select class="selectqty"> -->
 											<!--                 	 	 <option>Select</option> -->
 											<!--               		  </select> -->
-											<select name='quantity'>
+											<select name='quantity' style="width: 63.6px;">
 												<option value="0">0</option>
 												<option value="1">1</option>
 												<option value="2">2</option>
@@ -251,10 +257,14 @@ function orderSuc(){
 											</select> <input type="hidden" name="groupInfoDetailsNo"
 												value="${bean.groupInfoDetailsNo}">
 										</div>
+										</td>
 									</div>
+								</tr>
 								</c:forEach>
+								</table>
+								<br><br>
 
-								<ul class="productpagecart">
+								<ul class="productpagecart" style="padding-left: 0px;">
 									<li><a class="cart" onclick="confirmOrder()"> 參與團購 </a></li>
 								</ul>
 								<input type="hidden" name="memberNo" value="${memberBean.memberNo}"> 
@@ -264,12 +274,12 @@ function orderSuc(){
 
 							<!-- Product Description tab & comments-->
 							<div class="productdesc">
-								<ul class="nav nav-tabs" id="myTab">
+								<ul class="nav nav-tabs" id="myTab" style="width: 532px;">
 									<li class="active"><a href="#description">簡介</a></li>
 									<li><a href="#specification">詳細資訊</a></li>
 									<li><a href="#review">檢舉</a></li>
 								</ul>
-								<div class="tab-content">
+								<div class="tab-content" style="width: 532px;">
 									<div class="tab-pane active" id="description">
 										${result.groupInfoContent} <br>
 									</div>
@@ -336,10 +346,7 @@ function orderSuc(){
 		<!--  Related Products-->
 		<section id="related" class="row">
 		<div class="container">
-			<h1 class="heading1">
-				<span class="maintext">留言專區</span><span class="subtext"> See
-					All Comments</span>
-			</h1>
+			<h1 class="heading1"><span class="maintext">留言專區</span><span class="subtext"> See All Comments</span></h1>
 
 		</div>
 		</section>
