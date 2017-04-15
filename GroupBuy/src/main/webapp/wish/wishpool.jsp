@@ -10,9 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-
 <link href="../css/bootstrap.css" rel="stylesheet">
-
 <link href="../css/bootstrap-responsive.css" rel="stylesheet">
 <link href="../css/style.css" rel="stylesheet">
 <link href="../css/flexslider.css" type="text/css" media="screen" rel="stylesheet"  />
@@ -80,7 +78,7 @@
          <ul class="thumbnails" style="width: 932px;">
          
          <c:forEach var='wish' items="${wishCollection}">
-         <li class="span3">
+         <li class="span3" >
             <div class="thumbnail">
               <img alt="" src="../pictures/${wish.coverPic}" style="width:270px; height:200px"><span class="viewfancypopup">&nbsp;</span>
               <div class="caption">

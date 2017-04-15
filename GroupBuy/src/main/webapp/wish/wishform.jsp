@@ -140,6 +140,8 @@
   <center>
   <div class="col-md-4">
     <button type="submit" name="send" class="btn btn-warning" value="送出">送出<span class="glyphicon glyphicon-send"></span></button>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="<c:url value="/wish/wishpool.controller" />"><button type="button" class="btn btn-warning" style="width: 67.6px;">取消</button></a>
   </div>
   </center>
 </div>
