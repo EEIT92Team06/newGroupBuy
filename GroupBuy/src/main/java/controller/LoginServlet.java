@@ -55,7 +55,7 @@ public class LoginServlet extends HttpServlet {
 		}
 		// 空值forward到原登入畫面
 		if (!errorMessages.isEmpty()) {
-			request.getRequestDispatcher("/secure/login.jsp").forward(request, response);
+			request.getRequestDispatcher("/secure/newLogin.jsp").forward(request, response);
 			return;
 		}
 		// 驗證資料
@@ -81,7 +81,7 @@ public class LoginServlet extends HttpServlet {
 			}
 		} else { 
 			errorMessages.put("loginError", "帳號或密碼錯誤");
-			request.getRequestDispatcher("/secure/login.jsp").forward(request, response);
+			request.getRequestDispatcher("/secure/newLogin.jsp").forward(request, response);
 			return;
 		}
 	}

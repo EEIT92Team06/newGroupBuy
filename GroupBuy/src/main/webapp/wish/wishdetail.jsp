@@ -168,8 +168,7 @@
     </div>
   </section>
 </div>
-	
-	
+
 <!-- Footer -->
 <footer id="footer">
   <section class="footerlinks">

@@ -42,13 +42,20 @@ public class SpecificMailServlet extends HttpServlet {
 			response.sendRedirect(path + "/secure/login.jsp");
 			return;
 		}
+		//以下兩行判斷是否有點選信件內容(因為jsp有傳值在網址列)
 		String temp = request.getParameter("allMailsiteMailNo");
 		String temp1 = request.getParameter("announceMailsiteMailNo");
+		//判斷是否是按全部信件的垃圾桶
+		String allMailBotton=request.getParameter("allMailBotton");
+		//判斷是否是按未讀信件的垃圾桶
+		String unReadMailBotton=request.getParameter("unReadMailBotton");
+		
 		String searchKeyWord = request.getParameter("searchKeyWord");
 		String readStauts=request.getParameter("unRead");
+		
+
 		//查詢未讀信件的時候
-		if(readStauts!=null){
-			
+		if(readStauts!=null){		
 			login.model.MemberBean  bean=(login.model.MemberBean)session.getAttribute("loginToken");
 			List<MailBean> allMail=siteMailService.selectUnReadMailByMemberNo(bean);
 			request.setAttribute("allMail", allMail);
@@ -67,29 +74,55 @@ public class SpecificMailServlet extends HttpServlet {
 				}
 				List<MailBean> allMail = siteMailService.searchMail(searchKeyWord,bean.getMemberNo());
 				request.setAttribute("allMail", allMail);
-				request.getRequestDispatcher("/mail/mail.jsp").forward(request, response);
+				//存這個表示有來查詢
+				session.setAttribute("ueryToken", "ueryToken");
+				request.getRequestDispatcher("/mail/sitemail.jsp").forward(request, response);
 				return;
 			}
 		}
-		// 這裡執行刪除信件
-		if (temp == null && temp1 == null) {
+		// 這裡執行刪除全部公告信及全部狀態信
+		if (allMailBotton!=null) {
 			String[] allMailNo = request.getParameterValues("allMail");
 			if (allMailNo != null) {
 				for (String all : allMailNo) {
 					int mailNo = Integer.parseInt(all);
-					int deleteMailNum = siteMailService.deleteMail(mailNo);
+					siteMailService.deleteMail(mailNo);
 				}
 			}
 			String[] announceMailNo = request.getParameterValues("announceMail");
 			if (announceMailNo != null) {
 				for (String announce : announceMailNo) {
+					System.out.println("announce="+announce);
 					int announceNo = Integer.parseInt(announce);
-					int deleteAnnounceNum = siteMailService.deleteAnnounceMail(announceNo);
+					siteMailService.deleteAnnounceMail(announceNo);
 				}
 			}
 			request.getRequestDispatcher("/overViewMailServlet.do").forward(request, response);
 			return;
 		}
+
+		//執行刪除未讀公告信及未讀狀態信
+		if(unReadMailBotton!=null){
+			String[] allMailNo = request.getParameterValues("allMail1");
+			if (allMailNo != null) {
+				for (String all : allMailNo) {
+					int mailNo = Integer.parseInt(all);
+					siteMailService.deleteMail(mailNo);
+				}
+			}
+			String[] announceMailNo = request.getParameterValues("announceMail1");
+			if (announceMailNo != null) {
+				for (String announce : announceMailNo) {
+					System.out.println("announce="+announce);
+					int announceNo = Integer.parseInt(announce);
+					siteMailService.deleteAnnounceMail(announceNo);
+				}
+			}
+			request.getRequestDispatcher("/overViewMailServlet.do").forward(request, response);
+			return;
+		}
+		
+
 		// 執行查詢信件
 		if (temp != null) {
 			Integer siteMailNo = Integer.parseInt(temp);

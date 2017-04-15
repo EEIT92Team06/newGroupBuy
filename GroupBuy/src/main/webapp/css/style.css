@@ -234,7 +234,7 @@ h1.productname { color:#f25c27; font-size:26px; margin:0 0 20px 0; background:no
 .productdesc .nav-tabs li.active { border-bottom:1px solid #fff; }
 .productdesc .nav-tabs li.active a { color:#000;}
 .productdesc #myTab.nav-tabs li a {margin : 0px!important; }
-.tab-content { background-color: #FFFFFF; border: 1px solid #E7E7E7; border-radius: 3px 3px 3px 3px; border-top:none; padding:15px }
+.tab-content { background-color: #FFFFFF; border: 0px solid #E7E7E7; border-radius: 3px 3px 3px 3px; border-top:none; padding:15px }
 ul.reveiw { margin:0px; padding:0px }
 ul.reveiw > li { border-bottom:1px solid #E7E7E7; margin-bottom:22px; padding:5px 0 10px 0 }
 ul.reveiw li { list-style:none }
@@ -249,7 +249,7 @@ ul.reveiw ul.rate { margin:10px 0 }
 /* This is the loading message. */
 .cloud-zoom-loading { color:white; background:#222; padding:3px; border:1px solid #999999; }
 /* cart */
-.cart-info table { width: 100%; margin-bottom: 20px; border-collapse: collapse; border-top: 1px solid #E7E7E7; border-left: 1px solid #E7E7E7; border-right: 1px solid #E7E7E7; background-color:#fff; }
+.cart-info table { width: 100%; margin-bottom: 20px; border-top: 3px solid #E7E7E7; border-left: 3px solid #E7E7E7; border-right: 3px solid #E7E7E7; background-color:#fff; }
 .cart-info table tr { -webkit-transition: all 0.5s ease-in-out; -moz-transition: all 0.5s ease-in-out; -o-transition: all 0.5s ease-in-out; }
 .cart-info table tr:hover { -webkit-transition: all 0.5s ease-in-out; -moz-transition: all 0.5s ease-in-out; -o-transition: all 0.5s ease-in-out; }
 .cart-info td, .cart-info th { padding: 15px; }
