@@ -152,6 +152,7 @@
 	width: 30px;
 	text-align: center;
 	margin: 0 5px;
+	padding-top:5px;
 }
 
 .notification-icon .badge {
@@ -412,7 +413,7 @@
 					<div data-tab-panel-1="" class="am-tab-panel ">
 						<div class="index-banner">
 							<div class="index-mask">
-								<div class="container">
+								<div class="container01">
 									<div class="am-g">
 										<div class="am-u-md-10 am-u-sm-centered">
 											<h1 class="slide_simple--title">企业移动化，首选云适配</h1>

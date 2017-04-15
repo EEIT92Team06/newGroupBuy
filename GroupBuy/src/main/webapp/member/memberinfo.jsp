@@ -19,9 +19,6 @@ td {
 	padding-top: 3px;
 }
 
-img {
-	width: 250px;
-}
 </style>
 </head>
 <body>
