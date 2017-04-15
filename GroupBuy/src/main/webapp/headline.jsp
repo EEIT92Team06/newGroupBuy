@@ -152,6 +152,7 @@
 	width: 30px;
 	text-align: center;
 	margin: 0 5px;
+	padding-top:5px;
 }
 
 .notification-icon .badge {
