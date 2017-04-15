@@ -20,7 +20,7 @@
 </style>
 </head>
 <body>
-<jsp:include page="/Web_02/headline.jsp"></jsp:include>
+<jsp:include page="/headline.jsp"></jsp:include>
 <script type="text/javascript" src="../js/jquery-3.2.0.min.js"></script>
 <script type="text/javascript" src="../js/jquery-ui.min.js"></script>
 

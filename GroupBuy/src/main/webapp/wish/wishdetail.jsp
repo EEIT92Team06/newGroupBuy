@@ -9,9 +9,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<link href='http://fonts.useso.com/css?family=Open+Sans:400,300italic,400italic,600,600italic' rel='stylesheet' type='text/css'>
-<link href='http://fonts.useso.com/css?family=Crete+Round' rel='stylesheet' type='text/css'>
-<link href='http://fonts.useso.com/css?family=Crete+Round' rel='stylesheet' type='text/css'><link href="../css/bootstrap.css" rel="stylesheet">
+<!-- <link href='http://fonts.useso.com/css?family=Open+Sans:400,300italic,400italic,600,600italic' rel='stylesheet' type='text/css'> -->
+<!-- <link href='http://fonts.useso.com/css?family=Crete+Round' rel='stylesheet' type='text/css'> -->
+<!-- <link href='http://fonts.useso.com/css?family=Crete+Round' rel='stylesheet' type='text/css'> -->
+<link href="../css/bootstrap.css" rel="stylesheet">
 <link href="../css/bootstrap-responsive.css" rel="stylesheet">
 <link href="../css/style.css" rel="stylesheet">
 <link href="../css/flexslider.css" type="text/css" media="screen" rel="stylesheet"  />
@@ -26,8 +27,8 @@
 </style>
 </head>
 <body>
-<jsp:include page="/Web_02/headline.jsp"></jsp:include>
-<br>
+<jsp:include page="/headline.jsp"></jsp:include>
+<br><br>
 <div id="maincontainer">
   <section id="product">
     <div class="container">      
@@ -63,7 +64,7 @@
         <c:forEach var="wishDetail" items="${wishDetail}">
         <div class="span7">
           <div class="row">
-            <div class="span7">
+            <div class="span7" style="margin-left: 120px;">
               <h1 class="productname"><span class="bgnone">${wishDetail.title}</span></h1>
               <div class="productprice">
                 <div class="productpageprice">
@@ -87,7 +88,7 @@
               </ul>
          <!-- Product Description tab & comments-->
          <div class="productdesc">
-                <ul class="nav nav-tabs" id="myTab">
+                <ul class="nav nav-tabs" id="myTab" style="width: 532px;">
                   <li class="active"><a href="#description">簡介</a>
                   </li>
                   <li><a href="#specification">來源</a>
@@ -95,7 +96,7 @@
                   <li><a href="#review">檢舉許願池</a>
                   </li>
                 </ul>
-                <div class="tab-content">
+                <div class="tab-content" style="width: 532px;">
                   <div class="tab-pane active" id="description">
                     <h2>${wishDetail.title}</h2>
                     ${wishDetail.content}<br>
@@ -136,12 +137,8 @@
   <section id="related" class="row">
     <div class="container">
       <h1 class="heading1"><span class="maintext">留言專區</span><span class="subtext"> See All Comments</span></h1>
-      
-    </div>
-  </section>
-</div>
-	<section class="commentsblog">
-	<ul class="comments" style="margin-left: 145px;">
+      <section class="commentsblog">
+	<ul class="comments" style="margin-left: 0px;padding-left: 0px;">
 	<c:forEach var="msgDetail" items="${msgDetail}">
 		<li><a class="avtar thumbnail"><img src="../pictures/${msgDetail.memberPic}"
 				alt=""></a>
@@ -154,8 +151,8 @@
 	</c:forEach>
 	</ul><br>
 	<div id="div7">
-		<form action="<c:url value="/wish/wishMsg.controller" />" style="margin-left: 175px; method="post">
-			<textarea name="content" rows="3" cols="500" style="margin-top: 0px; margin-bottom: 0px; height: 86px; width: 1180px;"></textarea>
+		<form action="<c:url value="/wish/wishMsg.controller" />" style="margin-left: 0px; method="post">
+			<textarea name="content" rows="3" cols="500" style="margin-top: 0px;margin-bottom: 0px;height: 86px;width: 1183.6px;"></textarea>
 			<br>
 			<br>
 			<c:forEach var="wishDetail" items="${wishDetail}">
@@ -163,11 +160,42 @@
 			</c:forEach>
 			<tr>
 				${errorMsg.message}
-				<td id="submit"><input type="submit" name="send" value="確認送出" style="margin-left: 1100px;"/></td>
+				<td id="submit"><input type="submit" class="btn btn-orange" name="send" value="留言" /></td>
 			</tr>
 		</form>
 	</div>
 	</section>
+    </div>
+  </section>
+</div>
+<!-- 	<section class="commentsblog"> -->
+<!-- 	<ul class="comments" style="margin-left: 145px;"> -->
+<%-- 	<c:forEach var="msgDetail" items="${msgDetail}"> --%>
+<%-- 		<li><a class="avtar thumbnail"><img src="../pictures/${msgDetail.memberPic}" --%>
+<!-- 				alt=""></a> -->
+<!-- 			<div class="commentdetail"> -->
+<%-- 				<a class="blogtitle" href="#">${msgDetail.nickName}</a> --%>
+<!-- 				<div style="width: 1000px;"> -->
+<%-- 				<p>${msgDetail.wishMsgContent}</p> --%>
+<!-- 				</div> -->
+<!-- 			</div></li> -->
+<%-- 	</c:forEach> --%>
+<!-- 	</ul><br> -->
+<!-- 	<div id="div7"> -->
+<%-- 		<form action="<c:url value="/wish/wishMsg.controller" />" style="margin-left: 175px; method="post"> --%>
+<!-- 			<textarea name="content" rows="3" cols="500" style="margin-top: 0px; margin-bottom: 0px; height: 86px; width: 1180px;"></textarea> -->
+<!-- 			<br> -->
+<!-- 			<br> -->
+<%-- 			<c:forEach var="wishDetail" items="${wishDetail}"> --%>
+<%-- 				<input type="hidden" name="wishNo" value="${wishDetail.wishNo}"></input> --%>
+<%-- 			</c:forEach> --%>
+<!-- 			<tr> -->
+<%-- 				${errorMsg.message} --%>
+<!-- 				<td id="submit"><input type="submit" class="btn btn-orange" name="send" value="留言" /></td> -->
+<!-- 			</tr> -->
+<!-- 		</form> -->
+<!-- 	</div> -->
+<!-- 	</section> -->
 	
 	
 <!-- Footer -->

@@ -9,7 +9,7 @@
 <style type="text/css">
     #success_message{ display: none;}
      .thumb {
-            height: 75px;
+            height: 50px;
             margin: 5px;
         }
 </style>
@@ -19,15 +19,16 @@
 <script src="https://use.fontawesome.com/72bc13eff4.js"></script>
 </head>
 <body>
-<jsp:include page="/Web_02/headline.jsp"></jsp:include>
+<jsp:include page="/headline.jsp"></jsp:include>
 <div class="container">
 
     <form class="well form-horizontal" action="<c:url value="/wish/wishform.controller" />" method="post" enctype="multipart/form-data" id="contact_form">
 <fieldset>
 
 <!-- Form Name -->
-<legend>Contact Us Today!</legend>
-
+<center>
+<legend>許下您的願望!</legend>
+</center>
 <!-- Text input-->
 
 <div class="form-group">
@@ -110,6 +111,7 @@
     <div class="input-group">
         <span class="input-group-addon"><i class="fa fa-file-image-o" aria-hidden="true"></i></span>
   <input id="file1" name="picUpload" placeholder="檔案上傳" value="upload" class="form-control"  type="file" accept="image/*" multiple="multiple" onchange="fileViewer()">
+
     </div>
     <small data-bv-validator="notEmpty" data-bv-validator-for="title" class="help-block" style="color: red;">${errorMsg.upload}</small>
 		<tr>
@@ -134,9 +136,11 @@
 <!-- Button -->
 <div class="form-group">
   <label class="col-md-4 control-label"></label>
+  <center>
   <div class="col-md-4">
     <button type="submit" name="send" class="btn btn-warning" value="送出">送出<span class="glyphicon glyphicon-send"></span></button>
   </div>
+  </center>
 </div>
 </fieldset>
 </form>
@@ -179,6 +183,12 @@
 </script>
 <script>
         function fileViewer() {    //在DIV中顯示上傳的圖片
+//         	var allPics = document.getElementById("file1").files;
+//         	if(allPics.length>3){
+//         		alert("只能上傳1~3張圖片");
+//         		allPics.parentNode.removeChild(allPics); 
+//         	}
+        	
         	document.getElementById("dropZone").innerHTML='';  //重新上傳時,刪掉原先顯示的圖片
         	var count=0;  //id的初始值
             var files = document.getElementById("file1").files

@@ -19,7 +19,7 @@
 <link href="../css/jquery.fancybox.css" rel="stylesheet">
 <link href="../css/cloud-zoom.css" rel="stylesheet">
 </head>
-<body> 
+<body>
 	<jsp:include page="/headline.jsp"></jsp:include>
     <br>
 	<form action="<c:url value="/searchgroup/search.controller" />"
