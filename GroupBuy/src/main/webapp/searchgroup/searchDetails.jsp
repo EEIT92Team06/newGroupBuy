@@ -168,7 +168,7 @@ function orderSuc(){
 	<c:remove var="salary"/>
 	
 	<jsp:include page="/Web_02/headline.jsp"></jsp:include>
-
+    <br><br>
 	<div id="maincontainer">
 		<section id="product">
 		<div class="container">
@@ -181,7 +181,7 @@ function orderSuc(){
 							rel="position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4"
 							class="thumbnail cloud-zoom"
 							href="${pageContext.servletContext.contextPath}/searchImg/getImage?id=${groupInfoNo}&type=groupCover">
-								<img style="width: 470px; height: 313px"
+								<img style="width:420px;height:300px;"
 								src="${pageContext.servletContext.contextPath}/searchImg/getImage?id=${groupInfoNo}&type=groupCover"
 								alt="" title="">
 						</a></li>
@@ -190,7 +190,7 @@ function orderSuc(){
 								rel="position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4"
 								class="thumbnail cloud-zoom"
 								href='${pageContext.servletContext.contextPath}/searchImg/getImage?id=${bean.groupInfoPicNo}&type=groupPhoto'>
-									<img style="width: 470px; height: 313px"
+									<img style="width: 420px; height: 300px"
 									src='${pageContext.servletContext.contextPath}/searchImg/getImage?id=${bean.groupInfoPicNo}&type=groupPhoto'
 									alt="" title="">  
 							</a></li>
