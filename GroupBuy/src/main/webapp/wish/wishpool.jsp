@@ -10,9 +10,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<!-- <link href='http://fonts.useso.com/css?family=Open+Sans:400,300italic,400italic,600,600italic' rel='stylesheet' type='text/css'> -->
-<!-- <link href='http://fonts.useso.com/css?family=Crete+Round' rel='stylesheet' type='text/css'> -->
-<!-- <link href='http://fonts.useso.com/css?family=Crete+Round' rel='stylesheet' type='text/css'> -->
 <link href="../css/bootstrap.css" rel="stylesheet">
 <link href="../css/bootstrap-responsive.css" rel="stylesheet">
 <link href="../css/style.css" rel="stylesheet">
@@ -35,7 +32,6 @@
 <div id="maincontainer">
   <section id="product">
     <div class="container">
-      
       <div class="row">
         <!-- Sidebar Start-->
         <aside  class="span3">  
@@ -92,36 +88,7 @@
           </c:forEach>
           
         </ul>
-         <!-- Paging-->
-        <center>
-        <div class="row">
-          <div class="pagination pull-right" style="width:900px;">
-            <ul>
-              <li><a href="#">Prev</a>
-              </li>
-              <li class="active">
-                <a href="#">1</a>
-              </li>
-              <li><a href="#">2</a>
-              </li>
-              <li><a href="#">3</a>
-              </li>
-              <li><a href="#">4</a>
-              </li>
-              <li><a href="#">5</a>
-              </li>
-              <li><a href="#">6</a>
-              </li>
-              <li><a href="#">7</a>
-              </li>
-              <li><a href="#">8</a>
-              </li>
-              <li><a href="#">Next</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-          </center>
+        
         </div>
       </div>
     </div>

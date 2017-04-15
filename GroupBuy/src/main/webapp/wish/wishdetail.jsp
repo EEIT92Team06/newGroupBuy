@@ -39,8 +39,8 @@
           <ul class="thumbnails mainimage" style="padding-left: 0px;">
             <c:forEach var="wishPics" items="${wishPics}">
                   <li class="span5">
-                     <a  rel="position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4" class="thumbnail cloud-zoom" href="../pictures/${wishPics.wishPicture}">
-                          <img src="../pictures/${wishPics.wishPicture}" alt="" title="" width="420" height="300">
+                     <a  rel="position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4" class="thumbnail cloud-zoom" style="width:420px ;height :300px" href="../pictures/${wishPics.wishPicture}">
+                          <img src="../pictures/${wishPics.wishPicture}" alt="" title="" style="width:420px ;height :300px">
                      </a>
                   </li>         
 			</c:forEach>
