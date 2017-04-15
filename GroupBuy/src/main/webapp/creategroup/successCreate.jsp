@@ -23,7 +23,7 @@
 <jsp:include page="/headline.jsp"></jsp:include>
 <div class="full">   
    <h1>${sessionScope.successMessage.createSuccess}</h1>
-   <a  href="<c:url value="/eeit9212/grouprecord/mycreatedgroupinfo.controller"/>">看看自己的團Go!!</a>
+   <a  href="<c:url value="/eeit9212/grouprecord/mycreatedgroupinfo.controller"/>">看看你創的團購</a>
 </div>
 </body>
 </html>

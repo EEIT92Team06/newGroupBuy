@@ -114,6 +114,7 @@ public class GoogleLoginServlet extends HttpServlet {
 			}
 			request.setAttribute("googleData", googleBean);
 			request.getRequestDispatcher("/secure/newRegistry.jsp").forward(request, response);
+
 			return;
 		}
 

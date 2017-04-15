@@ -121,6 +121,7 @@ public class SiteMailDAOHibernate implements SiteMailDAO {
 		return query.getResultList();
 	}
 
+
 	//刪除狀態信
 	@Override
 	public int deleteMail(int siteMailNo){
@@ -267,5 +268,6 @@ public class SiteMailDAOHibernate implements SiteMailDAO {
 		bean=(AnnouncementBean)session.get(AnnouncementBean.class, siteMailNo);
 		}
 		return bean;
+
 	}
 }

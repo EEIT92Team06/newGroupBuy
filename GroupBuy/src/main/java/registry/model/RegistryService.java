@@ -65,6 +65,7 @@ public class RegistryService {
 		String address = "eeit9204@gmail.com";
 		String personal = "GroupBuy團購網";
 		String recipients = memberAccount;
+
 		String subject = "開通GroupBuy帳號";
 		String text = "Dear GroupBuy用戶";
 		String account="";

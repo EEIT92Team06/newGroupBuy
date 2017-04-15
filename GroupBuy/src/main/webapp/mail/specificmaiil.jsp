@@ -17,6 +17,7 @@
 </style>
 </head>
 <body>
+
 <jsp:include page="/Web_02/headline.jsp"/>
 	  <c:if test="${!empty mailBean}">
 	  <table  style="border: 1px solid;width: 400px">

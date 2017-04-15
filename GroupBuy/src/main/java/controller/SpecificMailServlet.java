@@ -122,6 +122,7 @@ public class SpecificMailServlet extends HttpServlet {
 			return;
 		}
 		
+
 		// 執行查詢信件
 		if (temp != null) {
 			Integer siteMailNo = Integer.parseInt(temp);

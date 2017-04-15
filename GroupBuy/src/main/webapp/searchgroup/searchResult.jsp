@@ -19,15 +19,17 @@
 <link href="../css/jquery.fancybox.css" rel="stylesheet">
 <link href="../css/cloud-zoom.css" rel="stylesheet">
 </head>
+
 <body>
 	<jsp:include page="/headline.jsp"></jsp:include>
+	<br>
+	
 	<form action="<c:url value="/searchgroup/search.controller" />"
 		method="post">
 		<table>
-		<div style="padding-left:70px">
-			<div style="padding:15px ; width:300px ; float:left">
-<!-- 				<i class="fa fa-search fa-2x" aria-hidden="true"></i> -->
-				<input type="text" name="name" placeholder="請輸入 商品 關鍵字" autocomplete="off" value="${param.name}">
+		<div style="padding-left:70px ;">
+			<div style="padding:15px;width: 200px;float:left;margin-left: 80px;">
+				<input type="text" name="name" placeholder="請輸入 商品 關鍵字" autocomplete="off" value="${param.name}" style="width: 163.6px;">
 			</div>
 			<div style="float:left ;padding-top: 10px">
 				<input type="submit" name="searchGroupAction" style="background-color:	#FFA488 ; color:white" value="搜尋">

@@ -20,6 +20,7 @@
 </head>
 <body>
 	<jsp:include page="/headline.jsp" />
+	<jsp:include page="/secure/newLogin.jsp"/>
 	<div class="full">
 		<h1>Hi，親愛的${sessionScope.registryTokenAccount.memberNickName}您好!!</h1>
 		您已完成第一部分的註冊，請至您的信箱開通帳號，以成為GroupBuy會員喔!!

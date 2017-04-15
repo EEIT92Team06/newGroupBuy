@@ -65,6 +65,7 @@ public class OverViewMailServlet extends HttpServlet {
 		session.setAttribute("unReadannounceMail", unReadannounceMail);
 		response.sendRedirect(path + "/mail/sitemail.jsp");
 		return;
+
 	}
 
 }

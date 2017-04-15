@@ -8,7 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 <jsp:include page="/headline.jsp"/>
 <jsp:include page="/secure/newLogin.jsp"/>
 <c:if test="${not empty loginToken}">

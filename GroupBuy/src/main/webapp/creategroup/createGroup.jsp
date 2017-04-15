@@ -7,10 +7,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/jquery-ui.min.css"/>
-<link rel="stylesheet" href="css/jquery-ui.structure.min.css"/>
-<link rel="stylesheet" href="css/jquery-ui.theme.min.css"/>
-<link rel="stylesheet" href="cutpicture/imgareaselect-default.css "/>
+<link rel="stylesheet" href="../css/jquery-ui.min.css"/>
+<link rel="stylesheet" href="../css/jquery-ui.structure.min.css"/>
+<link rel="stylesheet" href="../css/jquery-ui.theme.min.css"/>
+
 <style type="text/css">
 .create {
 	margin: 5px;
@@ -59,15 +59,10 @@
 }
 </style>
 </head>
-    <script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
-    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../js/jquery-3.2.0.min.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="scripts/jquery.imgareaselect.pack.js"></script>
 
-
-
-<script type="text/javascript" src="../js/jquery-3.2.0.min.js"></script>
-<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
 
 <script>
 $(function(){
@@ -241,5 +236,4 @@ $(function(){
 		</div>
 	</div>
 </body>
-
 </html>
