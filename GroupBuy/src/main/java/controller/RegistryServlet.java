@@ -93,7 +93,7 @@ public class RegistryServlet extends HttpServlet {
 		}
 		if (!errorMessages.isEmpty()) {
 			String path = request.getContextPath();
-			response.sendRedirect(path + "/secure/registry.jsp");
+			response.sendRedirect(path + "/secure/newRegistry.jsp");
 			return;
 		}
 		// 判斷格式
@@ -165,7 +165,7 @@ public class RegistryServlet extends HttpServlet {
 		}
 		if (!errorMessages.isEmpty()) {
 			String path = request.getContextPath();
-			response.sendRedirect(path + "/secure/registry.jsp");
+			response.sendRedirect(path + "/secure/newRegistry.jsp");
 			return;
 		}
 
@@ -184,7 +184,7 @@ public class RegistryServlet extends HttpServlet {
 		if (memberBean1 == null) {
 			errorMessages.put("memberAccount", "帳號已經申請過");
 			String path = request.getContextPath();
-			response.sendRedirect(path + "/secure/registry.jsp");
+			response.sendRedirect(path + "/secure/newRegistry.jsp");
 			return;
 		}
 		int sendMailNum=registryService.sendRegistryMail(memberAccount);

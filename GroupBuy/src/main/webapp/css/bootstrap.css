@@ -2022,9 +2022,9 @@ table {
 }
 
 .table-bordered {
-  border: 1px solid #dddddd;
+  border: 3px solid #E7E7E7;
   border-collapse: separate;
-  *border-collapse: collapse;
+/*   *BORDER-COLLAPSE: COLLAPSE; */
   border-left: 0;
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;

@@ -126,7 +126,7 @@ public class SiteMailService {
 		}
 		return null;
 	}
-
+//刪除狀態信
 	public int deleteMail(Integer siteMailNo) {
 		int deleteNum = 0;
 		if (siteMailNo != null) {
@@ -135,7 +135,7 @@ public class SiteMailService {
 		}
 		return deleteNum;
 	}
-
+//刪除公告信
 	public int deleteAnnounceMail(Integer siteMailNo) {
 		int deleteNum = 0;
 		if (siteMailNo != null) {
@@ -144,7 +144,28 @@ public class SiteMailService {
 		}
 		return deleteNum;
 	}
-
+	//刪除未讀狀態信
+	public int deleteUnReadMail(Integer siteMailNo){
+		int deleteNum=0;
+		if(siteMailNo!=null){
+			deleteNum=siteMailDAO.deleteUnReadMail(siteMailNo);
+			if(deleteNum==1){
+				deleteNum=1;
+			}
+		}
+		return deleteNum;
+	}
+	//刪除未讀公告信
+	public int deleteUnReadAnnounceMail(Integer siteMailNo){
+		int deleteNum=0;
+		if(siteMailNo!=null){
+			deleteNum=siteMailDAO.deleteUnReadAnnounce(siteMailNo);
+			if(deleteNum==1){
+				deleteNum=1;
+			}
+		}
+		return deleteNum;
+	}
 	public MailBean selectSpecificMail(Integer siteMailNo) {
 		MailBean mailBean = null;
 		if (siteMailNo != null) {
@@ -264,6 +285,25 @@ public class SiteMailService {
 			updateNum = siteMailDAO.updateAnnounceMailStatus(temp);
 		}
 		return updateNum;
+	}
+	//查詢狀態信已讀未讀
+	public int getMailStatus(Integer siteMailNo){
+		int statusNo=0;
+		if(siteMailNo!=null){
+			SiteMailBean bean=siteMailDAO.selectStatus(siteMailNo);
+			statusNo=bean.getSiteMailStatusNo();
+		}
+		return statusNo;
+	}
+	//查詢公告信已讀未讀
+	public int getAnnounceStatus(Integer siteMailNo){
+		int statusNo=0;
+		if(siteMailNo!=null){
+			AnnouncementBean bean=siteMailDAO.selectAnnounceStatus(siteMailNo);
+			statusNo=bean.getSiteMailStatusNo();
+		}
+		return statusNo;
+
 	}
 
 }

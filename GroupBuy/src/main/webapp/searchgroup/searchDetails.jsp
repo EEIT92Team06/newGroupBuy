@@ -88,6 +88,7 @@ window.onload = function(){
 		xhr.send();
 		xhr.onreadystatechange = function(){   
 			// 向伺服器提出的請求已經收到回應  
+
 			if (xhr.readyState === 4) {         
 				// 伺服器回應成功  
 				if (xhr.status === 200) { 

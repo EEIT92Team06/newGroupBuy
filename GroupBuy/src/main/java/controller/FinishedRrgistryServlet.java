@@ -35,7 +35,7 @@ public class FinishedRrgistryServlet extends HttpServlet {
 	  System.out.println("updateNum="+updateNum);
 	  if(updateNum==1){
 		  String path=request.getContextPath();
-		  response.sendRedirect(path+"/secure/login.jsp");
+		  response.sendRedirect(path+"/secure/indexFromEmail.jsp");//此網頁是專門給email點選驗證信後的首頁，之後會跳轉到正確的首頁
 		  return;
 	  }
 	  
