@@ -8,7 +8,8 @@
 <title>Insert title here</title>
 <link href="../../css/bootstrap.css" rel="stylesheet">
 <link href="../../css/style.css" rel="stylesheet">
-<link href="../../css/flexslider.css" type="text/css" media="screen" rel="stylesheet" />
+<link href="../../css/flexslider.css" type="text/css" media="screen"
+	rel="stylesheet" />
 
 </head>
 <body>
@@ -34,7 +35,7 @@
 
 				<tr>
 
-				
+
 					<td><a href="#"><img title="product" alt="product"
 							src="<c:url value='/eeit9212/getimage?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}'/>"
 							height="200" width="200"></a></td>
@@ -67,151 +68,152 @@
 				</tr>
 			</tbody>
 		</table>
-	</div>
-<!-- 		<div class="span5"> -->
-<!-- 				<ul class="thumbnails mainimage"> -->
-<!-- 						<li class="span5"><a -->
-<!-- 							rel="position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4" -->
-<!-- 							class="thumbnail cloud-zoom" -->
-<%-- 							href="<c:url value='/eeit9212/getimage?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}'/>"> --%>
-<!-- 								<img style="width: 470px; height: 313px" -->
-<%-- 								src="<c:url value='/eeit9212/getimage?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}'/>" --%>
-<!-- 								alt="" title=""> -->
-<!-- 						</a></li> -->
-<%-- 					<c:forEach var="bean" items="${selectGroupInfoPic}"> --%>
-<!-- 						<li class="span5"><a -->
-<!-- 							rel="position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4" -->
-<!-- 							class="thumbnail cloud-zoom" -->
-<%-- 							href='<c:url value='/eeit9212/getimage?groupInfoPicNo=${bean.groupInfoPicNo}'/>'> --%>
-<!-- 								<img style="width: 470px; height: 313px" -->
-<%-- 								src='<c:url value='/eeit9212/getimage?groupInfoPicNo=${bean.groupInfoPicNo}'/>' --%>
-<!-- 								alt="" title=""> -->
-<!-- 						</a></li> -->
-<%-- 					</c:forEach> --%>
-<!-- 					</ul> -->
-<!-- 					<ul class="thumbnails mainimage"> -->
-<!-- 						<li class="producthtumb"><a class="thumbnail"> <img -->
-<%-- 								src="<c:url value='/eeit9212/getimage?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}'/>" --%>
-<!-- 								alt="" title=""> -->
-<!-- 						</a></li> -->
-<%-- 						<c:forEach var="bean" items="${selectGroupInfoPic}"> --%>
-						
-<!-- 							<li class="producthtumb"><a class="thumbnail"> <img -->
-<%-- 									src='<c:url value='/eeit9212/getimage?groupInfoPicNo=${bean.groupInfoPicNo}'/>' --%>
-<!-- 									alt="" title=""> -->
-<!-- 							</a></li> -->
-							
-<%-- 						</c:forEach> --%>
-<!-- 					</ul> -->
-<!-- 		</div> -->
-<div class="cart-info container">
-	<div>賣家敘述:${selectMyAttendedByGroupInfoNo.groupInfoContent}</div>
-	<c:if
-		test="${selectMyAttendedByGroupInfoNo.groupStatusNo>=8&&selectMyAttendedByGroupInfoNo.groupStatusNo!=11&&selectMyAttendedByGroupInfoNo.orderStatusNo!=1004}">
-		<div>賣家帳戶:${selectMyAttendedByGroupInfoNo.groupInfoBankAccount}</div>
-	</c:if>
-	<c:if test="${selectMyAttendedByGroupInfoNo.orderStatusNo!=1005}">
-		<table border="1px">
-			<thead>
-				<tr>
-					<th>品名</th>
-					<th>單價</th>			
-					<th>數量</th>
-					<th>總價</th>
-				</tr>
-			</thead>
-			<tbody>
-
-				<c:forEach var="bean" items="${selectOrderInfoDetails}">
+		<c:if test="${selectMyAttendedByGroupInfoNo.orderStatusNo!=1005}">
+			<table border="1px">
+				<thead>
 					<tr>
-						<td>${bean.groupInfoDetailsProdcutName}</td>
-						<td>${bean.groupInfoDetailsProductPrice}</td>				
-						<td>${bean.orderInfoDetailsProductQt}</td>
-						<td>${bean.productTotalPriceByQt}</td>
+						<th>品名</th>
+						<th>單價</th>
+						<th>數量</th>
+						<th>總價</th>
 					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-		<div id="price">訂單總價:${selectTotalPrice}</div>
-	</c:if>
+				</thead>
+				<tbody>
 
-	<c:if
-		test="${selectMyAttendedByGroupInfoNo.orderStatusNo==1101||selectMyAttendedByGroupInfoNo.orderStatusNo==1104}">
+					<c:forEach var="bean" items="${selectOrderInfoDetails}">
+						<tr>
+							<td>${bean.groupInfoDetailsProdcutName}</td>
+							<td>${bean.groupInfoDetailsProductPrice}</td>
+							<td>${bean.orderInfoDetailsProductQt}</td>
+							<td>${bean.productTotalPriceByQt}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
 
-		<form id="payForm"
-			action="<c:url value='/eeit9212/grouprecord/myattendedgroupinfo.controller'/>"
-			method="post">
-			<input type="hidden" name="groupInfoNo"
-				value="${selectMyAttendedByGroupInfoNo.groupInfoNo}" /> <input
-				type="hidden" name="orderInfoNo"
-				value="${selectMyAttendedByGroupInfoNo.orderInfoNo}" />
-			<div>
-				<label for="account">帳號末五碼:</label><input id="account" type="text"
-					name="account" value="${param.account}" /><span style="color: red"
-					id="accountSp"></span>
-			</div>
-			<div>
-				<label for="phone">連絡電話:</label><input id="phone" type="text"
-					name="phone" value="${param.phone}" /><span style="color: red"
-					id="phoneSp"></span>
-			</div>
-			<div>
-				<label for="address">寄送地址:</label><input id="address" type="text"
-					name="address" value="${param.address}" /><span style="color: red"
-					id="addressSp"></span>
-			</div>
-			<input id="paySub" type="button" name="paySubmit" value="通知賣家已匯款" />
-		</form>
-	</c:if>
-	<c:if
-		test="${selectMyAttendedByGroupInfoNo.orderStatusNo>1101&&selectMyAttendedByGroupInfoNo.orderStatusNo!=1104}">
-		<div>
-			<c:if
-				test="${not empty selectMyOrderInfoByNo.orderInfoAfterSuccessPackageNo}">
-				<h3>包裹編號:${selectMyOrderInfoByNo.orderInfoAfterSuccessPackageNo}</h3>
-			</c:if>
-			<c:if
-				test="${empty selectMyOrderInfoByNo.orderInfoAfterSuccessPackageNo}">
-				<h3>包裹編號:主揪尚未寄貨。</h3>
-			</c:if>
-		</div>
-		<div>匯款時間:${selectMyOrderInfoByNo.orderInfoAfterSuccessPayTime}
-		</div>
-		<div>
-			帳號末五碼:${selectMyOrderInfoByNo.orderInfoAfterSuccessBankAccount}</div>
-		<div>連絡電話:${selectMyOrderInfoByNo.orderInfoAfterSuccessPhone}</div>
-		<div>
-			寄送地址:${selectMyOrderInfoByNo.orderInfoAfterSuccessDestination}</div>
-		<c:if test="${selectMyAttendedByGroupInfoNo.orderStatusNo==1203}">
-			<input id="stuffSub" type="button" name="paySubmit" value="通知賣家已收貨" />
 		</c:if>
+		<div class="span5">
+			<ul class="thumbnails mainimage">
+				<li class="span5"><a
+					rel="position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4"
+					class="thumbnail cloud-zoom"
+					href="<c:url value='/eeit9212/getimage?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}'/>">
+						<img style="width: 470px; height: 313px"
+						src="<c:url value='/eeit9212/getimage?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}'/>"
+						alt="" title="">
+				</a></li>
+				<c:forEach var="bean" items="${selectGroupInfoPic}">
+					<li class="span5"><a
+						rel="position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4"
+						class="thumbnail cloud-zoom"
+						href='<c:url value='/eeit9212/getimage?groupInfoPicNo=${bean.groupInfoPicNo}'/>'>
+							<img style="width: 470px; height: 313px"
+							src='<c:url value='/eeit9212/getimage?groupInfoPicNo=${bean.groupInfoPicNo}'/>'
+							alt="" title="">
+					</a></li>
+				</c:forEach>
+			</ul>
+			<ul class="thumbnails mainimage">
+				<li class="producthtumb"><a class="thumbnail"> <img
+						src="<c:url value='/eeit9212/getimage?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}'/>"
+						alt="" title="">
+				</a></li>
+				<c:forEach var="bean" items="${selectGroupInfoPic}">
 
-	</c:if>
-	</div>
-	<div id="scoreDiv" style="display: none">
-		<input type="radio" name="score" value="1" checked="checked" />1 <input
-			type="radio" name="score" value="2" />2 <input type="radio"
-			name="score" value="3" />3 <input type="radio" name="score"
-			value="4" />4 <input type="radio" name="score" value="5" />5 <input
-			type="button" value="評分" id="scoreButton" />
-	</div>
-	<div id="reportDiv" style="display: none">
-		<input type="hidden"
-			value="${selectMyAttendedByGroupInfoNo.groupInfoNo}"
-			name="reportTarget" />
-		<div>
-			<select name="reportTypeNo">
-				<option value="1">檢舉團名</option>
-				<option value="2">檢舉團產品照片</option>
-				<option value="3">檢舉開團留言</option>
-				<option value="4">檢舉開團留言回覆</option>
-			</select>
+					<li class="producthtumb"><a class="thumbnail"> <img
+							src='<c:url value='/eeit9212/getimage?groupInfoPicNo=${bean.groupInfoPicNo}'/>'
+							alt="" title="">
+					</a></li>
+
+				</c:forEach>
+			</ul>
 		</div>
-		檢舉內容
-		<textarea name="reportContent" rows="5" cols="50"></textarea>
-		<input id="sendReport" type="button" value="送出" />
-	</div>
+		<div class="cart-info container">
+			<div id="price">訂單總價:${selectTotalPrice}</div>
+			<div>賣家敘述:${selectMyAttendedByGroupInfoNo.groupInfoContent}</div>
+			<c:if
+				test="${selectMyAttendedByGroupInfoNo.groupStatusNo>=8&&selectMyAttendedByGroupInfoNo.groupStatusNo!=11&&selectMyAttendedByGroupInfoNo.orderStatusNo!=1004}">
+				<div>賣家帳戶:${selectMyAttendedByGroupInfoNo.groupInfoBankAccount}</div>
+			</c:if>
 
+
+			<c:if
+				test="${selectMyAttendedByGroupInfoNo.orderStatusNo==1101||selectMyAttendedByGroupInfoNo.orderStatusNo==1104}">
+
+				<form id="payForm"
+					action="<c:url value='/eeit9212/grouprecord/myattendedgroupinfo.controller'/>"
+					method="post">
+					<input type="hidden" name="groupInfoNo"
+						value="${selectMyAttendedByGroupInfoNo.groupInfoNo}" /> <input
+						type="hidden" name="orderInfoNo"
+						value="${selectMyAttendedByGroupInfoNo.orderInfoNo}" />
+					<div>
+						<label for="account">帳號末五碼:</label><input id="account" type="text"
+							name="account" value="${param.account}" /><span
+							style="color: red" id="accountSp"></span>
+					</div>
+					<div>
+						<label for="phone">連絡電話:</label><input id="phone" type="text"
+							name="phone" value="${param.phone}" /><span style="color: red"
+							id="phoneSp"></span>
+					</div>
+					<div>
+						<label for="address">寄送地址:</label><input id="address" type="text"
+							name="address" value="${param.address}" /><span
+							style="color: red" id="addressSp"></span>
+					</div>
+					<input id="paySub" type="button" name="paySubmit" value="通知賣家已匯款" />
+				</form>
+			</c:if>
+			<c:if
+				test="${selectMyAttendedByGroupInfoNo.orderStatusNo>1101&&selectMyAttendedByGroupInfoNo.orderStatusNo!=1104}">
+				<div>
+					<c:if
+						test="${not empty selectMyOrderInfoByNo.orderInfoAfterSuccessPackageNo}">
+						<h3>包裹編號:${selectMyOrderInfoByNo.orderInfoAfterSuccessPackageNo}</h3>
+					</c:if>
+					<c:if
+						test="${empty selectMyOrderInfoByNo.orderInfoAfterSuccessPackageNo}">
+						<h3>包裹編號:主揪尚未寄貨。</h3>
+					</c:if>
+				</div>
+				<div>匯款時間:${selectMyOrderInfoByNo.orderInfoAfterSuccessPayTime}
+				</div>
+				<div>
+					帳號末五碼:${selectMyOrderInfoByNo.orderInfoAfterSuccessBankAccount}</div>
+				<div>連絡電話:${selectMyOrderInfoByNo.orderInfoAfterSuccessPhone}</div>
+				<div>
+					寄送地址:${selectMyOrderInfoByNo.orderInfoAfterSuccessDestination}</div>
+				<c:if test="${selectMyAttendedByGroupInfoNo.orderStatusNo==1203}">
+					<input id="stuffSub" type="button" name="paySubmit" value="通知賣家已收貨" />
+				</c:if>
+
+			</c:if>
+		</div>
+		<div id="scoreDiv" style="display: none">
+			<input type="radio" name="score" value="1" checked="checked" />1 <input
+				type="radio" name="score" value="2" />2 <input type="radio"
+				name="score" value="3" />3 <input type="radio" name="score"
+				value="4" />4 <input type="radio" name="score" value="5" />5 <input
+				type="button" value="評分" id="scoreButton" />
+		</div>
+		<div id="reportDiv" style="display: none">
+			<input type="hidden"
+				value="${selectMyAttendedByGroupInfoNo.groupInfoNo}"
+				name="reportTarget" />
+			<div>
+				<select name="reportTypeNo">
+					<option value="1">檢舉團名</option>
+					<option value="2">檢舉團產品照片</option>
+					<option value="3">檢舉開團留言</option>
+					<option value="4">檢舉開團留言回覆</option>
+				</select>
+			</div>
+			檢舉內容
+			<textarea name="reportContent" rows="5" cols="50"></textarea>
+			<input id="sendReport" type="button" value="送出" />
+		</div>
+	</div>
 	<script src="<c:url value='/js/jquery-3.1.1.min.js'/>"></script>
 	<script src="<c:url value='/js/layer/layer.js'/>"></script>
 	<script type="text/javascript">
@@ -424,7 +426,6 @@
 							});
 
 		});
-		
 	</script>
 	<script src="../../js/jquery.js"></script>
 	<script src="../../js/cloud-zoom.1.0.2.js"></script>
