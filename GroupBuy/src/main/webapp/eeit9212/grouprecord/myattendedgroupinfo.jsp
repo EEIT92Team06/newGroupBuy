@@ -6,65 +6,106 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link href="../../css/bootstrap.css" rel="stylesheet">
+<link href="../../css/style.css" rel="stylesheet">
+<link href="../../css/flexslider.css" type="text/css" media="screen" rel="stylesheet" />
+
 </head>
 <body>
 	<jsp:include page="/headline.jsp"></jsp:include>
-	<table border="1px" id="groupTable">
-		<thead>
-			<tr>
-				<th>圖片</th>
-				<th>創團日期</th>
-				<th>主揪</th>
-				<th>主揪評分</th>
-				<th>團名</th>
-				<th>狀態</th>
-				<th>類型</th>
-				<th>目前產品數量</th>
-				<th>結束日期</th>
-				<th>訂單狀態</th>
-				<th>寄送方式</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><img
-					src="<c:url value='/eeit9212/getimage?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}'/>" /></td>
-				<td>${selectMyAttendedByGroupInfoNo.groupInfoStartDate}</td>
-				<td>${selectMyAttendedByGroupInfoNo.memberName}</td>
-				<c:if test="${selectMyAttendedByGroupInfoNo.grouperCredit!=0}">
-					<td>${selectMyAttendedByGroupInfoNo.grouperCredit}</td>
-				</c:if>
-				<c:if test="${selectMyAttendedByGroupInfoNo.grouperCredit==0}">
-					<td>主揪第一次開團</td>
-				</c:if>
-				<td>${selectMyAttendedByGroupInfoNo.groupInfoName}</td>
-				<td>${selectMyAttendedByGroupInfoNo.groupStatus}</td>
-				<td>${selectMyAttendedByGroupInfoNo.productType}</td>
-				<c:if
-					test="${empty selectMyAttendedByGroupInfoNo.groupInfoTotalProductQt}">
-					<c:set var="groupInfoTotalProductQt" value="0" />
-				</c:if>
-				<c:if
-					test="${not empty selectMyAttendedByGroupInfoNo.groupInfoTotalProductQt}">
-					<c:set var="groupInfoTotalProductQt"
-						value="${selectMyAttendedByGroupInfoNo.groupInfoTotalProductQt}" />
-				</c:if>
-				<td>${groupInfoTotalProductQt}/${selectMyAttendedByGroupInfoNo.groupInfoMinProductQt}</td>
-				<td>${selectMyAttendedByGroupInfoNo.groupInfoDeadLine}</td>
-				<td>${selectMyAttendedByGroupInfoNo.orderStatus}</td>
-				<td>${selectMyAttendedByGroupInfoNo.groupInfoShippingWay}
-					<button id="report">檢舉</button>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-	<div style="float: left;">
-		<c:forEach var="bean" items="${selectGroupInfoPic}">
-			<img
-				src="<c:url value='/eeit9212/getimage?groupInfoPicNo=${bean.groupInfoPicNo}'/>" />
-		</c:forEach>
+	<div class="cart-info container">
+		<table class="table table-striped table-bordered">
+			<thead>
+				<tr>
+					<th>圖片</th>
+					<th>創團日期</th>
+					<th>主揪</th>
+					<th>主揪評分</th>
+					<th>團名</th>
+					<th>狀態</th>
+					<th>類型</th>
+					<th>目前產品數量</th>
+					<th>結束日期</th>
+					<th>訂單狀態</th>
+					<th>寄送方式</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr>
+
+				
+					<td><a href="#"><img title="product" alt="product"
+							src="<c:url value='/eeit9212/getimage?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}'/>"
+							height="200" width="200"></a></td>
+					<td>${selectMyAttendedByGroupInfoNo.groupInfoStartDate}</td>
+					<td>${selectMyAttendedByGroupInfoNo.memberName}</td>
+					<c:if test="${selectMyAttendedByGroupInfoNo.grouperCredit!=0}">
+						<td>${selectMyAttendedByGroupInfoNo.grouperCredit}</td>
+					</c:if>
+					<c:if test="${selectMyAttendedByGroupInfoNo.grouperCredit==0}">
+						<td>主揪第一次開團</td>
+					</c:if>
+					<td>${selectMyAttendedByGroupInfoNo.groupInfoName}</td>
+					<td>${selectMyAttendedByGroupInfoNo.groupStatus}</td>
+					<td>${selectMyAttendedByGroupInfoNo.productType}</td>
+					<c:if
+						test="${empty selectMyAttendedByGroupInfoNo.groupInfoTotalProductQt}">
+						<c:set var="groupInfoTotalProductQt" value="0" />
+					</c:if>
+					<c:if
+						test="${not empty selectMyAttendedByGroupInfoNo.groupInfoTotalProductQt}">
+						<c:set var="groupInfoTotalProductQt"
+							value="${selectMyAttendedByGroupInfoNo.groupInfoTotalProductQt}" />
+					</c:if>
+					<td>${groupInfoTotalProductQt}/${selectMyAttendedByGroupInfoNo.groupInfoMinProductQt}</td>
+					<td>${selectMyAttendedByGroupInfoNo.groupInfoDeadLine}</td>
+					<td>${selectMyAttendedByGroupInfoNo.orderStatus}</td>
+					<td>${selectMyAttendedByGroupInfoNo.groupInfoShippingWay}
+						<button id="report">檢舉</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
-	<div style="display: inline;">賣家敘述:${selectMyAttendedByGroupInfoNo.groupInfoContent}</div>
+<!-- 		<div class="span5"> -->
+<!-- 				<ul class="thumbnails mainimage"> -->
+<!-- 						<li class="span5"><a -->
+<!-- 							rel="position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4" -->
+<!-- 							class="thumbnail cloud-zoom" -->
+<%-- 							href="<c:url value='/eeit9212/getimage?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}'/>"> --%>
+<!-- 								<img style="width: 470px; height: 313px" -->
+<%-- 								src="<c:url value='/eeit9212/getimage?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}'/>" --%>
+<!-- 								alt="" title=""> -->
+<!-- 						</a></li> -->
+<%-- 					<c:forEach var="bean" items="${selectGroupInfoPic}"> --%>
+<!-- 						<li class="span5"><a -->
+<!-- 							rel="position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4" -->
+<!-- 							class="thumbnail cloud-zoom" -->
+<%-- 							href='<c:url value='/eeit9212/getimage?groupInfoPicNo=${bean.groupInfoPicNo}'/>'> --%>
+<!-- 								<img style="width: 470px; height: 313px" -->
+<%-- 								src='<c:url value='/eeit9212/getimage?groupInfoPicNo=${bean.groupInfoPicNo}'/>' --%>
+<!-- 								alt="" title=""> -->
+<!-- 						</a></li> -->
+<%-- 					</c:forEach> --%>
+<!-- 					</ul> -->
+<!-- 					<ul class="thumbnails mainimage"> -->
+<!-- 						<li class="producthtumb"><a class="thumbnail"> <img -->
+<%-- 								src="<c:url value='/eeit9212/getimage?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}'/>" --%>
+<!-- 								alt="" title=""> -->
+<!-- 						</a></li> -->
+<%-- 						<c:forEach var="bean" items="${selectGroupInfoPic}"> --%>
+						
+<!-- 							<li class="producthtumb"><a class="thumbnail"> <img -->
+<%-- 									src='<c:url value='/eeit9212/getimage?groupInfoPicNo=${bean.groupInfoPicNo}'/>' --%>
+<!-- 									alt="" title=""> -->
+<!-- 							</a></li> -->
+							
+<%-- 						</c:forEach> --%>
+<!-- 					</ul> -->
+<!-- 		</div> -->
+<div class="cart-info container">
+	<div>賣家敘述:${selectMyAttendedByGroupInfoNo.groupInfoContent}</div>
 	<c:if
 		test="${selectMyAttendedByGroupInfoNo.groupStatusNo>=8&&selectMyAttendedByGroupInfoNo.groupStatusNo!=11&&selectMyAttendedByGroupInfoNo.orderStatusNo!=1004}">
 		<div>賣家帳戶:${selectMyAttendedByGroupInfoNo.groupInfoBankAccount}</div>
@@ -74,8 +115,9 @@
 			<thead>
 				<tr>
 					<th>品名</th>
-					<th>價錢</th>
+					<th>單價</th>			
 					<th>數量</th>
+					<th>總價</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -83,13 +125,14 @@
 				<c:forEach var="bean" items="${selectOrderInfoDetails}">
 					<tr>
 						<td>${bean.groupInfoDetailsProdcutName}</td>
-						<td>${bean.productTotalPriceByQt}</td>
+						<td>${bean.groupInfoDetailsProductPrice}</td>				
 						<td>${bean.orderInfoDetailsProductQt}</td>
+						<td>${bean.productTotalPriceByQt}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-		<div id="price">總價:${selectTotalPrice}</div>
+		<div id="price">訂單總價:${selectTotalPrice}</div>
 	</c:if>
 
 	<c:if
@@ -144,6 +187,7 @@
 		</c:if>
 
 	</c:if>
+	</div>
 	<div id="scoreDiv" style="display: none">
 		<input type="radio" name="score" value="1" checked="checked" />1 <input
 			type="radio" name="score" value="2" />2 <input type="radio"
@@ -171,165 +215,220 @@
 	<script src="<c:url value='/js/jquery-3.1.1.min.js'/>"></script>
 	<script src="<c:url value='/js/layer/layer.js'/>"></script>
 	<script type="text/javascript">
-	
 		$(function() {
-			
-			
-			var webSocket = new WebSocket('ws://localhost:8080/GroupBuy/groupsocket/${selectMyAttendedByGroupInfoNo.orderInfoNo}/${selectMyAttendedByGroupInfoNo.groupInfoNo}');//ServerEndpoint監聽的URL.
-			
-			  webSocket.onerror = function(event) {
-			      onError(event)
-			    };
-			 
-			    webSocket.onopen = function(event) {
-			      onOpen(event)
-			    };
-			 
-			    webSocket.onmessage = function(event) {
-			      onMessage(event)
-			    };
+
+			var webSocket = new WebSocket(
+					'ws://localhost:8080/GroupBuy/groupsocket/${selectMyAttendedByGroupInfoNo.orderInfoNo}/${selectMyAttendedByGroupInfoNo.groupInfoNo}');//ServerEndpoint監聽的URL.
+
+			webSocket.onerror = function(event) {
+				onError(event)
+			};
+
+			webSocket.onopen = function(event) {
+				onOpen(event)
+			};
+
+			webSocket.onmessage = function(event) {
+				onMessage(event)
+			};
 			//  接收到server訊息時觸發.
-			    function onMessage(event) {
-			    	 location.reload();
-			    }
+			function onMessage(event) {
+				location.reload();
+			}
 			//  建立與server的連接.
-			    function onOpen(event) {
-// 			      alert("已建立連接");
-			    }
+			function onOpen(event) {
+				// 			      alert("已建立連接");
+			}
 			//  連線錯誤時觸發
-			    function onError(event) {
-// 			      alert(event.data);
-				}
+			function onError(event) {
+				// 			      alert(event.data);
+			}
 
 			//判斷這團的時間，即時更新團的狀態。
 			var deadLine = new Date(
-			"${selectMyAttendedByGroupInfoNo.groupInfoDeadLine}");
+					"${selectMyAttendedByGroupInfoNo.groupInfoDeadLine}");
 			var nowTime = new Date();
 			console.log(deadLine - nowTime);
-			
-// 			if(${selectMyAttendedByGroupInfoNo.groupStatusNo==1}){
-// 				var timeout = setTimeout(timeout, deadLine - nowTime);
-// 			}
-// 			if(${selectMyAttendedByGroupInfoNo.groupStatusNo==3}){
-// 				var againTimeout = setTimeout(againTimeout, deadLine - nowTime);
-// 			}
-// 			function timeout() {
-// 				layer.alert('截止日期已到，等待主揪處理中。', {
-// 					  skin: 'layui-layer-molv' //样式类名
-// 					  ,closeBtn: 0
-// 					},function(){
-// 						location.replace('myattendedgroupinfo.controller?locationFrom=timeout&groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}&orderInfoNo=${selectMyAttendedByGroupInfoNo.orderInfoNo}');
-// 					});
-				
-// 			}
-// 			function againTimeout() {
-// 				layer.alert('延期截止日期已到，等待主揪處理中。', {
-// 					  skin: 'layui-layer-molv' //样式类名
-// 					  ,closeBtn: 0
-// 					},function(){
-// 						location.replace('myattendedgroupinfo.controller?locationFrom=againTimeout&groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}&orderInfoNo=${selectMyAttendedByGroupInfoNo.orderInfoNo}');
-						
-// 					});
-							
-// 			}
-			
-					//彈出評分視窗
-			$("#stuffSub").click(function() {
-				var layerOpen = layer.open({
-					type : 1,
-					title:'評分',
-					skin : 'layui-layer-rim', //加上边框
-					area : [ '420px', '240px' ], //宽高
-					content : $("#scoreDiv"),
-					closeBtn : 0 //不显示关闭按钮
-				});
-				//特地用Ajax練習，更新完評分根狀態直接重新載入當前頁面
-				$('#scoreButton').one('click', function() {
-					$.get("creditajax",{"score":$(":checked[name='score']").val(),"groupInfoNo":"${selectMyAttendedByGroupInfoNo.groupInfoNo}",
-										"groupInfoMemberNo":"${selectMyAttendedByGroupInfoNo.groupInfoMemberNo}"},function(data){
-						layer.close(layerOpen);
-						webSocket.send('${selectMyAttendedByGroupInfoNo.groupInfoNo}');
-						location.replace('myattendedgroupinfo.controller?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}&orderInfoNo=${selectMyAttendedByGroupInfoNo.orderInfoNo}');
-						
-					});				
-				});
-			});
-		
+
+			// 			if(${selectMyAttendedByGroupInfoNo.groupStatusNo==1}){
+			// 				var timeout = setTimeout(timeout, deadLine - nowTime);
+			// 			}
+			// 			if(${selectMyAttendedByGroupInfoNo.groupStatusNo==3}){
+			// 				var againTimeout = setTimeout(againTimeout, deadLine - nowTime);
+			// 			}
+			// 			function timeout() {
+			// 				layer.alert('截止日期已到，等待主揪處理中。', {
+			// 					  skin: 'layui-layer-molv' //样式类名
+			// 					  ,closeBtn: 0
+			// 					},function(){
+			// 						location.replace('myattendedgroupinfo.controller?locationFrom=timeout&groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}&orderInfoNo=${selectMyAttendedByGroupInfoNo.orderInfoNo}');
+			// 					});
+
+			// 			}
+			// 			function againTimeout() {
+			// 				layer.alert('延期截止日期已到，等待主揪處理中。', {
+			// 					  skin: 'layui-layer-molv' //样式类名
+			// 					  ,closeBtn: 0
+			// 					},function(){
+			// 						location.replace('myattendedgroupinfo.controller?locationFrom=againTimeout&groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}&orderInfoNo=${selectMyAttendedByGroupInfoNo.orderInfoNo}');
+
+			// 					});
+
+			// 			}
+
+			//彈出評分視窗
+			$("#stuffSub")
+					.click(
+							function() {
+								var layerOpen = layer.open({
+									type : 1,
+									title : '評分',
+									skin : 'layui-layer-rim', //加上边框
+									area : [ '420px', '240px' ], //宽高
+									content : $("#scoreDiv"),
+									closeBtn : 0
+								//不显示关闭按钮
+								});
+								//特地用Ajax練習，更新完評分根狀態直接重新載入當前頁面
+								$('#scoreButton')
+										.one(
+												'click',
+												function() {
+													$
+															.get(
+																	"creditajax",
+																	{
+																		"score" : $(
+																				":checked[name='score']")
+																				.val(),
+																		"groupInfoNo" : "${selectMyAttendedByGroupInfoNo.groupInfoNo}",
+																		"groupInfoMemberNo" : "${selectMyAttendedByGroupInfoNo.groupInfoMemberNo}"
+																	},
+																	function(
+																			data) {
+																		layer
+																				.close(layerOpen);
+																		webSocket
+																				.send('${selectMyAttendedByGroupInfoNo.groupInfoNo}');
+																		location
+																				.replace('myattendedgroupinfo.controller?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}&orderInfoNo=${selectMyAttendedByGroupInfoNo.orderInfoNo}');
+
+																	});
+												});
+							});
+
 			//按下檢舉按鈕
 			var reportOpen;
-			$("#report").click(function(){
+			$("#report").click(function() {
 				reportOpen = layer.open({
 					type : 1,
-					title:'檢舉',
+					title : '檢舉',
 					skin : 'layui-layer-rim', //加上边框
 					area : [ '400px', '300px' ], //宽高
 					content : $("#reportDiv")
 				});
 			});
-			$("#sendReport").click(function(){
-				var reportTarget=$(this).parents("form").find("input[name='reportTarget']").val();
-				var reportTypeNo=$(this).parents("form").find("select[name='reportTypeNo']").val();
-				var reportContent=$(this).parents("form").find("textarea[name='reportContent']").val();
-
-				$.get("${pageContext.request.contextPath}/reportajax",{"reportTarget":reportTarget,"reportTypeNo":reportTypeNo,"reportContent":reportContent},function(data){
-					var reportAlert=layer.alert(data, {
-						  skin: 'layui-layer-molv' //样式类名
-						  ,closeBtn: 0
-						},function(){
-							layer.close(reportAlert);
-							layer.close(reportOpen);					
-						});
-				});
-			});		
-					
-					
-			//簡單的做一些驗證
-			$("#paySub").click(
+			$("#sendReport").click(
 					function() {
-						var account = $("#account");
-						var phone = $("#phone");
-						var address = $("#address");
-						var accountSp = $("#accountSp");
-						var phoneSp = $("#phoneSp");
-						var addressSp = $("#addressSp");	
-						var groupInfoNo=$(this).parent().find("input[name='groupInfoNo']").val();
-						var orderInfoNo=$(this).parent().find("input[name='orderInfoNo']").val();
-					
-						if (account.val().length == 0) {
-							accountSp.text("請輸入帳號末5碼");
-						} else {
-							accountSp.text("");
-						}
-						if (phone.val().length == 0) {
-							phoneSp.text("請輸入連絡電話");
-						} else {
-							phoneSp.text("");
-						}
-						if (address.val().length == 0) {
-							addressSp.text("請輸入寄送地址");
-						} else {
-							addressSp.text("");
-						}
-						if (account.val().length != 0
-								&& phone.val().length != 0
-								&& address.val().length != 0) {					
-							var payConfirm=layer.confirm('檢查資料確認後請按確定', {
-								  btn: ['確定','取消'] //按钮
-								}, function(){								
-									$.get("${pageContext.request.contextPath}/eeit9212/grouprecord/myattendedgroupinfo.controller",{"groupInfoNo":groupInfoNo,"orderInfoNo":orderInfoNo,"account":account.val(),"phone":phone.val(),"address":address.val()},function(data){							
-										webSocket.send('${selectMyAttendedByGroupInfoNo.groupInfoNo}');	
-										layer.close(payConfirm);
-										location.reload();			
-									});
-									
-								});	
-						}
+						var reportTarget = $(this).parents("form").find(
+								"input[name='reportTarget']").val();
+						var reportTypeNo = $(this).parents("form").find(
+								"select[name='reportTypeNo']").val();
+						var reportContent = $(this).parents("form").find(
+								"textarea[name='reportContent']").val();
 
+						$.get("${pageContext.request.contextPath}/reportajax",
+								{
+									"reportTarget" : reportTarget,
+									"reportTypeNo" : reportTypeNo,
+									"reportContent" : reportContent
+								}, function(data) {
+									var reportAlert = layer.alert(data, {
+										skin : 'layui-layer-molv' //样式类名
+										,
+										closeBtn : 0
+									}, function() {
+										layer.close(reportAlert);
+										layer.close(reportOpen);
+									});
+								});
 					});
 
-		});
-	</script>
+			//簡單的做一些驗證
+			$("#paySub")
+					.click(
+							function() {
+								var account = $("#account");
+								var phone = $("#phone");
+								var address = $("#address");
+								var accountSp = $("#accountSp");
+								var phoneSp = $("#phoneSp");
+								var addressSp = $("#addressSp");
+								var groupInfoNo = $(this).parent().find(
+										"input[name='groupInfoNo']").val();
+								var orderInfoNo = $(this).parent().find(
+										"input[name='orderInfoNo']").val();
 
+								if (account.val().length == 0) {
+									accountSp.text("請輸入帳號末5碼");
+								} else {
+									accountSp.text("");
+								}
+								if (phone.val().length == 0) {
+									phoneSp.text("請輸入連絡電話");
+								} else {
+									phoneSp.text("");
+								}
+								if (address.val().length == 0) {
+									addressSp.text("請輸入寄送地址");
+								} else {
+									addressSp.text("");
+								}
+								if (account.val().length != 0
+										&& phone.val().length != 0
+										&& address.val().length != 0) {
+									var payConfirm = layer
+											.confirm(
+													'檢查資料確認後請按確定',
+													{
+														btn : [ '確定', '取消' ]
+													//按钮
+													},
+													function() {
+														$
+																.get(
+																		"${pageContext.request.contextPath}/eeit9212/grouprecord/myattendedgroupinfo.controller",
+																		{
+																			"groupInfoNo" : groupInfoNo,
+																			"orderInfoNo" : orderInfoNo,
+																			"account" : account
+																					.val(),
+																			"phone" : phone
+																					.val(),
+																			"address" : address
+																					.val()
+																		},
+																		function(
+																				data) {
+																			webSocket
+																					.send('${selectMyAttendedByGroupInfoNo.groupInfoNo}');
+																			layer
+																					.close(payConfirm);
+																			location
+																					.reload();
+																		});
+
+													});
+								}
+
+							});
+
+		});
+		
+	</script>
+	<script src="../../js/jquery.js"></script>
+	<script src="../../js/cloud-zoom.1.0.2.js"></script>
+	<script defer src="../../js/custom.js"></script>
 
 </body>
 </html>
