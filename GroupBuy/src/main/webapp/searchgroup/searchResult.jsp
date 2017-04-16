@@ -46,7 +46,7 @@
 			<ul class="breadcrumb">
 <!-- 				<li class="active">Blog</li> -->
 			</ul>
-			<div class="row">
+			<div class="row" style="width: 1500px;float: left;">
 				<aside class="span2"> 
 				
 				<div class="sidewidt">
@@ -64,7 +64,7 @@
 				</aside>
 				<!-- Sidebar End-->
 				<!-- Blog listing-->
-				<div class="span10 bloggrid">
+				<div class="span10 bloggrid" style="margin-left: 120px;">
 					<h1 class="heading1">
 						<span class="maintext">搜尋結果</span><span class="subtext"></span>
 					</h1>
@@ -73,11 +73,8 @@
 					<ul class="thumbnails">
 						<li class="span3">
 							<div class="thumbnail">
-								<a
-									href="${pageContext.servletContext.contextPath}/searchImg/getImage?id=${bean.groupInfoNo}&type=groupCover"
-									class="fancyboxpopup"><img alt="" style="width:270px;height:200px;"  
-									src="${pageContext.servletContext.contextPath}/searchImg/getImage?id=${bean.groupInfoNo}&type=groupCover"><span
-									class="viewfancypopup">&nbsp;</span></a>
+								<img alt="" style="width:220px;height:170px;" src="${pageContext.servletContext.contextPath}/searchImg/getImage?id=${bean.groupInfoNo}&type=groupCover">
+								<span class="viewfancypopup">&nbsp;</span>
 								<div class="caption">
 									<a href="#" class="bloggridtitle">${bean.groupInfoName}</a>
 									<div class="author">
