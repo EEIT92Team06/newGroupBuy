@@ -74,7 +74,9 @@
         
         <!-- Blog listing-->      
         <div class="span9 bloggrid" style="margin-left: 100px;">
-          <h1 class="heading1"><span class="maintext">許願專區</span><span class="subtext"> See All Wishes </span></h1>
+          <h1 class="heading1" style="width: 750px;">
+            <span class="maintext">許願專區</span><span class="subtext"> See All Wishes </span>
+          </h1>
          <ul class="thumbnails" style="width: 932px;">
          
          <c:forEach var='wish' items="${wishCollection}">

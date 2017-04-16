@@ -103,8 +103,6 @@
 					</div>
 					</c:forEach>
 				</div>
-				
-				
 				<aside class="span2"> 
 				
 				<div class="sidewidt" hidden>
