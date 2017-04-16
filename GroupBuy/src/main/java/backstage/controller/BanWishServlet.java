@@ -46,7 +46,7 @@ public class BanWishServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("AllWish", AllWish);
 		String contextPath = getServletContext().getContextPath();
-		response.sendRedirect(response.encodeRedirectURL(contextPath+"/Backstage/wishbackstage.jsp"));
+		response.sendRedirect(response.encodeRedirectURL(contextPath+"/Backstage/newwishbackstage.jsp"));
 		return;
 	}
 
