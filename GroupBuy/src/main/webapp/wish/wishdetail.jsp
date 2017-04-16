@@ -9,17 +9,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<!-- <link href='http://fonts.useso.com/css?family=Open+Sans:400,300italic,400italic,600,600italic' rel='stylesheet' type='text/css'> -->
-<!-- <link href='http://fonts.useso.com/css?family=Crete+Round' rel='stylesheet' type='text/css'> -->
-<!-- <link href='http://fonts.useso.com/css?family=Crete+Round' rel='stylesheet' type='text/css'> -->
-<link href="../mycss/bootstrap.css" rel="stylesheet">
-<link href="../mycss/bootstrap-responsive.css" rel="stylesheet">
-<link href="../mycss/style.css" rel="stylesheet">
-<link href="../mycss/flexslider.css" type="text/css" media="screen" rel="stylesheet"  />
-<link href="../mycss/jquery.fancybox.css" rel="stylesheet">
-<link href="../mycss/cloud-zoom.css" rel="stylesheet">
+<link href="../myWeb_01Main/css/bootstrap.css" rel="stylesheet">
+<link href="../myWeb_01Main/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="../myWeb_01Main/css/style.css" rel="stylesheet">
+<link href="../myWeb_01Main/css/flexslider.css" type="text/css" media="screen" rel="stylesheet"  />
+<link href="../myWeb_01Main/css/jquery.fancybox.css" rel="stylesheet">
+<link href="../myWeb_01Main/css/cloud-zoom.css" rel="stylesheet">
 
-<link rel="shortcut icon" href="../myassets/ico/favicon.html">
+<link rel="shortcut icon" href="../myWeb_01Main/assets/ico/favicon.html">
 <style>
     #leftImg{
        text-align: center;
