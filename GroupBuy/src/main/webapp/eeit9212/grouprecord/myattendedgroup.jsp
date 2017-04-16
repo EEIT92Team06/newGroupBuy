@@ -9,9 +9,9 @@
 <link href="<c:url value='/css/style.css'/>" rel="stylesheet">
 </head>
 <body>
-<<<<<<< HEAD
 <jsp:include page="/headline.jsp"></jsp:include>
-<div class="cart-info container">
+<div style="text-align: center;" class="cart-info container">
+<h1>您參加的團</h1>
 	<table class="table table-striped table-bordered">
 		<thead>
 			<tr>

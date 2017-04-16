@@ -15,12 +15,13 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import eeit9212.model.AttendGroupInfoBean;
 import eeit9212.model.GroupInfoService;
+import eeit9212.model.OrderInfoBean;
 import eeit9212.model.CreditAttendanceService;
 import eeit9212.model.OrderInfoService;
 import login.model.MemberBean;
 
-@WebServlet("/eeit9212/grouprecord/checkorderajax")
-public class CheckOrderAjax extends HttpServlet {
+@WebServlet("/eeit9212/grouprecord/aftersuccessajax")
+public class AfterSuccessAjax extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private OrderInfoService orderInfoService;
 
@@ -34,27 +35,41 @@ public class CheckOrderAjax extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		 
-		String orderInfoStatus = request.getParameter("orderInfoStatus");
+		String orderInfoAfterSuccessBankAccount = request.getParameter("account");
+		String orderInfoAfterSuccessPhone = request.getParameter("phone");
+		String orderInfoAfterSuccessDestination = request.getParameter("address");
 		String orderInfoNoTemp = request.getParameter("orderInfoNo");
-		System.out.println("orderInfoStatus=" + orderInfoStatus);
 		System.out.println("orderInfoNoTemp=" + orderInfoNoTemp);
+		System.out.println("orderInfoAfterSuccessBankAccount=" + orderInfoAfterSuccessBankAccount);
+		System.out.println("orderInfoAfterSuccessPhone=" + orderInfoAfterSuccessPhone);
+		System.out.println("orderInfoAfterSuccessDestination=" + orderInfoAfterSuccessDestination);
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
-		int orderInfoNo = -1;
-		if (orderInfoNoTemp != null && orderInfoNoTemp.length() != 0) {
-			orderInfoNo = Integer.parseInt(orderInfoNoTemp);
-			if ("reject".equals(orderInfoStatus)) {
-				orderInfoService.updateOrderInfoStatus(1002, orderInfoNo);
-
-			} else if ("accept".equals(orderInfoStatus)) {
-				orderInfoService.updateOrderInfoStatus(1003, orderInfoNo);
+		
+		int orderInfoNo=-1;
+		if(orderInfoNoTemp!=null&&orderInfoNoTemp.length()!=0){
+			try {
+				orderInfoNo=Integer.parseInt(orderInfoNoTemp);
+			} catch (NumberFormatException e) {
+				System.out.println("orderInfoNoTemp轉型失敗");
 			}
 			
-			out.write("success");
+		}
+		if (orderInfoAfterSuccessBankAccount != null && orderInfoAfterSuccessBankAccount.length() != 0) {
+			System.out.println("從myattendedgroupinfo.jsp收到請求");
+			OrderInfoBean insertAndUpdateTransfer = orderInfoService.insertAndUpdateTransfer(orderInfoNo, 1102,
+					orderInfoAfterSuccessPhone, orderInfoAfterSuccessDestination, orderInfoAfterSuccessBankAccount);
+			out.write(""+insertAndUpdateTransfer.getOrderInfoAfterSuccessPayTime());
+			
+			if (insertAndUpdateTransfer != null) {
+				request.setAttribute("selectMyOrderInfoByNo", insertAndUpdateTransfer);
+			}
 		}
 		
+		
+		
+		
 	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
