@@ -74,13 +74,15 @@
         
         <!-- Blog listing-->      
         <div class="span9 bloggrid" style="margin-left: 100px;">
-          <h1 class="heading1"><span class="maintext">許願專區</span><span class="subtext"> See All Wishes </span></h1>
+          <h1 class="heading1" style="width: 750px;">
+            <span class="maintext">許願專區</span><span class="subtext"> See All Wishes </span>
+          </h1>
          <ul class="thumbnails" style="width: 932px;">
          
          <c:forEach var='wish' items="${wishCollection}">
-         <li class="span3" >
+         <li class="span3">
             <div class="thumbnail">
-              <img alt="" src="../pictures/${wish.coverPic}" style="width:270px; height:200px"><span class="viewfancypopup">&nbsp;</span>
+              <img alt="" src="../pictures/${wish.coverPic}" style="width:270px; height:170px"><span class="viewfancypopup">&nbsp;</span>
               <div class="caption">
                 <a href="<c:url value="/wish/wishdetail.controller?wishNo=${wish.wishNo}" />" class="bloggridtitle">${wish.title}</a>    
               </div>
