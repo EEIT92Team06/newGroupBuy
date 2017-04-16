@@ -12,7 +12,7 @@
 }
 
 .thumb {
-	height: 500px;
+	width:450px;
 	margin: 5px;
 }
 </style>
@@ -56,6 +56,7 @@
 
 		<form class="well form-horizontal"
 			action="<c:url value="/registryServlet.do"/>" enctype="multipart/form-data" method="post" >
+			<center>
 			<fieldset>
 
 				<!-- Form Name -->
@@ -66,13 +67,13 @@
 				</center>
 
 				<!-- 電子郵件 -->
-				<div class="form-group">
+				<div class="form-group"  style="margin-left: 230px;">
 					<label class="col-md-4 control-label">GroupBuy帳號</label>
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-envelope"
 								aria-hidden="true"></i></span> <input name="memberAccount"
-								placeholder="電子郵件" class="form-control" type="text"
+								placeholder="電子郵件" class="form-control" type="text"  style="height: 30px;"
 								value="${param.memberAccount}${googleData.email}">
 						</div>
 						<small data-bv-validator="notEmpty" data-bv-validator-for="title"
@@ -82,12 +83,12 @@
 
 
 				<!--密碼-->
-				<div class="form-group">
+				<div class="form-group" style="margin-left: 230px;">
 					<label class="col-md-4 control-label">密碼</label>
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-key"
-								aria-hidden="true"></i></span> <input name="memberPassword"
+								aria-hidden="true"></i></span> <input name="memberPassword" style="height: 30px;"
 								placeholder="輸入8到16碼含中英文及特殊符號" class="form-control"
 								type="password" />
 						</div>
@@ -98,12 +99,12 @@
 
 
 				<!--確認密碼-->
-				<div class="form-group">
+				<div class="form-group" style="margin-left: 230px;">
 					<label class="col-md-4 control-label">*確認密碼</label>
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-key"
-								aria-hidden="true"></i></span> <input name="checkPassword"
+								aria-hidden="true"></i></span> <input name="checkPassword" style="height: 30px;"
 								placeholder="輸入一致的密碼" class="form-control" type="password"
 								value="">
 						</div>
@@ -114,12 +115,12 @@
 
 				<!-- *姓名-->
 
-				<div class="form-group">
+				<div class="form-group" style="margin-left: 230px;">
 					<label class="col-md-4 control-label">*姓名</label>
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-user-o"
-								aria-hidden="true"></i> </span> <input name="memberName"
+								aria-hidden="true"></i> </span> <input name="memberName" style="height: 30px;"
 								placeholder="中文全名" class="form-control" type="text"
 								value="${param.memberName}">
 						</div>
@@ -130,12 +131,12 @@
 
 				<!-- 暱稱-->
 
-				<div class="form-group">
+				<div class="form-group" style="margin-left: 230px;">
 					<label class="col-md-4 control-label">暱稱</label>
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-child"
-								aria-hidden="true"></i></span> <input name="memberNickName"
+								aria-hidden="true"></i></span> <input name="memberNickName" style="height: 30px;"
 								placeholder="綽號" class="form-control" type="text"
 								value="${param.memberNickName}">
 						</div>
@@ -145,10 +146,10 @@
 				</div>
 
 				<!-- *地址 -->
-				<div class="form-group">
+				<div class="form-group" style="margin-left: 230px;">
 					<label class="col-md-4 control-label">*地址</label>
 					<div class="col-md-4 selectContainer">
-						<div class="input-group" style="width: 150px">
+						<div class="input-group"  style="width: 150px;margin-right: 150px">
 							<span class="input-group-addon"><i class="fa fa-map-marker" aria-hidden="true"></i>
 							</span> 
 							<select name="cityName" class="form-control selectpicker">
@@ -177,7 +178,7 @@
 							</select>
 						</div>
 						<div class="input-group" >
-							<input style="width: 338px" name="address"placeholder="完整住址" class="form-control" type="text" value="${param.address}">
+							<input style="width: 338px;height: 30px;"name="address"placeholder="完整住址" class="form-control" type="text" value="${param.address}">
 						</div>
 						<small data-bv-validator="notEmpty" data-bv-validator-for="title"
 							class="help-block" style="color: red;">${errorMessages.memberAddress}</small>
@@ -187,13 +188,13 @@
 
 				<!-- *生日-->
 
-				<div class="form-group">
+				<div class="form-group" style="margin-left: 230px;">
 					<label class="col-md-4 control-label">*生日</label>
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-birthday-cake" aria-hidden="true"></i>
                             </span> <input name="memberBirth"  id="datepicker"
-								placeholder="格式為西元年月日yyyy-MM-dd" class="form-control" type="text"
+								placeholder="格式為西元年月日yyyy-MM-dd" class="form-control" type="text" style="height: 30px;"
 								value="${param.memberBirth}">
 						</div>
 						<small data-bv-validator="notEmpty" data-bv-validator-for="title"
@@ -203,13 +204,13 @@
 
 
                <!-- *行動電話-->
-				<div class="form-group">
+				<div class="form-group" style="margin-left: 230px;">
 					<label class="col-md-4 control-label">*行動電話</label>
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-phone" aria-hidden="true"></i>
                             </span><input name="memberPhone"
-								placeholder="例:09xx-xxx-ooo" class="form-control" type="text"
+								placeholder="例:09xx-xxx-ooo" class="form-control" type="text" style="height: 30px;"
 								value="${param.memberPhone}">
 						</div>
 						<small data-bv-validator="notEmpty" data-bv-validator-for="title"
@@ -219,7 +220,7 @@
 
 				<!-- 挑選一張大頭貼-->
 
-				<div class="form-group">
+				<div class="form-group" style="margin-left: 230px;">
 					<label class="col-md-4 control-label">挑選一張大頭貼</label>
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
@@ -240,7 +241,7 @@
 				</div>
 
 				<!-- Button -->
-				<div class="form-group">
+				<div class="form-group" style="margin-left: 230px;">
 					<label class="col-md-4 control-label"></label>
 					<center>
 						<div class="col-md-4">
@@ -252,6 +253,7 @@
 					</center>
 				</div>
 			</fieldset>
+			</center>
 		</form>
 	</div>
 	</div>

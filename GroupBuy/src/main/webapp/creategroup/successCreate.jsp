@@ -21,6 +21,7 @@
 
 <body>
 <jsp:include page="/headline.jsp"></jsp:include>
+	<jsp:include page="/secure/newLogin.jsp"/>
 <div class="full">   
    <h1>${sessionScope.successMessage.createSuccess}</h1>
    <a  href="<c:url value="/eeit9212/grouprecord/mycreatedgroupinfo.controller"/>">看看你創的團購</a>

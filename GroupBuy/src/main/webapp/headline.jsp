@@ -345,10 +345,10 @@
 									 </c:choose>
 									
 									<!-- sub-menu end-->
-									<c:if test="${not empty Controller}">
+								
 										<li><a
 											href="<c:url value='/Backstage/BackStageServlet.controller'/>">後臺管理</a></li>
-									</c:if>
+								
 								</ul>
 							</div>
 						</div>

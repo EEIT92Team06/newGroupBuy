@@ -46,7 +46,7 @@ public class banGroupServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("Allgroup", Allgroup);
 		String contextPath = getServletContext().getContextPath();
-		response.sendRedirect(response.encodeRedirectURL(contextPath+"/Backstage/backstage3.jsp"));
+		response.sendRedirect(response.encodeRedirectURL(contextPath+"/Backstage/newbackstage3.jsp"));
 		return;
 	}
 
