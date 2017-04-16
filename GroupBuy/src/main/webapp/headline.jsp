@@ -291,7 +291,7 @@
 							<div class="nav-inner">
 								<ul class="am-nav am-nav-pills am-nav-justify notifications">
 									<li class=""><a href="<c:url value='/theindex.jsp'/>">
-											<img src="<c:url value='/pictures/groupbuy_hand.png'/>"
+											<img src="<c:url value='/pictures/logo.png'/>"
 											style="width: 75px">
 									</a></li>
 
@@ -334,7 +334,7 @@
 										</li>
 									   </c:when>
 									   <c:when test="${!empty loginToken}">
-									    <a href="<c:url value='/eeit9212/grouprecord/myattendedgroupinfo.controller'/>">我的團購</a> <!-- sub-menu start-->
+									    <a href="<c:url value='/test'/>">我的團購</a> <!-- sub-menu start-->
 										<ul class="sub-menu">
 											<li class="menu-item"><a
 												href="<c:url value='/eeit9212/grouprecord/mycreatedgroupinfo.controller'/>">我創的團</a></li>
