@@ -174,11 +174,11 @@ function orderSuc(){
 		<section id="product">
 		<div class="container">
 			<!-- Product Details-->
-			<div class="row">
+			<div class="row" style="margin-left: 130px;">
 				<!-- Left Image-->
 				<div class="span5">
 					<ul class="thumbnails mainimage" style="padding-left: 0px;">
-						<li class="span5"><a
+						<li class="span5" style="width: 420px;"><a
 							rel="position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4"
 							class="thumbnail cloud-zoom"
 							href="${pageContext.servletContext.contextPath}/searchImg/getImage?id=${groupInfoNo}&type=groupCover">
@@ -198,7 +198,7 @@ function orderSuc(){
 						</c:forEach>
 					</ul>
 					<div style="text-align: center;"><span>點擊選取圖片</span></div>
-					<ul class="thumbnails mainimage">
+					<ul class="thumbnails mainimage" style="padding-left: 0px;">
 						<li class="producthtumb"><a class="thumbnail"> <img
 								src="${pageContext.servletContext.contextPath}/searchImg/getImage?id=${groupInfoNo}&type=groupCover"
 								alt="" title="">
@@ -347,12 +347,12 @@ function orderSuc(){
 		<!--  Related Products-->
 		<section id="related" class="row">
 		<div class="container">
-			<h1 class="heading1"><span class="maintext">留言專區</span><span class="subtext"> See All Comments</span></h1>
+			<h1 class="heading1" style="width: 1000px;margin-left: 150px;"><span class="maintext">留言專區</span><span class="subtext"> See All Comments</span></h1>
 
 		</div>
 		</section>
 
-		<section class="commentsblog">
+		<section class="commentsblog" style="margin-left: 150px;">
 		<ul id="msgContent" class="comments" style="margin-left: 145px;">
 			<c:forEach var="bean" items="${selectMsg}">
 				<!--  			第一層Msg  -->
@@ -367,7 +367,7 @@ function orderSuc(){
 		<br>
 		<div id="div7">
 			<form style="margin-left: 175px">
-				<textarea style="width: 1100px" id="leaveMsg" name="groupMsg"
+				<textarea style="width: 1000px" id="leaveMsg" name="groupMsg"
 					rows="3" cols="400"
 					style="margin-top:0px; margin-bottom: 0px; height: 86px; width: 1180px;"></textarea>
 				<br> <br>
