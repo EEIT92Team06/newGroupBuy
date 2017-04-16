@@ -10,19 +10,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<link href="../css/bootstrap.css" rel="stylesheet">
-<link href="../css/bootstrap-responsive.css" rel="stylesheet">
-<link href="../css/style.css" rel="stylesheet">
-<link href="../css/flexslider.css" type="text/css" media="screen" rel="stylesheet"  />
-<link href="../css/jquery.fancybox.css" rel="stylesheet">
-<link href="../css/cloud-zoom.css" rel="stylesheet">
+<link href="../myWeb_01Main/css/bootstrap.css" rel="stylesheet">
+<link href="../myWeb_01Main/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="../myWeb_01Main/css/style.css" rel="stylesheet">
+<link href="../myWeb_01Main/css/flexslider.css" type="text/css" media="screen" rel="stylesheet"  />
+<link href="../myWeb_01Main/css/jquery.fancybox.css" rel="stylesheet">
+<link href="../myWeb_01Main/css/cloud-zoom.css" rel="stylesheet">
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 <!-- fav -->
-<link rel="shortcut icon" href="assets/ico/favicon.html">
+<link rel="shortcut icon" href="../myWeb_01Main/assets/ico/favicon.html">
 </head>
 <body>
 <jsp:include page="/headline.jsp"></jsp:include>
@@ -74,13 +74,15 @@
         
         <!-- Blog listing-->      
         <div class="span9 bloggrid" style="margin-left: 100px;">
-          <h1 class="heading1"><span class="maintext">許願專區</span><span class="subtext"> See All Wishes </span></h1>
+          <h1 class="heading1" style="width: 750px;">
+            <span class="maintext">許願專區</span><span class="subtext"> See All Wishes </span>
+          </h1>
          <ul class="thumbnails" style="width: 932px;">
          
          <c:forEach var='wish' items="${wishCollection}">
-         <li class="span3" >
+         <li class="span3">
             <div class="thumbnail">
-              <img alt="" src="../pictures/${wish.coverPic}" style="width:270px; height:200px"><span class="viewfancypopup">&nbsp;</span>
+              <img alt="" src="../pictures/${wish.coverPic}" style="width:270px; height:170px"><span class="viewfancypopup">&nbsp;</span>
               <div class="caption">
                 <a href="<c:url value="/wish/wishdetail.controller?wishNo=${wish.wishNo}" />" class="bloggridtitle">${wish.title}</a>    
               </div>
@@ -129,20 +131,20 @@
 <!-- javascript
     ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="../js/jquery.js"></script>
-<script src="../js/bootstrap.js"></script>
-<script src="../js/respond.min.js"></script>
-<script src="../js/application.js"></script>
-<script src="../js/bootstrap-tooltip.js"></script>
-<script defer src="../js/jquery.fancybox.js"></script>
-<script defer src="../js/jquery.flexslider.js"></script>
-<script type="text/javascript" src="../js/jquery.tweet.js"></script>
-<script  src="../js/cloud-zoom.1.0.2.js"></script>
-<script  type="text/javascript" src="../js/jquery.validate.js"></script>
-<script type="text/javascript"  src="../js/jquery.carouFredSel-6.1.0-packed.js"></script>
-<script type="text/javascript"  src="../js/jquery.mousewheel.min.js"></script>
-<script type="text/javascript"  src="../js/jquery.touchSwipe.min.js"></script>
-<script type="text/javascript"  src="../js/jquery.ba-throttle-debounce.min.js"></script>
-<script defer src="../js/custom.js"></script>
+<script src="../myWeb_01Main/js/jquery.js"></script>
+<script src="../myWeb_01Main/js/bootstrap.js"></script>
+<script src="../myWeb_01Main/js/respond.min.js"></script>
+<script src="../myWeb_01Main/js/application.js"></script>
+<script src="../myWeb_01Main/js/bootstrap-tooltip.js"></script>
+<script defer src="../myWeb_01Main/js/jquery.fancybox.js"></script>
+<script defer src="../myWeb_01Main/js/jquery.flexslider.js"></script>
+<script type="text/javascript" src="../myWeb_01Main/js/jquery.tweet.js"></script>
+<script  src="../myWeb_01Main/js/cloud-zoom.1.0.2.js"></script>
+<script  type="text/javascript" src="../myWeb_01Main/js/jquery.validate.js"></script>
+<script type="text/javascript"  src="../myWeb_01Main/js/jquery.carouFredSel-6.1.0-packed.js"></script>
+<script type="text/javascript"  src="../myWeb_01Main/js/jquery.mousewheel.min.js"></script>
+<script type="text/javascript"  src="../myWeb_01Main/js/jquery.touchSwipe.min.js"></script>
+<script type="text/javascript"  src="../myWeb_01Main/js/jquery.ba-throttle-debounce.min.js"></script>
+<script defer src="../myWeb_01Main/js/custom.js"></script>
 </body>
 </html>

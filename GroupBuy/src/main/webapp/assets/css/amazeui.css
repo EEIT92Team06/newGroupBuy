@@ -9661,7 +9661,7 @@ TODO:
   overflow: hidden;
   border: 1px solid #ddd;
   border-top: none;
-  z-index: 0;
+  z-index: 100;
   -webkit-transition: height .3s;
   transition: height .3s;
 }
