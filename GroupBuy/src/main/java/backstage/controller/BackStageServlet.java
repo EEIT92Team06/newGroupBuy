@@ -51,7 +51,9 @@ public class BackStageServlet extends HttpServlet {
 		session.setAttribute("AllWish", AllWish);
 		session.setAttribute("Allreports", reports); 
 		String contextPath = getServletContext().getContextPath();
-		response.sendRedirect(response.encodeRedirectURL(contextPath+"/Backstage/backstage0.jsp"));
+//		response.sendRedirect(response.encodeRedirectURL(contextPath+"/Backstage/backstage0.jsp"));
+		//andy
+		response.sendRedirect(response.encodeRedirectURL(contextPath+"/Backstage/backstageindex.jsp"));
 		return;
 	}
 

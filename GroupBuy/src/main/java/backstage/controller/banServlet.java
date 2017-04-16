@@ -46,7 +46,7 @@ public class banServlet extends HttpServlet {
 		List<Map<String, String>> Partmembers = announcementService.selectPartMem();
 		session.setAttribute("Partmembers", Partmembers);
 		String contextPath = getServletContext().getContextPath();
-		response.sendRedirect(response.encodeRedirectURL(contextPath+"/Backstage/backstage2.jsp"));
+		response.sendRedirect(response.encodeRedirectURL(contextPath+"/Backstage/newbackstage2.jsp"));
 		return;
 	}
 
