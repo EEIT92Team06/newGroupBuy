@@ -7,13 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
-#table1 {
-	width: 600px;
-	border: 3px solid #46A3FF;
-	margin: auto;
-	padding: 10px;
-}
-
 td {
 	border: 1px;
 }
@@ -22,9 +15,10 @@ tr {
 	border: 1px;
 }
 
-#div1 {
-	height: 110px;
-	width: 200px;
+.div1 {
+	height: 150px;
+	width: 305px;
+	border-radius: 10px;
 	border: 3px solid #FF7744;
 	padding: 3px;
 	margin: 5px;
@@ -34,42 +28,138 @@ img {
 	margin: 3px;
 	margin-right: 5px;
 }
+
+.button_s {
+	font-size: 15px;
+	font-weight: normal;
+	border-radius: 5px;
+	background-color: #F25C27;
+	color: white;
+/* 	line-height: 40px; */
+	text-align: center;
+	display: inline-block;
+	margin: 0 5px;
+	text-align: center;
+	font-weight: normal;
+}
+.button_b {
+	font-size: 15px;
+	font-weight: normal;
+	border-radius: 5px;
+	background-color: gray;
+	color: white;
+/* 	line-height: 40px; */
+	text-align: center;
+	display: inline-block;
+	margin: 0 5px;
+	text-align: center;
+}
+.title1 {
+	border-radius: 5px;
+	background-color: #FDEECE;
+	text-align: center;
+	font-size: 20px;
+	width: 700px;
+	margin: auto;
+	padding: 10px;
+}
+form{margin:0px;
+display:inline;
+}
 </style>
 </head>
 <body>
-<jsp:include page="/headline.jsp"></jsp:include>
+	<jsp:include page="/headline.jsp"></jsp:include>
+	<style>
+a {
+	color: #F25C27;
+	style ="text-decoration: none"
+}
+
+</style>
 	<form action="<c:url value='friend.controller'/>">
-		<table id="table1">
+		<table class="title1" style="margin-top: 20px;margin-bottom:20px;">
 			<tbody>
 				<tr>
-					<%-- 				<a href="<c:url value='MemberInfo.jsp'/>">Search</a> --%>
-					<td><a href="<c:url value='friend.controller?x=friend'/>">FriendList</a></td>
-					<td><a href="<c:url value='friend.controller?x=requested'/>">Invitation</a></td>
-					<td><a href="<c:url value='friend.controller?x=blockade'/>">Blockade</a></td>
-					<td><input type="text" name="searchTxt" value=""> <input
-						type="submit" name="RelationBtn" value="Search"></td>
+					<c:if test="${not empty friendlist}">
+						<td><a
+							style="text-decoration: none; font-size: 22px; font-weight: bold;"
+							href="<c:url value='friend.controller?x=friend'/>">FriendList</a></td>
+						<td><a style="text-decoration: none"
+							href="<c:url value='friend.controller?x=requested'/>">Invitation</a></td>
+						<td><a style="text-decoration: none"
+							href="<c:url value='friend.controller?x=blockade'/>">Blockade</a></td>
+					</c:if>
+
+					<c:if test="${not empty requested || not empty requesting}">
+						<td><a style="text-decoration: none"
+							href="<c:url value='friend.controller?x=friend'/>">FriendList</a>
+						</td>
+						<td><a
+							style="text-decoration: none; font-size: 22px; font-weight: bold;"
+							href="<c:url value='friend.controller?x=requested'/>">Invitation</a></td>
+						<td><a style="text-decoration: none"
+							href="<c:url value='friend.controller?x=blockade'/>">Blockade</a></td>
+					</c:if>
+					<c:if test="${not empty blockade}">
+						<td><a style="text-decoration: none"
+							href="<c:url value='friend.controller?x=friend'/>">FriendList</a>
+						</td>
+						<td><a style="text-decoration: none"
+							href="<c:url value='friend.controller?x=requested'/>">Invitation</a></td>
+						<td><a
+							style="text-decoration: none; font-size: 22px; font-weight: bold;"
+							href="<c:url value='friend.controller?x=blockade'/>">Blockade</a></td>
+					</c:if>
+
+					<c:if test="${not empty search}">
+						<td><a style="text-decoration: none"
+							href="<c:url value='friend.controller?x=friend'/>">FriendList</a>
+						</td>
+						<td><a style="text-decoration: none"
+							href="<c:url value='friend.controller?x=requested'/>">Invitation</a></td>
+						<td><a style="text-decoration: none;"
+							href="<c:url value='friend.controller?x=blockade'/>">Blockade</a></td>
+
+					</c:if>
+					<td><input type="text" name="searchTxt" value=""
+						placeholder="尋找朋友..." style="height: 30px; margin: 0px;">
+						<input type="submit" name="RelationBtn" value="Search"
+						class="button_s" style="font-size: 15px; line-height: 30px;"></td>
 				</tr>
 			</tbody>
 		</table>
 	</form>
-
 	<c:if test="${not empty requested || not empty requesting}">
-		<a href="<c:url value='friend.controller?x=requested'/>">收到的邀請</a>
-		<a href="<c:url value="/friend/friend.controller?x=requesting"/>">送出的邀請</a>
-	</c:if>
+		<c:if test="${not empty requested}">
+			<div style="margin-left: 120px;">
+				<a href="<c:url value='friend.controller?x=requested'/>"
+					style="font-size: 18px; font-weight: bold;">收到的邀請</a> <a
+					href="<c:url value="/friend/friend.controller?x=requesting"/>">送出的邀請</a>
+			</div>
+		</c:if>
+		<c:if test="${not empty requesting}">
+			<div style="margin-left: 120px;">
+				<a href="<c:url value='friend.controller?x=requested'/>">收到的邀請</a> <a
+					href="<c:url value="/friend/friend.controller?x=requesting"/>"
+					style="font-size: 18px; font-weight: bold;">送出的邀請</a>
+			</div>
+		</c:if>
 
+	</c:if>
+	<div>
+ <ul class="thumbnails" style="margin:0px 0px 0px 130px;text-align: center;">
 	<c:if test="${not empty relationList}">
 		<c:forEach var="member" items="${relationList}">
-			<c:if
-				test="${member.fdMemberNo!=member.memberNo || member.friendStatusNo!=2102}">
-				<form id="f">
-					<table id="div1">
+			<c:if test="${member.fdMemberNo!=member.memberNo || member.friendStatusNo!=2102}">
+				<form class="div1" style="float:left;margin:20px;">
+					<table>
 						<tr>
-							<td rowspan="5"><img
-								style="float: left; width: 100px; height: 100px;"
+							<td rowspan="5">
+							<img style="width: 130px; height: 130px;border-radius:10px;"
 								src="<c:url value='/pictures/${member.memberPic}'/>" /></td>
-							<td><a
-								href="<c:url value="/member/member.controller?memberNo=${member.memberNo}"/>">${member.memberName}</a>
+							<td><a style="text-decoration: none;font-size:20px;"
+								href="<c:url value="/member/member.controller?memberNo=${member.memberNo}"/>">${member.memberNickName}</a>
 								<input type="hidden" name="friendNo" value="${member.friendNo}" />
 								<input type="hidden" name="memberFriendNo"
 								value="${member.memberNo}" /> <input type="hidden"
@@ -77,47 +167,48 @@ img {
 								value="${param.searchTxt}"></td>
 						</tr>
 						<tr>
-							<td>${member.memberNickName}</td>
+							<td>${member.memberName}</td>
 						</tr>
+
+
 						<tr>
 							<td><c:if test="${not empty search}">
-							
+
 									<input type="hidden" name="SearchMark" value="${searchMark}" />
 									<c:if test="${member.friendNo==null}">
-										<input type="submit" name="RelationBtn" value="Request">
+										<input type="submit" name="RelationBtn" value="Request" class="button_s">
 									</c:if>
 									<c:if
 										test="${member.memberFriendNo==member.memberNo && member.friendStatusNo==2101}">
-										<input type="submit" name="RelationBtn" value="Delete">
-										<input type="submit" name="RelationBtn" value="Block">
+										<input type="submit" name="RelationBtn" value="Delete" class="button_b">
+										<input type="submit" name="RelationBtn" value="Block" class="button_b">
 									</c:if>
 									<c:if
 										test="${member.memberFriendNo==member.memberNo && member.friendStatusNo==2102}">
-										<input type="submit" name="RelationBtn" value="UnBlock">
+										<input type="submit" name="RelationBtn" value="UnBlock" class="button_s">
 									</c:if>
 									<c:if
 										test="${member.fdMemberNo==member.memberNo && member.friendStatusNo==2103}">
-										<input type="submit" name="RelationBtn" value="BeFriend">
-										<input type="submit" name="RelationBtn" value="Refuse">
+										<input type="submit" name="RelationBtn" value="BeFriend" class="button_s">
+										<input type="submit" name="RelationBtn" value="Refuse" class="button_b">
 									</c:if>
 									<c:if
 										test="${member.memberFriendNo==member.memberNo && member.friendStatusNo==2103}">
-										<input type="submit" name="RelationBtn"
-											value="CancelRequest">
+										<input type="submit" name="RelationBtn" value="CancelRequest" class="button_b">
 									</c:if>
 
 
 
 								</c:if> <c:if test="${not empty friendlist}">
-									<input type="submit" name="RelationBtn" value="Delete">
-									<input type="submit" name="RelationBtn" value="Block">
+									<input type="submit" name="RelationBtn" value="Delete" class="button_b">
+									<input type="submit" name="RelationBtn" value="Block" class="button_b">
 								</c:if> <c:if test="${not empty blockade}">
-									<input type="submit" name="RelationBtn" value="UnBlock">
+									<input type="submit" name="RelationBtn" value="UnBlock" class="button_s">
 								</c:if> <c:if test="${not empty requested}">
-									<input type="submit" name="RelationBtn" value="BeFriend">
-									<input type="submit" name="RelationBtn" value="Refuse">
+									<input type="submit" name="RelationBtn" value="BeFriend" class="button_s">
+									<input type="submit" name="RelationBtn" value="Refuse" class="button_b">
 								</c:if> <c:if test="${not empty requesting}">
-									<input type="submit" name="RelationBtn" value="CancelRequest">
+									<input type="submit" name="RelationBtn" value="CancelRequest" class="button_b">
 								</c:if></td>
 						</tr>
 					</table>
@@ -125,23 +216,8 @@ img {
 			</c:if>
 		</c:forEach>
 	</c:if>
-
-
-	<script>
-		// 	window.onload=function(){
-		// 		document.getElementById("a").onclick=function(){
-		// 			document.getElementById("f").submit();
-		// 		}		
-		// 	}
-
-		// 	window.onload = function() {
-		// 		document.getElementById("back").onclick = function() {
-		// 			location.href = "memberinfo.jsp"
-		// 		}
-		// 	}
-	</script>
-
-
+</ul>
+</div>
 </body>
 
 
