@@ -193,7 +193,7 @@ public class OrderInfoDAOHibernate implements OrderInfoDAO {
 
 	public List<OrderInfoBean> selectMyGroupOrderInfo(int groupInfoNo) {
 
-		String selectMyGroupOrderInfo = "from eeit9212.model.OrderInfoBean where groupInfo_No=?";
+		String selectMyGroupOrderInfo = "from eeit9212.model.OrderInfoBean where groupInfo_No=? order by orderInfo_No desc";
 		List<OrderInfoBean> result = null;
 		Query<OrderInfoBean> query = this.getSession().createQuery(selectMyGroupOrderInfo);
 		query.setParameter(0, groupInfoNo);

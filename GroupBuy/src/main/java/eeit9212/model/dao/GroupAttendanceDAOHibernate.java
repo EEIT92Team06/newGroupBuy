@@ -49,10 +49,7 @@ public class GroupAttendanceDAOHibernate implements GroupAttendanceDAO{
 		}
 		return result;
 	}
-	
-	
 
-	
 	@Override
 	public int insertGroupAttendance(int memberNo,int success) {
 		String insertGroupAttendance = "insert into groupAttendance values(?,1,?);";
@@ -77,8 +74,6 @@ public class GroupAttendanceDAOHibernate implements GroupAttendanceDAO{
 		NativeQuery<?> query = this.getSession().createNativeQuery(updateGroupAttendance);
 		query.setParameter(1, success);
 		query.setParameter(2, memberNo);
-//		this.getSession().getTransaction().commit();
-//		this.getSession().beginTransaction();
 		return query.executeUpdate();
 	}
 	

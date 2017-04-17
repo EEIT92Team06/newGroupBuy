@@ -27,29 +27,28 @@ public class GroupSocket {
 		JSONObject jsonObject = new JSONObject(message);
 		Map<String, Object> nowUserProperties = session.getUserProperties();
 		Object fromKeyNo = nowUserProperties.get("keyNo");
+		System.out.println("來自keyNo: " + fromKeyNo);
 		jsonObject.put("fromKeyNo", fromKeyNo);
 		
-		if ("sendAllOrder".equals(message)) {
-			
-			
+		if ("sendAllOrder".equals(jsonObject.get("target"))) {
 			for (Session sess : sessionTemp) {
 				Map<String, Object> userProperties = sess.getUserProperties();
 				Object groupNo = userProperties.get("groupInfoNo");
 				System.out.println("現在買家的groupNo=" + groupNo);
+				
 				if (fromKeyNo.equals(groupNo)) {
-					sess.getBasicRemote().sendText(message);
+					System.out.println("把"+jsonObject+"傳到keyNo="+userProperties.get("keyNo"));
+					sess.getBasicRemote().sendText(jsonObject.toString());
 				}
 			}
 			return;
 		}
 		for (Session sess : sessionTemp) {
 			Map<String, Object> userProperties = sess.getUserProperties();
-			Object keyNo = userProperties.get("keyNo");
-			
+			Object keyNo = userProperties.get("keyNo");		
 			System.out.println("現在的keyNo=" + keyNo);
 			System.out.println("要送的對象:"+jsonObject.get("target"));
 			if (jsonObject.get("target").equals(keyNo)) {
-				
 				System.out.println("把"+jsonObject+"傳到keyNo="+keyNo);
 				sess.getBasicRemote().sendText(jsonObject.toString());
 			}

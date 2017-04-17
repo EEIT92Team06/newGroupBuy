@@ -2,6 +2,7 @@ package eeit9212.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -75,6 +76,7 @@ public class SelectAjax extends HttpServlet {
 		}
 		if (orderInfoNo != -1) {
 			OrderInfoBean selectMyOrderInfoByNo=orderInfoService.selectMyOrderInfoByNo(orderInfoNo);
+			selectMyOrderInfoByNo.setFormatPayTime();
 			Gson gson = new Gson();
 			String json = gson.toJson(selectMyOrderInfoByNo);
 			System.out.println(json);
@@ -82,6 +84,9 @@ public class SelectAjax extends HttpServlet {
 			return;
 		}
 
+		
+		
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

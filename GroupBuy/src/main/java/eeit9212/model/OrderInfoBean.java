@@ -1,5 +1,7 @@
 package eeit9212.model;
 
+import java.text.SimpleDateFormat;
+
 public class OrderInfoBean {
 
 	private Integer orderInfoNo;
@@ -15,6 +17,27 @@ public class OrderInfoBean {
 	private String orderInfoAfterSuccessPhone;
 	private String orderInfoAfterSuccessDestination;
 	private String orderInfoAfterSuccessBankAccount;
+	private String formatPayTime;
+	
+	
+	public String getFormatPayTime() {	
+		SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		if(getOrderInfoAfterSuccessPayTime()!=null){
+		return formatPayTime = format.format(getOrderInfoAfterSuccessPayTime());
+		}
+		else{
+			return null;
+		}
+	}
+	public void setFormatPayTime() {
+		SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm");	
+		if(getOrderInfoAfterSuccessPayTime()!=null){
+			this. formatPayTime = format.format(getOrderInfoAfterSuccessPayTime());
+			}
+			else{
+				this.formatPayTime=null;
+			}
+	}
 
 	@Override
 	public String toString() {
