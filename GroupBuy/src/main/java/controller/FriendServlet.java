@@ -93,6 +93,7 @@ public class FriendServlet extends HttpServlet {
 			System.out.println("search="+searchTxt);
 			request.setAttribute("search", 1);
 			session.setAttribute("searchMark", searchTxt);
+			System.out.println("");
 		}
 		
 		//邀請成為朋友
