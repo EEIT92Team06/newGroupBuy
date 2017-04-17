@@ -1,6 +1,7 @@
 package eeit9212.websocket;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +13,8 @@ import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
+import org.json.JSONObject;
+
 @ServerEndpoint("/groupsocket/{keyNo}/{groupInfoNo}")
 public class GroupSocket {
 
@@ -21,52 +24,61 @@ public class GroupSocket {
 	public void onMessage(String message, Session session) throws IOException, InterruptedException {
 		List<Session> sessionTemp = WebSocketSessionTemp.getSessionTemp();
 		System.out.println("收到訊息Received: " + message);
+		JSONObject jsonObject = new JSONObject(message);
+		Map<String, Object> nowUserProperties = session.getUserProperties();
+		Object fromKeyNo = nowUserProperties.get("keyNo");
+		jsonObject.put("fromKeyNo", fromKeyNo);
 		
-		if("sendAllOrder".equals(message)){
-			Map<String, Object> nowUserProperties = session.getUserProperties();
-			Object keyNo=nowUserProperties.get("keyNo");
+		if ("sendAllOrder".equals(message)) {
+			
+			
 			for (Session sess : sessionTemp) {
 				Map<String, Object> userProperties = sess.getUserProperties();
-				Object groupNo=userProperties.get("groupInfoNo");
+				Object groupNo = userProperties.get("groupInfoNo");
 				System.out.println("現在買家的groupNo=" + groupNo);
-				if (keyNo.equals(groupNo)) {
+				if (fromKeyNo.equals(groupNo)) {
 					sess.getBasicRemote().sendText(message);
-				}	
+				}
 			}
 			return;
 		}
 		for (Session sess : sessionTemp) {
 			Map<String, Object> userProperties = sess.getUserProperties();
-			Object keyNo=userProperties.get("keyNo");
+			Object keyNo = userProperties.get("keyNo");
+			
 			System.out.println("現在的keyNo=" + keyNo);
-			if (message.equals(keyNo)) {
-				sess.getBasicRemote().sendText(message);
-			}	
+			System.out.println("要送的對象:"+jsonObject.get("target"));
+			if (jsonObject.get("target").equals(keyNo)) {
+				
+				System.out.println("把"+jsonObject+"傳到keyNo="+keyNo);
+				sess.getBasicRemote().sendText(jsonObject.toString());
+			}
 		}
 	}
 
 	@OnOpen // client開啟連接.
-	public void onOpen(Session session,@PathParam("keyNo")String keyNo,@PathParam("groupInfoNo")String groupInfoNo) {
+	public void onOpen(Session session, @PathParam("keyNo") String keyNo,
+			@PathParam("groupInfoNo") String groupInfoNo) {
 		System.out.println("Client connected");
-		System.out.println("keyNo="+keyNo);
-		System.out.println("groupInfoNo="+groupInfoNo);
+		System.out.println("keyNo=" + keyNo);
+		System.out.println("groupInfoNo=" + groupInfoNo);
 		Map<String, Object> userProperties = session.getUserProperties();
-		
+
 		userProperties.put("keyNo", keyNo);
 		userProperties.put("groupInfoNo", groupInfoNo);
 		List<Session> sessionTemp = WebSocketSessionTemp.getSessionTemp();
 		sessionTemp.add(session);
-		System.out.println("sessionTemp.size()="+sessionTemp.size());
+		System.out.println("sessionTemp.size()=" + sessionTemp.size());
 
 	}
 
 	@OnClose // client關閉連接.
 	public void onClose(Session session) {
-		System.out.println(session.getUserProperties().get("keyNo")+"號keyNo連線中止");
+		System.out.println(session.getUserProperties().get("keyNo") + "號keyNo連線中止");
 		try {
 			session.close();
 		} catch (IOException e) {
-//			e.printStackTrace();
+			// e.printStackTrace();
 		}
 		List<Session> sessionTemp = WebSocketSessionTemp.getSessionTemp();
 		sessionTemp.remove(session);
@@ -75,11 +87,11 @@ public class GroupSocket {
 	}
 
 	@OnError
-	public void onError(Session session,Throwable e) {
-		System.out.println(session.getUserProperties().get("keyNo")+"號keyNo發生錯誤");
+	public void onError(Session session, Throwable e) {
+		System.out.println(session.getUserProperties().get("keyNo") + "號keyNo發生錯誤");
 		System.out.println("Connection error");
-//		e.printStackTrace();
-//		onClose(session);
+		// e.printStackTrace();
+		// onClose(session);
 	}
 
 }

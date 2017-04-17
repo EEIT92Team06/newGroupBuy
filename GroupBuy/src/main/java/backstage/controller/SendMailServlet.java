@@ -53,7 +53,7 @@ public class SendMailServlet extends HttpServlet {
 			errorMsg.put("errorMsg", "欄位不可為空");
 		}
 		if(!errorMsg.isEmpty()){
-			RequestDispatcher rd = request.getRequestDispatcher("/Backstage/backstage.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/Backstage/newbackstage.jsp");
 			rd.forward(request, response);
 			return;
 		}

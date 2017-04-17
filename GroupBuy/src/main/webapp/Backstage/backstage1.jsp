@@ -8,7 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>	
-		<form action="<c:url value="/Backstage/SendMailServlet" />"
+<%-- <jsp:include page="/Backstage/backstageheadline.jsp"/> --%>
+		<form action="<c:url value="/Backstage/SendMailServlet"/>"
 			method="post">
 		<table>
 			<tr>
