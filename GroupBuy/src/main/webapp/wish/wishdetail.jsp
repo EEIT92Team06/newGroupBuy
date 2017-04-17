@@ -4,66 +4,245 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Wish Detail</title>
-<style type="text/css">
-    #div1{
-       border-color:orange;
-       border-style:outset; 
-       width:1200px;
-       height:500px;
-       padding-left:30px; 
-    }
-    #div2{
-       border-color:orange;
-       border-style:outset; 
-       width:1200px;
-       height:150px;
-       
-    }
-    #div3{
-       width:500px;
-       height:460px;
-       overflow:hidden;
-       float:left;
-       text-align: center;
-       
-    }
-    #div4{
-       width:670px;
-       height:460px;
-       overflow:hidden;
-       float:right;
-    }
-    #div5{
-       float:left;
-    }
-    #div6{
-       float:left;
-       overflow:hidden;
-    }
-    .memberPic{
-       height:75px;
-       width:75px;
-    }
-    
-</style>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
-<script type="text/javascript" src="http://malsup.github.com/chili-1.7.pack.js"></script>
-<script type="text/javascript" src="http://malsup.github.com/jquery.cycle.all.js"></script>
-<script type="text/javascript" src="http://malsup.github.com/jquery.easing.1.3.js"></script>
-<script type="text/javascript">
-$.fn.cycle.defaults.speed   = 900;
-$.fn.cycle.defaults.timeout = 6000;
-$(function() {
-    $('#demos pre code').each(function() {
-        eval($(this).text());
-    });
+<meta charset="utf-8">
+<title>SimpleOne - A Responsive Html5 Ecommerce Template</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<link href='http://fonts.useso.com/css?family=Open+Sans:400,300italic,400italic,600,600italic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.useso.com/css?family=Crete+Round' rel='stylesheet' type='text/css'>
+<link href='http://fonts.useso.com/css?family=Crete+Round' rel='stylesheet' type='text/css'><link href="../css/bootstrap.css" rel="stylesheet">
+<link href="../css/bootstrap-responsive.css" rel="stylesheet">
+<link href="../css/style.css" rel="stylesheet">
+<link href="../css/flexslider.css" type="text/css" media="screen" rel="stylesheet"  />
+<link href="../css/jquery.fancybox.css" rel="stylesheet">
+<link href="../css/cloud-zoom.css" rel="stylesheet">
 
-});
+<link rel="shortcut icon" href="../assets/ico/favicon.html">
+<style>
+    #leftImg{
+       text-align: center;
+    }
+</style>
+</head>
+<body>
+<jsp:include page="/headline.jsp"></jsp:include>
+<br>
+<div id="maincontainer">
+  <section id="product">
+    <div class="container">      
+      <!-- Product Details-->
+      <div class="row">
+       <!-- Left Image-->
+        <div class="span5">
+          <ul class="thumbnails mainimage" style="padding-left: 0px;">
+            <c:forEach var="wishPics" items="${wishPics}">
+                  <li class="span5">
+                     <a  rel="position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4" class="thumbnail cloud-zoom" href="../pictures/${wishPics.wishPicture}">
+                          <img src="../pictures/${wishPics.wishPicture}" alt="" title="" width="420" height="300">
+                     </a>
+                  </li>         
+			</c:forEach>
+          </ul>
+          <div id="leftImg"><span>點擊選取圖片</span></div>
+<!--           =============小圖===============         -->
+          <ul class="thumbnails mainimage" >
+             <c:forEach var="wishPics" items="${wishPics}">
+                <li class="producthtumb">
+                  <a class="thumbnail" >
+                     <img  src="../pictures/${wishPics.wishPicture}" alt="" title="">
+                  </a>
+                </li>
+             </c:forEach>
+        
+          </ul>
+        </div>
+        
+<!--         =================圖片&右邊明細區塊分隔線================= -->
+         <!-- Right Details-->
+        <c:forEach var="wishDetail" items="${wishDetail}">
+        <div class="span7">
+          <div class="row">
+            <div class="span7" style="margin-left: 120px;">
+              <h1 class="productname"><span class="bgnone">${wishDetail.title}</span></h1>
+              <div class="productprice">
+                <div class="productpageprice">
+                  <span class="spiral"></span>$${wishDetail.price}</div>
+                <ul class="rate" style="padding-left: 0px;">
+                  <li class="on"></li>
+                  <li class="on"></li>
+                  <li class="on"></li>
+                  <li class="on"></li>
+                  <li class="on"></li>
+                </ul><br>
+                <div id="likeArea">${like}</div>
+              </div>
+              <br>
+              <ul class="productpagecart" style="padding-left: 0px;">
+                <input id="wishNo" type="hidden" name="wishNo" value="${wishDetail.wishNo}"></input>
+                <li><a id="status" name="send" class="wish" href="#" onclick="likeForWish()" value="">${likeOrNot}</a>
+                </li>
+                <li><a class="comare" href="<c:url value='/creategroup/createGroup.jsp' />" >認養此商品</a>
+                </li>
+              </ul>
+         <!-- Product Description tab & comments-->
+         <div class="productdesc">
+                <ul class="nav nav-tabs" id="myTab" style="width: 532px;">
+                  <li class="active"><a href="#description">簡介</a>
+                  </li>
+                  <li><a href="#specification">來源</a>
+                  </li>
+                  <li><a href="#review">檢舉許願池</a>
+                  </li>
+                </ul>
+                <div class="tab-content" style="width: 532px;">
+                  <div class="tab-pane active" id="description">
+                    <h2>${wishDetail.title}</h2>
+                    ${wishDetail.content}<br>
+                    <br>
+                  </div>
+                  <div class="tab-pane " id="specification">
+                    <ul class="productinfo">
+                      ${wishDetail.source}
+                    </ul>
+                  </div>
+                  <div class="tab-pane " id="specification">
+                    <ul class="productinfo">
+                      ${wishDetail.source}
+                    </ul>
+                  </div>
+                  <div class="tab-pane" id="review">
+                      <button id="report">檢舉</button>
+                      <div id="reportDiv" style="display: none">
+			          <input id="reportTarget" type="hidden" value="${wishDetail.wishNo}" name="reportTarget"/>
+			            <div>
+				          <select id="reportTypeNo" name="reportTypeNo">
+					         <option value="5">檢舉許願標題</option>
+					         <option value="6">檢舉許願照片</option>
+					         <option value="7">檢舉許願池留言</option>
+				          </select>
+			            </div>
+                     </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </c:forEach>
+      </div>
+    </div>
+  </section>
+  <!--  Related Products-->
+  <section id="related" class="row">
+    <div class="container">
+      <h1 class="heading1"><span class="maintext">留言專區</span><span class="subtext"> See All Comments</span></h1>
+      
+    </div>
+  </section>
+</div>
+	<section class="commentsblog">
+	<ul class="comments" style="margin-left: 145px;">
+	<c:forEach var="msgDetail" items="${msgDetail}">
+		<li><a class="avtar thumbnail"><img src="../pictures/${msgDetail.memberPic}"
+				alt=""></a>
+			<div class="commentdetail">
+				<a class="blogtitle" href="#">${msgDetail.nickName}</a>
+				<div style="width: 1000px;">
+				<p>${msgDetail.wishMsgContent}</p>
+				</div>
+			</div></li>
+	</c:forEach>
+	</ul><br>
+	<div id="div7">
+		<form action="<c:url value="/wish/wishMsg.controller" />" style="margin-left: 175px; method="post">
+			<textarea name="content" rows="3" cols="500" style="margin-top: 0px; margin-bottom: 0px; height: 86px; width: 1180px;"></textarea>
+			<br>
+			<br>
+			<c:forEach var="wishDetail" items="${wishDetail}">
+				<input type="hidden" name="wishNo" value="${wishDetail.wishNo}"></input>
+			</c:forEach>
+			<tr>
+				${errorMsg.message}
+				<td id="submit"><input type="submit" name="send" value="確認送出" style="margin-left: 1100px;"/></td>
+			</tr>
+		</form>
+	</div>
+	</section>
+	
+	
+<!-- Footer -->
+<footer id="footer">
+  <section class="footerlinks">
+    <div class="container">
+      <div class="info">
+        <ul>
+          <li><a href="#">Privacy Policy</a>
+          </li>
+          <li><a href="#">Terms &amp; Conditions</a>
+          </li>
+          <li><a href="#">Affiliates</a>
+          </li>
+          <li><a href="#">Newsletter</a>
+          </li>
+        </ul>
+      </div>
+      <div id="footersocial">
+        <a href="#" title="Facebook" class="facebook">Facebook</a>
+        <a href="#" title="Twitter" class="twitter">Twitter</a>
+        <a href="#" title="Linkedin" class="linkedin">Linkedin</a>
+        <a href="#" title="rss" class="rss">rss</a>
+        <a href="#" title="Googleplus" class="googleplus">Googleplus</a>
+        <a href="#" title="Skype" class="skype">Skype</a>
+        <a href="#" title="Flickr" class="flickr">Flickr</a>
+      </div>
+    </div>
+  </section>
+  <a id="gotop" href="#">Back to top</a>
+</footer>
+<!-- javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="../js/jquery.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/respond.min.js"></script>
+<script src="../js/application.js"></script>
+<script src="../js/bootstrap-tooltip.js"></script>
+<script defer src="../js/jquery.fancybox.js"></script>
+<script defer src="../js/jquery.flexslider.js"></script>
+<script type="text/javascript" src="../js/jquery.tweet.js"></script>
+<script  src="../js/cloud-zoom.1.0.2.js"></script>
+<script  type="text/javascript" src="../js/jquery.validate.js"></script>
+<script type="text/javascript"  src="../js/jquery.carouFredSel-6.1.0-packed.js"></script>
+<script type="text/javascript"  src="../js/jquery.mousewheel.min.js"></script>
+<script type="text/javascript"  src="../js/jquery.touchSwipe.min.js"></script>
+<script type="text/javascript"  src="../js/jquery.ba-throttle-debounce.min.js"></script>
+<script defer src="../js/custom.js"></script>
+<script type="text/javascript">
+function likeForWish(){
+	var wishNo = document.getElementById("wishNo").value;
+	var likeArea = document.getElementById("likeArea");
+
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST","wishinterest.controller",true);
+	xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	xhr.send("wishNo="+wishNo);
+	xhr.onreadystatechange = function(){
+		// 向伺服器提出的請求已經收到回應 
+		if(xhr.readyState===4){
+			// 伺服器回應成功
+			if (xhr.status === 200) {
+				//likeArea.innerHTML=xhr.responseText;
+				result = JSON.parse(xhr.responseText);
+				likeArea.innerHTML=result.like;
+				document.getElementById("status").innerHTML = result.likeOrNot;
+			} 
+// 			alert("xhr.status: "+xhr.status);
+		}
+// 		alert("xhr.readyState : " + xhr.readyState);
+	}
+}
 </script>
-<script src="<c:url value='/js/jquery-3.1.1.min.js'></c:url>"></script>
-<script src="<c:url value='/js/layer/layer.js'/>"></script>
+<!-- 以下是檢舉的js -->
 <script>
 $(function() {
 	
@@ -94,113 +273,6 @@ $("#sendReport").click(function(){
 			});
 		});
 	});
-</script>
-</head>
-<body>
-<jsp:include page="../headline/top.jsp" /> 
-
-<div id="div1">
-      <c:forEach var="wishDetail" items="${wishDetail}">
-         <div id="div3">
-             <br><br>
-             <div id="demos">
-					<div id="shuffle" class="pics">
-						<c:forEach var="wishPics" items="${wishPics}">
-						     <img src="../pictures/${wishPics.wishPicture}" width="420" height="300" />
-						</c:forEach>
-					</div>
-					<script>
-						$('#shuffle').cycle({
-							fx : 'shuffle',
-							easing : 'easeOutBack',
-							delay : -4000
-						});
-					</script>
-				</div>
-			 <div id="likeArea">${like}</div>
-			 <br>
-			 <input id="wishNo" type="hidden" name="wishNo" value="${wishDetail.wishNo}"></input>
-			
-             <input id="status" type="button" name="send" value="${likeOrNot}" onclick="likeForWish()"></input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-             <a href="<c:url value='/creategroup/createGroup.jsp' />"><input type="button" value="我要認領" /></a><br>
-         </div>
-         <div id="div4">
-             <br><br>
-             <font size="10">${wishDetail.title}</font><br><br>
-                            產品名稱 : ${wishDetail.productName}<br><br>
-             ${wishDetail.content}<br><br>
-                            原價 : ${wishDetail.price}<br><br>
-                            來源 : ${wishDetail.source}
-         </div>
-         <button id="report">檢舉</button>
-         <div id="reportDiv" style="display: none">
-			<input id="reportTarget" type="hidden" value="${wishDetail.wishNo}" name="reportTarget"/>
-			<div>
-				<select id="reportTypeNo" name="reportTypeNo">
-					<option value="5">檢舉許願標題</option>
-					<option value="6">檢舉許願照片</option>
-					<option value="7">檢舉許願池留言</option>
-				</select>
-			</div>
-			<label for="reportContent">檢舉內容</label>
-			<textarea id="reportContent" name="reportContent" rows="5" cols="50"></textarea>
-			<input id="sendReport" type="button" value="送出"/>
-		</div>   
-      </c:forEach>   
-</div>
-<br>
-<c:forEach var="msgDetail" items="${msgDetail}">
-<div id="div2">
-<div id="div5"><img src="../pictures/${msgDetail.memberPic}" class="memberPic" /></div>
-<div id="div6">
-    ${msgDetail.nickName}<br>
-    ${msgDetail.wishMsgContent}
-</div>
-</div>
-</c:forEach>
-<br>
-    <div id="div7">
-		<form action="<c:url value="/wish/wishMsg.controller" />"
-			method="post">
-			<textarea name="content" rows="5" cols="169"></textarea>
-			<br>
-			<br>
-			<c:forEach var="wishDetail" items="${wishDetail}">
-				<input type="hidden" name="wishNo" value="${wishDetail.wishNo}"></input>
-			</c:forEach>
-			<tr>
-				${errorMsg.message}
-				<br>
-				<td id="submit"><input type="submit" name="send" value="確認送出" /></td>
-			</tr>
-		</form>
-	</div>
-	
-<script type="text/javascript">
-function likeForWish(){
-	var wishNo = document.getElementById("wishNo").value;
-	var likeArea = document.getElementById("likeArea");
-
-	var xhr = new XMLHttpRequest();
-	xhr.open("POST","wishinterest.controller",true);
-	xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	xhr.send("wishNo="+wishNo);
-	xhr.onreadystatechange = function(){
-		// 向伺服器提出的請求已經收到回應 
-		if(xhr.readyState===4){
-			// 伺服器回應成功
-			if (xhr.status === 200) {
-				//likeArea.innerHTML=xhr.responseText;
-				result = JSON.parse(xhr.responseText);
-				likeArea.innerHTML=result.like;
-				document.getElementById("status").value = result.likeOrNot;
-			} 
-// 			alert("xhr.status: "+xhr.status);
-		}
-// 		alert("xhr.readyState : " + xhr.readyState);
-	}
-}
 </script>
 </body>
 </html>

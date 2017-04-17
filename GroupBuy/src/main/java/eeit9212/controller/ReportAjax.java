@@ -35,7 +35,7 @@ public class ReportAjax extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		HttpSession session=request.getSession();
-		MemberBean memberBean=(MemberBean)session.getAttribute("loginToken");
+		MemberBean memberBean = (MemberBean) session.getAttribute("loginToken");
 		Integer memberNo=memberBean.getMemberNo();
 		String reportTypeNoTemp=request.getParameter("reportTypeNo");
 		String reportContent=request.getParameter("reportContent");

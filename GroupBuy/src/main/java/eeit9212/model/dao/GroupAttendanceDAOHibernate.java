@@ -27,8 +27,8 @@ public class GroupAttendanceDAOHibernate implements GroupAttendanceDAO{
 		sessionFactory.getCurrentSession().beginTransaction();
 		GroupAttendanceDAO groupAttendanceDAOJdbc = new GroupAttendanceDAOHibernate(sessionFactory);
 		System.out.println(groupAttendanceDAOJdbc.selectGroupAttendance(5));
-//		System.out.println(groupAttendanceDAOJdbc.insertGroupAttendance(1, 0));
-		System.out.println(groupAttendanceDAOJdbc.updateGroupAttendance(4, 1));
+//		System.out.println(groupAttendanceDAOJdbc.insertGroupAttendance(5, 0));
+		System.out.println(groupAttendanceDAOJdbc.updateGroupAttendance(5, 1));
 		
 		
 		sessionFactory.getCurrentSession().getTransaction().commit();
@@ -77,6 +77,8 @@ public class GroupAttendanceDAOHibernate implements GroupAttendanceDAO{
 		NativeQuery<?> query = this.getSession().createNativeQuery(updateGroupAttendance);
 		query.setParameter(1, success);
 		query.setParameter(2, memberNo);
+//		this.getSession().getTransaction().commit();
+//		this.getSession().beginTransaction();
 		return query.executeUpdate();
 	}
 	

@@ -183,7 +183,9 @@
 										</li>
 									</ul></li>
 								<li class=""><a href="html/join.html" class="">後台管理</a></li>
-								<li class=""><a href="html/contact.html" class="">登入</a></li>
+								<c:if test="${empty loginToken}">
+								  <li class=""><a href="html/contact.html" class="">登入</a></li>
+								</c:if>
 								<li class="am-parent"><a href=""
 									class="nav-icon nav-icon-globe">Language</a>
 									<ul class="am-menu-sub am-collapse" style="height: 0.8px;">

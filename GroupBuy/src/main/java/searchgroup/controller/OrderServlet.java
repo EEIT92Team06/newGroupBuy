@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
@@ -74,11 +75,15 @@ public class OrderServlet extends HttpServlet {
 			orderDetails.add(OrderDetailsBean);
 			if(Integer.parseInt(quantity[i])==0){
 				counter++;
-			}
+			}  
 		}
+		String contextPath = getServletContext().getContextPath();
 		//如果都選擇0的話
+		HttpSession session = request.getSession();
 		if(counter == groupInfoDetailsNo.length){
-			request.getRequestDispatcher("/searchgroup/orderfail.jsp").forward(request, response);
+			session.setAttribute("orderFail", "fail");
+			response.sendRedirect(response
+					.encodeRedirectURL(contextPath+"/searchgroup/searchDetails.jsp"));
 			return;
 		}
 		
@@ -86,6 +91,7 @@ public class OrderServlet extends HttpServlet {
 		String groupInfoNo = request.getParameter("groupInfoNo");
 		System.out.println("groupInfoNo" + groupInfoNo);
 		String memberNo = request.getParameter("memberNo");
+		System.out.println("memberNo : " + memberNo);
 		int IntgroupInfoNo = Integer.parseInt(groupInfoNo);
 		int IntmemberNo = Integer.parseInt(memberNo);
 		orderBean.setGroupInfoNo(IntgroupInfoNo);
@@ -95,7 +101,9 @@ public class OrderServlet extends HttpServlet {
 		
 		//將封裝好的資料insert進去訂單以及訂單明細
 		orderService.insertOrder(orderBean);
-		request.getRequestDispatcher("/searchgroup/ordersuccess.jsp").forward(request, response);
+		session.setAttribute("ordersuc", "suc");
+		response.sendRedirect(response
+				.encodeRedirectURL(contextPath+"/searchgroup/searchDetails.jsp"));
 		return;
 
 		

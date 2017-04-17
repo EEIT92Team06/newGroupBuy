@@ -63,6 +63,13 @@
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="scripts/jquery.imgareaselect.pack.js"></script>
+
+<body>
+<jsp:include page="/headline.jsp"></jsp:include>
+<script type="text/javascript" src="../js/jquery-3.2.0.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+
+
 <script>
 $(function(){
 	

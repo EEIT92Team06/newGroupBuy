@@ -7,65 +7,83 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
+<link href="<c:url value='/css/style.css'/>" rel="stylesheet">
+
+<style>
+.temp{
+}
+</style>
 </head>
 <body>
-	<table border="1px">
-		<thead>
-			<tr>
+	<jsp:include page="/headline.jsp"></jsp:include>
 
-				<th>圖片</th>
-				<th>創團日期</th>
-				<th>團名</th>
-				<th>內容</th>
-				<th>狀態</th>
-				<th>目前產品數量</th>
-				<th>類型</th>
-				<th>寄送方式</th>
-				<th>匯款帳號</th>
-				<th>結束日期</th>
+	<div class="cart-info container">
+		<table class="table table-striped table-bordered">
+			<tr>
+				<th class="image">圖片</th>
+				<th class="name">創團日期</th>
+				<th class="model">團名</th>
+				<th class="model">內容</th>
+				<th class="quantity">狀態</th>
+				<th class="quantity">類型</th>
+				<th class="quantity">目前產品數量</th>
+				<th class="quantity">寄送方式</th>
+				<th class="quantity">匯款帳號</th>
+				<th class="quantity">結束日期</th>
 
 			</tr>
-		</thead>
-		<tbody>
+
 			<tr>
+				<td class="image"><a href="#"><img title="product"
+						alt="product"
+						src="<c:url value='/eeit9212/getimage?groupInfoNo=${selectGroupInfoByGroupInfoNo.groupInfoNo}'/>"
+						height="50" width="50"></a></td>
+				<td class="name">${selectGroupInfoByGroupInfoNo.groupInfoStartDate}</td>
+				<td class="model">${selectGroupInfoByGroupInfoNo.groupInfoName}</td>
+				<td class="quantity">${selectGroupInfoByGroupInfoNo.groupInfoContent}</td>
+				<td class="quantity">${selectGroupInfoByGroupInfoNo.groupStatus}</td>
+				<td class="quantity">${selectGroupInfoByGroupInfoNo.productType}</td>
+				<c:if
+					test="${empty selectGroupInfoByGroupInfoNo.groupInfoTotalProductQt}">
+					<c:set var="groupInfoTotalProductQt" value="0" />
+				</c:if>
+				<c:if
+					test="${not empty selectGroupInfoByGroupInfoNo.groupInfoTotalProductQt}">
+					<c:set var="groupInfoTotalProductQt"
+						value="${selectGroupInfoByGroupInfoNo.groupInfoTotalProductQt}" />
+				</c:if>
+				<td class="quantity">${groupInfoTotalProductQt}/${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}</td>
+				<td class="quantity">${selectGroupInfoByGroupInfoNo.groupInfoShippingWay}</td>
+				<td class="quantity">${selectGroupInfoByGroupInfoNo.groupInfoBankAccount}</td>
+				<td class="quantity">${selectGroupInfoByGroupInfoNo.groupInfoDeadLine}</td>
 
-				<td><img
-					src="<c:url value='/eeit9212/getimage?groupInfoNo=${selectGroupInfoByGroupInfoNo.groupInfoNo}'/>" /></td>
-				<td>${selectGroupInfoByGroupInfoNo.groupInfoStartDate}</td>
-				<td>${selectGroupInfoByGroupInfoNo.groupInfoName}</td>
-				<td>${selectGroupInfoByGroupInfoNo.groupInfoContent}</td>
-				<td>${selectGroupInfoByGroupInfoNo.groupStatus}</td>
-				<td>${selectGroupInfoByGroupInfoNo.groupInfoTotalProductQt}/${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}</td>
-				<td>${selectGroupInfoByGroupInfoNo.productType}</td>
-				<td>${selectGroupInfoByGroupInfoNo.groupInfoShippingWay}</td>
-				<td>${selectGroupInfoByGroupInfoNo.groupInfoBankAccount}</td>
-				<td>${selectGroupInfoByGroupInfoNo.groupInfoDeadLine}</td>
 			</tr>
-		</tbody>
-	</table>
-
-	<table border="1px">
+		</table>
+	</div>
+<div style="text-align: center;" class="cart-info container">
+	<table id="orderTable" border="1px">
 		<thead>
 			<tr>
 				<c:if test="${selectGroupInfoByGroupInfoNo.groupStatusNo==7}">
 					<th>通知</th>
 				</c:if>
-				<th colspan="3">狀態</th>
-				<th>買家</th>
-				<th>出席率</th>
-				<th>總金額</th>
+				<th style="text-align: center;">狀態</th>
+				<th style="text-align: center;">買家</th>
+				<th style="text-align: center;">出席率</th>
+				<th style="text-align: center;">總金額</th>
 				<!-- 	迴圈顯示每一個團有哪些產品 -->
 				<c:forEach var="bean" items="${selectGroupInfoDetail}">
-					<th>${bean.groupInfoDetailsProdcutName}，單價:${bean.groupInfoDetailsProductPrice}</th>
+					<th style="text-align: center;">${bean.groupInfoDetailsProdcutName}，單價:${bean.groupInfoDetailsProductPrice}</th>
 				</c:forEach>
 				<c:if test="${selectGroupInfoByGroupInfoNo.groupStatusNo>=7}">
 					<c:if test="${selectGroupInfoByGroupInfoNo.groupStatusNo==9}">
-						<th>包裹編號</th>
+						<th style="text-align: center;">包裹編號</th>
 					</c:if>
-					<th>匯款時間</th>
-					<th>電話</th>
-					<th>寄送地址</th>
-					<th>帳號末五碼</th>
+					<th style="text-align: center;">匯款時間</th>
+					<th style="text-align: center;">電話</th>
+					<th style="text-align: center;">寄送地址</th>
+					<th style="text-align: center;">帳號末五碼</th>
 				</c:if>
 			</tr>
 		</thead>
@@ -80,16 +98,15 @@
 						.getAttribute("selectOneOrderInfoDetails");
 			%>
 			<c:forEach var="bean" items="${selectMyGroupOrderInfo}">
-			
 				<c:if
 					test="${(bean.orderInfoStatusNo!=1002&&bean.orderInfoStatusNo!=1004)||bean.orderInfoStatusNo==1102||bean.orderInfoStatusNo==1103}">
-					
+
 					<tr>
 						<input type="hidden" value="${bean.orderInfoNo}" />
 						<c:if
 							test="${selectGroupInfoByGroupInfoNo.groupStatusNo==7&&bean.orderInfoStatusNo==1102}">
-
-							<td><button type="button" id="receivePayMoney">通知買家已收到匯款</button></td>
+							
+							<td><button type="button" name="receivePayMoney">通知買家已收到匯款<input name="statusId" type="hidden" value="${x.index}"/></button></td>
 						</c:if>
 						<c:if
 							test="${selectGroupInfoByGroupInfoNo.groupStatusNo==7&&bean.orderInfoStatusNo==1105}">
@@ -99,19 +116,23 @@
 							test="${selectGroupInfoByGroupInfoNo.groupStatusNo==7&&bean.orderInfoStatusNo==1101||bean.orderInfoStatusNo==1104}">
 							<td></td>
 						</c:if>
-						<c:if
-							test="${bean.orderInfoStatusNo==1001}">
-							
-							<td><button type="button" name="status" value="accept">接受</button></td>
-							<td><button type="button" name="status" value="reject">拒絕</button></td>
-							<td>${bean.orderInfoStatus}</td>
+						<c:if test="${bean.orderInfoStatusNo==1001}">
+							<td>
+							<button type="button" name="status" value="accept">接受</button>
+							<button type="button" name="status" value="reject">拒絕</button>
+							${bean.orderInfoStatus}</td>
 						</c:if>
 						<c:if test="${bean.orderInfoStatusNo!=1001}">
 
-							<td colspan="3" align="center">${bean.orderInfoStatus}</td>
+							<td id="statusId${x.index}">${bean.orderInfoStatus}</td>
 						</c:if>
 						<td>${bean.memberName}</td>
+						<c:if test="${not empty bean.groupAttendanceTotalQt}">
 						<td>${bean.groupAttendanceTotalSuccess}/${bean.groupAttendanceTotalQt}</td>
+						</c:if>
+						<c:if test="${empty bean.groupAttendanceTotalQt}">
+						<td>首次參與團購</td>
+						</c:if>
 						<td>${bean.orderInfoPriceTotal}</td>
 						<%
 							// 	 	對所有訂單明細的list做迴圈，依產品數量分批做。
@@ -149,17 +170,17 @@
 							<td>${bean.orderInfoAfterSuccessBankAccount}</td>
 						</c:if>
 					</tr>
-					
+
 				</c:if>
 			</c:forEach>
 		</tbody>
-
 	</table>
+	</div>
 	<div id="deadLineDiv" style="display: none">
 		<h3>
 			截止日期已到。<br>
 			的產品下限為${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}，<br>
-			您的產品數量為${selectGroupInfoByGroupInfoNo.groupInfoTotalProductQt}，<br>
+			您的產品數量為${groupInfoTotalProductQt}，<br>
 			數量未達標，有一次延期機會，延期時間為原截止日期加三天，或直接選擇流團。
 		</h3>
 		<button id="extension" value="extension">延期</button>
@@ -175,13 +196,14 @@
 //			所以為了避免這問題，以下我都用replace而不是用location.href
 
 // 			建立webSocket連線
-			var webSocket = new WebSocket('ws://localhost:8080/GroupBuy/groupsocket');//ServerEndpoint監聽的URL.
+			var webSocket = new WebSocket('ws://localhost:8080/GroupBuy/groupsocket/${selectGroupInfoByGroupInfoNo.groupInfoNo}/null');//ServerEndpoint監聽的URL.
 			
 			  webSocket.onerror = function(event) {
 			      onError(event)
 			    };
 			 
 			    webSocket.onopen = function(event) {
+			    	
 			      onOpen(event)
 			    };
 			 
@@ -190,33 +212,29 @@
 			    };
 			//  接收到server訊息時觸發.
 			    function onMessage(event) {
-			      alert("接收到訊息:"+event.data);
+					location.reload();
+// 			      alert("接收到訊息:"+event.data);
 			    }
 			//  建立與server的連接.
 			    function onOpen(event) {
-			      alert("已建立連接="+event.data);
+// 			      alert("已建立連接");
 			    }
 			//  連線錯誤時觸發
 			    function onError(event) {
-			      alert(event.data);
+// 			      alert(event.data);
 			    }
-			//  按下按鈕後觸發,發送訊息給server
-			    function start() {
-			      webSocket.send('hello');
-			    }
-
-
 
 			var deadLine = new Date(
 			"${selectGroupInfoByGroupInfoNo.groupInfoDeadLine}");
 			var nowTime = new Date();
-			console.log(deadLine - nowTime);				
+			console.log(deadLine - nowTime);
 			if(${selectGroupInfoByGroupInfoNo.groupStatusNo==2}){
-				if(${selectGroupInfoByGroupInfoNo.groupInfoTotalProductQt>=selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}){
-					layer.alert('截止日期已到。<br>您的產品下限為${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}，<br>您的產品數量為${selectGroupInfoByGroupInfoNo.groupInfoTotalProductQt}，<br>數量已達標，按下確定後系統將自動發送站內信給報名您的團的買家請買家於三天內匯款。', {
+				if(${groupInfoTotalProductQt>=selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}){
+					layer.alert('截止日期已到。<br>您的產品下限為${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}，<br>您的產品數量為${groupInfoTotalProductQt}，<br>數量已達標，按下確定後系統將自動發送站內信給報名您的團的買家請買家於三天內匯款。', {
 						  skin: 'layui-layer-molv' //样式类名
 						  ,closeBtn: 0
 						},function(){
+							webSocket.send("sendAllOrder");
 							location.replace('mycreatedgroupinfo.controller?locationFrom=groupStart&groupInfoNo=${selectGroupInfoByGroupInfoNo.groupInfoNo}');
 						}
 					);
@@ -235,48 +253,54 @@
 			}
 			
 			$("#extension").click(function(){
+// 				webSocket.send("sendAllOrder");
 				location.replace('mycreatedgroupinfo.controller?locationFrom=extension&groupInfoNo=${selectGroupInfoByGroupInfoNo.groupInfoNo}&deadLine=${selectGroupInfoByGroupInfoNo.groupInfoDeadLine}');			
 			});
 			
 			$("#noExtension").click(function(){
+// 				webSocket.send("sendAllOrder");
 				location.replace('mycreatedgroupinfo.controller?locationFrom=noExtension&groupInfoNo=${selectGroupInfoByGroupInfoNo.groupInfoNo}&deadLine=${selectGroupInfoByGroupInfoNo.groupInfoDeadLine}');			
 			});
 			
 			
 			if(${selectGroupInfoByGroupInfoNo.groupStatusNo==6}){
-				if(${selectGroupInfoByGroupInfoNo.groupInfoTotalProductQt>=selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}){
-					layer.alert('延期截止日期已到。<br>您的產品下限為${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}，<br>您的產品數量為${selectGroupInfoByGroupInfoNo.groupInfoTotalProductQt}，<br>數量已達標，按下確定後系統將自動發送站內信給報名您的團的買家請買家於三天內匯款。', {
+				if(${groupInfoTotalProductQt>=selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}){
+					layer.alert('延期截止日期已到。<br>您的產品下限為${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}，<br>您的產品數量為${groupInfoTotalProductQt}，<br>數量已達標，按下確定後系統將自動發送站內信給報名您的團的買家請買家於三天內匯款。', {
 						  skin: 'layui-layer-molv' //样式类名
 						  ,closeBtn: 0
 						},function(){
+// 							webSocket.send("sendAllOrder");
 							location.replace('mycreatedgroupinfo.controller?locationFrom=groupStart&groupInfoNo=${selectGroupInfoByGroupInfoNo.groupInfoNo}');
 						}
 					);
 				}
 				else{
-				layer.alert('延期截止日期已到。<br>您的產品下限為${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}，<br>您的產品數量為${selectGroupInfoByGroupInfoNo.groupInfoTotalProductQt}，<br>數量未達標，您已經延期過一次，系統將判定您的團為:流團，數量未達標。', {
+				layer.alert('延期截止日期已到。<br>您的產品下限為${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}，<br>您的產品數量為${groupInfoTotalProductQt}，<br>數量未達標，您已經延期過一次，系統將判定您的團為:流團，數量未達標。', {
 					  skin: 'layui-layer-molv' //样式类名
 					  ,closeBtn: 0
 					},function(){
+// 						webSocket.send("sendAllOrder");
 						location.replace('mycreatedgroupinfo.controller?locationFrom=noExtension&groupInfoNo=${selectGroupInfoByGroupInfoNo.groupInfoNo}');
 					});
 				}
 			}
 			if(${selectGroupInfoByGroupInfoNo.groupStatusNo==8}){
-				if(${selectGroupInfoByGroupInfoNo.groupInfoTotalProductQt>=selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}){
-					layer.alert('匯款截止日期已到。<br>您的產品下限為${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}，<br>您的買家匯款產品總數量為${selectGroupInfoByGroupInfoNo.groupInfoTotalProductQt}，<br>數量已達標，系統將判定您的團為:開團中，寄貨中。<br>請盡快處理寄貨。', {
+				if(${groupInfoTotalProductQt>=selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}){
+					layer.alert('匯款截止日期已到。<br>您的產品下限為${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}，<br>您的買家匯款產品總數量為${groupInfoTotalProductQt}，<br>數量已達標，系統將判定您的團為:開團中，寄貨中。<br>請盡快處理寄貨。', {
 						  skin: 'layui-layer-molv' //样式类名
 						  ,closeBtn: 0
 						},function(){
+// 							webSocket.send("sendAllOrder");
 							location.replace('mycreatedgroupinfo.controller?locationFrom=startSend&groupInfoNo=${selectGroupInfoByGroupInfoNo.groupInfoNo}');
 						}
 					);
 				}
 				else{
-					layer.alert('匯款截止日期已到。<br>您的產品下限為${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}，<br>您的買家匯款產品總數量為${selectGroupInfoByGroupInfoNo.groupInfoTotalProductQt}，<br>數量未達標，系統將判定您的團為:流團，數量未達標。<br>請盡快處理退款。', {
+					layer.alert('匯款截止日期已到。<br>您的產品下限為${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}，<br>您的買家匯款產品總數量為${groupInfoTotalProductQt}，<br>數量未達標，系統將判定您的團為:流團，數量未達標。<br>請盡快處理退款。', {
 						  skin: 'layui-layer-molv' //样式类名
 						  ,closeBtn: 0
 						},function(){
+// 							webSocket.send("sendAllOrder");
 							location.replace('mycreatedgroupinfo.controller?locationFrom=noExtension&groupInfoNo=${selectGroupInfoByGroupInfoNo.groupInfoNo}');
 						});
 					}
@@ -292,13 +316,16 @@
 			if(${selectGroupInfoByGroupInfoNo.groupStatusNo==7}){
 				var payTimeout = setTimeout(payTimeout, deadLine - nowTime);
 			}
-			function timeout() {	
+			function timeout() {
+// 				webSocket.send("sendAllOrder");
 				location.replace('mycreatedgroupinfo.controller?locationFrom=timeout&groupInfoNo=${selectGroupInfoByGroupInfoNo.groupInfoNo}');
 			}
-			function againTimeout() {	
+			function againTimeout() {
+// 				webSocket.send("sendAllOrder");
 				location.replace('mycreatedgroupinfo.controller?locationFrom=againTimeout&groupInfoNo=${selectGroupInfoByGroupInfoNo.groupInfoNo}');
 			}
-			function payTimeout() {	
+			function payTimeout() {
+// 				webSocket.send("sendAllOrder");
 				location.replace('mycreatedgroupinfo.controller?locationFrom=payTimeout&groupInfoNo=${selectGroupInfoByGroupInfoNo.groupInfoNo}');
 			}
 			
@@ -307,59 +334,66 @@
 				statusArray[i].onclick = click;
 			}
 			function click() {
-
-				
+				var thisElement=$(this);
 				var orderInfoNo = $(this).parents("tr").find("input").val();
 				var Status = this.value;
 				if (Status == "accept") {
 					var checkOrder=layer.confirm('確定要接受這筆訂單嗎', {
 						  btn: ['確定','取消'] //按钮
 						}, function(){
-							location.replace("mycreatedgroupinfo.controller?orderInfoStatus="
-									+ Status
-									+ "&orderInfoNo="
-									+ orderInfoNo
-									+ "&groupInfoNo=${selectGroupInfoByGroupInfoNo.groupInfoNo}");
-							start();
-							layer.close(checkOrder);
-							
+							$.get("${pageContext.request.contextPath}/eeit9212/grouprecord/checkorderajax",{"orderInfoStatus":Status,"orderInfoNo":orderInfoNo},function(data){													
+								if(data="success"){
+									thisElement.parent().empty().append("已接受");							
+								}								
+								webSocket.send(orderInfoNo);
+								layer.close(checkOrder);
+
+							});							
 						});	
 				} else if (Status == "reject") {
 					var checkOrder=layer.confirm('確定要拒絕這筆訂單嗎', {
 						  btn: ['確定','取消'] //按钮
 						}, function(){
-							location.replace("mycreatedgroupinfo.controller?orderInfoStatus="
-									+ Status
-									+ "&orderInfoNo="
-									+ orderInfoNo
-									+ "&groupInfoNo=${selectGroupInfoByGroupInfoNo.groupInfoNo}");
-							layer.close(checkOrder);
-							
+
+							$.get("${pageContext.request.contextPath}/eeit9212/grouprecord/checkorderajax",{"orderInfoStatus":Status,"orderInfoNo":orderInfoNo},function(data){						
+								if(data="success"){
+									thisElement.parents("tr").remove();						
+								}			
+								webSocket.send(orderInfoNo);
+								layer.close(checkOrder);
+							});	
 						});	
 				}
 				
 			}
 			$("input[name='packageNo']").change(function(){		
 				var orderInfoNo=$(this).parent().find("input:hidden").val();
-				var packageNo=$(this).val();
-				layer.confirm('您輸入的包裹編號是:'+packageNo+'，確定後不能更改，系統將通知買家已寄貨', {
+				var packageElement=$(this);
+				
+				var packageConfirm=layer.confirm('您輸入的包裹編號是:'+packageElement.val()+'，確定後不能更改，系統將通知買家已寄貨', {
 					  btn: ['確定','取消'] //按钮
 					}, function(){
-						$.get("updateajax",{"orderInfoNo":orderInfoNo,"packageNo":packageNo},function(){
-		 					location.reload();
+						$.get("updateajax",{"orderInfoNo":orderInfoNo,"packageNo":packageElement.val()},function(data){
+							packageElement.parent().empty().append(packageElement.val());		
+							webSocket.send(orderInfoNo);
+							layer.close(packageConfirm);
 		 				});
 					});	
 			});
 			
-			$("#receivePayMoney").click(function(){
+			$("button[name='receivePayMoney']").click(function(){
+				var thisElement=$(this);
 				var orderInfoNo = $(this).parents("tr").find("input").val();
-				layer.confirm('確定要通知買家已收到匯款嗎 ？', {
+				var payConfirm=layer.confirm('確定要通知買家已收到匯款嗎 ？', {
 					  btn: ['確定','取消'] //按钮
 					}, function(){
-						$.get("updateajax",{"locationFrom":"receivePayMoney","orderInfoNo":orderInfoNo,"groupInfoNo":"${selectGroupInfoByGroupInfoNo.groupInfoNo}"},function(){
-		 					location.reload();
+						$.get("updateajax",{"locationFrom":"receivePayMoney","orderInfoNo":orderInfoNo,"groupInfoNo":"${selectGroupInfoByGroupInfoNo.groupInfoNo}"},function(data){					
+							thisElement.parent().empty().append("已通知");
+							var statusId=thisElement.children().val();
+							$("#statusId"+statusId).empty().append("已通知收到匯款");	
+							webSocket.send(orderInfoNo);
+							layer.close(payConfirm);
 		 				});			
-// 						location.replace('updateajax?locationFrom=receivePayMoney&orderInfoNo='+orderInfoNo+'groupInfoNo=${selectGroupInfoByGroupInfoNo.groupInfoNo}');
 					});	
 				
 					

@@ -16,6 +16,7 @@ import eeit9212.model.AttendGroupInfoBean;
 import eeit9212.model.GroupInfoService;
 import eeit9212.model.CreditAttendanceService;
 import eeit9212.model.OrderInfoService;
+import login.model.MemberBean;
 
 @WebServlet("/eeit9212/grouprecord/creditajax")
 public class CreditAjax extends HttpServlet {
@@ -38,7 +39,8 @@ public class CreditAjax extends HttpServlet {
 		 
 		HttpSession session = request.getSession();
 		int orderInfoNo = (int) session.getAttribute("orderInfoNo");
-		int memberNo = (int) session.getAttribute("loginOk");
+		MemberBean memberBean = (MemberBean) session.getAttribute("loginToken");
+		Integer memberNo=memberBean.getMemberNo();
 		String scoreTemp = request.getParameter("score");
 		String groupInfoNoTemp=request.getParameter("groupInfoNo");
 		String groupInfoMemberNoTemp=request.getParameter("groupInfoMemberNo");
@@ -70,11 +72,11 @@ public class CreditAjax extends HttpServlet {
 		}
 		
 		if(creditAttendanceService.updateGrouperCredit(groupInfoMemberNo, score)){
-			System.out.println("更新主糾評分groupInfoMemberNo="+groupInfoMemberNo);
-			orderInfoService.updateOrderInfoStatus(1202, orderInfoNo);
-			System.out.println("更新訂單狀態orderInfoNo="+orderInfoNo);
+			System.out.println("更新主糾評分groupInfoMemberNo="+groupInfoMemberNo);	
 			creditAttendanceService.updateGroupAttendance(memberNo, 1);
 			System.out.println("更新出席率memberNo="+memberNo);
+			orderInfoService.updateOrderInfoStatus(1202, orderInfoNo);
+			System.out.println("更新訂單狀態orderInfoNo="+orderInfoNo);
 //			GroupInfoBean selectMyAttendedByGroupInfoNo = groupInfoService.selectMyAttendedByGroupInfoNo(memberNo,
 //					groupInfoNo);		
 //			session.setAttribute("selectMyAttendedByGroupInfoNo", selectMyAttendedByGroupInfoNo);

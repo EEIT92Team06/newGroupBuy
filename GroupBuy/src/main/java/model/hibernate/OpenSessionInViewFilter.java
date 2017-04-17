@@ -27,10 +27,17 @@ public class OpenSessionInViewFilter implements Filter {
 			FilterChain chain) throws IOException, ServletException {
 		try {
 			sessionFactory.getCurrentSession().beginTransaction();			//pre-processing
-			System.out.println("前往"+((HttpServletRequest)req).getServletPath()+"的交易開始");
+			String servletPath=((HttpServletRequest)req).getServletPath();
+			
+			if(!(servletPath.startsWith("/js")||servletPath.startsWith("/assets")||servletPath.startsWith("/css"))){
+				System.out.println("前往"+servletPath+"的交易開始");
+			}
 			chain.doFilter(req, resp);
-			sessionFactory.getCurrentSession().getTransaction().commit();	//post-processing
-			System.out.println("從"+((HttpServletRequest)req).getServletPath()+"的交易結束");
+			sessionFactory.getCurrentSession().getTransaction().commit();//post-processing
+			if(!(servletPath.startsWith("/js")||servletPath.startsWith("/assets")||servletPath.startsWith("/css"))){
+				System.out.println("從"+servletPath+"的交易結束");
+			}
+			
 		} catch (Exception e) {
 			sessionFactory.getCurrentSession().getTransaction().rollback();
 			System.out.println("交易rollback");
