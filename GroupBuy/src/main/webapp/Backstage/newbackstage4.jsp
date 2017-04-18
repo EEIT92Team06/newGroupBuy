@@ -33,7 +33,7 @@
 			<div class="col-md-3 left_col">
 				<div class="left_col scroll-view">
 					<div class="navbar nav_title" style="border: 0;">
-						<a href="index.html" class="site_title"><i class="fa fa-paw"></i>
+						<a href="<c:url value="/Backstage/backstageindex.jsp" />" class="site_title"><i class="fa fa-paw"></i>
 							<span><font size="3">GroupBuy後台管理系統</font></span></a>
 					</div>
 
@@ -84,7 +84,7 @@
 				</div>
 			</div>
 
-			<!-- top navigation -->
+						<!-- top navigation -->
 			<div class="top_nav">
 				<div class="nav_menu">
 					<nav>
@@ -98,54 +98,17 @@
 								aria-expanded="false"> <span class=" fa fa-angle-down"></span>
 							</a>
 								<ul class="dropdown-menu dropdown-usermenu pull-right">
-									<li><a href="javascript:;"> Profile</a></li>
-									<li><a href="javascript:;"> <span
-											class="badge bg-red pull-right">50%</span> <span>Settings</span>
-									</a></li>
-									<li><a href="javascript:;">Help</a></li>
+									<li><a href="<c:url value="/theindex.jsp" />">返回GroupBuy首頁</a></li>
 									<li><a href="login.html"><i
-											class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+											class="fa fa-sign-out pull-right"></i>登出</a></li>
 								</ul></li>
 
-							<li role="presentation" class="dropdown"><a
-								href="javascript:;" class="dropdown-toggle info-number"
-								data-toggle="dropdown" aria-expanded="false"> <i
-									class="fa fa-envelope-o"></i> <span class="badge bg-green">6</span>
-							</a>
+							<li role="presentation" class="dropdown">
 								<ul id="menu1" class="dropdown-menu list-unstyled msg_list"
 									role="menu">
-									<li><a> <span class="image"><img
-												src="images/img.jpg" alt="Profile Image" /></span> <span> <span>John
-													Smith</span> <span class="time">3 mins ago</span>
-										</span> <span class="message"> Film festivals used to be
-												do-or-die moments for movie makers. They were where... </span>
-									</a></li>
-									<li><a> <span class="image"><img
-												src="images/img.jpg" alt="Profile Image" /></span> <span> <span>John
-													Smith</span> <span class="time">3 mins ago</span>
-										</span> <span class="message"> Film festivals used to be
-												do-or-die moments for movie makers. They were where... </span>
-									</a></li>
-									<li><a> <span class="image"><img
-												src="images/img.jpg" alt="Profile Image" /></span> <span> <span>John
-													Smith</span> <span class="time">3 mins ago</span>
-										</span> <span class="message"> Film festivals used to be
-												do-or-die moments for movie makers. They were where... </span>
-									</a></li>
-									<li><a> <span class="image"><img
-												src="images/img.jpg" alt="Profile Image" /></span> <span> <span>John
-													Smith</span> <span class="time">3 mins ago</span>
-										</span> <span class="message"> Film festivals used to be
-												do-or-die moments for movie makers. They were where... </span>
-									</a></li>
-									<li>
-										<div class="text-center">
-											<a> <strong>See All Alerts</strong> <i
-												class="fa fa-angle-right"></i>
-											</a>
-										</div>
-									</li>
-								</ul></li>
+									
+								</ul>
+							</li>
 						</ul>
 					</nav>
 				</div>
@@ -154,7 +117,7 @@
 			<!-- 主要內容 -->
 			<div class="right_col" role="main">
 				<div class="productdesc"
-					style="width: 800px; margin-left: 120px; margin-top: 80px">
+					style="width: 800px; ;margin-left: 25%;margin-top: 6%">
 					<form action="" style="float: right;">
 						<i style="margin-right: 9px;" class="fa fa-search"
 							aria-hidden="true"></i><input type="text"

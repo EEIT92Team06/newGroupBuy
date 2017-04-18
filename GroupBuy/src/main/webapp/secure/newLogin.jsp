@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 <style type="text/css">
 .bg {
-    display: none;
+	display: none;
 	position: fixed;
 	width: 100%;
 	height: 100%;
@@ -21,7 +21,7 @@
 }
 
 .content {
- 	display: none;
+	display: none;
 	position: fixed;
 	top: 30%;
 	margin-top: -150px;
@@ -247,24 +247,43 @@ div.right a.google-plus {
 div.right a.google-plus:hover {
 	background: rgba(233, 84, 79, 0.8);
 }
+.submit{
+	background: #f85f64;
+	color: #fff;
+	outline: none;
+	text-transform: uppercase;
+	padding: 1.2em;
+	overflow: hidden;
+	border: none;
+	letter-spacing: 0.1em;
+	margin: 0.5em 0;
+	font-weight: bold;
+	-moz-border-radius: 0.4em;
+	-webkit-border-radius: 0.4em;
+	border-radius: 0.4em;
+	-moz-transition: all 0.15s ease-in-out;
+	-o-transition: all 0.15s ease-in-out;
+	-webkit-transition: all 0.15s ease-in-out;
+	transition: all 0.15s ease-in-out;
+}
 </style>
 <script src="../js/jquery.js"></script>
 <script src="../js/bootstrap-modalmanager.js"></script>
 <script src="../js/bootstrap-modal.js"></script>
 <script type="text/javascript">
 	$(function() {
-// 		$('.click').click(function() {
-// 			$('.bg').css({
-// 				'display' : 'block'
-// 			});
-// 			$('.content').css({
-// 				'display' : 'block'
-// 			});
-// 		});
-// 		$('.bg').click(function() {
-// 			//$('.bg').css({'display':'none'});
-// 			//$('.content').css({'display':'none'});
-// 		});
+		// 		$('.click').click(function() {
+		// 			$('.bg').css({
+		// 				'display' : 'block'
+		// 			});
+		// 			$('.content').css({
+		// 				'display' : 'block'
+		// 			});
+		// 		});
+		// 		$('.bg').click(function() {
+		// 			//$('.bg').css({'display':'none'});
+		// 			//$('.content').css({'display':'none'});
+		// 		});
 		$('.click1').click(function() {
 			$('.bg').fadeIn(200);
 			$('.content').fadeIn(400);
@@ -277,21 +296,72 @@ div.right a.google-plus:hover {
 </script>
 
 </head>
+<script type="text/javascript">
+	function loginCheck() {
+		var accountError = document.getElementById('accountError');
+		var passwordError = document.getElementById('passwordError');
+		var email = document.getElementById('email').value;
+		var password = document.getElementById('pass').value;
+		var xhr = new XMLHttpRequest();
+		var queryString = "account=" + email + "&password=" + password;
+		var url = "loginServlet.do?" + queryString;
+		xhr.open("GET", url, true);
+		xhr.send();
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4) {
+				if (xhr.status == 200) {
+					result = JSON.parse(xhr.responseText);
+					if(result.accountError != null && result.passwordError != null){
+						accountError.innerHTML = "";
+						passwordError.innerHTML ="";
+						accountError.innerHTML = result.accountError;
+						passwordError.innerHTML = result.passwordError;
+					}else if(result.accountError == null && result.passwordError != null){
+						accountError.innerHTML = "";
+						passwordError.innerHTML = result.passwordError;
+					}else if(result.passwordError == null &&result.accountError != null){
+						passwordError.innerHTML ="";
+						accountError.innerHTML = result.accountError;
+
+					}else if(result.loginError !=null){
+						accountError.innerHTML = "";
+						passwordError.innerHTML ="";
+						accountError.innerHTML =result.loginError;
+					}else if(result.indexUrl!=null){
+						//重新導向(成功登入)
+						location.replace(result.indexUrl);
+					}else if(result.banUrl!=null){
+						//導向ban的畫面
+						alert(result.banUrl);
+						location.replace(result.banUrl);
+					}else if(result.unFinishLogin!=null){
+						location.replace(result.unFinishLogin);
+					}
+				}
+			}
+		}
+	}
+</script>
 <body>
 
-<!-- 	<div class="click">点击这里</div> -->
-<!-- 	<div class="click1">效果增强版的</div> -->
+	<!-- 	<div class="click">点击这里</div> -->
+	<!-- 	<div class="click1">效果增强版的</div> -->
 	<div class="bg"></div>
 	<div class="content">
-		<form action="<c:url value="/loginServlet.do"/>" method="get" id="login-form">
+		<form id="login-form">
 			<div class="heading">GroupBuy會員登入</div>
 			<div class="left">
-				<label for="email">GroupBuy帳號</label>${errorMessages.accountError}${errorMessages.loginError}<br />
-				<input type="email" name="account" id="email"
-					value="${param.account}"> <br /> <label for="password">密碼</label>${errorMessages.passwordError}<br />
-				<input type="password" name="password" id="pass" value="" /><br />
-				<input style="margin-left: 58px" type="submit" value="Login" />
-                <a  href="<c:url value="/secure/newRegistry.jsp"/>"style="color:gray;text-decoration:none; margin-top:10px"style="color:gray;">免費註冊</a>
+				<label for="email">GroupBuy帳號</label><font size="2" color="red"
+					style="margin-left: 15px" id="accountError"></font><br /> <input
+					type="email" name="account" id="email" value="${param.account}">
+				<br /> <label for="password">密碼</label><font size="2" id="passwordError"
+					style="margin-left: 7px;"  color="red"></font><br /> <input type="password"
+					name="password" id="pass" value="" /><br /> <input
+					style="margin-left: 58px" class="submit" type="button" value="Login"
+					onclick="loginCheck()" /> <a
+					href="<c:url value="/secure/newRegistry.jsp"/>"
+					style="color: gray; text-decoration: none; margin-top: 10px"
+					style="color:gray;">免費註冊</a>
 			</div>
 			<div class="right">
 				<div class="connect">透過Google帳號登入</div>
