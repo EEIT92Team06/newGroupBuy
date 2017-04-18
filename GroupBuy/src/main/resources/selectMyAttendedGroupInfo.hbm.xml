@@ -6,7 +6,7 @@
 	<class name="eeit9212.model.AttendGroupInfoBean" table="selectMyAttendedGroupInfo">
 
 		<id name="orderInfoNo" column="orderInfo_No">
-			
+			 
 		</id>
 
 		<property name="groupInfoNo" column="groupInfo_No" />
