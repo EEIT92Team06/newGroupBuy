@@ -149,6 +149,7 @@ public class GroupInfoService {
 		boolean flag = false;
 
 		for (AttendGroupInfoBean bean : result) {
+			
 			System.out.println(bean.getGroupInfoNo()+"號團截止日期的LONG為:"+bean.getGroupInfoDeadLine().getTime());
 			System.out.println("現在時間的LONG為:"+new java.util.Date().getTime());
 			System.out.println("時間差為:"+(bean.getGroupInfoDeadLine().getTime()-new java.util.Date().getTime()));

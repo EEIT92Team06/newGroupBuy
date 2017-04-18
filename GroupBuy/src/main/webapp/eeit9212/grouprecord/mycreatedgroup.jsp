@@ -21,9 +21,11 @@
 
 </head>
 <body>
+	
 	<jsp:include page="/headline.jsp"></jsp:include>
 
-	<div class="cart-info container">
+	<div style="text-align: center;" class="cart-info container">
+	<h1>您創的團</h1>
 		<table class="table table-striped table-bordered">
 			<tr>
 				<th class="image">圖片</th>
@@ -48,7 +50,7 @@
 				</td>
 				
 
-				<td class="quantity">${bean.groupInfoDeadLine}
+				<td class="quantity">${bean.formatDeadLine}
 				<a href="<c:url value='/eeit9212/grouprecord/mycreatedgroupinfo.controller?groupInfoNo=${bean.groupInfoNo}'/>">查看明細
 				</a>
 				</td>

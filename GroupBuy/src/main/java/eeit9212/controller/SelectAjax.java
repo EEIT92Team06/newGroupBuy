@@ -2,6 +2,7 @@ package eeit9212.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,66 +17,74 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 import com.google.gson.Gson;
 
 import eeit9212.model.AttendGroupInfoBean;
-import eeit9212.model.CreateGroupInfoBean;
 import eeit9212.model.GroupInfoService;
-import eeit9212.model.CreditAttendanceService;
+import eeit9212.model.OrderInfoBean;
 import eeit9212.model.OrderInfoService;
 import login.model.MemberBean;
 
-@WebServlet("/eeit9212/grouprecord/checkorderajax")
-public class CheckOrderAjax extends HttpServlet {
+@WebServlet("/eeit9212/grouprecord/selectajax")
+public class SelectAjax extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private OrderInfoService orderInfoService;
+
 	private GroupInfoService groupInfoService;
+	private OrderInfoService orderInfoService;
 	@Override
 	public void init() throws ServletException {
-		WebApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(this.getServletContext());	
-		orderInfoService=(OrderInfoService)context.getBean("orderInfoService");
+		WebApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(this.getServletContext());
 		groupInfoService = (GroupInfoService) context.getBean("groupInfoService");
+		orderInfoService = (OrderInfoService) context.getBean("orderInfoService");
 	}
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		 HttpSession session=request.getSession();
-		String orderInfoStatus = request.getParameter("orderInfoStatus");
-		String orderInfoNoTemp = request.getParameter("orderInfoNo");
+
+		HttpSession session = request.getSession();
+		MemberBean memberBean = (MemberBean) session.getAttribute("loginToken");
+		Integer memberNo = memberBean.getMemberNo();
 		String groupInfoNoTemp = request.getParameter("groupInfoNo");
-		System.out.println("orderInfoStatus=" + orderInfoStatus);
-		System.out.println("orderInfoNoTemp=" + orderInfoNoTemp);
-		System.out.println("groupInfoNoTemp=" + groupInfoNoTemp);
+		String orderInfoNoTemp = request.getParameter("orderInfoNo");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
-		int groupInfoNo=-1;
+		System.out.println("groupInfoNoTemp=" + groupInfoNoTemp);
+		System.out.println("orderInfoNoTemp=" + orderInfoNoTemp);
+		int groupInfoNo = -1;
 		if (groupInfoNoTemp != null && groupInfoNoTemp.length() != 0) {
 			try {
 				groupInfoNo = Integer.parseInt(groupInfoNoTemp);
-			} catch (NumberFormatException e) {
-				System.out.println("groupInfoNoTemp轉型失敗");
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-			
+
 		}
 		int orderInfoNo = -1;
 		if (orderInfoNoTemp != null && orderInfoNoTemp.length() != 0) {
 			try {
 				orderInfoNo = Integer.parseInt(orderInfoNoTemp);
-			} catch (NumberFormatException e) {
-				System.out.println("orderInfoNoTemp轉型失敗");		
-			}	
-		}
-		if ("reject".equals(orderInfoStatus)) {
-			orderInfoService.updateOrderInfoStatus(1002, orderInfoNo);
-			out.write("success");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 
-		} else if ("accept".equals(orderInfoStatus)) {
-			orderInfoService.updateOrderInfoStatus(1003, orderInfoNo);
-			CreateGroupInfoBean selectGroupInfoByGroupInfoNo = groupInfoService.selectGroupInfoByGroupInfoNo(groupInfoNo);
-			session.setAttribute("selectProductQt", selectGroupInfoByGroupInfoNo.getGroupInfoTotalProductQt());
+		}
+		if (groupInfoNo != -1) {
+			AttendGroupInfoBean selectMyAttendedByGroupInfoNo = groupInfoService.selectMyAttendedByGroupInfoNo(memberNo,
+					groupInfoNo);
 			Gson gson = new Gson();
-			String json = gson.toJson(selectGroupInfoByGroupInfoNo);
+			String json = gson.toJson(selectMyAttendedByGroupInfoNo);
 			System.out.println(json);
 			out.write(json);
-
+			return;
 		}
+		if (orderInfoNo != -1) {
+			OrderInfoBean selectMyOrderInfoByNo=orderInfoService.selectMyOrderInfoByNo(orderInfoNo);
+			selectMyOrderInfoByNo.setFormatPayTime();
+			Gson gson = new Gson();
+			String json = gson.toJson(selectMyOrderInfoByNo);
+			System.out.println(json);
+			out.write(json);
+			return;
+		}
+
+		
 		
 		
 	}

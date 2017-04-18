@@ -5,120 +5,161 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>OtherMember'sInformation</title>
-<style>
-#table1 {
-	width: 400px;
-	border: 3px solid #46A3FF;
-	margin: auto;
-	padding-left: 70px;
+<title>MemberInformation</title>
+<link href="<c:url value='/css/style.css'/>" rel="stylesheet">
+
+</head>
+<body>
+	<jsp:include page="/headline.jsp"></jsp:include>
+	<style>
+.button_s {
+	font-size: 15px;
+	font-weight: normal;
+	border-radius: 5px;
+	background-color: #F25C27;
+	color: white;
+	line-height: 40px;
+	text-align: center;
+	display: inline-block;
+	margin: 0 5px;
+	text-align: center;
+}
+
+.button_b {
+	font-size: 15px;
+	font-weight: normal;
+	border-radius: 5px;
+	background-color: gray;
+	color: white;
+	line-height: 40px;
+	text-align: center;
+	display: inline-block;
+	margin: 0 5px;
+	text-align: center;
 }
 
 td {
-	border: 1px;
-	padding-top: 3px;
+	padding: 2px 22px 7px 0px;
 }
 
-img {
-	width: 250px;
+.ccle div {
+	display: inline-block; /*讓div並排*/
+	vertical-align: top;
 }
 </style>
-</head>
-<body>
-<jsp:include page="/headline.jsp"></jsp:include>
-	<form action="<c:url value='member.controller'/>">
-		<table id="table1">
-			<thead>
-				<tr>
-					<th colspan="2"><h1>Member Information</h1></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td colspan="2"><img
-						src="<c:url value='/pictures/${MemberInfo.memberPic}'/>" /></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-				<tr>
-				<tr>
-					<td>Status</td>
-					<td>${MemberInfo.memberStatus}</td>
-				</tr>
-				<tr>
-					<td>Account</td>
-					<td>${MemberInfo.memberAccount}</td>
-				</tr>
-				<tr>
-					<td>Name</td>
-					<td>${MemberInfo.memberName}</td>
-				</tr>
-				<tr>
-					<td>NickName</td>
-					<td>${MemberInfo.memberNickName}</td>
-				</tr>
-				<tr>
-					<td>Birth</td>
-					<td>${MemberInfo.memberBirth}</td>
-				</tr>
-				<tr>
-					<td>Phone</td>
-					<td>${MemberInfo.memberPhone}</td>
-				</tr>
-				<tr>
-					<td>Address</td>
-					<td>${MemberInfo.memberAddress}</td>
-				</tr>
-				<tr>
-					<td>Attendance</td>
-					<td>${MemberInfo.groupAttendanceTotalSuccess}/${MemberInfo.groupAttendanceTotalQt}</td>
-				</tr>
-				<tr>
-					<td>GroupCredit</td>
-					<td>${MemberInfo.groupCredit}</td>
-				<tr>
-				<tr>
-					<td></td>
-					<td></td>
-				<tr>
-				<tr>				
-					<td>
+	<div>
+		<div style="text-align: center; margin: 38px auto">
+			<form action="<c:url value='member.controller'/>">
 
-					<c:if test="${not empty FriendInfo}">
-					<input type="hidden" name="memberInfomemberNo" value="${MemberInfo.memberNo}" />
-					<input type="hidden" name="FriendInfofdMemberNo" value="${FriendInfo.fdMemberNo}" />
-					<input type="hidden" name="FriendInfomemberFriendNo" value="${FriendInfo.memberFriendNo}" />
-					<input type="hidden" name="friendInfofriendStatusNo" value="${FriendInfo.friendStatusNo}" />
-					<input type="hidden" name="friendInfofriendNo" value="${FriendInfo.friendNo}" />	
-					<input type="hidden" name="friendInfofriendNo" value="${otherMemberNo}" />	
-					
+				<h1 style="font-size: 30">會員資料</h1>
+				<div class="ccle">
+					<div>
+						<table style="font-size: 18px;">
+							<tr>
+								<td>狀態</td>
+								<td>${MemberInfo.memberStatus}</td>
+							</tr>
+							<tr>
+								<td>姓名</td>
+								<td>${MemberInfo.memberName}</td>
+							</tr>
+							<tr>
+								<td>暱稱</td>
+								<td>${MemberInfo.memberNickName}</td>
+							</tr>
+							<tr>
+								<td>生日</td>
+								<td>${MemberInfo.memberBirth}</td>
+							</tr>
+							<tr>
+								<td>電話</td>
+								<td>${MemberInfo.memberPhone}</td>
+							</tr>
+							<tr>
+								<td>地址</td>
+								<td>${MemberInfo.memberAccount}</td>
+							</tr>
+							<c:if test="${empty MemberInfo.groupAttendanceTotalQt}">
+								<tr>
+									<td>出席率</td>
+									<td>尚未參與團購</td>
+								</tr>
+							</c:if>
+
+							<c:if test="${not empty MemberInfo.groupAttendanceTotalQt}">
+								<tr>
+									<td>出席率</td>
+									<td>${MemberInfo.groupAttendanceTotalSuccess} /	${MemberInfo.groupAttendanceTotalQt}</td>
+								</tr>
+							</c:if>
+
+							<c:if test="${not empty MemberInfo.groupCredit}">
+								<tr>
+									<td>開團評分</td>
+									<td>${MemberInfo.groupCredit}</td>
+								</tr>
+							</c:if>
+						</table>
+					</div>
+					<div style="margin: 10px 0px 0px 20px;">
+						<img style="border-radius:10px;height:200px;" src="<c:url value='/pictures/${MemberInfo.memberPic}'/>"
+							style="height: 250px" />
+					</div>
+				</div>
+				<div style="padding-top: 50px; text-align: center;">
+					<ul class="productpagecart">
+
+						<c:if test="${not empty FriendInfo}">
+							<input type="hidden" name="memberInfomemberNo"
+								value="${MemberInfo.memberNo}" />
+							<input type="hidden" name="FriendInfofdMemberNo"
+								value="${FriendInfo.fdMemberNo}" />
+							<input type="hidden" name="FriendInfomemberFriendNo"
+								value="${FriendInfo.memberFriendNo}" />
+							<input type="hidden" name="friendInfofriendStatusNo"
+								value="${FriendInfo.friendStatusNo}" />
+							<input type="hidden" name="friendInfofriendNo"
+								value="${FriendInfo.friendNo}" />
+							<input type="hidden" name="friendInfofriendNo"
+								value="${otherMemberNo}" />
+
+
 							<c:if test="${FriendInfo.friendNo==0}">
-									<input type="submit" name="RelationBtn" value="Request">
+								<li><input type="submit" name="RelationBtn" value="Request"
+									class="button_s"></li>
 							</c:if>
 							<c:if
 								test="${FriendInfo.memberFriendNo==FriendInfo.memberNo && FriendInfo.friendStatusNo==2101}">
-								<input type="submit" name="RelationBtn" value="Delete">
-								<input type="submit" name="RelationBtn" value="Block">
+								<li><input type="submit" name="RelationBtn" value="Delete"
+									class="button_b"></li>
+								<li><input type="submit" name="RelationBtn" value="Block"
+									class="button_b"></li>
 							</c:if>
 							<c:if
 								test="${FriendInfo.memberFriendNo==FriendInfo.memberNo && FriendInfo.friendStatusNo==2102}">
-								<input type="submit" name="RelationBtn" value="UnBlock">
+								<li><input type="submit" name="RelationBtn" value="UnBlock"
+									class="button_s"></li>
 							</c:if>
 							<c:if
 								test="${FriendInfo.fdMemberNo==FriendInfo.memberNo && FriendInfo.friendStatusNo==2103}">
-								<input type="submit" name="RelationBtn" value="BeFriend">
-								<input type="submit" name="RelationBtn" value="Refuse">
+								<li><input type="submit" name="RelationBtn"
+									value="BeFriend" class="button_s"></li>
+								<li><input type="submit" name="RelationBtn" value="Refuse"
+									class="button_b"></li>
 							</c:if>
 							<c:if
 								test="${FriendInfo.memberFriendNo==FriendInfo.memberNo && FriendInfo.friendStatusNo==2103}">
-								<input type="submit" name="RelationBtn" value="CancelRequest">
+								<li><input type="submit" name="RelationBtn"
+									value="CancelRequest" class="button_b"></li>
 							</c:if>
 
-						</c:if></td>
-				</tr>
-			</tbody>
-		</table>
-	</form>
+						</c:if>
+					</ul>
+				</div>
+
+			</form>
+		</div>
+
+	</div>
 </body>
 </html>
