@@ -80,7 +80,7 @@
                 <input id="wishNo" type="hidden" name="wishNo" value="${wishDetail.wishNo}"></input>
                 <li><a id="status" name="send" class="wish" href="#" onclick="likeForWish()" value="">${likeOrNot}</a>
                 </li>
-                <li><a class="comare" href="<c:url value='/creategroup/createGroup.jsp' />" >認養此商品</a>
+                <li><a class="comare" href="<c:url value='/creategroup/createGroup.jsp?wishNo=${wishDetail.wishNo}' />" >認養此商品</a>
                 </li>
               </ul>
          <!-- Product Description tab & comments-->
