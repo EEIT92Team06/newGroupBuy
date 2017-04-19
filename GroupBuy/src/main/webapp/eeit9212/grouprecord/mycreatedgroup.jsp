@@ -48,7 +48,7 @@
 				</td>
 				
 
-				<td class="quantity">${bean.groupInfoDeadLine}
+				<td class="quantity">${bean.formatDeadLine}
 				<a href="<c:url value='/eeit9212/grouprecord/mycreatedgroupinfo.controller?groupInfoNo=${bean.groupInfoNo}'/>">查看明細
 				</a>
 				</td>

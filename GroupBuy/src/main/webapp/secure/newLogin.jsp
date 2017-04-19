@@ -334,7 +334,6 @@ div.right a.google-plus:hover {
 						//導向ban的畫面
 						location.replace(result.banUrl);
 					}else if(result.unFinishLogin!=null){
-						alert(result.unFinishLogin);
 						location.replace(result.unFinishLogin);
 					}
 				}

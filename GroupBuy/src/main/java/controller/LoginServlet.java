@@ -97,7 +97,6 @@ public class LoginServlet extends HttpServlet {
 					session.setAttribute("loginToken", memberBean);
 					String path = request.getContextPath();
 					successLogin.put("indexUrl", path+"/theindex.jsp");
-					System.out.println(successLogin);
 					out.println(gson.toJson(successLogin));
 					out.close();
 				}

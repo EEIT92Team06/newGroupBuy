@@ -35,9 +35,9 @@ public class FriendDAOHibernate implements FriendDAO {
 		// System.out.println(friendDAO.deleteRelationFromList(1));
 		// System.out.println(friendDAO.deleteRelation(1, 2));
 		// System.out.println(friendDAO.updateRelation(3, 2101));
-//		List<FriendBean> result = friendDAO.selectMember(1, "2");
-		System.out.println(friendDAO.selectRelation(1, 3));
-//		System.out.println(result);
+		List<FriendBean> result = friendDAO.selectMember(1, "米");
+//		System.out.println(friendDAO.selectRelation(1, 3));
+		System.out.println(result);
 		transaction.commit();
 		((ConfigurableApplicationContext) context).close();
 	}

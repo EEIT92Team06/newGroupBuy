@@ -7,8 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>我是TITLE</title>
-<link rel="stylesheet"
-	href="<c:url value='/css/bootstrap.min.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'/>">
 <!-- <link rel="stylesheet" -->
 <!-- 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 <script
@@ -29,11 +28,9 @@
 	rel="stylesheet">
 
 <style>
-
 #ss1 li {
 	display: inline;
 }
-
 
 .dropdown-menu:before {
 	position: absolute;
@@ -47,7 +44,6 @@
 	content: '';
 }
 
-
 .dropdown-menu:after {
 	position: absolute;
 	top: -6px;
@@ -59,21 +55,17 @@
 	content: '';
 }
 
-
 .dropup, .dropdown {
 	position: relative;
 }
-
 
 .dropdown-menu {
 	top: 97%;
 }
 
-
 .open>.dropdown-menu {
 	display: block;
 }
-
 
 .dropdown-menu {
 	position: absolute;
@@ -90,10 +82,8 @@
 	-moz-border-radius: 0;
 	-webkit-border-radius: 0;
 }
-
 </style>
 <style>
-
 .notifications {
 	display: inline-block;
 	list-style: none;
@@ -131,10 +121,9 @@
 	text-align: center;
 }
 
-
 .topbar .container .am-g .topbar-right i {
- 	opacity: 1; 
- 	margin: 0 5px; 
+	opacity: 1;
+	margin: 0 5px;
 }
 
 .fa-envelope:before {
@@ -151,7 +140,7 @@
 	width: 30px;
 	text-align: center;
 	margin: 0 5px;
-	padding-top:5px;
+	padding-top: 5px;
 }
 
 .notification-icon .badge {
@@ -166,34 +155,38 @@
 	top: -5px;
 }
 
-
 .dropdown-menu-header {
 	padding: .5rem 0;
 	border-bottom: 1px solid #E6E6E6
 }
 
-
 .topbar .container .am-g {
-/*  	padding-top: 11px;  */
+	/*  	padding-top: 11px;  */
 	font-size: 15px;
 	color: #fff;
 }
 
 .topbar .container .am-g .topbar-right {
 	line-height: 29px;
- 	width: 75%; 
+	width: 75%;
 }
-
+.topbar {
+    width: 100%;
+    background-color: #f25c27;
+    /* padding: 5px; */
+    padding-top: 15px;
+}
 </style>
 
 </head>
 <body>
+
 	<div class="layout">
 		<!--===========layout-header================-->
 		<!-- 全部變成漢堡  -->
 		<div class="layout-header am-hide-sm-only" style="border: 10px black">
 			<!--topbar start-->
-			<div class="topbar">
+			<div class="topbar" style="padding-top:15px;">
 				<div class="container">
 					<div class="am-g">
 						<!-- 最左  -->
@@ -220,59 +213,60 @@
 									style="padding-left: 10px; padding-right: 25px; opacity: .3;"></i>
 
 								<c:if test="${empty loginToken}">
-<%-- 									<a href="<c:url value='/secure/newLogin.jsp'/>" --%>
-										<label class="click1" style="color: white">登入</label>
-<!-- 										</a> -->
+									<%-- 									<a href="<c:url value='/secure/newLogin.jsp'/>" --%>
+									<label class="click1" style="color: white">登入</label>
+									<!-- 										</a> -->
 								</c:if>
 								<c:if test="${not empty loginToken}">
-								<!-- 通知 ---- 通知 ---- 通知 ---- 通知 ---- 通知 ---- 通知 ---- 通知 ---- 通知 -->
-								<ul class="notifications" id="ss1">
-									<li class="dropdown"><a href="#"
-										class="dropdown-toggle notification-icon"
-										data-toggle="dropdown">
-											<p class="fa fa-envelope" style="color: #f25c27"></p> <span
-											class="badge" style="line-height: 13px">5</span>
-									</a> <!-- 下拉選單 -->
-										<ul class="dropdown-menu" style="margin-top: 8px">
-											<li><a href="#">test1</a></li>
-											<li class="divider"></li>
-											<li><a href="#">test2</a></li>
-											<!-- 											<li data-role="listview">aaa</li> -->
-											<li><a href="<c:url value="/overViewMailServlet.do"/>">全部信件</a></li>
-                                         
-										</ul></li>
-									<!-- 信封結束 -->
-									<!-- 鈴鐺開始 -->
-									<li class="dropdown"><a href="#"
-										class="dropdown-toggle notification-icon"
-										data-toggle="dropdown">
-											<p class="fa fa-bell" style="color: #f25c27"></p> <span
-											class="badge" style="line-height: 13px">5</span>
-									</a> <!-- 下拉選單 -->
-										<ul class="dropdown-menu" style="margin-top: 8px">
-											<li><a href="#">test1</a></li>
-											<li><a href="#">test1</a></li>
-											<li class="divider"></li>
-											<li><a href="#">test1</a></li>
+									<!-- 通知 ---- 通知 ---- 通知 ---- 通知 ---- 通知 ---- 通知 ---- 通知 ---- 通知 -->
+									<ul class="notifications" id="ss1">
+										<li class="dropdown"><a href="#"
+											class="dropdown-toggle notification-icon"
+											data-toggle="dropdown">
+												<p class="fa fa-envelope" style="color: #f25c27"></p> <span
+												class="badge" style="line-height: 13px">5</span>
+										</a> <!-- 下拉選單 -->
+											<ul class="dropdown-menu" style="margin-top: 8px">
+												<li><a href="#">test1</a></li>
+												<li class="divider"></li>
+												<li><a href="#">test2</a></li>
+												<!-- 											<li data-role="listview">aaa</li> -->
+												<li><a href="<c:url value="/overViewMailServlet.do"/>">全部信件</a></li>
 
-										</ul></li>
-									<!-- 鈴鐺結束-->
-									<!-- 頭像開始 -->
-									<li class="dropdown" style="margin: 3px;"><a href="#"
-										class="" data-toggle="dropdown"> <img
-											src="<c:url value='/Web_01Main/testPic.jpg'/>" width="55px"
-											style="border-radius: 50%;"></a>
-										<ul class="dropdown-menu" style="margin-top: 20px">
-											<li class="menu-item">
-											<li><a
-												href="<c:url value='/member/member.controller?memberNo=${loginToken.memberNo}'/>">基本資料</a></li>
-											<li class="menu-item"><a
-												href="<c:url value='/friend/friend.controller?x=friend'/>">好友</a></li>
-											<li class="menu-item"><a
-												href="<c:url value='/secure/logout.jsp'/>">登出</a></li>
-										</ul></li>
-									<!-- 頭像結束 -->
-								</ul>
+											</ul></li>
+										<!-- 信封結束 -->
+										<!-- 鈴鐺開始 -->
+										<li class="dropdown"><a href="#"
+											class="dropdown-toggle notification-icon"
+											data-toggle="dropdown">
+												<p class="fa fa-bell" style="color: #f25c27"></p> <span
+												class="badge" style="line-height: 13px">5</span>
+										</a> <!-- 下拉選單 -->
+											<ul class="dropdown-menu" style="margin-top: 8px">
+												<li><a href="#">test1</a></li>
+												<li><a href="#">test1</a></li>
+												<li class="divider"></li>
+												<li><a href="#">test1</a></li>
+
+											</ul></li>
+										<!-- 鈴鐺結束-->
+										<!-- 頭像開始 -->
+										<li class="dropdown" style="margin: 3px;"><a href="#"
+											class="" data-toggle="dropdown"> <%-- <img src="<c:url value='/Web_01Main/testPic.jpg'/>" --%>
+												<img
+												src="<c:url value='/pictures/${loginToken.memberAccount}.jpg'/>"
+												width="55px" style="border-radius: 50%;"></a>
+											<ul class="dropdown-menu" style="margin-top: 20px">
+												<li class="menu-item">
+												<li><a
+													href="<c:url value='/member/member.controller?memberNo=${loginToken.memberNo}'/>">基本資料</a></li>
+												<li class="menu-item"><a
+													href="<c:url value='/friend/friend.controller?x=friend'/>">好友</a></li>
+												<li class="menu-item"><a
+													href="<c:url value='/secure/logout.jsp'/>">登出</a></li>
+											</ul></li>
+										<!-- 頭像結束 -->
+									</ul>
 
 								</c:if>
 							</div>
@@ -295,55 +289,55 @@
 											style="width: 75px">
 									</a></li>
 
-									<li>
-									  <c:choose>
-									    <c:when test="${empty loginToken}">
-									       <a class="click1">創團</a></li>
-									    </c:when>
-									    <c:when test="${!empty loginToken}">
-									      <a href="<c:url value='/creategroup/createGroup.jsp'/>">創團</a></li>
-									    </c:when>
-									  </c:choose>
-									<li>
-									  <c:choose>
-									     <c:when test="${empty loginToken}">
-									       <a class="click1">搜團</a></li>
-									     </c:when>
-									     <c:when test="${!empty loginToken}">
-									       <a href="<c:url value='/headline/SearchServlet0.controller'/>">搜團</a></li>
-									     </c:when>
-						             </c:choose>
-									 <li>
-						             <c:choose>
-									   <c:when test="${empty loginToken}">
-									      <a class="click1">許願池</a></li>
-									   </c:when>
-									   <c:when test="${!empty loginToken}">
-									    <a href="<c:url value='/wish/wishpool.controller'/>">許願池</a>
-									    <ul class="sub-menu">
+									<li><c:choose>
+											<c:when test="${empty loginToken}">
+												<a class="click1">創團</a></li>
+									</c:when>
+									<c:when test="${!empty loginToken}">
+										<a href="<c:url value='/creategroup/createGroup.jsp'/>">創團</a>
+										</li>
+									</c:when>
+									</c:choose>
+									<li><c:choose>
+											<c:when test="${empty loginToken}">
+												<a class="click1">搜團</a></li>
+									</c:when>
+									<c:when test="${!empty loginToken}">
+										<a href="<c:url value='/headline/SearchServlet0.controller'/>">搜團</a>
+										</li>
+									</c:when>
+									</c:choose>
+									<li><c:choose>
+											<c:when test="${empty loginToken}">
+												<a class="click1">許願池</a></li>
+									</c:when>
+									<c:when test="${!empty loginToken}">
+										<a href="<c:url value='/wish/wishpool.controller'/>">許願池</a>
+										<ul class="sub-menu">
 											<li class="menu-item"><a
 												href="<c:url value='/wish/wishform.jsp'/>">發起許願</a></li>
 										</ul>
-									   </c:when>
-									 </c:choose>
-									 
-									<li>
-						             <c:choose>
-									   <c:when test="${empty loginToken}">
-									    <a class="click1">我的團購</a> <!-- sub-menu start-->
-										</li>
-									   </c:when>
-									   <c:when test="${!empty loginToken}">
-									    <a href="<c:url value='/test'/>">我的團購</a> <!-- sub-menu start-->
+									</c:when>
+									</c:choose>
+
+									<li><c:choose>
+											<c:when test="${empty loginToken}">
+												<a class="click1">我的團購</a>
+												<!-- sub-menu start--></li>
+									</c:when>
+									<c:when test="${!empty loginToken}">
+										<a href="<c:url value='/test'/>">我的團購</a>
+										<!-- sub-menu start-->
 										<ul class="sub-menu">
 											<li class="menu-item"><a
 												href="<c:url value='/eeit9212/grouprecord/mycreatedgroupinfo.controller'/>">我創的團</a></li>
 											<li class="menu-item"><a
 												href="<c:url value='/eeit9212/grouprecord/myattendedgroupinfo.controller'/>">我參加的團</a></li>
-										</ul></li>
-									   </c:when>
-									 </c:choose>
-									
+										</ul>
+										</li>
+									</c:when>
+									</c:choose>
+
 									<!-- sub-menu end-->
 								
 										<li><a

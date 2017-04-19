@@ -29,12 +29,12 @@ public class OpenSessionInViewFilter implements Filter {
 			sessionFactory.getCurrentSession().beginTransaction();			//pre-processing
 			String servletPath=((HttpServletRequest)req).getServletPath();
 			
-			if(!(servletPath.startsWith("/js")||servletPath.startsWith("/assets")||servletPath.startsWith("/css"))){
+			if(!(servletPath.startsWith("/Web_01Main")||servletPath.startsWith("/js")||servletPath.startsWith("/assets")||servletPath.startsWith("/css"))){
 				System.out.println("前往"+servletPath+"的交易開始");
 			}
 			chain.doFilter(req, resp);
 			sessionFactory.getCurrentSession().getTransaction().commit();//post-processing
-			if(!(servletPath.startsWith("/js")||servletPath.startsWith("/assets")||servletPath.startsWith("/css"))){
+			if(!(servletPath.startsWith("/Web_01Main")||servletPath.startsWith("/js")||servletPath.startsWith("/assets")||servletPath.startsWith("/css"))){
 				System.out.println("從"+servletPath+"的交易結束");
 			}
 			
