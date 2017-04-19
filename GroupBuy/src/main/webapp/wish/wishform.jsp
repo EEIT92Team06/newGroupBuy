@@ -23,6 +23,7 @@
 <div class="container">
 
     <form class="well form-horizontal" action="<c:url value="/wish/wishform.controller" />" method="post" enctype="multipart/form-data" id="contact_form">
+<center>
 <fieldset>
 
 <!-- Form Name -->
@@ -31,25 +32,25 @@
 </center>
 <!-- Text input-->
 
-<div class="form-group">
+<div class="form-group"  style="margin-left: 230px;">
   <label class="col-md-4 control-label">標題</label>  
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i></span>
-  <input  name="title" placeholder="許願標題" class="form-control"  type="text" value="${param.title}">
+  <input  name="title" placeholder="許願標題" class="form-control" style="height: 29.6px;"  type="text" value="${param.title}">
     </div>
-    <small data-bv-validator="notEmpty" data-bv-validator-for="title" class="help-block" style="color: red;">${errorMsg.title}</small>
+    <small data-bv-validator="notEmpty" data-bv-validator-for="title" class="help-block" style="text-align: left;color: red;">${errorMsg.title}</small>
   </div>
 </div>
 
 <!-- Select Basic -->
    
-<div class="form-group"> 
+<div class="form-group" style="margin-left: 230px;"> 
   <label class="col-md-4 control-label">產品類別</label>
     <div class="col-md-4 selectContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-    <select name="productType" class="form-control selectpicker" >
+    <select name="productType" class="form-control selectpicker">
         <option value="0">選擇產品類別</option>
 		<option value="1">生鮮食品</option>
 		<option value="2">團購美食</option>
@@ -61,59 +62,59 @@
 		<option value="8">3C家電</option>
     </select>
   </div>
-  <small data-bv-validator="notEmpty" data-bv-validator-for="title" class="help-block" style="color: red;">${errorMsg.type}</small>
+  <small data-bv-validator="notEmpty" data-bv-validator-for="title" class="help-block" style="text-align: left;color: red;">${errorMsg.type}</small>
 </div>
 </div>
 
 <!-- Text input-->
-       <div class="form-group">
+       <div class="form-group" style="margin-left: 230px;">
   <label class="col-md-4 control-label">品名</label>  
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="fa fa-product-hunt" aria-hidden="true"></i></span>
-  <input name="name" placeholder="產品名稱" class="form-control"  type="text" value="${param.name}">
+  <input name="name" placeholder="產品名稱" class="form-control" style="height: 29.6px;" type="text" value="${param.name}">
     </div>
-    <small data-bv-validator="notEmpty" data-bv-validator-for="title" class="help-block" style="color: red;">${errorMsg.name}</small>
+    <small data-bv-validator="notEmpty" data-bv-validator-for="title" class="help-block" style="text-align: left;color: red;">${errorMsg.name}</small>
   </div>
 </div>
 
 
 <!-- Text input-->
        
-<div class="form-group">
+<div class="form-group" style="margin-left: 230px;">
   <label class="col-md-4 control-label">原價</label>  
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
-  <input name="price" placeholder="價格" class="form-control" type="text" value="${param.price}">
+  <input name="price" placeholder="價格" class="form-control" style="height: 29.6px;" type="text" value="${param.price}">
     </div>
-    <small data-bv-validator="notEmpty" data-bv-validator-for="title" class="help-block" style="color: red;">${errorMsg.price}</small>
+    <small data-bv-validator="notEmpty" data-bv-validator-for="title" class="help-block" style="text-align: left;color: red;">${errorMsg.price}</small>
   </div>
 </div>
 
 <!-- Text input-->
       
-<div class="form-group">
+<div class="form-group" style="margin-left: 230px;">
   <label class="col-md-4 control-label">來源</label>  
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="fa fa-newspaper-o" aria-hidden="true"></i></span>
-  <input name="source" placeholder="來源" class="form-control" type="text" value="${param.source}">
+  <input name="source" placeholder="來源" class="form-control" style="height: 29.6px;" type="text" value="${param.source}">
     </div>
   </div>
 </div>
 
 <!-- Text input-->
  
-<div class="form-group">
+<div class="form-group" style="margin-left: 230px;">
   <label class="col-md-4 control-label">圖片上傳</label>  
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="fa fa-file-image-o" aria-hidden="true"></i></span>
-  <input id="file1" name="picUpload" placeholder="檔案上傳" value="upload" class="form-control"  type="file" accept="image/*" multiple="multiple" onchange="fileViewer()">
+  <input id="file1" name="picUpload" placeholder="檔案上傳" value="upload" style="height: 29.6px;" class="form-control"  type="file" accept="image/*" multiple="multiple" onchange="fileViewer()">
 
     </div>
-    <small data-bv-validator="notEmpty" data-bv-validator-for="title" class="help-block" style="color: red;">${errorMsg.upload}</small>
+    <small data-bv-validator="notEmpty" data-bv-validator-for="title" class="help-block" style="text-align: left;color: red;">${errorMsg.upload}</small>
 		<tr>
 		  <td></<td>
 		  <td><div id="dropZone" ><img src="" name="pic" /></div></td>
@@ -123,26 +124,29 @@
             
 <!-- Text area -->
   
-<div class="form-group">
+<div class="form-group" style="margin-left: 230px;">
   <label class="col-md-4 control-label">內容</label>
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
         	<textarea class="form-control" name="content" placeholder="簡單介紹這項產品" value="${param.content}"></textarea>
   </div>
-  <small data-bv-validator="notEmpty" data-bv-validator-for="title" class="help-block" style="color: red;">${errorMsg.content}</small>
+  <small data-bv-validator="notEmpty" data-bv-validator-for="title" class="help-block" style="text-align: left;color: red;">${errorMsg.content}</small>
   </div>
 </div>
 <!-- Button -->
-<div class="form-group">
+<div class="form-group" style="margin-left: 230px;">
   <label class="col-md-4 control-label"></label>
   <center>
   <div class="col-md-4">
     <button type="submit" name="send" class="btn btn-warning" value="送出">送出<span class="glyphicon glyphicon-send"></span></button>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="<c:url value="/wish/wishpool.controller" />"><button type="button" class="btn btn-warning" style="width: 67.6px;">取消</button></a>
   </div>
   </center>
 </div>
 </fieldset>
+</center>
 </form>
 </div>
     </div><!-- /.container -->
@@ -217,7 +221,7 @@
         	id=obj.id;
         	var imgs = document.getElementsByTagName("img"); //取得img陣列
         	 console.log(imgs);
-            for(var i=1;i<imgs.length;i++){ //移除原先選取的圖片的外框及value
+            for(var i=2;i<imgs.length;i++){ //移除原先選取的圖片的外框及value
             	imgs.item(i).setAttribute("style","");
             }
         	//附加外框

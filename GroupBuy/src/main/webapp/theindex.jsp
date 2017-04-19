@@ -8,9 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<jsp:include page="/headline.jsp"></jsp:include>
-<jsp:include page="/secure/newLogin.jsp"></jsp:include>
+<jsp:include page="/headline.jsp"/>
+<jsp:include page="/secure/newLogin.jsp"/>
 <c:if test="${not empty loginToken}">
 <h1>${sessionScope.loginToken.memberNickName}，您好</h1>
 </c:if>

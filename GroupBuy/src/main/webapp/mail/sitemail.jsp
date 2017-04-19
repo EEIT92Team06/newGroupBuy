@@ -133,10 +133,9 @@
 			cancel1[i].checked = false;
 		}
 	}
+    
 
-	function allMailAddTr() {
-  		
-  }
+
 
 	function announceMailAddTr() {
 
@@ -155,9 +154,9 @@
 
 </head>
 <body>
-	<jsp:include page="/Web_02/headline.jsp" />
+	<jsp:include page="/headline.jsp" />
 	<div class="productdesc"
-		style="width: 1195px; margin-left: 400px; margin-top: 80px">
+		style="width: 1195px; margin-left: 20%; margin-top: 80px">
 		<form action="" style="float: right;">
 			<i style="margin-right: 9px;" class="fa fa-search" aria-hidden="true"></i><input
 				type="text" style="margin-bottom: 3px; width: 300px; height: 40px"
@@ -207,15 +206,50 @@
 													style="width: 16px; height: 16px" type="checkbox"
 													onclick="check()" id="mail${time.count}" name="allMail"
 													value="${allMail.siteMailNo}"></td>
-												<td onclick="allMailAddTr()"><a
-													href="<c:url value="/specificMailServlet.do?allMailsiteMailNo=${allMail.siteMailNo}"/>">
-														<font>${allMail.siteMailTime}</font>
-												</a></td>
+
+												<!-- 												沒做AJAX版本 -->
+												<!-- 												<td onclick="allMailAddTr()"><a -->
+												<%-- 													href="<c:url value="/specificMailServlet.do?allMailsiteMailNo=${allMail.siteMailNo}"/>"> --%>
+												<%-- 														<font>${allMail.siteMailTime}</font> --%>
+												<!-- 												</a></td> -->
+
+												<td><a onclick="getAllMail(${allMail.siteMailNo})">${allMail.siteMailTime}</a>
+												</td>
+
 												<td onclick="allMailAddTr()">GroupBuy團隊</td>
-												<td onclick="allMailAddTr()"><a
-													href="<c:url value="/specificMailServlet.do?allMailsiteMailNo=${allMail.siteMailNo}"/>">
+												<td><a onclick="getAllMail(${allMail.siteMailNo})">
 														<font>${allMail.siteMailCanTitle}</font>
 												</a></td>
+											</tr>
+											<script>
+												function getAllMail(obj){
+													var td=document.getElementById(obj);
+													var tr=td.parentNode;
+													var xhr=new XMLHttpRequest();
+													var queryString="siteMailNo="+obj;
+													var url="specificMailAjaxServlet.do?"+queryString;
+													xhr.open("GET",url,true);
+													xhr.send();
+													xhr.onreadystatechange=function(){
+													if(xhr.readyState==4){
+														if(xhr.status==200){
+																result=JSON.parse(xhr.responseText)
+																tr.setAttribute("style","")
+																td.innerHTML= "<font size='3'>"+result.mailBean.siteMailCanContent+"</font>";
+															}
+												    }
+												}
+											
+										}
+												function back(siteMailNo){
+													var td=document.getElementById(siteMailNo);
+													var tr=td.parentNode;
+													tr.setAttribute("style","display: none;")
+												}
+											</script>
+											<tr style="display: none;">
+												<td height="220px" colspan="4" id="${allMail.siteMailNo}"
+													onclick="back(${allMail.siteMailNo})"></td>
 											</tr>
 										</c:forEach>
 										<c:forEach var="announceMail" varStatus="time"
@@ -225,17 +259,42 @@
 													style="width: 16px; height: 16px" type="checkbox"
 													onclick="check1()" id="announceMail${time.count}"
 													name="announceMail" value="${announceMail.siteMailNo}"></td>
-												<td onclick="announceMailAddTr()"><a
-													href="
-<%-- 													<c:url value="/specificMailServlet.do?announceMailsiteMailNo=${announceMail.siteMailNo}"/> --%>
-													">
-														<font>${announceMail.siteMailTime}</font>
-												</a></td>
-												<td onclick="announceMailAddTr()">GroupBuy團隊</td>
-												<td onclick="announceMailAddTr()"><a
-													href="<c:url value="/specificMailServlet.do?announceMailsiteMailNo=${announceMail.siteMailNo}"/>">
-														<font>系統公告</font>
-												</a></td>
+												<td><a
+													onclick="getAllMail1(${announceMail.siteMailNo})"><font>${announceMail.siteMailTime}</font></a>
+												</td>
+												<td>GroupBuy團隊</td>
+												<td><a><font>系統公告</font></a></td>
+											</tr>
+											<script>
+												function getAllMail1(obj){
+													var td=document.getElementById('announce'+obj);
+													var tr=td.parentNode;
+													var xhr=new XMLHttpRequest();
+													var queryString="announceSiteMailNo="+obj;
+													var url="specificMailAjaxServlet.do?"+queryString;
+													xhr.open("GET",url,true);
+													xhr.send();
+													xhr.onreadystatechange=function(){
+													if(xhr.readyState==4){
+														if(xhr.status==200){
+																result=JSON.parse(xhr.responseText)
+																tr.setAttribute("style","")
+																td.innerHTML= "<font size='3'>"+result.announcementBean.siteMailContent+"</font>";
+															}
+												    }
+												}
+											
+										}
+												function back1(siteMailNo){
+													var td=document.getElementById('announce'+siteMailNo);
+													var tr=td.parentNode;
+													tr.setAttribute("style","display: none;")
+												}
+											</script>
+											<tr style="display: none;">
+												<td height="220px" colspan="4"
+													id="announce${announceMail.siteMailNo}"
+													onclick="back1(${announceMail.siteMailNo})"></td>
 											</tr>
 										</c:forEach>
 									</table>
@@ -263,23 +322,52 @@
 												class="quantity">寄件者</th>
 											<th style="width: 239px; text-align: center;" class="model">主旨</th>
 										</tr>
-										<c:forEach var="unReadMailMail" varStatus="time"
-											items="${unReadMailMail}">
+										<c:forEach var="unReadMail" varStatus="time"
+											items="${unReadMail}">
 											<tr>
 												<td style="text-align: center;"><input
 													style="width: 16px; height: 16px" type="checkbox"
 													onclick="checkUnRead()" id="mail${time.count}"
-													name="allMail1" value="${unReadMailMail.siteMailNo}">
-												</td>
+													name="allMail1" value="${unReadMail.siteMailNo}"></td>
 												<td><a
-													href="<c:url value="/specificMailServlet.do?unReadAllMailsiteMailNo=${unReadMailMail.siteMailNo}"/>">
-														<font>${unReadMailMail.siteMailTime}</font>
-												</a></td>
+													onclick="getUnReadAllMail(${unReadMail.siteMailNo})"><font>${unReadMail.siteMailTime}</font></a>
+												</td>
 												<td>GroupBuy團隊</td>
 												<td><a
-													href="<c:url value="/specificMailServlet.do?unReadAllMailsiteMailNo=${unReadMailMail.siteMailNo}"/>">
-														<font>${unReadMailMail.siteMailCanTitle}</font>
+													onclick="getUnReadAllMail(${unReadMail.siteMailNo})"><font>${unReadMail.siteMailCanTitle}</font>
 												</a></td>
+											</tr>
+											<script>
+											function getUnReadAllMail(obj){
+												var td=document.getElementById('all'+obj);
+												var tr=td.parentNode;
+												var xhr=new XMLHttpRequest();
+												var queryString="unReadSiteMailNo="+obj;
+												var url="specificMailAjaxServlet.do?"+queryString;
+												xhr.open("GET",url,true);
+												xhr.send();
+												xhr.onreadystatechange=function(){
+												if(xhr.readyState==4){
+													if(xhr.status==200){
+															result=JSON.parse(xhr.responseText)
+															tr.setAttribute("style","")
+															td.innerHTML= "<font size='3'>"+result.unReadAllMail.siteMailCanContent+"</font>";
+														}
+											    }
+											}
+										
+									}
+											function back1(siteMailNo){
+												var td=document.getElementById('all'+siteMailNo);
+												var tr=td.parentNode;
+												tr.setAttribute("style","display: none;")
+											}
+											
+											</script>
+											<tr style="display: none;">
+												<td height="220px" colspan="4"
+													id="all${unReadMail.siteMailNo}"
+													onclick="back1(${unReadMail.siteMailNo})"></td>
 											</tr>
 										</c:forEach>
 										<c:forEach var="unReadannounceMail" varStatus="time"
@@ -290,15 +378,43 @@
 													onclick="checkUnRead1()" id="announceMail${time.count}"
 													name="announceMail1"
 													value="${unReadannounceMail.siteMailNo}"></td>
-												<td class="td"><a
-													href="<c:url value="/specificMailServlet.do?unReadAnnounceMailsiteMailNo=${unReadannounceMail.siteMailNo}"/>">
-														<font>${unReadannounceMail.siteMailTime}</font>
+												<td><a onclick="getUnReadAnnounceMail(${unReadannounceMail.siteMailNo})"><font>${unReadannounceMail.siteMailTime}</font>
 												</a></td>
 												<td>GroupBuy團隊</td>
-												<td class="td"><a
-													href="<c:url value="/specificMailServlet.do?unReadAnnounceMailsiteMailNo=${unReadannounceMail.siteMailNo}"/>">
-														<font>系統公告</font>
+												<td><a onclick="getUnReadAnnounceMail(${unReadannounceMail.siteMailNo})"><font>系統公告</font>
 												</a></td>
+											</tr>
+											<script>
+											function getUnReadAnnounceMail(obj){
+												var td=document.getElementById('unAnnounce'+obj);
+												var tr=td.parentNode;
+												var xhr=new XMLHttpRequest();
+												var queryString="unReadannounceNo="+obj;
+												var url="specificMailAjaxServlet.do?"+queryString;
+												xhr.open("GET",url,true);
+												xhr.send();
+												xhr.onreadystatechange=function(){
+												if(xhr.readyState==4){
+													if(xhr.status==200){
+															result=JSON.parse(xhr.responseText)
+															tr.setAttribute("style","");
+															td.innerHTML= "<font size='3'>"+result.unReadAnnouncementBean.siteMailContent+"</font>";
+													}
+											    }
+											}
+										
+									}
+											function back2(siteMailNo){
+												var td=document.getElementById('unAnnounce'+siteMailNo);
+												var tr=td.parentNode;
+												tr.setAttribute("style","display: none;")
+											}
+											
+											</script>
+											<tr style="display: none;">
+												<td height="220px" colspan="4"
+													id="unAnnounce${unReadannounceMail.siteMailNo}"
+													onclick="back2(${unReadannounceMail.siteMailNo})"></td>
 											</tr>
 										</c:forEach>
 									</table>
@@ -311,6 +427,7 @@
 			</div>
 		</form>
 	</div>
+
 	<script src="../js/js/jquery.js"></script>
 	<script src="../js/js/bootstrap.js"></script>
 	<script src="../js/js/respond.min.js"></script>

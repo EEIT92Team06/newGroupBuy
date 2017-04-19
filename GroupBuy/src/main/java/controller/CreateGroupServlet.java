@@ -53,6 +53,7 @@ public class CreateGroupServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		Map<String, String> errorMessages = new HashMap<String, String>();
 		Map<String, String> successMessage = new HashMap<String, String>();
 		HttpSession session = request.getSession();
@@ -213,7 +214,7 @@ public class CreateGroupServlet extends HttpServlet {
 				double newPrice = Double.parseDouble(productPrices[i]);
 				if (newPrice <= 0) {
 					errorMessages.put("productPriceError", "價格請大於0");
-				}
+				} 
 				groupInfoDetailsBean.setGroupInfoDetailsProductPrice(newPrice);
 				groupInfoDetailsBean.setGroupInfoNo(groupInfoBean);
 				detailList.add(groupInfoDetailsBean);

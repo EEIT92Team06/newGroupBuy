@@ -9,16 +9,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<link href='http://fonts.useso.com/css?family=Open+Sans:400,300italic,400italic,600,600italic' rel='stylesheet' type='text/css'>
-<link href='http://fonts.useso.com/css?family=Crete+Round' rel='stylesheet' type='text/css'>
-<link href='http://fonts.useso.com/css?family=Crete+Round' rel='stylesheet' type='text/css'><link href="../css/bootstrap.css" rel="stylesheet">
-<link href="../css/bootstrap-responsive.css" rel="stylesheet">
-<link href="../css/style.css" rel="stylesheet">
-<link href="../css/flexslider.css" type="text/css" media="screen" rel="stylesheet"  />
-<link href="../css/jquery.fancybox.css" rel="stylesheet">
-<link href="../css/cloud-zoom.css" rel="stylesheet">
+<link href="../myWeb_01Main/css/bootstrap.css" rel="stylesheet">
+<link href="../myWeb_01Main/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="../myWeb_01Main/css/style.css" rel="stylesheet">
+<link href="../myWeb_01Main/css/flexslider.css" type="text/css" media="screen" rel="stylesheet"  />
+<link href="../myWeb_01Main/css/jquery.fancybox.css" rel="stylesheet">
+<link href="../myWeb_01Main/css/cloud-zoom.css" rel="stylesheet">
 
-<link rel="shortcut icon" href="../assets/ico/favicon.html">
+<link rel="shortcut icon" href="../myWeb_01Main/assets/ico/favicon.html">
 <style>
     #leftImg{
        text-align: center;
@@ -27,26 +25,26 @@
 </head>
 <body>
 <jsp:include page="/headline.jsp"></jsp:include>
-<br>
+<br><br>
 <div id="maincontainer">
   <section id="product">
     <div class="container">      
       <!-- Product Details-->
-      <div class="row">
+      <div class="row" style="margin-left: 130px;">
        <!-- Left Image-->
         <div class="span5">
           <ul class="thumbnails mainimage" style="padding-left: 0px;">
             <c:forEach var="wishPics" items="${wishPics}">
                   <li class="span5">
-                     <a  rel="position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4" class="thumbnail cloud-zoom" href="../pictures/${wishPics.wishPicture}">
-                          <img src="../pictures/${wishPics.wishPicture}" alt="" title="" width="420" height="300">
+                     <a  rel="position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4" class="thumbnail cloud-zoom" style="width:420px ;height :300px" href="../pictures/${wishPics.wishPicture}">
+                          <img src="../pictures/${wishPics.wishPicture}" alt="" title="" style="width:420px ;height :300px">
                      </a>
                   </li>         
 			</c:forEach>
           </ul>
           <div id="leftImg"><span>點擊選取圖片</span></div>
 <!--           =============小圖===============         -->
-          <ul class="thumbnails mainimage" >
+          <ul class="thumbnails mainimage" style="padding-left: 0px;">
              <c:forEach var="wishPics" items="${wishPics}">
                 <li class="producthtumb">
                   <a class="thumbnail" >
@@ -135,27 +133,23 @@
   <!--  Related Products-->
   <section id="related" class="row">
     <div class="container">
-      <h1 class="heading1"><span class="maintext">留言專區</span><span class="subtext"> See All Comments</span></h1>
-      
-    </div>
-  </section>
-</div>
-	<section class="commentsblog">
-	<ul class="comments" style="margin-left: 145px;">
+      <h1 class="heading1" style="width: 1000px;margin-left: 150px;"><span class="maintext">留言專區</span><span class="subtext"> See All Comments</span></h1>
+      <section class="commentsblog">
+	<ul class="comments" style="margin-left: 0px;padding-left: 0px;">
 	<c:forEach var="msgDetail" items="${msgDetail}">
-		<li><a class="avtar thumbnail"><img src="../pictures/${msgDetail.memberPic}"
-				alt=""></a>
+		<li style="margin-left: 150px;"><a class="avtar thumbnail">
+		<img src="../pictures/${msgDetail.memberPic}"alt=""></a>
 			<div class="commentdetail">
-				<a class="blogtitle" href="#">${msgDetail.nickName}</a>
-				<div style="width: 1000px;">
+				<p class="blogtitle" href="#">${msgDetail.nickName}</p>
+				<div >
 				<p>${msgDetail.wishMsgContent}</p>
 				</div>
 			</div></li>
 	</c:forEach>
 	</ul><br>
 	<div id="div7">
-		<form action="<c:url value="/wish/wishMsg.controller" />" style="margin-left: 175px; method="post">
-			<textarea name="content" rows="3" cols="500" style="margin-top: 0px; margin-bottom: 0px; height: 86px; width: 1180px;"></textarea>
+		<form action="<c:url value="/wish/wishMsg.controller" />" style="margin-left: 0px; method="post">
+			<textarea name="content" rows="3" cols="500" style="margin-top: 0px;margin-bottom: 0px;height: 86px;width: 1013.6px;margin-left: 150px;"></textarea>
 			<br>
 			<br>
 			<c:forEach var="wishDetail" items="${wishDetail}">
@@ -163,13 +157,15 @@
 			</c:forEach>
 			<tr>
 				${errorMsg.message}
-				<td id="submit"><input type="submit" name="send" value="確認送出" style="margin-left: 1100px;"/></td>
+				<td id="submit"><input type="submit" class="btn btn-orange" name="send" value="留言" style="margin-left: 150px;" /></td>
 			</tr>
 		</form>
 	</div>
 	</section>
-	
-	
+    </div>
+  </section>
+</div>
+
 <!-- Footer -->
 <footer id="footer">
   <section class="footerlinks">
@@ -202,21 +198,21 @@
 <!-- javascript
     ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="../js/jquery.js"></script>
-<script src="../js/bootstrap.js"></script>
-<script src="../js/respond.min.js"></script>
-<script src="../js/application.js"></script>
-<script src="../js/bootstrap-tooltip.js"></script>
-<script defer src="../js/jquery.fancybox.js"></script>
-<script defer src="../js/jquery.flexslider.js"></script>
-<script type="text/javascript" src="../js/jquery.tweet.js"></script>
-<script  src="../js/cloud-zoom.1.0.2.js"></script>
-<script  type="text/javascript" src="../js/jquery.validate.js"></script>
-<script type="text/javascript"  src="../js/jquery.carouFredSel-6.1.0-packed.js"></script>
-<script type="text/javascript"  src="../js/jquery.mousewheel.min.js"></script>
-<script type="text/javascript"  src="../js/jquery.touchSwipe.min.js"></script>
-<script type="text/javascript"  src="../js/jquery.ba-throttle-debounce.min.js"></script>
-<script defer src="../js/custom.js"></script>
+<script src="../myWeb_01Main/js/jquery.js"></script>
+<script src="../myWeb_01Main/js/bootstrap.js"></script>
+<script src="../myWeb_01Main/js/respond.min.js"></script>
+<script src="../myWeb_01Main/js/application.js"></script>
+<script src="../myWeb_01Main/js/bootstrap-tooltip.js"></script>
+<script defer src="../myWeb_01Main/js/jquery.fancybox.js"></script>
+<script defer src="../myWeb_01Main/js/jquery.flexslider.js"></script>
+<script type="text/javascript" src="../myWeb_01Main/js/jquery.tweet.js"></script>
+<script  src="../myWeb_01Main/js/cloud-zoom.1.0.2.js"></script>
+<script  type="text/javascript" src="../myWeb_01Main/js/jquery.validate.js"></script>
+<script type="text/javascript"  src="../myWeb_01Main/js/jquery.carouFredSel-6.1.0-packed.js"></script>
+<script type="text/javascript"  src="../myWeb_01Main/js/jquery.mousewheel.min.js"></script>
+<script type="text/javascript"  src="../myWeb_01Main/js/jquery.touchSwipe.min.js"></script>
+<script type="text/javascript"  src="../myWeb_01Main/js/jquery.ba-throttle-debounce.min.js"></script>
+<script defer src="../myWeb_01Main/js/custom.js"></script>
 <script type="text/javascript">
 function likeForWish(){
 	var wishNo = document.getElementById("wishNo").value;

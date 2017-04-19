@@ -11,22 +11,23 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<link href="../css/bootstrap.css" rel="stylesheet">
-<link href="../css/bootstrap-responsive.css" rel="stylesheet">
-<link href="../css/style.css" rel="stylesheet">
-<link href="../css/flexslider.css" type="text/css" media="screen"
+<link href="../myWeb_01Main/css/bootstrap.css" rel="stylesheet">
+<link href="../myWeb_01Main/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="../myWeb_01Main/css/style.css" rel="stylesheet">
+<link href="../myWeb_01Main/css/flexslider.css" type="text/css" media="screen"
 	rel="stylesheet" />
-<link href="../css/jquery.fancybox.css" rel="stylesheet">
-<link href="../css/cloud-zoom.css" rel="stylesheet">
+<link href="../myWeb_01Main/css/jquery.fancybox.css" rel="stylesheet">
+<link href="../myWeb_01Main/css/cloud-zoom.css" rel="stylesheet">
 </head>
 <body>
 	<jsp:include page="/headline.jsp"></jsp:include>
+    <br>
 	<form action="<c:url value="/searchgroup/search.controller" />"
 		method="post">
 		<table>
 		<div style="padding-left:70px ;">
-			<div style="padding:15px ; width:300px ; float:left">
-				<input type="text" name="name" placeholder="請輸入 商品 關鍵字" autocomplete="off" value="${param.name}">
+			<div style="padding:15px;width: 200px;float:left;margin-left: 15%;">
+				<input type="text" name="name" placeholder="請輸入 商品 關鍵字" autocomplete="off" value="${param.name}" style="width: 163.6px;">
 			</div>
 			<div style="float:left ;padding-top: 10px">
 				<input type="submit" name="searchGroupAction" style="background-color:	#FFA488 ; color:white" value="搜尋">
@@ -42,9 +43,8 @@
 			<ul class="breadcrumb">
 <!-- 				<li class="active">Blog</li> -->
 			</ul>
-			<div class="row">
+			<div class="row" style="float: left;">
 				<aside class="span2"> 
-				
 				<div class="sidewidt">
 					<h2 class="heading2">
 						<span>Categories</span>
@@ -63,7 +63,7 @@
 				</aside>
 				<!-- Sidebar End-->
 				<!-- Blog listing-->
-				<div class="span10 bloggrid">
+				<div class="span10 bloggrid" style="margin-left: 120px;">
 					<h1 class="heading1">
 						<span class="maintext">Popular search</span><span class="subtext"></span>
 					</h1>
@@ -72,11 +72,8 @@
 					<ul class="thumbnails">
 						<li class="span3">
 							<div class="thumbnail">
-								<a
-									href="${pageContext.servletContext.contextPath}/searchImg/getImage?id=${bean.groupInfoNo}&type=groupCover"
-									class="fancyboxpopup"><img alt=""
-									src="${pageContext.servletContext.contextPath}/searchImg/getImage?id=${bean.groupInfoNo}&type=groupCover"><span
-									class="viewfancypopup">&nbsp;</span></a>
+								<img alt=""	src="${pageContext.servletContext.contextPath}/searchImg/getImage?id=${bean.groupInfoNo}&type=groupCover" style="width: 220px;height: 170px;">
+									<span class="viewfancypopup">&nbsp;</span>
 								<div class="caption">
 									<a href="#" class="bloggridtitle">${bean.groupInfoName}</a>
 									<div class="author">
@@ -102,8 +99,6 @@
 					</div>
 					</c:forEach>
 				</div>
-				
-				
 				<aside class="span2"> 
 				
 				<div class="sidewidt" hidden>
@@ -119,7 +114,7 @@
 					</ul>
 				</div>
 				</aside>
-				<div class="span10 bloggrid">
+				<div class="span10 bloggrid" style="margin-left: 120px;">
 					<h1 class="heading1">
 						<span class="maintext">Recommend search</span><span class="subtext"></span>
 					</h1>
@@ -128,11 +123,9 @@
 					<ul class="thumbnails">
 						<li class="span3">
 							<div class="thumbnail">
-								<a
-									href="${pageContext.servletContext.contextPath}/searchImg/getImage?id=${bean.groupInfoNo}&type=groupCover"
-									class="fancyboxpopup"><img alt=""
-									src="${pageContext.servletContext.contextPath}/searchImg/getImage?id=${bean.groupInfoNo}&type=groupCover"><span
-									class="viewfancypopup">&nbsp;</span></a>
+								<img alt=""
+									src="${pageContext.servletContext.contextPath}/searchImg/getImage?id=${bean.groupInfoNo}&type=groupCover" style="width: 270px;height: 200px;">
+									<span class="viewfancypopup">&nbsp;</span>
 								<div class="caption">
 									<a href="#" class="bloggridtitle">${bean.groupInfoName}</a>
 									<div class="author">

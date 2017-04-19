@@ -303,6 +303,7 @@ public class SiteMailService {
 			statusNo=bean.getSiteMailStatusNo();
 		}
 		return statusNo;
+
 	}
 
 }

@@ -10,13 +10,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<link href="../css/bootstrap.css" rel="stylesheet">
-<link href="../css/bootstrap-responsive.css" rel="stylesheet">
-<link href="../css/style.css" rel="stylesheet">
-<link href="../css/flexslider.css" type="text/css" media="screen"
+<link href="../myWeb_01Main/css/bootstrap.css" rel="stylesheet">
+<link href="../myWeb_01Main/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="../myWeb_01Main/css/style.css" rel="stylesheet">
+<link href="../myWeb_01Main/css/flexslider.css" type="text/css" media="screen"
 	rel="stylesheet" />
-<link href="../css/jquery.fancybox.css" rel="stylesheet">
-<link href="../css/cloud-zoom.css" rel="stylesheet">
+<link href="../myWeb_01Main/css/jquery.fancybox.css" rel="stylesheet">
+<link href="../myWeb_01Main/css/cloud-zoom.css" rel="stylesheet">
 <style>
 .deletemargin {
 	margin: 0px;
@@ -88,7 +88,8 @@ window.onload = function(){
 		xhr.send();
 		xhr.onreadystatechange = function(){   
 			// 向伺服器提出的請求已經收到回應  
-			if (xhr.readyState === 4) {       
+
+			if (xhr.readyState === 4) {         
 				// 伺服器回應成功  
 				if (xhr.status === 200) { 
 					var data = JSON.parse(xhr.responseText);  
@@ -166,22 +167,22 @@ function orderSuc(){
 </head>
 <body>
 	<c:remove var="salary"/>
-	
-	<jsp:include page="/headline.jsp"></jsp:include>
 
+	<jsp:include page="/headline.jsp"></jsp:include>
+    <br><br>
 	<div id="maincontainer">
 		<section id="product">
 		<div class="container">
 			<!-- Product Details-->
-			<div class="row">
+			<div class="row" style="margin-left: 130px;">
 				<!-- Left Image-->
 				<div class="span5">
-					<ul class="thumbnails mainimage">
-						<li class="span5"><a
+					<ul class="thumbnails mainimage" style="padding-left: 0px;">
+						<li class="span5" style="width: 420px;"><a
 							rel="position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4"
 							class="thumbnail cloud-zoom"
 							href="${pageContext.servletContext.contextPath}/searchImg/getImage?id=${groupInfoNo}&type=groupCover">
-								<img style="width: 470px; height: 313px"
+								<img style="width:420px;height:300px;"
 								src="${pageContext.servletContext.contextPath}/searchImg/getImage?id=${groupInfoNo}&type=groupCover"
 								alt="" title="">
 						</a></li>
@@ -190,14 +191,14 @@ function orderSuc(){
 								rel="position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4"
 								class="thumbnail cloud-zoom"
 								href='${pageContext.servletContext.contextPath}/searchImg/getImage?id=${bean.groupInfoPicNo}&type=groupPhoto'>
-									<img style="width: 470px; height: 313px"
+									<img style="width: 420px; height: 300px"
 									src='${pageContext.servletContext.contextPath}/searchImg/getImage?id=${bean.groupInfoPicNo}&type=groupPhoto'
 									alt="" title="">  
 							</a></li>
 						</c:forEach>
-
 					</ul>
-					<ul class="thumbnails mainimage">
+					<div style="text-align: center;"><span>點擊選取圖片</span></div>
+					<ul class="thumbnails mainimage" style="padding-left: 0px;">
 						<li class="producthtumb"><a class="thumbnail"> <img
 								src="${pageContext.servletContext.contextPath}/searchImg/getImage?id=${groupInfoNo}&type=groupCover"
 								alt="" title="">
@@ -215,7 +216,7 @@ function orderSuc(){
 				<!-- Right Details-->
 				<div class="span7">
 					<div class="row">
-						<div style="margin-left: 50px; margin-top: 50px" class="span7">
+						<div style="margin-left: 120px;margin-top: 0px;" class="span7">
 							<h1 class="productname">
 								<span class="bgnone">${result.groupInfoName}</span>
 							</h1>
@@ -223,20 +224,26 @@ function orderSuc(){
 							<form id="orderItems"
 								action="<c:url value="/searchgroup/order.controller"/>"
 								method="post">
-
+                                <table>
 								<c:forEach var="bean" items="${resultMulti}">
-									<div class="quantitybox deletemargin">
+								<tr>
+									<div class="quantitybox deletemargin" style="text-align:center;">
+									    <td>
 										<div style="float: left">
-											<h3>${bean.groupInfoDetailsProdcutName}</h3>
+											<h3 style="margin-bottom: 0px;">${bean.groupInfoDetailsProdcutName}</h3>
 										</div>
+										</td>
+										<td>
 										<div style="float: left; margin-left: 10px">
-											<h3>${bean.groupInfoDetailsProductPrice}</h3>
+											<h3 style="margin-bottom: 0px;">${bean.groupInfoDetailsProductPrice}</h3>
 										</div>
+										</td>
+										<td>
 										<div style="float: left; margin-left: 10px">
 											<!--                       <select class="selectqty"> -->
 											<!--                 	 	 <option>Select</option> -->
 											<!--               		  </select> -->
-											<select name='quantity'>
+											<select name='quantity' style="width: 63.6px;">
 												<option value="0">0</option>
 												<option value="1">1</option>
 												<option value="2">2</option>
@@ -251,10 +258,14 @@ function orderSuc(){
 											</select> <input type="hidden" name="groupInfoDetailsNo"
 												value="${bean.groupInfoDetailsNo}">
 										</div>
+										</td>
 									</div>
+								</tr>
 								</c:forEach>
+								</table>
+								<br><br>
 
-								<ul class="productpagecart">
+								<ul class="productpagecart" style="padding-left: 0px;">
 									<li><a class="cart" onclick="confirmOrder()"> 參與團購 </a></li>
 								</ul>
 								<input type="hidden" name="memberNo" value="${memberBean.memberNo}"> 
@@ -264,12 +275,12 @@ function orderSuc(){
 
 							<!-- Product Description tab & comments-->
 							<div class="productdesc">
-								<ul class="nav nav-tabs" id="myTab">
+								<ul class="nav nav-tabs" id="myTab" style="width: 532px;">
 									<li class="active"><a href="#description">簡介</a></li>
 									<li><a href="#specification">詳細資訊</a></li>
 									<li><a href="#review">檢舉</a></li>
 								</ul>
-								<div class="tab-content">
+								<div class="tab-content" style="width: 532px;">
 									<div class="tab-pane active" id="description">
 										${result.groupInfoContent} <br>
 									</div>
@@ -336,15 +347,12 @@ function orderSuc(){
 		<!--  Related Products-->
 		<section id="related" class="row">
 		<div class="container">
-			<h1 class="heading1">
-				<span class="maintext">留言專區</span><span class="subtext"> See
-					All Comments</span>
-			</h1>
+			<h1 class="heading1" style="width: 1000px;margin-left: 150px;"><span class="maintext">留言專區</span><span class="subtext"> See All Comments</span></h1>
 
 		</div>
 		</section>
 
-		<section class="commentsblog">
+		<section class="commentsblog" style="margin-left: 150px;">
 		<ul id="msgContent" class="comments" style="margin-left: 145px;">
 			<c:forEach var="bean" items="${selectMsg}">
 				<!--  			第一層Msg  -->
@@ -359,7 +367,7 @@ function orderSuc(){
 		<br>
 		<div id="div7">
 			<form style="margin-left: 175px">
-				<textarea style="width: 1100px" id="leaveMsg" name="groupMsg"
+				<textarea style="width: 1000px" id="leaveMsg" name="groupMsg"
 					rows="3" cols="400"
 					style="margin-top:0px; margin-bottom: 0px; height: 86px; width: 1180px;"></textarea>
 				<br> <br>
@@ -375,22 +383,22 @@ function orderSuc(){
 
 
 
-	<script src="../js/jquery.js"></script>
-	<script src="../js/bootstrap.js"></script>
-	<script src="../js/respond.min.js"></script>
-	<script src="../js/application.js"></script>
-	<script src="../js/bootstrap-tooltip.js"></script>
-	<script defer src="../js/jquery.fancybox.js"></script>
-	<script defer src="../js/jquery.flexslider.js"></script>
-	<script type="text/javascript" src="../js/jquery.tweet.js"></script>
-	<script src="../js/cloud-zoom.1.0.2.js"></script>
-	<script type="text/javascript" src="../js/jquery.validate.js"></script>
+	<script src="../myWeb_01Main/js/jquery.js"></script>
+	<script src="../myWeb_01Main/js/bootstrap.js"></script>
+	<script src="../myWeb_01Main/js/respond.min.js"></script>
+	<script src="../myWeb_01Main/js/application.js"></script>
+	<script src="../myWeb_01Main/js/bootstrap-tooltip.js"></script>
+	<script defer src="../myWeb_01Main/js/jquery.fancybox.js"></script>
+	<script defer src="../myWeb_01Main/js/jquery.flexslider.js"></script>
+	<script type="text/javascript" src="../myWeb_01Main/js/jquery.tweet.js"></script>
+	<script src="../myWeb_01Main/js/cloud-zoom.1.0.2.js"></script>
+	<script type="text/javascript" src="../myWeb_01Main/js/jquery.validate.js"></script>
 	<script type="text/javascript"
-		src="../js/jquery.carouFredSel-6.1.0-packed.js"></script>
-	<script type="text/javascript" src="../js/jquery.mousewheel.min.js"></script>
-	<script type="text/javascript" src="../js/jquery.touchSwipe.min.js"></script>
+		src="../myWeb_01Main/js/jquery.carouFredSel-6.1.0-packed.js"></script>
+	<script type="text/javascript" src="../myWeb_01Main/js/jquery.mousewheel.min.js"></script>
+	<script type="text/javascript" src="../myWeb_01Main/js/jquery.touchSwipe.min.js"></script>
 	<script type="text/javascript"
-		src="../js/jquery.ba-throttle-debounce.min.js"></script>
-	<script defer src="../js/custom.js"></script>
+		src="../myWeb_01Main/js/jquery.ba-throttle-debounce.min.js"></script>
+	<script defer src="../myWeb_01Main/js/custom.js"></script>
 </body>
 </html>
