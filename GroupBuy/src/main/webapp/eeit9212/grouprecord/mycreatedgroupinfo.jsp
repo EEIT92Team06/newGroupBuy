@@ -40,7 +40,7 @@
 				<td style="text-align: center;" class="image"><a href="#"><img
 						title="product" alt="product"
 						src="<c:url value='/eeit9212/getimage?groupInfoNo=${selectGroupInfoByGroupInfoNo.groupInfoNo}'/>"
-						height="50" width="50"></a></td>
+						height="100" width="100"></a></td>
 				<td style="text-align: center;" class="name">${selectGroupInfoByGroupInfoNo.groupInfoStartDate}</td>
 				<td style="text-align: center;" class="model">${selectGroupInfoByGroupInfoNo.groupInfoName}</td>
 				<td id="groupStatusId" style="text-align: center;" class="quantity">${selectGroupInfoByGroupInfoNo.groupStatus}</td>
@@ -283,7 +283,7 @@
 			console.log(deadLine - nowTime);
 			
 			function groupStartAlert(){
-				var groupStartAlert=layer.alert('截止日期已到。<br>您的產品下限為${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}，<br>您的產品數量為${groupInfoTotalProductQt}，<br>數量已達標，按下確定後系統將自動發送站內信給報名您的團的買家請買家於三天內匯款。', {
+				var groupStartAlert=layer.alert('截止日期已到。<br>您的產品下限為:<h3>${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}</h3>，<br>您的產品數量為:<h3>${groupInfoTotalProductQt}</h3>，<br>數量已達標，按下確定後系統將自動發送站內信給報名您的團的買家請買家於三天內匯款。', {
 					  skin: 'layui-layer-molv' //样式类名
 					  ,closeBtn: 0
 					},function(){
@@ -358,7 +358,7 @@
 			});		
 			if(${selectGroupInfoByGroupInfoNo.groupStatusNo==6}){
 				if(${groupInfoTotalProductQt>=selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}){
-					layer.alert('延期截止日期已到。<br>您的產品下限為${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}，<br>您的產品數量為${groupInfoTotalProductQt}，<br>數量已達標，按下確定後系統將自動發送站內信給報名您的團的買家請買家於三天內匯款。', {
+					layer.alert('延期截止日期已到。<br>您的產品下限為:<h3>${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}</h3>，<br>您的產品數量為:<h3>${groupInfoTotalProductQt}</h3>，<br>數量已達標，按下確定後系統將自動發送站內信給報名您的團的買家請買家於三天內匯款。', {
 						  skin: 'layui-layer-molv' //样式类名
 						  ,closeBtn: 0
 						},function(){
@@ -373,7 +373,7 @@
 					);
 				}
 				else{
-				layer.alert('延期截止日期已到。<br>您的產品下限為${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}，<br>您的產品數量為${groupInfoTotalProductQt}，<br>數量未達標，您已經延期過一次，系統將判定您的團為:流團，數量未達標。', {
+				layer.alert('延期截止日期已到。<br>您的產品下限為:<h3>${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}</h3>，<br>您的產品數量為:<h3>${groupInfoTotalProductQt}</h3>，<br>數量未達標，您已經延期過一次，系統將判定您的團為:流團，數量未達標。', {
 					  skin: 'layui-layer-molv' //样式类名
 					  ,closeBtn: 0
 					},function(){
@@ -384,7 +384,7 @@
 			}
 			if(${selectGroupInfoByGroupInfoNo.groupStatusNo==8}){
 				if(${groupInfoTotalProductQt>=selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}){
-					var startSendAlert=layer.alert('匯款截止日期已到。<br>您的產品下限為${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}，<br>您的買家匯款產品總數量為${groupInfoTotalProductQt}，<br>數量已達標，系統將判定您的團為:開團中，寄貨中。<br>請盡快處理寄貨。', {
+					var startSendAlert=layer.alert('匯款截止日期已到。<br>您的產品下限為:<h3>${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}</h3>，<br>您的買家匯款產品總數量為:<h3>${groupInfoTotalProductQt}</h3>，<br>數量已達標，系統將判定您的團為:開團中，寄貨中。<br>請盡快處理寄貨。', {
 						  skin: 'layui-layer-molv' //样式类名
 						  ,closeBtn: 0
 						},function(){
@@ -417,7 +417,7 @@
 					);
 				}
 				else{
-					layer.alert('匯款截止日期已到。<br>您的產品下限為${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}，<br>您的買家匯款產品總數量為${groupInfoTotalProductQt}，<br>數量未達標，系統將判定您的團為:流團，數量未達標。<br>請盡快處理退款。', {
+					layer.alert('匯款截止日期已到。<br>您的產品下限為:<h3>${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}</h3>，<br>您的買家匯款產品總數量為:<h3>${groupInfoTotalProductQt}</h3>，<br>數量未達標，系統將判定您的團為:流團，數量未達標。<br>請盡快處理退款。', {
 						  skin: 'layui-layer-molv' //样式类名
 						  ,closeBtn: 0
 						},function(){

@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 
 public class TestDate {
 
+			
 	public static void main(String[] args) {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		java.util.Date date=new java.util.Date();
@@ -24,6 +25,7 @@ public class TestDate {
 		String formatt=dddd.format(a);
 		Double dd=Double.parseDouble(formatt);
 		System.out.println(dd);
+
 		
 	}
 
