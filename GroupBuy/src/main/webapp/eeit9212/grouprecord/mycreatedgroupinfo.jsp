@@ -40,7 +40,7 @@
 				<td style="text-align: center;" class="image"><a href="#"><img
 						title="product" alt="product"
 						src="<c:url value='/eeit9212/getimage?groupInfoNo=${selectGroupInfoByGroupInfoNo.groupInfoNo}'/>"
-						height="50" width="50"></a></td>
+						height="100" width="100"></a></td>
 				<td style="text-align: center;" class="name">${selectGroupInfoByGroupInfoNo.groupInfoStartDate}</td>
 				<td style="text-align: center;" class="model">${selectGroupInfoByGroupInfoNo.groupInfoName}</td>
 				<td id="groupStatusId" style="text-align: center;" class="quantity">${selectGroupInfoByGroupInfoNo.groupStatus}</td>

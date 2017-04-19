@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -30,6 +31,7 @@ import creategroup.model.GroupInfoBean;
 import creategroup.model.GroupInfoDetailsBean;
 import creategroup.model.GroupInfoPicBean;
 import login.model.MemberBean;
+import wish.model.WishPoolBean;
 
 @WebServlet("/createGroupServlet.do")
 @MultipartConfig
@@ -62,6 +64,9 @@ public class CreateGroupServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html charset=UTF-8");
 		session.setAttribute("successMessage", successMessage);
+		List<WishPoolBean> wishDetail = (List<WishPoolBean>)session.getAttribute("wishDetail");
+		int wishNo = wishDetail.get(0).getWishNo();
+		System.out.println("wishNo="+wishNo);
 		/*
 		 * getPart()
 		 * 方法接受一個字串，代表著檔案上傳欄位的name屬性，getPart()方法上有著getHeader()、getInputStream()
