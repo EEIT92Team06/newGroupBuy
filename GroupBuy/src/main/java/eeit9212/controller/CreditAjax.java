@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import eeit9212.model.AttendGroupInfoBean;
+import eeit9212.model.GroupInfoService;
 import eeit9212.model.CreditAttendanceService;
 import eeit9212.model.OrderInfoService;
 import login.model.MemberBean;
@@ -21,12 +23,14 @@ public class CreditAjax extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CreditAttendanceService creditAttendanceService;
 	private OrderInfoService orderInfoService;
+	private GroupInfoService groupInfoService;
 	
 	@Override
 	public void init() throws ServletException {
 		WebApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(this.getServletContext());
 		creditAttendanceService=(CreditAttendanceService)context.getBean("creditAttendanceService");
 		orderInfoService=(OrderInfoService)context.getBean("orderInfoService");
+		groupInfoService=(GroupInfoService)context.getBean("groupInfoService");
 	
 	}
 	
@@ -38,6 +42,7 @@ public class CreditAjax extends HttpServlet {
 		MemberBean memberBean = (MemberBean) session.getAttribute("loginToken");
 		Integer memberNo=memberBean.getMemberNo();
 		String scoreTemp = request.getParameter("score");
+		String groupInfoNoTemp=request.getParameter("groupInfoNo");
 		String groupInfoMemberNoTemp=request.getParameter("groupInfoMemberNo");
 		System.out.println("groupInfoMemberNoTemp=" + groupInfoMemberNoTemp);
 		System.out.println("scoreTemp=" + scoreTemp);
@@ -57,6 +62,14 @@ public class CreditAjax extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		int groupInfoNo=-1;
+		if(groupInfoNoTemp!=null&&groupInfoNoTemp.length()!=0){
+			try {
+				groupInfoNo = Integer.parseInt(groupInfoNoTemp);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		if(creditAttendanceService.updateGrouperCredit(groupInfoMemberNo, score)){
 			System.out.println("更新主糾評分groupInfoMemberNo="+groupInfoMemberNo);	
@@ -64,7 +77,9 @@ public class CreditAjax extends HttpServlet {
 			System.out.println("更新出席率memberNo="+memberNo);
 			orderInfoService.updateOrderInfoStatus(1202, orderInfoNo);
 			System.out.println("更新訂單狀態orderInfoNo="+orderInfoNo);
-
+//			GroupInfoBean selectMyAttendedByGroupInfoNo = groupInfoService.selectMyAttendedByGroupInfoNo(memberNo,
+//					groupInfoNo);		
+//			session.setAttribute("selectMyAttendedByGroupInfoNo", selectMyAttendedByGroupInfoNo);
 			return;
 		}
 		

@@ -214,7 +214,7 @@ public class CreateGroupServlet extends HttpServlet {
 				double newPrice = Double.parseDouble(productPrices[i]);
 				if (newPrice <= 0) {
 					errorMessages.put("productPriceError", "價格請大於0");
-				}
+				} 
 				groupInfoDetailsBean.setGroupInfoDetailsProductPrice(newPrice);
 				groupInfoDetailsBean.setGroupInfoNo(groupInfoBean);
 				detailList.add(groupInfoDetailsBean);

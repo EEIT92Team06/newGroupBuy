@@ -44,8 +44,7 @@ public class ReportAjax extends HttpServlet {
 		System.out.println("reportTypeNoTemp="+reportTypeNoTemp);
 		System.out.println("reportContent="+reportContent);
 		System.out.println("reportTargetTemp="+reportTargetTemp);
-		response.setCharacterEncoding("UTF-8");
-		PrintWriter out = response.getWriter();
+		
 		int reportTypeNo=-1;
 		if(reportTypeNoTemp!=null&&reportTypeNoTemp.length()!=0){
 			try{
@@ -69,7 +68,8 @@ public class ReportAjax extends HttpServlet {
 		bean.setReportTarget(reportTarget);
 		bean.setReportContent(reportContent);
 		
-		
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
 		if(reportService.report(bean)){
 			out.print("檢舉成功，請靜待處理。");	
 		}else{

@@ -21,11 +21,9 @@
 
 </head>
 <body>
-	
 	<jsp:include page="/headline.jsp"></jsp:include>
 
-	<div style="text-align: center;" class="cart-info container">
-	<h1>您創的團</h1>
+	<div class="cart-info container">
 		<table class="table table-striped table-bordered">
 			<tr>
 				<th class="image">圖片</th>

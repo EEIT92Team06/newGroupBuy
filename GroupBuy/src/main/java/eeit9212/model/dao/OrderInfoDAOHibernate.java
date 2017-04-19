@@ -37,16 +37,12 @@ public class OrderInfoDAOHibernate implements OrderInfoDAO {
 		// System.out.println(orderInfoDAOJdbc.updateOrderInfoStatusByGroupInfoNo(15,
 		// 1004));
 		// System.out.println(orderInfoDAOJdbc.updatePackageNo("asasas", 6));
-		System.out.println(orderInfoDAOJdbc.selectMyOrderInfoByNo(8));
-
 		 int
 		 insert=orderInfoDAOJdbc.insertOrderInfoAfterSuccess(8,"0913246578","aaaaa","asasasas");
 		 System.out.println("insertOrderInfoAfterSuccess="+insert);
 
-		OrderInfoBean update = orderInfoDAOJdbc.updateOrderInfoStatus(1102, 5);
+		OrderInfoBean update = orderInfoDAOJdbc.updateOrderInfoStatus(1001, 5);
 		System.out.println("update=" + update);
-		System.out.println(orderInfoDAOJdbc.selectMyOrderInfoByNo(8));
-
 
 		System.out.println(orderInfoDAOJdbc.selectTotalPrice(1));
 		System.out.println(orderInfoDAOJdbc.selectMyOrderInfoByNo(1));

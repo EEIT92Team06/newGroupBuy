@@ -8,8 +8,7 @@
 <title>Insert title here</title>
 <link href="../../css/bootstrap.css" rel="stylesheet">
 <link href="../../css/style.css" rel="stylesheet">
-<link href="../../css/flexslider.css" type="text/css" media="screen"
-	rel="stylesheet" />
+<link href="../../css/flexslider.css" type="text/css" media="screen" rel="stylesheet" />
 
 </head>
 <body>
@@ -36,7 +35,7 @@
 
 				<tr>
 
-
+				
 					<td><a href="#"><img title="product" alt="product"
 							src="<c:url value='/eeit9212/getimage?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}'/>"
 							height="100" width="100"></a></td>
@@ -59,7 +58,7 @@
 					<td style="text-align: center;" id="deadLineId">${selectMyAttendedByGroupInfoNo.formatDeadLine}</td>
 					<td style="text-align: center;" id="orderStatus">${selectMyAttendedByGroupInfoNo.orderStatus}</td>
 					<td style="text-align: center;">${selectMyAttendedByGroupInfoNo.groupInfoShippingWay}
-						
+
 					</td>
 				</tr>
 			</tbody>
@@ -293,8 +292,7 @@
 <!-- 			<textarea name="reportContent" rows="5" cols="50"></textarea> -->
 <!-- 			<input id="sendReport" type="button" value="送出" /> -->
 <!-- 			</form> -->
-		</div>
-	
+		</div>	
 	<script src="<c:url value='/js/jquery-3.1.1.min.js'/>"></script>
 	<script src="<c:url value='/js/layer/layer.js'/>"></script>
 	<script src="<c:url value='/Web_01Main/js/jquery.js'/>"></script>
@@ -401,41 +399,45 @@
 			// 			}
 
 			//彈出評分視窗
-			//如何綁定動態元件?
-// 			$("#testOn").on('click',":input[name='paySubmit']",function() {
-				$(":input[name='scoreBtn']").on('click',function() {
-			var thisBtn=$(this);
-				var layerOpen = layer.open({
-					type : 1,
-					title : '評分',
-					skin : 'layui-layer-rim', //加上边框
-					area : [ '420px', '240px' ], //宽高
-					content : $("#scoreDiv"),
-					closeBtn : 0
-					//不显示关闭按钮
-				});
-								//特地用Ajax練習，更新完評分根狀態直接重新載入當前頁面
-			$('#scoreButton').one('click',function() {
-				
-			
-					$.get("${pageContext.request.contextPath}/eeit9212/grouprecord/creditajax",{"score" : $(":checked[name='score']").val(),
-							"groupInfoMemberNo" : "${selectMyAttendedByGroupInfoNo.groupInfoMemberNo}"},function(data) {																				
-									$.get("${pageContext.request.contextPath}/eeit9212/grouprecord/selectajax",{"groupInfoNo":${selectMyAttendedByGroupInfoNo.groupInfoNo}},function(data){
-										var jsonObj = JSON.parse(data);
-										$("#creditTd").empty().append(jsonObj.grouperCredit);
-										$("#orderStatus").empty().append("已收貨");
-										thisBtn.remove();
-										
-										var msg={
-												"target":'${selectMyAttendedByGroupInfoNo.groupInfoNo}',
-												"change":"orderStatus"
-										}						
-										webSocket.send(JSON.stringify(msg));
-									layer.close(layerOpen);
-									});													
+			$("#stuffSub")
+					.click(
+							function() {
+								var layerOpen = layer.open({
+									type : 1,
+									title : '評分',
+									skin : 'layui-layer-rim', //加上边框
+									area : [ '420px', '240px' ], //宽高
+									content : $("#scoreDiv"),
+									closeBtn : 0
+								//不显示关闭按钮
 								});
-					});
-			});
+								//特地用Ajax練習，更新完評分根狀態直接重新載入當前頁面
+								$('#scoreButton')
+										.one(
+												'click',
+												function() {
+													$
+															.get(
+																	"creditajax",
+																	{
+																		"score" : $(
+																				":checked[name='score']")
+																				.val(),
+																		"groupInfoNo" : "${selectMyAttendedByGroupInfoNo.groupInfoNo}",
+																		"groupInfoMemberNo" : "${selectMyAttendedByGroupInfoNo.groupInfoMemberNo}"
+																	},
+																	function(
+																			data) {
+																		layer
+																				.close(layerOpen);
+																		webSocket
+																				.send('${selectMyAttendedByGroupInfoNo.groupInfoNo}');
+																		location
+																				.replace('myattendedgroupinfo.controller?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}&orderInfoNo=${selectMyAttendedByGroupInfoNo.orderInfoNo}');
+
+																	});
+												});
+							});
 
 			//按下檢舉按鈕
 // 			var reportOpen;
@@ -477,7 +479,7 @@
 
 			//簡單的做一些驗證
 			$("#paySub")
-					.on('click',
+					.click(
 							function() {
 								var account = $("#account");
 								var phone = $("#phone");
@@ -518,28 +520,25 @@
 													function() {
 														$
 																.get(
-																		"${pageContext.request.contextPath}/eeit9212/grouprecord/aftersuccessajax",
-																		{"orderInfoNo" :orderInfoNo,
-																			"account" :account.val(),
-																			"phone" :phone.val(),
-																			"address" :address.val()
+																		"${pageContext.request.contextPath}/eeit9212/grouprecord/myattendedgroupinfo.controller",
+																		{
+																			"groupInfoNo" : groupInfoNo,
+																			"orderInfoNo" : orderInfoNo,
+																			"account" : account
+																					.val(),
+																			"phone" : phone
+																					.val(),
+																			"address" : address
+																					.val()
 																		},
 																		function(
 																				data) {
-																			
-																			$("#orderStatus").empty().append("已匯款");
-																			account.parent().before("<div>匯款時間:"+data+"</div");
-																			account.parent().empty().append("帳號末五碼:"+account.val());
-																			phone.parent().empty().append("連絡電話:"+phone.val());
-																			address.parent().empty().append("寄送地址:"+address.val());
-																			$("#paySub").remove();
-																			var msg={
-																					"target":'${selectMyAttendedByGroupInfoNo.groupInfoNo}',
-																					"change":"payReady"
-																			}						
-																			webSocket.send(JSON.stringify(msg));
-																			layer.close(payConfirm);
-																			
+																			webSocket
+																					.send('${selectMyAttendedByGroupInfoNo.groupInfoNo}');
+																			layer
+																					.close(payConfirm);
+																			location
+																					.reload();
 																		});
 
 													});
@@ -548,6 +547,7 @@
 							});
 
 		});
+		
 	</script>
 	<script src="../../myWeb_01Main/js/jquery.js"></script>
 	<script src="../../myWeb_01Main/js/bootstrap.js"></script>

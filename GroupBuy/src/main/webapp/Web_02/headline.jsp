@@ -15,6 +15,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="/secure/newLogin.jsp"/>
 	<div class="layout">
 		<!--===========layout-header================-->
 		<div class="layout-header am-hide-sm-only">
@@ -44,7 +45,10 @@
 									class="am-icon-twitter"></i> <i class="am-icon-google-plus"></i>
 								<i class="am-icon-pinterest"></i> <i class="am-icon-instagram"></i>
 								<i class="am-icon-linkedin"></i> <i class="am-icon-youtube-play"></i>
-								<i class="am-icon-rss"></i> <a href="html/login.html">LOGIN</a>
+								<i class="am-icon-rss"></i>
+								<c:if test="${empty loginToken}">
+								    <label class="click1">LOGIN</label>
+								</c:if>
 								<a href="html/register.html">SIGN UP</a>
 							</div>
 						</div>
@@ -64,14 +68,45 @@
 									<li class=""><a href="<c:url value='/index.jsp'/>">我們的LOGO</a></li>
 
 									<!-- sub-menu end-->
-									<li><a
-										href="<c:url value='/creategroup/createGroup.jsp'/>">創團</a></li>
-									<li><a
-										href="<c:url value='/headline/SearchServlet0.controller'/>">搜團</a></li>
-									<li><a href="<c:url value='/wish/wishpool.controller'/>">許願池</a></li>
-									<li><a href="<c:url value='/test'/>">會員空間</a> <!-- sub-menu start-->
+									<li>
+									<c:choose>
+									  <c:when test="${empty loginToken}">
+									     <a class="click1">創團</a></li>
+									  </c:when>
+									  <c:when test="${!empty loginToken}">
+									    <a href="<c:url value='/creategroup/createGroup.jsp'/>">創團</a></li>
+									  </c:when>
+									</c:choose>
+									
+									<li>
+									 <c:choose>
+									   <c:when test="${empty loginToken}">
+									      <a class="click1">搜團</a></li>
+									   </c:when>
+									   <c:when test="${!empty loginToken}">
+									    <a href="<c:url value='/headline/SearchServlet0.controller'/>">搜團</a></li>
+									   </c:when>
+						             </c:choose>
+						             
+						             <li>
+						             <c:choose>
+									   <c:when test="${empty loginToken}">
+									      <a class="click1">許願池</a></li>
+									   </c:when>
+									   <c:when test="${!empty loginToken}">
+									    <a href="<c:url value='/wish/wishpool.controller'/>">許願池</a></li>
+									   </c:when>
+									 </c:choose>
+									 
+									 <li>
+									  <c:choose>
+									   <c:when test="${empty loginToken}">
+									      <a class="click1">會員空間</a></li>
+									   </c:when>
+									   
+									   <c:when test="${!empty loginToken}">
+									    <a href="<c:url value='/test'/>">會員空間</a> <!-- sub-menu start-->
 										<ul class="sub-menu">
-
 											<li class="menu-item"><a
 												href="<c:url value='/member/member.controller?memberNo=${loginToken.memberNo}'/>">基本資料</a></li>
 											<li class="menu-item"><a
@@ -81,14 +116,24 @@
 											<li class="menu-item"><a
 												href="<c:url value='/eeit9212/grouprecord/myattendedgroupinfo.controller'/>">我參加的團</a></li>
 										</ul> <!-- sub-menu end--></li>
-									<li><a
-										href="<c:url value='/Backstage/BackStageServlet.controller'/>">後臺管理</a></li>
-									<c:if test="${empty loginToken}">
-										<li><a href="<c:url value='/secure/login.jsp'/>">登入</a></li>
-									</c:if>
+									  </c:when>
+						             </c:choose>
+						             
+						             <li>
+                                     <c:choose>
+									   <c:when test="${empty loginToken}">
+									      <a class="click1">後臺管理</a></li>
+									   </c:when>
+									   <c:when test="${!empty loginToken}">
+									      <a href="<c:url value='/Backstage/BackStageServlet.controller'/>">後臺管理</a></li>
+									   </c:when>
+									 </c:choose>
+						
 									<c:if test="${!empty loginToken}">
 										<li><a href="<c:url value='/secure/logout.jsp'/>">登出</a></li>
 									</c:if>
+<!-- 									這裡是暫時信箱到時再改 -->
+									<li><a href="<c:url value='/overViewMailServlet.do'/>">信箱</a></li>
 								</ul>
 							</div>
 						</div>
@@ -138,7 +183,9 @@
 										</li>
 									</ul></li>
 								<li class=""><a href="html/join.html" class="">後台管理</a></li>
-								<li class=""><a href="html/contact.html" class="">登入</a></li>
+								<c:if test="${empty loginToken}">
+								  <li class=""><a href="html/contact.html" class="">登入</a></li>
+								</c:if>
 								<li class="am-parent"><a href=""
 									class="nav-icon nav-icon-globe">Language</a>
 									<ul class="am-menu-sub am-collapse" style="height: 0.8px;">
