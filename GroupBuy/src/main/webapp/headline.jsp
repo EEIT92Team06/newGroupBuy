@@ -170,14 +170,28 @@
 	line-height: 29px;
 	width: 75%;
 }
+
 .topbar {
-    width: 100%;
-    background-color: #f25c27;
-    /* padding: 5px; */
-    padding-top: 15px;
+	width: 100%;
+	background-color: #f25c27;
+	/* padding: 5px; */
+	padding-top: 15px;
 }
 </style>
 
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$.get("/GroupBuy/mailAjaxServlet.do", 
+			function(data){
+		alert(data);
+			$("#mailNotify").html(data.unReadNum);
+	   })
+	})
+	
+
+
+</script>
 </head>
 <body>
 
@@ -186,7 +200,7 @@
 		<!-- 全部變成漢堡  -->
 		<div class="layout-header am-hide-sm-only" style="border: 10px black">
 			<!--topbar start-->
-			<div class="topbar" style="padding-top:15px;">
+			<div class="topbar" style="padding-top: 15px;">
 				<div class="container">
 					<div class="am-g">
 						<!-- 最左  -->
@@ -224,7 +238,7 @@
 											class="dropdown-toggle notification-icon"
 											data-toggle="dropdown">
 												<p class="fa fa-envelope" style="color: #f25c27"></p> <span
-												class="badge" style="line-height: 13px">5</span>
+												class="badge" id="mailNotify" style="line-height: 13px"></span>
 										</a> <!-- 下拉選單 -->
 											<ul class="dropdown-menu" style="margin-top: 8px">
 												<li><a href="#">test1</a></li>
@@ -339,10 +353,6 @@
 									</c:choose>
 
 									<!-- sub-menu end-->
-								
-										<li><a
-											href="<c:url value='/Backstage/BackStageServlet.controller'/>">後臺管理</a></li>
-								
 								</ul>
 							</div>
 						</div>

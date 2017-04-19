@@ -335,6 +335,8 @@ div.right a.google-plus:hover {
 						location.replace(result.banUrl);
 					}else if(result.unFinishLogin!=null){
 						location.replace(result.unFinishLogin);
+					}else if(result.backStageUrl!=null){
+						location.replace(result.backStageUrl);
 					}
 				}
 			}

@@ -44,7 +44,7 @@
 						<div class="profile_pic"></div>
 						<div class="profile_info">
 							<span>Welcome,</span>
-							<h2>管理員名字</h2>
+							<h2>${sessionScope.managerLogin.memberNickName}</h2>
 						</div>
 					</div>
 					<!-- /menu profile quick info -->

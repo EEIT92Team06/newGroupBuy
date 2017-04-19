@@ -37,6 +37,10 @@ public interface SiteMailDAO {
 	SiteMailBean selectStatus(Integer siteMailNo);
 
 	AnnouncementBean selectAnnounceStatus(Integer siteMailNo);
+	
+	int countSiteMail(Integer memberNo);
+
+	int countAnnounceMail(Integer memberNo);
 
 
 

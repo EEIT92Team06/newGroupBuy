@@ -88,15 +88,20 @@ public class LoginServlet extends HttpServlet {
 
 			if (statusNum >= 9101) {
 				if (!loginService.checkStatus(memberBean.getMemberNo())) {
-					System.out.println("11111");
 					String path = request.getContextPath();
 					banLogin.put("banUrl", path + "/secure/ban.jsp");
 					out.println(gson.toJson(banLogin));
 					out.close();			
-				} else {
+				} else if((statusNum==9101) ||(statusNum==9102)) {
 					session.setAttribute("loginToken", memberBean);
 					String path = request.getContextPath();
 					successLogin.put("indexUrl", path+"/theindex.jsp");
+					out.println(gson.toJson(successLogin));
+					out.close();
+				}else if(statusNum==9104){
+					session.setAttribute("managerLogin", memberBean);
+					String path = request.getContextPath();
+					successLogin.put("backStageUrl", path+"/Backstage/BackStageServlet.controller");
 					out.println(gson.toJson(successLogin));
 					out.close();
 				}
