@@ -46,7 +46,10 @@ public class SpecificMailAjaxServlet extends HttpServlet {
 		Gson gson=new Gson();
         Map<String,MailBean>map=new HashMap<String,MailBean>();
         Map<String,AnnouncementBean>map1=new HashMap<String,AnnouncementBean>();
+        Map<String,Integer>map2=new HashMap<String,Integer>();
+
         HttpSession session=request.getSession();
+        MemberBean memberBean=(MemberBean)session.getAttribute("loginToken");
         String temp=request.getParameter("siteMailNo");
         String temp1=request.getParameter("announceSiteMailNo");
         String temp2=request.getParameter("unReadSiteMailNo");
@@ -93,6 +96,8 @@ public class SpecificMailAjaxServlet extends HttpServlet {
         if(unReadSiteMailNo!=null){
         	MailBean unReadAllMail=siteMailService.selectSpecificMail(unReadSiteMailNo);
         	map.put("unReadAllMail", unReadAllMail);
+        	int unReadNum=siteMailService.getUnReadNum(memberBean);
+        	map2.put("unReadNum", unReadNum);
         	SiteMailBean siteMailBean=new SiteMailBean();
 			siteMailBean.setSiteMailNo(unReadAllMail.getSiteMailNo());
 			siteMailBean.setMemberNo(unReadAllMail.getMemberNo());

@@ -182,11 +182,14 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-	$.get("/GroupBuy/mailAjaxServlet.do", 
+	  $.get("/GroupBuy/mailAjaxServlet.do", 
 			function(data){
-		alert(data);
-			$("#mailNotify").html(data.unReadNum);
-	   })
+		    result = JSON.parse(data);
+		    if(result.unReadNum>0){
+			$("#mailNotify").html(result.unReadNum);
+		    }
+	    })
+	
 	})
 	
 
@@ -234,20 +237,13 @@ $(document).ready(function(){
 								<c:if test="${not empty loginToken}">
 									<!-- 通知 ---- 通知 ---- 通知 ---- 通知 ---- 通知 ---- 通知 ---- 通知 ---- 通知 -->
 									<ul class="notifications" id="ss1">
-										<li class="dropdown"><a href="#"
+										<li class="dropdown"><a href="<c:url value="/overViewMailServlet.do"/>"
 											class="dropdown-toggle notification-icon"
-											data-toggle="dropdown">
+											>
 												<p class="fa fa-envelope" style="color: #f25c27"></p> <span
 												class="badge" id="mailNotify" style="line-height: 13px"></span>
 										</a> <!-- 下拉選單 -->
-											<ul class="dropdown-menu" style="margin-top: 8px">
-												<li><a href="#">test1</a></li>
-												<li class="divider"></li>
-												<li><a href="#">test2</a></li>
-												<!-- 											<li data-role="listview">aaa</li> -->
-												<li><a href="<c:url value="/overViewMailServlet.do"/>">全部信件</a></li>
-
-											</ul></li>
+                                     </li>
 										<!-- 信封結束 -->
 										<!-- 鈴鐺開始 -->
 										<li class="dropdown"><a href="#"

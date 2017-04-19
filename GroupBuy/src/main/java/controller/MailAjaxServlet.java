@@ -44,11 +44,8 @@ public class MailAjaxServlet extends HttpServlet {
 		Map<String, Integer> totalUnRead = new HashMap<String, Integer>();
 		HttpSession session=request.getSession();
 		MemberBean memberBean=(MemberBean)session.getAttribute("loginToken");
-		System.out.println("memberBean="+memberBean);
 		Integer unReadNum=siteMailService.getUnReadNum(memberBean);
-		System.out.println("unReadNum="+unReadNum);
 		totalUnRead.put("unReadNum", unReadNum);
-		System.out.println("totalUnRead="+totalUnRead);
 		out.println(gson.toJson(totalUnRead));
 		out.close();
 	}
