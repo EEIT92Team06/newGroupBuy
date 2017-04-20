@@ -44,7 +44,7 @@
 						<div class="profile_pic"></div>
 						<div class="profile_info">
 							<span>Welcome,</span>
-							<h2>管理員名字</h2>
+							<h2>${sessionScope.managerLogin.memberNickName}</h2>
 						</div>
 					</div>
 					<!-- /menu profile quick info -->
@@ -128,7 +128,7 @@
 					<form action="<c:url value="/Backstage/banGroupServlet" />"
 						method="post">
 						<ul class="nav nav-tabs" id="myTab">
-							<li class="" onclick="removeChecked()"><font size="5">選擇封鎖團</font></a></li>
+							<li class="" onclick="removeChecked()"><font size="5">選擇封鎖團</font></li>
 							<li id="trashCan" style="display: none">
 								<button name="allMailBotton" value="allMailBotton"
 									onclick="checkDelete()" style="margin-left: 30px" type="submit">

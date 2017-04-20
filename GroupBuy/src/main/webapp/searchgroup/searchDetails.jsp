@@ -10,13 +10,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<link href="../../myWeb_01Main/css/bootstrap.css" rel="stylesheet">
-<link href="../../myWeb_01Main/css/bootstrap-responsive.css" rel="stylesheet">
-<link href="../../myWeb_01Main/css/style.css" rel="stylesheet">
-<link href="../../myWeb_01Main/css/flexslider.css" type="text/css" media="screen"
+<link href="../myWeb_01Main/css/bootstrap.css" rel="stylesheet">
+<link href="../myWeb_01Main/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="../myWeb_01Main/css/style.css" rel="stylesheet">
+<link href="../myWeb_01Main/css/flexslider.css" type="text/css" media="screen"
 	rel="stylesheet" />
-<link href="../../myWeb_01Main/css/jquery.fancybox.css" rel="stylesheet">
-<link href="../../myWeb_01Main/css/cloud-zoom.css" rel="stylesheet">
+<link href="../myWeb_01Main/css/jquery.fancybox.css" rel="stylesheet">
+<link href="../myWeb_01Main/css/cloud-zoom.css" rel="stylesheet">
 <style>
 .deletemargin {
 	margin: 0px;
@@ -92,7 +92,7 @@ window.onload = function(){
 			if (xhr.readyState === 4) {         
 				// 伺服器回應成功  
 				if (xhr.status === 200) { 
-					var data = JSON.parse(xhr.responseText);  
+					var data = JSON.parse(xhr.responseText);    
 
 // 				<li><a class="avtar thumbnail"><img class="img-circle" 
 // 						src="../pictures/${bean.memberPic}" alt=""></a>
@@ -148,7 +148,7 @@ function confirmOrder(){
 
 	layer.confirm('確定報名此團購？', {
 		  btn: ['確定','取消'] //按钮
-		}, function(){
+		}, function(){ 
 			$("#orderItems").submit();
 		}, function(){
 		  layer.msg('真可惜', {

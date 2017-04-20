@@ -80,4 +80,10 @@ public class LoginService {
 		}
 		
 	}
+	
+	public Timestamp selectban(int memberNo){
+			Timestamp select = (Timestamp)loginDAO.selectban(memberNo);
+            return select;
+	}
+	
 }

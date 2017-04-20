@@ -32,18 +32,20 @@ import creategroup.model.GroupInfoDetailsBean;
 import creategroup.model.GroupInfoPicBean;
 import login.model.MemberBean;
 import wish.model.WishPoolBean;
+import wish.model.WishPoolService;
 
 @WebServlet("/createGroupServlet.do")
 @MultipartConfig
 public class CreateGroupServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CreateGroupService createGroupService;
-
+    private WishPoolService wishPoolService;
 	@Override
 	public void init() throws ServletException {
 		ServletContext application = this.getServletContext();
 		ApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(application);
 		createGroupService = (CreateGroupService) context.getBean("createGroupService");
+		wishPoolService = (WishPoolService) context.getBean("wishPoolService");
 	}
 
 	@Override
@@ -64,9 +66,8 @@ public class CreateGroupServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html charset=UTF-8");
 		session.setAttribute("successMessage", successMessage);
-		List<WishPoolBean> wishDetail = (List<WishPoolBean>)session.getAttribute("wishDetail");
-		int wishNo = wishDetail.get(0).getWishNo();
-		System.out.println("wishNo="+wishNo);
+
+		
 		/*
 		 * getPart()
 		 * 方法接受一個字串，代表著檔案上傳欄位的name屬性，getPart()方法上有著getHeader()、getInputStream()
@@ -165,7 +166,7 @@ public class CreateGroupServlet extends HttpServlet {
 							errorMessages.put("bankAccountError", "請輸入匯款帳號");
 						} else {
 							try {
-								int i = Integer.parseInt(value);
+								long i = Long.parseLong(value);
 							} catch (NumberFormatException e) {
 								errorMessages.put("bankAccountError", "匯款帳號請輸入數字");
 							}
@@ -254,6 +255,12 @@ public class CreateGroupServlet extends HttpServlet {
 		GroupInfoBean insertResult = createGroupService.createGroup(groupInfoBean);
 		if (insertResult != null) {
 			successMessage.put("createSuccess", "創團成功!!!");
+			List<WishPoolBean> wishDetail = (List<WishPoolBean>)session.getAttribute("wishDetail");
+			if(wishDetail!=null){
+			int wishNo = wishDetail.get(0).getWishNo();
+			Boolean deleteStatus=wishPoolService.delete(wishNo);
+	        System.out.println("deleteStatus="+deleteStatus);
+			}		
 			String path1 = request.getContextPath();
 			response.sendRedirect(path + "/creategroup/successCreate.jsp");
 			return;

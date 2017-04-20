@@ -1,6 +1,7 @@
 package backstage.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -38,6 +39,15 @@ public class banServlet extends HttpServlet {
 		response.setContentType("UTF-8");
 		String[] checkboxs = request.getParameterValues("checkbox");
 		
+		Map<String, String> errorMsg = new HashMap<String, String>();
+		if(checkboxs==null){
+			errorMsg.put("banGroup", "請選擇封鎖會員");
+		}
+		if(!errorMsg.isEmpty()){
+			String contextPath = getServletContext().getContextPath();
+			response.sendRedirect(response.encodeRedirectURL(contextPath+"/Backstage/newbackstage2.jsp"));
+			return;
+		}
 		for(String checkbox : checkboxs){
 			int result = announcementService.modifyMemStatus(Integer.parseInt(checkbox));
 			System.out.println("成功 : " + result);

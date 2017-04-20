@@ -137,19 +137,7 @@
 
 
 
-	function announceMailAddTr() {
-
-	}
-	// 	function checkDelete(){
-	// 		layer.confirm('確定刪除信件嗎?', {
-	// 		  btn: ['確定','取消']
-	// 		   ,function(){
-	// 			  location.replace()
-	// 		  },function(){
-
-	// 		  }
-	// 		});
-	// 	}
+	
 </script>
 
 </head>
@@ -199,6 +187,10 @@
 											<th style="width: 336px; text-align: center;"
 												class="quantity">寄件者</th>
 											<th style="width: 239px; text-align: center;" class="model">主旨</th>
+										</tr>
+										<tr>
+											<td colspan="4" height="40px" style="color: red;"><font
+												style="margin: 18px">狀態信↓</font></td>
 										</tr>
 										<c:forEach var="allMail" varStatus="time" items="${allMail}">
 											<tr id="allMailAddTr${time.count}">
@@ -252,6 +244,10 @@
 													onclick="back(${allMail.siteMailNo})"></td>
 											</tr>
 										</c:forEach>
+										<tr>
+											<td colspan="4" height="40px" style="color: red;"><font
+												style="margin: 18px">公告信↓</font></td>
+										</tr>
 										<c:forEach var="announceMail" varStatus="time"
 											items="${announceMail}">
 											<tr>
@@ -322,6 +318,11 @@
 												class="quantity">寄件者</th>
 											<th style="width: 239px; text-align: center;" class="model">主旨</th>
 										</tr>
+										<tr>
+											<td colspan="4" height="40px" style="color: red;"><font
+												style="margin: 18px">狀態信↓</font></td>
+										</tr>
+
 										<c:forEach var="unReadMail" varStatus="time"
 											items="${unReadMail}">
 											<tr>
@@ -339,6 +340,8 @@
 											</tr>
 											<script>
 											function getUnReadAllMail(obj){
+// 												這裡是讓讀取信件後通知未讀信件-1
+												var mailIcon=document.getElementById('mailNotify');
 												var td=document.getElementById('all'+obj);
 												var tr=td.parentNode;
 												var xhr=new XMLHttpRequest();
@@ -352,7 +355,8 @@
 															result=JSON.parse(xhr.responseText)
 															tr.setAttribute("style","")
 															td.innerHTML= "<font size='3'>"+result.unReadAllMail.siteMailCanContent+"</font>";
-														}
+
+ 														}
 											    }
 											}
 										
@@ -370,6 +374,10 @@
 													onclick="back1(${unReadMail.siteMailNo})"></td>
 											</tr>
 										</c:forEach>
+										<tr>
+											<td colspan="4" height="40px" style="color: red;"><font
+												style="margin: 18px">公告信↓</font></td>
+										</tr>
 										<c:forEach var="unReadannounceMail" varStatus="time"
 											items="${unReadannounceMail}">
 											<tr>
@@ -378,10 +386,12 @@
 													onclick="checkUnRead1()" id="announceMail${time.count}"
 													name="announceMail1"
 													value="${unReadannounceMail.siteMailNo}"></td>
-												<td><a onclick="getUnReadAnnounceMail(${unReadannounceMail.siteMailNo})"><font>${unReadannounceMail.siteMailTime}</font>
+												<td><a
+													onclick="getUnReadAnnounceMail(${unReadannounceMail.siteMailNo})"><font>${unReadannounceMail.siteMailTime}</font>
 												</a></td>
 												<td>GroupBuy團隊</td>
-												<td><a onclick="getUnReadAnnounceMail(${unReadannounceMail.siteMailNo})"><font>系統公告</font>
+												<td><a
+													onclick="getUnReadAnnounceMail(${unReadannounceMail.siteMailNo})"><font>系統公告</font>
 												</a></td>
 											</tr>
 											<script>
