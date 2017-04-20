@@ -43,6 +43,7 @@
     <br>
 	<form name="as400samplecode" action="<c:url value="/searchgroup/search.controller" />"
 		method="post">
+
 		
 		<div style="padding-left:70px">
 			<div style="padding:15px;width: 200px;float:left;margin-left: 80px;">

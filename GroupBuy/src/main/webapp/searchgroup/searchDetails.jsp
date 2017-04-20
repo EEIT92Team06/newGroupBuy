@@ -92,7 +92,7 @@ window.onload = function(){
 			if (xhr.readyState === 4) {         
 				// 伺服器回應成功  
 				if (xhr.status === 200) { 
-					var data = JSON.parse(xhr.responseText);  
+					var data = JSON.parse(xhr.responseText);    
 
 // 				<li><a class="avtar thumbnail"><img class="img-circle" 
 // 						src="../pictures/${bean.memberPic}" alt=""></a>

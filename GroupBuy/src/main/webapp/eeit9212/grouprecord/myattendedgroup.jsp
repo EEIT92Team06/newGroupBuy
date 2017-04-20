@@ -9,9 +9,9 @@
 <link href="<c:url value='/css/style.css'/>" rel="stylesheet">
 </head>
 <body>
+<<<<<<< HEAD
 <jsp:include page="/headline.jsp"></jsp:include>
-<div style="text-align: center;" class="cart-info container">
-<h1>您參加的團</h1>
+<div class="cart-info container">
 	<table class="table table-striped table-bordered">
 		<thead>
 			<tr>
@@ -39,18 +39,13 @@
 					</td>
 					<td>${bean.groupInfoStartDate}</td>
 					<td>${bean.memberName}</td>
-					<c:if test="${bean.grouperCredit!=0}">
-					<td>${bean.grouperCredit}</td>
-					</c:if>
-					<c:if test="${bean.grouperCredit==0}">
-					<td>主揪第一次開團</td>
-					</c:if>
+					<td>${bean.formatGrouperCredit}</td>
 					<td>${bean.groupInfoName}</td>
 					<td>${bean.groupStatus}</td>
 					<td>${bean.productType}</td>
 					<td><c:if test="${empty bean.groupInfoTotalProductQt}">0</c:if>
 					<c:if test="${not empty bean.groupInfoTotalProductQt}">${bean.groupInfoTotalProductQt}</c:if>/${bean.groupInfoMinProductQt}</td>
-					<td>${bean.groupInfoDeadLine}</td>
+					<td>${bean.formatDeadLine}</td>
 					<td>${bean.orderStatus}</td>
 					<td><a
 						href="<c:url value='/eeit9212/grouprecord/myattendedgroupinfo.controller?groupInfoNo=${bean.groupInfoNo}&orderInfoNo=${bean.orderInfoNo}'/>">查看訂單明細</a>

@@ -1,7 +1,7 @@
 package eeit9212.model;
 
 import java.sql.Blob;
-import java.util.Arrays;
+import java.text.SimpleDateFormat;
 
 public class CreateGroupInfoBean{
 	private Integer groupInfoNo;
@@ -19,7 +19,18 @@ public class CreateGroupInfoBean{
 	private String groupInfoShippingWay;
 	private String groupInfoBankAccount;
 	private Blob groupInfoCoverPic;
+	private String formatDeadLine;
 	
+	
+	public String getFormatDeadLine() {
+		SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		return formatDeadLine= format.format(getGroupInfoDeadLine());
+	}
+	public void setFormatDeadLine() {
+		SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm");	
+		this.formatDeadLine = format.format(getGroupInfoDeadLine());
+	}
+
 	@Override
 	public String toString() {
 		return "CreateGroupInfoBean [groupInfoNo=" + groupInfoNo + ", groupInfoMemberNo=" + groupInfoMemberNo

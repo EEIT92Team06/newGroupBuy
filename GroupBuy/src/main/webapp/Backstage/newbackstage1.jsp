@@ -33,7 +33,7 @@
 			<div class="col-md-3 left_col">
 				<div class="left_col scroll-view">
 					<div class="navbar nav_title" style="border: 0;">
-						<a href="index.html" class="site_title"><i class="fa fa-paw"></i>
+						<a href="<c:url value="/Backstage/backstageindex.jsp" />" class="site_title"><i class="fa fa-paw"></i>
 							<span><font size="3">GroupBuy後台管理系統</font></span></a>
 					</div>
 
@@ -44,7 +44,7 @@
 						<div class="profile_pic"></div>
 						<div class="profile_info">
 							<span>Welcome,</span>
-							<h2>管理員名字</h2>
+							<h2>${sessionScope.managerLogin.memberNickName}</h2>
 						</div>
 					</div>
 					<!-- /menu profile quick info -->
@@ -84,7 +84,7 @@
 				</div>
 			</div>
 
-			<!-- top navigation -->
+					<!-- top navigation -->
 			<div class="top_nav">
 				<div class="nav_menu">
 					<nav>
@@ -98,54 +98,17 @@
 								aria-expanded="false"> <span class=" fa fa-angle-down"></span>
 							</a>
 								<ul class="dropdown-menu dropdown-usermenu pull-right">
-									<li><a href="javascript:;"> Profile</a></li>
-									<li><a href="javascript:;"> <span
-											class="badge bg-red pull-right">50%</span> <span>Settings</span>
-									</a></li>
-									<li><a href="javascript:;">Help</a></li>
+									<li><a href="<c:url value="/theindex.jsp" />">返回GroupBuy首頁</a></li>
 									<li><a href="login.html"><i
-											class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+											class="fa fa-sign-out pull-right"></i>登出</a></li>
 								</ul></li>
 
-							<li role="presentation" class="dropdown"><a
-								href="javascript:;" class="dropdown-toggle info-number"
-								data-toggle="dropdown" aria-expanded="false"> <i
-									class="fa fa-envelope-o"></i> <span class="badge bg-green">6</span>
-							</a>
+							<li role="presentation" class="dropdown">
 								<ul id="menu1" class="dropdown-menu list-unstyled msg_list"
 									role="menu">
-									<li><a> <span class="image"><img
-												src="images/img.jpg" alt="Profile Image" /></span> <span> <span>John
-													Smith</span> <span class="time">3 mins ago</span>
-										</span> <span class="message"> Film festivals used to be
-												do-or-die moments for movie makers. They were where... </span>
-									</a></li>
-									<li><a> <span class="image"><img
-												src="images/img.jpg" alt="Profile Image" /></span> <span> <span>John
-													Smith</span> <span class="time">3 mins ago</span>
-										</span> <span class="message"> Film festivals used to be
-												do-or-die moments for movie makers. They were where... </span>
-									</a></li>
-									<li><a> <span class="image"><img
-												src="images/img.jpg" alt="Profile Image" /></span> <span> <span>John
-													Smith</span> <span class="time">3 mins ago</span>
-										</span> <span class="message"> Film festivals used to be
-												do-or-die moments for movie makers. They were where... </span>
-									</a></li>
-									<li><a> <span class="image"><img
-												src="images/img.jpg" alt="Profile Image" /></span> <span> <span>John
-													Smith</span> <span class="time">3 mins ago</span>
-										</span> <span class="message"> Film festivals used to be
-												do-or-die moments for movie makers. They were where... </span>
-									</a></li>
-									<li>
-										<div class="text-center">
-											<a> <strong>See All Alerts</strong> <i
-												class="fa fa-angle-right"></i>
-											</a>
-										</div>
-									</li>
-								</ul></li>
+									
+								</ul>
+							</li>
 						</ul>
 					</nav>
 				</div>
@@ -153,26 +116,26 @@
 			<!-- /top navigation -->
 			<!-- 主要內容 -->
 			<div class="right_col" role="main">
-				<div class="productdesc"
-					style="width: 800px; margin-left: 120px; margin-top: 80px">
+				<div class="productdesc" 
+					style="width: 800px;margin-left: 25%;margin-top: 6%" >
 					<form action="<c:url value="/Backstage/SendMailServlet"/>"	method="post">
 						<ul class="nav nav-tabs" id="myTab">
 							<li class="" onclick="removeChecked()"><font size="5">系統公告</font></a></li>
 						</ul>
-						<div class="tab-content">
+						<div class="tab-content" >
 							<!-- 這裡是全部信件 -->
 							<div>
-								<div id="maincontainer">
+								<div id="maincontainer" >
 									<section id="product">
 										<div class="container">
 											<div class="cart-info">
-												<table class="table table-striped table-bordered"
+												<table class="table table-striped table-bordered" 
 													style="font-size: medium; margin-top: 15px">
 
 													<tr>
 														<td>主旨<input type="text" style="margin-left: 20px"
 															name="title" placeholder="請輸入標題" autocomplete="off"
-															value="${param.title}">${errorMsg.errorMsg}</td>
+															value="${param.title}"><font style="margin-left: 10px" color="red">${errorMsg.errorMsg}${successMsg.successMsg}</font></td>
 													</tr>
 													<tr>
 														<td>內文<textarea cols="95"
@@ -216,7 +179,6 @@
 						</div>
 					</form>
 				</div>
-
 			</div>
 			<!-- /page content -->
 

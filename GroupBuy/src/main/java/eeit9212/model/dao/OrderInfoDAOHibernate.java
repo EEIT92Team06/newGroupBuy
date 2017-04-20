@@ -37,16 +37,12 @@ public class OrderInfoDAOHibernate implements OrderInfoDAO {
 		// System.out.println(orderInfoDAOJdbc.updateOrderInfoStatusByGroupInfoNo(15,
 		// 1004));
 		// System.out.println(orderInfoDAOJdbc.updatePackageNo("asasas", 6));
-		System.out.println(orderInfoDAOJdbc.selectMyOrderInfoByNo(8));
-
 		 int
 		 insert=orderInfoDAOJdbc.insertOrderInfoAfterSuccess(8,"0913246578","aaaaa","asasasas");
 		 System.out.println("insertOrderInfoAfterSuccess="+insert);
 
-		OrderInfoBean update = orderInfoDAOJdbc.updateOrderInfoStatus(1102, 5);
+		OrderInfoBean update = orderInfoDAOJdbc.updateOrderInfoStatus(1001, 5);
 		System.out.println("update=" + update);
-		System.out.println(orderInfoDAOJdbc.selectMyOrderInfoByNo(8));
-
 
 		System.out.println(orderInfoDAOJdbc.selectTotalPrice(1));
 		System.out.println(orderInfoDAOJdbc.selectMyOrderInfoByNo(1));
@@ -193,7 +189,7 @@ public class OrderInfoDAOHibernate implements OrderInfoDAO {
 
 	public List<OrderInfoBean> selectMyGroupOrderInfo(int groupInfoNo) {
 
-		String selectMyGroupOrderInfo = "from eeit9212.model.OrderInfoBean where groupInfo_No=?";
+		String selectMyGroupOrderInfo = "from eeit9212.model.OrderInfoBean where groupInfo_No=? order by orderInfo_No desc";
 		List<OrderInfoBean> result = null;
 		Query<OrderInfoBean> query = this.getSession().createQuery(selectMyGroupOrderInfo);
 		query.setParameter(0, groupInfoNo);

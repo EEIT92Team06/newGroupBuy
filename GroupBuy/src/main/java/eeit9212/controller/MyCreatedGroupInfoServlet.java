@@ -64,25 +64,11 @@ public class MyCreatedGroupInfoServlet extends HttpServlet {
 			try {
 				groupInfoNo = Integer.parseInt(groupInfoNoTemp);			
 				
-				if("timeout".equals(locationFrom)){
-					groupInfoService.updateGroupStatus(groupInfoNo, 2);
-				}	
+					
 				if("againTimeout".equals(locationFrom)){
 					groupInfoService.updateGroupStatus(groupInfoNo, 6);
 				}	
-				if("payTimeout".equals(locationFrom)){
-					System.out.println("payTimeout GroupNo="+groupInfoNo);
-					groupInfoService.updateGroupStatus(groupInfoNo, 8);
-					orderInfoService.updateOrderInfoStatusByOrderStatusNo(groupInfoNo, 1004, 1104);
-					for(OrderInfoBean orderBean:orderInfoService.selectMyGroupOrderInfo(groupInfoNo)){
-						System.out.println("OrderInfoStatusNo()="+orderBean.getOrderInfoStatusNo());
-						if(orderBean.getOrderInfoStatusNo()==1004){
-							System.out.println("OrderInfoMemberNo()="+orderBean.getMemberNo());
-							creditAttendanceService.updateGroupAttendance(orderBean.getMemberNo(), 0);
-						}
-					}
-				
-				}	
+			
 				if("noExtension".equals(locationFrom)){
 					groupInfoService.updateGroupStatus(groupInfoNo, 4);
 					orderInfoService.updateOrderInfoStatusByOrderStatusNo(groupInfoNo, 1005, 1104);
@@ -90,23 +76,9 @@ public class MyCreatedGroupInfoServlet extends HttpServlet {
 					orderInfoService.updateOrderInfoStatusByOrderStatusNo(groupInfoNo, 1005, 1001);
 				
 				}
-				if("groupStart".equals(locationFrom)){	
-					selectGroupInfoByGroupInfoNo = groupInfoService.selectGroupInfoByGroupInfoNo(groupInfoNo);
-					if(selectGroupInfoByGroupInfoNo.getGroupStatusNo()==2||selectGroupInfoByGroupInfoNo.getGroupStatusNo()==6){
-					groupInfoService.updateGroupStatus(groupInfoNo, 7);
-					groupInfoService.updateGroupInfoDeadLine(groupInfoNo,new Timestamp( new java.util.Date().getTime()));
-					orderInfoService.updateOrderInfoStatusByOrderStatusNo(groupInfoNo,1101,1003);
-					orderInfoService.updateOrderInfoStatusByOrderStatusNo(groupInfoNo,1002,1001);
-					System.out.println("團開始了");
-					}
-				}	
 				
-				if("startSend".equals(locationFrom)){
-					groupInfoService.updateGroupStatus(groupInfoNo, 9);
-					orderInfoService.updateOrderInfoStatusByOrderStatusNo(groupInfoNo,1004,1104);
-					orderInfoService.updateOrderInfoStatusByOrderStatusNo(groupInfoNo,1201,1102);
-					orderInfoService.updateOrderInfoStatusByOrderStatusNo(groupInfoNo,1201,1105);
-				}
+				
+				
 				
 				if("extension".equals(locationFrom)){
 					String deadLineTemp=request.getParameter("deadLine");

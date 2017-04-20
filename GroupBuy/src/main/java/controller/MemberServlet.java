@@ -54,6 +54,7 @@ public class MemberServlet extends HttpServlet {
 		String memberNo = request.getParameter("memberNo"); // url memberNo=?
 		
 		String x = request.getParameter("x");
+		System.out.println("x="+x);
 		String updateInfo = request.getParameter("updateInfo");
 		String updatePassword = request.getParameter("updatePassword");
 		String relationBtn = request.getParameter("RelationBtn");
@@ -130,6 +131,7 @@ public class MemberServlet extends HttpServlet {
 
 		// 指向至MemberUpdate.jsp
 		if ("memberUpdate".equals(x)) {
+			System.out.println("updateeeeeeeeeeee");
 			RequestDispatcher rd = request.getRequestDispatcher("/member/memberupdate.jsp");
 			rd.forward(request, response);
 			return;

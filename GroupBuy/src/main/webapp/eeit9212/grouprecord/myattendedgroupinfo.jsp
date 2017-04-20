@@ -8,49 +8,43 @@
 <title>Insert title here</title>
 <link href="../../css/bootstrap.css" rel="stylesheet">
 <link href="../../css/style.css" rel="stylesheet">
-<link href="../../css/flexslider.css" type="text/css" media="screen"
-	rel="stylesheet" />
+<link href="../../css/flexslider.css" type="text/css" media="screen" rel="stylesheet" />
 
 </head>
 <body>
 	<jsp:include page="/headline.jsp"></jsp:include>
-	<div style="text-align: center;" class="cart-info container">
-		<h1>您參加的團</h1>
+	<div class="cart-info container">
+		<h1 style="text-align: center;">您參加的團</h1>
 		<table class="table table-striped table-bordered">
 			<thead>
 				<tr>
-					<th>圖片</th>
-					<th>創團日期</th>
-					<th>主揪</th>
-					<th>主揪評分</th>
-					<th>團名</th>
-					<th>狀態</th>
-					<th>類型</th>
-					<th>目前產品數量</th>
-					<th>結束日期</th>
-					<th>訂單狀態</th>
-					<th>寄送方式</th>
+					<th style="text-align: center;">圖片</th>
+					<th style="text-align: center;">創團日期</th>
+					<th style="text-align: center;">主揪</th>
+					<th style="text-align: center;">主揪評分</th>
+					<th style="text-align: center;">團名</th>
+					<th style="text-align: center;">狀態</th>
+					<th style="text-align: center;">類型</th>
+					<th style="text-align: center;">目前產品數量</th>
+					<th style="text-align: center;">結束日期</th>
+					<th style="text-align: center;">訂單狀態</th>
+					<th style="text-align: center;">寄送方式</th>
 				</tr>
 			</thead>
 			<tbody>
 
 				<tr>
 
-
+				
 					<td><a href="#"><img title="product" alt="product"
 							src="<c:url value='/eeit9212/getimage?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}'/>"
-							height="200" width="200"></a></td>
-					<td>${selectMyAttendedByGroupInfoNo.groupInfoStartDate}</td>
-					<td>${selectMyAttendedByGroupInfoNo.memberName}</td>
-					<c:if test="${selectMyAttendedByGroupInfoNo.grouperCredit!=0}">
-						<td id="creditTd">${selectMyAttendedByGroupInfoNo.grouperCredit}</td>
-					</c:if>
-					<c:if test="${selectMyAttendedByGroupInfoNo.grouperCredit==0}">
-						<td id="creditTd">主揪第一次開團</td>
-					</c:if>
-					<td>${selectMyAttendedByGroupInfoNo.groupInfoName}</td>
-					<td>${selectMyAttendedByGroupInfoNo.groupStatus}</td>
-					<td>${selectMyAttendedByGroupInfoNo.productType}</td>
+							height="100" width="100"></a></td>
+					<td style="text-align: center;">${selectMyAttendedByGroupInfoNo.groupInfoStartDate}</td>
+					<td style="text-align: center;">${selectMyAttendedByGroupInfoNo.memberName}</td>
+					<td style="text-align: center;" id="creditTd">${selectMyAttendedByGroupInfoNo.formatGrouperCredit}</td>
+					<td style="text-align: center;">${selectMyAttendedByGroupInfoNo.groupInfoName}</td>
+					<td style="text-align: center;" id="groupStatusId">${selectMyAttendedByGroupInfoNo.groupStatus}</td>
+					<td style="text-align: center;">${selectMyAttendedByGroupInfoNo.productType}</td>
 					<c:if
 						test="${empty selectMyAttendedByGroupInfoNo.groupInfoTotalProductQt}">
 						<c:set var="groupInfoTotalProductQt" value="0" />
@@ -60,34 +54,34 @@
 						<c:set var="groupInfoTotalProductQt"
 							value="${selectMyAttendedByGroupInfoNo.groupInfoTotalProductQt}" />
 					</c:if>
-					<td>${groupInfoTotalProductQt}/${selectMyAttendedByGroupInfoNo.groupInfoMinProductQt}</td>
-					<td>${selectMyAttendedByGroupInfoNo.groupInfoDeadLine}</td>
-					<td id="orderStatus">${selectMyAttendedByGroupInfoNo.orderStatus}</td>
-					<td>${selectMyAttendedByGroupInfoNo.groupInfoShippingWay}
-						<button id="report">檢舉</button>
+					<td style="text-align: center;" id="productQtId">${groupInfoTotalProductQt}/${selectMyAttendedByGroupInfoNo.groupInfoMinProductQt}</td>
+					<td style="text-align: center;" id="deadLineId">${selectMyAttendedByGroupInfoNo.formatDeadLine}</td>
+					<td style="text-align: center;" id="orderStatus">${selectMyAttendedByGroupInfoNo.orderStatus}</td>
+					<td style="text-align: center;">${selectMyAttendedByGroupInfoNo.groupInfoShippingWay}
+
 					</td>
 				</tr>
 			</tbody>
 		</table>
 		<c:if test="${selectMyAttendedByGroupInfoNo.orderStatusNo!=1005}">
-			<h1>訂單明細</h1>
+			<h1 style="text-align: center;">訂單明細</h1>
 			<table border="1px">
 				<thead>
 					<tr>
-						<th>品名</th>
-						<th>單價</th>
-						<th>數量</th>
-						<th>總價</th>
+						<th style="text-align: center;">品名</th>
+						<th style="text-align: center;">單價</th>
+						<th style="text-align: center;">數量</th>
+						<th style="text-align: center;">總價</th>
 					</tr>
 				</thead>
 				<tbody>
 
 					<c:forEach var="bean" items="${selectOrderInfoDetails}">
 						<tr>
-							<td>${bean.groupInfoDetailsProdcutName}</td>
-							<td>${bean.groupInfoDetailsProductPrice}</td>
-							<td>${bean.orderInfoDetailsProductQt}</td>
-							<td>${bean.productTotalPriceByQt}</td>
+							<td style="text-align: center;">${bean.groupInfoDetailsProdcutName}</td>
+							<td style="text-align: center;">${bean.groupInfoDetailsProductPrice}</td>
+							<td style="text-align: center;">${bean.orderInfoDetailsProductQt}</td>
+							<td style="text-align: center;">${bean.productTotalPriceByQt}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -130,19 +124,22 @@
 				</c:forEach>
 			</ul>
 		</div>
-		<div class="cart-info container">
+		<div style="font-size:20px;margin-left:480px">
 
-			<div>賣家敘述:${selectMyAttendedByGroupInfoNo.groupInfoContent}</div>
+<%-- 			<div>賣家敘述:${selectMyAttendedByGroupInfoNo.groupInfoContent}</div> --%>
 			<div id="price">訂單總價:${selectTotalPrice}</div>
 			<c:if
 				test="${selectMyAttendedByGroupInfoNo.groupStatusNo>=8&&selectMyAttendedByGroupInfoNo.groupStatusNo!=11&&selectMyAttendedByGroupInfoNo.orderStatusNo!=1004}">
 				<div>賣家帳戶:${selectMyAttendedByGroupInfoNo.groupInfoBankAccount}</div>
 			</c:if>
-
+			<c:if test="${selectMyAttendedByGroupInfoNo.groupStatusNo<9}">
+						<div>
+						<h3 style="display: none;" id="PackageNo">包裹編號:主揪尚未寄貨。</h3>
+						</div>
+			</c:if>
 
 			<c:if
 				test="${selectMyAttendedByGroupInfoNo.orderStatusNo==1101||selectMyAttendedByGroupInfoNo.orderStatusNo==1104}">
-
 				<form id="payForm"
 					action="<c:url value='/eeit9212/grouprecord/myattendedgroupinfo.controller'/>"
 					method="post">
@@ -164,13 +161,37 @@
 						<label for="address">寄送地址:</label><input id="address" type="text"
 							name="address" value="${param.address}" /><span
 							style="color: red" id="addressSp"></span>
-					</div>
-					
-					<input id="paySub" type="button" name="paySubmit" value="通知賣家已匯款" />
-					
+					</div>			
+					<input id="paySub" type="button" name="paySubmit" value="通知賣家已匯款" />				
 				</form>
 			</c:if>
-
+			<c:if
+				test="${selectMyAttendedByGroupInfoNo.orderStatusNo!=1101&&selectMyAttendedByGroupInfoNo.orderStatusNo!=1104}">
+				<form id="payForm" style="display: none;"
+					action="<c:url value='/eeit9212/grouprecord/myattendedgroupinfo.controller'/>"
+					method="post">
+					<input type="hidden" name="groupInfoNo"
+						value="${selectMyAttendedByGroupInfoNo.groupInfoNo}" /> <input
+						type="hidden" name="orderInfoNo"
+						value="${selectMyAttendedByGroupInfoNo.orderInfoNo}" />
+					<div>
+						<label for="account">帳號末五碼:</label><input id="account" type="text"
+							name="account" value="${param.account}" /><span
+							style="color: red" id="accountSp"></span>
+					</div>
+					<div>
+						<label for="phone">連絡電話:</label><input id="phone" type="text"
+							name="phone" value="${param.phone}" /><span style="color: red"
+							id="phoneSp"></span>
+					</div>
+					<div>
+						<label for="address">寄送地址:</label><input id="address" type="text"
+							name="address" value="${param.address}" /><span
+							style="color: red" id="addressSp"></span>
+					</div>			
+					<input id="paySub" type="button" name="paySubmit" value="通知賣家已匯款" />				
+				</form>
+			</c:if>
 			<c:if test="${selectMyAttendedByGroupInfoNo.groupStatusNo>=9}">
 				<div>
 					<c:if
@@ -183,52 +204,100 @@
 					</c:if>
 				</div>
 			</c:if>
+			
+
 
 			<c:if
 				test="${selectMyAttendedByGroupInfoNo.orderStatusNo>1101&&selectMyAttendedByGroupInfoNo.orderStatusNo!=1104}">
 
-				<div>匯款時間:${selectMyOrderInfoByNo.orderInfoAfterSuccessPayTime}
+				<div>匯款時間:${selectMyOrderInfoByNo.formatPayTime}
 				</div>
 				<div>
 					帳號末五碼:${selectMyOrderInfoByNo.orderInfoAfterSuccessBankAccount}</div>
 				<div>連絡電話:${selectMyOrderInfoByNo.orderInfoAfterSuccessPhone}</div>
 				<div id="destinationDiv">
-					寄送地址:${selectMyOrderInfoByNo.orderInfoAfterSuccessDestination}</div>
-				<c:if test="${selectMyAttendedByGroupInfoNo.orderStatusNo!=1203}">
-					<input style="display: none" id="stuffSub" type="button" name="scoreBtn" value="通知賣家已收貨" />
-				</c:if>
+					寄送地址:${selectMyOrderInfoByNo.orderInfoAfterSuccessDestination}</div>			
 				<c:if test="${selectMyAttendedByGroupInfoNo.orderStatusNo==1203}">
 					<input id="stuffSub" type="button" name="scoreBtn" value="通知賣家已收貨" />
 				</c:if>
-
 			</c:if>
+			<c:if test="${selectMyAttendedByGroupInfoNo.orderStatusNo!=1203}">
+					<input style="display: none" id="stuffSub" type="button" name="scoreBtn" value="通知賣家已收貨" />
+				</c:if>
 		</div>
-		<div id="scoreDiv" style="display: none">
-			<input type="radio" name="score" value="1" checked="checked" />1 <input
-				type="radio" name="score" value="2" />2 <input type="radio"
-				name="score" value="3" />3 <input type="radio" name="score"
-				value="4" />4 <input type="radio" name="score" value="5" />5 <input
-				type="button" value="評分" id="scoreButton" />
-		</div>
-		<div id="reportDiv" style="display: none">
-			<input type="hidden"
-				value="${selectMyAttendedByGroupInfoNo.groupInfoNo}"
-				name="reportTarget" />
-			<div>
-				<select name="reportTypeNo">
-					<option value="1">檢舉團名</option>
-					<option value="2">檢舉團產品照片</option>
-					<option value="3">檢舉開團留言</option>
-					<option value="4">檢舉開團留言回覆</option>
-				</select>
-			</div>
-			檢舉內容
-			<textarea name="reportContent" rows="5" cols="50"></textarea>
-			<input id="sendReport" type="button" value="送出" />
-		</div>
-	</div>
+					<!-- Product Description tab & comments-->
+							<div style="margin-left:450px" class="productdesc">
+								<ul class="nav nav-tabs" id="myTab" style="width: 250px;height: 35px">
+									<li class="active"><a href="#description">賣家敘述</a></li>
+									<li><a href="#review">檢舉</a></li>
+									<li><a href="#specification">評分</a></li>		
+								</ul>
+								<div class="tab-content" style="width: 532px;padding-left: 35px;">
+									<div class="tab-pane active" id="description">
+										${selectMyAttendedByGroupInfoNo.groupInfoContent} <br>
+									</div>	
+									<div class="tab-pane" id="review">
+										<h3>Write a Review</h3>
+										<form class="form-vertical">
+											<fieldset>
+													<div class="control-group">
+													<label class="control-label">檢舉選項</label>
+													<input type="hidden"value="${groupInfoNo}"name="reportTarget" />
+													<div class="controls">
+														<select name="reportTypeNo">
+															<option value="1">檢舉團名</option>
+															<option value="2">檢舉團產品照片</option>
+															<option value="3">檢舉開團留言</option>
+															<option value="4">檢舉開團留言回覆</option>
+														</select>
+													</div>
+												</div>
+												<div class="control-group">
+													<label class="control-label">Textarea</label>
+													<div class="controls">
+														<textarea name="reportContent" rows="3" class="span3"></textarea>
+													</div>
+												</div>
+											</fieldset>
+											<input id="sendReport" class="btn btn-orange" type="button" value="送出檢舉" />
+										</form>
+									</div>
+
+								</div>
+							</div>
+<!-- 		================================================= -->
+<!-- 		<div id="scoreDiv" style="display: none"> -->
+<!-- 			<input type="radio" name="score" value="1" checked="checked" />1 <input -->
+<!-- 				type="radio" name="score" value="2" />2 <input type="radio" -->
+<!-- 				name="score" value="3" />3 <input type="radio" name="score" -->
+<!-- 				value="4" />4 <input type="radio" name="score" value="5" />5 <input -->
+<!-- 				type="button" value="評分" id="scoreButton" /> -->
+<!-- 		</div> -->
+		
+<!-- 	</div> -->
+<!-- 	<div id="reportDiv" style="display: none;"> -->
+<!-- 		<form> -->
+<!-- 			<input type="hidden" -->
+<%-- 				value="${selectMyAttendedByGroupInfoNo.groupInfoNo}" --%>
+<!-- 				name="reportTarget" /> -->
+<!-- 			<div> -->
+<!-- 				<select name="reportTypeNo"> -->
+<!-- 					<option value="1">檢舉團名</option> -->
+<!-- 					<option value="2">檢舉團產品照片</option> -->
+<!-- 					<option value="3">檢舉開團留言</option> -->
+<!-- 					<option value="4">檢舉開團留言回覆</option> -->
+<!-- 				</select> -->
+<!-- 			</div> -->
+<!-- 			檢舉內容 -->
+<!-- 			<textarea name="reportContent" rows="5" cols="50"></textarea> -->
+<!-- 			<input id="sendReport" type="button" value="送出" /> -->
+<!-- 			</form> -->
+		</div>	
 	<script src="<c:url value='/js/jquery-3.1.1.min.js'/>"></script>
 	<script src="<c:url value='/js/layer/layer.js'/>"></script>
+	<script src="<c:url value='/Web_01Main/js/jquery.js'/>"></script>
+	<script src="<c:url value='/Web_01Main/js/cloud-zoom.1.0.2.js'/>"></script>
+	<script defer src="<c:url value='/Web_01Main/js/custom.js'/>"></script>
 	<script type="text/javascript">
 		$(function() {
 
@@ -254,7 +323,7 @@
 				if(jsonEvent.change=="orderStatus"){
 					$.get("${pageContext.request.contextPath}/eeit9212/grouprecord/selectajax",{"groupInfoNo":${selectMyAttendedByGroupInfoNo.groupInfoNo}},function(data){
 						var jsonObj = JSON.parse(data);
-						
+						$("#productQtId").empty().append(jsonObj.groupInfoTotalProductQt+"/${selectMyAttendedByGroupInfoNo.groupInfoMinProductQt}");
 						$("#orderStatus").empty().append(jsonObj.orderStatus);
 					});
 				};
@@ -271,6 +340,21 @@
 					$("#stuffSub").show();
 					//不知道怎麼綁定動態元件事件所以用上面的方法。
 // 					$("#destinationDiv").after('<input id="stuffSub" type="button" name="paySubmit" value="通知賣家已收貨" />');
+				}
+				if(jsonEvent.change=="groupStart"){
+					$("#orderStatus").empty().append("尚未匯款");
+					$("#groupStatusId").empty().append("開團中_等待匯款");
+					$("#payForm").show();
+					$.get("${pageContext.request.contextPath}/eeit9212/grouprecord/changegroupstatus",{"locationFrom":"selectGroupInfo","groupInfoNo":'${selectMyAttendedByGroupInfoNo.groupInfoNo}'},function(data){							
+						var jsonObj2 = JSON.parse(data);
+						$("#deadLineId").empty().append(jsonObj2.formatDeadLine);
+		
+					});
+				}
+				if(jsonEvent.change=="startSend"){
+					$("#orderStatus").empty().append("尚未收貨");
+					$("#groupStatusId").empty().append("開團中_寄貨中");
+					$("#PackageNo").show();
 				}
 			}
 			//  建立與server的連接.
@@ -315,60 +399,64 @@
 			// 			}
 
 			//彈出評分視窗
-			//如何綁定動態元件?
-// 			$("#testOn").on('click',":input[name='paySubmit']",function() {
-				$(":input[name='scoreBtn']").on('click',function() {
-			var thisBtn=$(this);
-				var layerOpen = layer.open({
-					type : 1,
-					title : '評分',
-					skin : 'layui-layer-rim', //加上边框
-					area : [ '420px', '240px' ], //宽高
-					content : $("#scoreDiv"),
-					closeBtn : 0
-					//不显示关闭按钮
-				});
-								//特地用Ajax練習，更新完評分根狀態直接重新載入當前頁面
-			$('#scoreButton').one('click',function() {
-				
-			
-					$.get("${pageContext.request.contextPath}/eeit9212/grouprecord/creditajax",{"score" : $(":checked[name='score']").val(),
-							"groupInfoMemberNo" : "${selectMyAttendedByGroupInfoNo.groupInfoMemberNo}"},function(data) {																				
-									$.get("${pageContext.request.contextPath}/eeit9212/grouprecord/selectajax",{"groupInfoNo":${selectMyAttendedByGroupInfoNo.groupInfoNo}},function(data){
-										var jsonObj = JSON.parse(data);
-										$("#creditTd").empty().append(jsonObj.grouperCredit);
-										$("#orderStatus").empty().append("已收貨");
-										thisBtn.remove();
-										
-										var msg={
-												"target":'${selectMyAttendedByGroupInfoNo.groupInfoNo}',
-												"change":"orderStatus"
-										}						
-										webSocket.send(JSON.stringify(msg));
-									layer.close(layerOpen);
-									});													
+			$("#stuffSub")
+					.click(
+							function() {
+								var layerOpen = layer.open({
+									type : 1,
+									title : '評分',
+									skin : 'layui-layer-rim', //加上边框
+									area : [ '420px', '240px' ], //宽高
+									content : $("#scoreDiv"),
+									closeBtn : 0
+								//不显示关闭按钮
 								});
-					});
-			});
+								//特地用Ajax練習，更新完評分根狀態直接重新載入當前頁面
+								$('#scoreButton')
+										.one(
+												'click',
+												function() {
+													$
+															.get(
+																	"creditajax",
+																	{
+																		"score" : $(
+																				":checked[name='score']")
+																				.val(),
+																		"groupInfoNo" : "${selectMyAttendedByGroupInfoNo.groupInfoNo}",
+																		"groupInfoMemberNo" : "${selectMyAttendedByGroupInfoNo.groupInfoMemberNo}"
+																	},
+																	function(
+																			data) {
+																		layer
+																				.close(layerOpen);
+																		webSocket
+																				.send('${selectMyAttendedByGroupInfoNo.groupInfoNo}');
+																		location
+																				.replace('myattendedgroupinfo.controller?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}&orderInfoNo=${selectMyAttendedByGroupInfoNo.orderInfoNo}');
+
+																	});
+												});
+							});
 
 			//按下檢舉按鈕
-			var reportOpen;
-			$("#report").on('click',function() {
-				reportOpen = layer.open({
-					type : 1,
-					title : '檢舉',
-					skin : 'layui-layer-rim', //加上边框
-					area : [ '400px', '300px' ], //宽高
-					content : $("#reportDiv")
-				});
-			});
-			$("#sendReport").on('click',
-					function() {
-						var reportTarget = $(this).parents("form").find(
+// 			var reportOpen;
+// 			$("#report").on('click',function() {
+// 				reportOpen = layer.open({
+// 					type : 1,
+// 					title : '檢舉',
+// 					skin : 'layui-layer-rim', //加上边框
+// 					area : [ '400px', '300px' ], //宽高
+// 					content : $("#reportDiv")
+// 				});
+// 			});
+			$("#sendReport").on('click',function() {	
+						var thisReport=$(this);
+						var reportTarget = thisReport.parents("form").find(
 								"input[name='reportTarget']").val();
-						var reportTypeNo = $(this).parents("form").find(
+						var reportTypeNo = thisReport.parents("form").find(
 								"select[name='reportTypeNo']").val();
-						var reportContent = $(this).parents("form").find(
+						var reportContent = thisReport.parents("form").find(
 								"textarea[name='reportContent']").val();
 
 						$.get("${pageContext.request.contextPath}/reportajax",
@@ -384,13 +472,14 @@
 									}, function() {
 										layer.close(reportAlert);
 										layer.close(reportOpen);
+// 										thisReport.css({"display":"none"});
 									});
 								});
 					});
 
 			//簡單的做一些驗證
 			$("#paySub")
-					.on('click',
+					.click(
 							function() {
 								var account = $("#account");
 								var phone = $("#phone");
@@ -431,28 +520,25 @@
 													function() {
 														$
 																.get(
-																		"${pageContext.request.contextPath}/eeit9212/grouprecord/aftersuccessajax",
-																		{"orderInfoNo" :orderInfoNo,
-																			"account" :account.val(),
-																			"phone" :phone.val(),
-																			"address" :address.val()
+																		"${pageContext.request.contextPath}/eeit9212/grouprecord/myattendedgroupinfo.controller",
+																		{
+																			"groupInfoNo" : groupInfoNo,
+																			"orderInfoNo" : orderInfoNo,
+																			"account" : account
+																					.val(),
+																			"phone" : phone
+																					.val(),
+																			"address" : address
+																					.val()
 																		},
 																		function(
 																				data) {
-																			
-																			$("#orderStatus").empty().append("已匯款");
-																			account.parent().before("<div>匯款時間:"+data+"</div");
-																			account.parent().empty().append("帳號末五碼:"+account.val());
-																			phone.parent().empty().append("連絡電話:"+phone.val());
-																			address.parent().empty().append("寄送地址:"+address.val());
-																			$("#paySub").remove();
-																			var msg={
-																					"target":'${selectMyAttendedByGroupInfoNo.groupInfoNo}',
-																					"change":"payReady"
-																			}						
-																			webSocket.send(JSON.stringify(msg));
-																			layer.close(payConfirm);
-																			
+																			webSocket
+																					.send('${selectMyAttendedByGroupInfoNo.groupInfoNo}');
+																			layer
+																					.close(payConfirm);
+																			location
+																					.reload();
 																		});
 
 													});
@@ -461,10 +547,25 @@
 							});
 
 		});
+		
 	</script>
-	<script src="<c:url value='/Web_01Main/js/jquery.js'/>"></script>
-	<script src="<c:url value='/Web_01Main/js/cloud-zoom.1.0.2.js'/>"></script>
-	<script defer src="<c:url value='/Web_01Main/js/custom.js'/>"></script>
+	<script src="../../myWeb_01Main/js/jquery.js"></script>
+	<script src="../../myWeb_01Main/js/bootstrap.js"></script>
+	<script src="../../myWeb_01Main/js/respond.min.js"></script>
+	<script src="../../myWeb_01Main/js/application.js"></script>
+	<script src="../../myWeb_01Main/js/bootstrap-tooltip.js"></script>
+	<script defer src="../../myWeb_01Main/js/jquery.fancybox.js"></script>
+	<script defer src="../../myWeb_01Main/js/jquery.flexslider.js"></script>
+	<script type="text/javascript" src="../../myWeb_01Main/js/jquery.tweet.js"></script>
+	<script src="../../myWeb_01Main/js/cloud-zoom.1.0.2.js"></script>
+	<script type="text/javascript" src="../../myWeb_01Main/js/jquery.validate.js"></script>
+	<script type="text/javascript"
+		src="../../myWeb_01Main/js/jquery.carouFredSel-6.1.0-packed.js"></script>
+	<script type="text/javascript" src="../../myWeb_01Main/js/jquery.mousewheel.min.js"></script>
+	<script type="text/javascript" src="../../myWeb_01Main/js/jquery.touchSwipe.min.js"></script>
+	<script type="text/javascript"
+		src="../../myWeb_01Main/js/jquery.ba-throttle-debounce.min.js"></script>
+	<script defer src="../../myWeb_01Main/js/custom.js"></script>
 
 </body>
 </html>

@@ -116,8 +116,6 @@ public class GroupInfoDAOHibernate implements GroupInfoDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		this.getSession().getTransaction().commit();
-		this.getSession().beginTransaction();
 		return result;
 	}
 
@@ -142,7 +140,7 @@ public class GroupInfoDAOHibernate implements GroupInfoDAO {
 	@Override
 	public List<AttendGroupInfoBean> selectMyAttendedGroupInfo(int memberNo) {
 
-		String selectMyAttendedGroupInfo = "from AttendGroupInfoBean where orderInfoMember_No=?";
+		String selectMyAttendedGroupInfo = "from AttendGroupInfoBean where orderInfoMember_No=? order by orderInfo_No desc";
 		List<AttendGroupInfoBean> result = null;
 		Query<AttendGroupInfoBean> query = this.getSession().createQuery(selectMyAttendedGroupInfo);	
 		query.setParameter(0, memberNo);	
@@ -171,7 +169,7 @@ public class GroupInfoDAOHibernate implements GroupInfoDAO {
 	@Override
 	public List<CreateGroupInfoBean> selectMyCreatedGroupInfo(int memberNo) {
 
-		String selectMyCreatedGroupInfo = "from CreateGroupInfoBean where member_No=?";
+		String selectMyCreatedGroupInfo = "from CreateGroupInfoBean where member_No=? order by groupInfo_No desc";
 		List<CreateGroupInfoBean> result = null;
 		Query<CreateGroupInfoBean> query = this.getSession().createQuery(selectMyCreatedGroupInfo);
 		query.setParameter(0, memberNo);	

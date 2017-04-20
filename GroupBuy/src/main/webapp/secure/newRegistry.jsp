@@ -52,6 +52,7 @@
 </head>
 <body>
 	<jsp:include page="/headline.jsp"></jsp:include>
+	
 	<div class="container">
 
 		<form class="well form-horizontal"

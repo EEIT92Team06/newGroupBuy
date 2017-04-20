@@ -4,11 +4,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<!-- 給email開通後跳轉用的網頁 -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>我是TITLE</title>
-
+<link rel="stylesheet"
+	href="<c:url value='/css/bootstrap.min.css'/>">
 <!-- <link rel="stylesheet" -->
 <!-- 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 <script
@@ -29,10 +29,12 @@
 	rel="stylesheet">
 
 <style>
+
 #ss1 li {
 	display: inline;
 }
-/* 三角箭頭 */
+
+
 .dropdown-menu:before {
 	position: absolute;
 	top: -7px;
@@ -45,6 +47,7 @@
 	content: '';
 }
 
+
 .dropdown-menu:after {
 	position: absolute;
 	top: -6px;
@@ -56,25 +59,25 @@
 	content: '';
 }
 
+
 .dropup, .dropdown {
 	position: relative;
 }
-/* 彈出 */
 
-/* 收起 */
+
 .dropdown-menu {
 	top: 97%;
 }
+
 
 .open>.dropdown-menu {
 	display: block;
 }
 
+
 .dropdown-menu {
-	/* 	padding: 8px; */
 	position: absolute;
 	top: 97%;
-	/* 	left: 7px; */
 	z-index: 99999;
 	display: none;
 	float: left;
@@ -87,9 +90,10 @@
 	-moz-border-radius: 0;
 	-webkit-border-radius: 0;
 }
+
 </style>
 <style>
-/* 顯示?? */
+
 .notifications {
 	display: inline-block;
 	list-style: none;
@@ -127,20 +131,16 @@
 	text-align: center;
 }
 
-body {
-	/* 	background-color: black; */
-	
-}
 
 .topbar .container .am-g .topbar-right i {
-	opacity: 1;
-	margin: 0 5px;
+ 	opacity: 1; 
+ 	margin: 0 5px; 
 }
 
 .fa-envelope:before {
 	content: "\f0e0"
 }
-/* 變成方格 白圈*/
+
 .notification-icon {
 	background: #FFF;
 	border-radius: 50%;
@@ -151,8 +151,9 @@ body {
 	width: 30px;
 	text-align: center;
 	margin: 0 5px;
+	padding-top:5px;
 }
-/* 右上角 */
+
 .notification-icon .badge {
 	background: #D2312D;
 	color: #FFF;
@@ -164,27 +165,29 @@ body {
 	right: -8px;
 	top: -5px;
 }
-/* 不知道是啥*/
+
+
 .dropdown-menu-header {
 	padding: .5rem 0;
 	border-bottom: 1px solid #E6E6E6
 }
 
+
 .topbar .container .am-g {
-	padding-top: 11px;
+/*  	padding-top: 11px;  */
 	font-size: 15px;
 	color: #fff;
 }
-/* 移動信箱那邊的上下 */
+
 .topbar .container .am-g .topbar-right {
 	line-height: 29px;
-	width: 75%;
+ 	width: 75%; 
 }
+
 </style>
 
 </head>
 <body>
-<jsp:include page="/secure/newLogin.jsp"/>
 	<div class="layout">
 		<!--===========layout-header================-->
 		<!-- 全部變成漢堡  -->
@@ -218,7 +221,7 @@ body {
 
 								<c:if test="${empty loginToken}">
 <%-- 									<a href="<c:url value='/secure/newLogin.jsp'/>" --%>
-										<label class="click" id="autoclickme" style="color: white">登入</label>
+										<label class="click1" id="autoclickme" style="color: white">登入</label>
 <!-- 										</a> -->
 								</c:if>
 								<c:if test="${not empty loginToken}">
@@ -235,7 +238,8 @@ body {
 											<li class="divider"></li>
 											<li><a href="#">test2</a></li>
 											<!-- 											<li data-role="listview">aaa</li> -->
-											<li><a href="<c:url value='/overViewMailServlet.do'/>">全部信件</a></li>
+											<li><a href="<c:url value="/overViewMailServlet.do"/>">全部信件</a></li>
+                                         
 										</ul></li>
 									<!-- 信封結束 -->
 									<!-- 鈴鐺開始 -->
@@ -290,6 +294,7 @@ body {
 											<img src="<c:url value='/pictures/logo.png'/>"
 											style="width: 75px">
 									</a></li>
+
 									<li>
 									  <c:choose>
 									    <c:when test="${empty loginToken}">
@@ -314,7 +319,11 @@ body {
 									      <a class="click1">許願池</a></li>
 									   </c:when>
 									   <c:when test="${!empty loginToken}">
-									    <a href="<c:url value='/wish/wishpool.controller'/>">許願池</a></li>
+									    <a href="<c:url value='/wish/wishpool.controller'/>">許願池</a>
+									    <ul class="sub-menu">
+											<li class="menu-item"><a
+												href="<c:url value='/wish/wishform.jsp'/>">發起許願</a></li>
+										</ul>
 									   </c:when>
 									 </c:choose>
 									 
@@ -322,10 +331,7 @@ body {
 						             <c:choose>
 									   <c:when test="${empty loginToken}">
 									    <a class="click1">我的團購</a> <!-- sub-menu start-->
-										<ul class="sub-menu">
-											<li class="menu-item" ><a class="click1">我創的團</a></li>
-											<li class="menu-item"><a class="click1">我參加的團</a></li>
-										</ul></li>
+										</li>
 									   </c:when>
 									   <c:when test="${!empty loginToken}">
 									    <a href="<c:url value='/test'/>">我的團購</a> <!-- sub-menu start-->
@@ -337,11 +343,12 @@ body {
 										</ul></li>
 									   </c:when>
 									 </c:choose>
+									
 									<!-- sub-menu end-->
-									<c:if test="${not empty Controller}">
+								
 										<li><a
 											href="<c:url value='/Backstage/BackStageServlet.controller'/>">後臺管理</a></li>
-									</c:if>
+								
 								</ul>
 							</div>
 						</div>
@@ -437,7 +444,7 @@ body {
 					<div data-tab-panel-1="" class="am-tab-panel ">
 						<div class="index-banner">
 							<div class="index-mask">
-								<div class="container">
+								<div class="container01">
 									<div class="am-g">
 										<div class="am-u-md-10 am-u-sm-centered">
 											<h1 class="slide_simple--title">企业移动化，首选云适配</h1>
