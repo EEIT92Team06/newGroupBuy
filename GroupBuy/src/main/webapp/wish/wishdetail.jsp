@@ -22,6 +22,8 @@
        text-align: center;
     }
 </style>
+<script src="<c:url value='../js/jquery-3.1.1.min.js'/>"></script>
+<script src="<c:url value='../js/layer/layer.js'/>"></script>
 </head>
 <body>
 <jsp:include page="/headline.jsp"></jsp:include>
@@ -110,18 +112,30 @@
                     </ul>
                   </div>
                   <div class="tab-pane" id="review">
-                      <button id="report">檢舉</button>
-                      <div id="reportDiv" style="display: none">
-			          <input id="reportTarget" type="hidden" value="${wishDetail.wishNo}" name="reportTarget"/>
-			            <div>
-				          <select id="reportTypeNo" name="reportTypeNo">
-					         <option value="5">檢舉許願標題</option>
-					         <option value="6">檢舉許願照片</option>
-					         <option value="7">檢舉許願池留言</option>
-				          </select>
-			            </div>
-                     </div>
-                </div>
+					<form class="form-vertical">
+						<fieldset>
+							<div class="control-group">
+								<label class="control-label">檢舉選項</label> <input
+									type="hidden" value="${wishDetail.wishNo}" name="reportTarget" />
+								<div class="controls">
+									<select name="reportTypeNo">
+										<option value="5">檢舉許願標題</option>
+										<option value="6">檢舉許願照片</option>
+										<option value="7">檢舉許願池留言</option>
+									</select>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">檢舉內容</label>
+								<div class="controls">
+									<textarea name="reportContent" rows="3" class="span3"></textarea>
+								</div>
+							</div>
+						</fieldset>
+						<input id="sendReport" class="btn btn-orange" type="button"
+							value="送出檢舉" style="margin-left: 10px;"/>
+					</form>
+				</div>
               </div>
             </div>
           </div>
@@ -240,35 +254,21 @@ function likeForWish(){
 </script>
 <!-- 以下是檢舉的js -->
 <script>
-$(function() {
-	
-var reportOpen;
-$("#report").click(function(){
-	reportOpen = layer.open({
-		type : 1,
-		title:'檢舉',
-		skin : 'layui-layer-rim', //加上边框
-		area : [ '400px', '250px' ], //宽高
-		content : $("#reportDiv")
-	});
-});
 $("#sendReport").click(function(){
-	$.get("<%=request.getContextPath()%>/reportajax", {
-				"reportTarget" : $("#reportTarget").val(),
-				"reportTypeNo" : $("#reportTypeNo").val(),
-				"reportContent" : $("#reportContent").val()
-			}, function(data) {
-				var reportAlert = layer.alert(data, {
-					skin : 'layui-layer-molv' //样式类名
-					,
-					closeBtn : 0
-				}, function() {
-					layer.close(reportAlert);
-					layer.close(reportOpen);
-				});
+	var reportTarget=$(this).parents("form").find("input[name='reportTarget']").val();
+	var reportTypeNo=$(this).parents("form").find("select[name='reportTypeNo']").val();
+	var reportContent=$(this).parents("form").find("textarea[name='reportContent']").val();
+
+	$.get("${pageContext.request.contextPath}/reportajax",{"reportTarget":reportTarget,"reportTypeNo":reportTypeNo,"reportContent":reportContent},function(data){
+		var reportAlert=layer.alert(data, {
+			  skin: 'layui-layer-molv' //样式类名
+			  ,closeBtn: 0
+			},function(){
+				layer.close(reportAlert);
+				layer.close(reportOpen);					
 			});
-		});
 	});
+});	
 </script>
 </body>
 </html>

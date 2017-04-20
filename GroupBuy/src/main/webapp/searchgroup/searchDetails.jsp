@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=BIG5">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>searchDetails</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -307,7 +307,6 @@ function orderSuc(){
 										</ul>
 									</div>
 									<div class="tab-pane" id="review">
-										<h3>Write a Review</h3>
 										<form class="form-vertical">
 											<fieldset>
 													<div class="control-group">
@@ -323,7 +322,7 @@ function orderSuc(){
 													</div>
 												</div>
 												<div class="control-group">
-													<label class="control-label">Textarea</label>
+													<label class="control-label">檢舉內容</label>
 													<div class="controls">
 														<textarea name="reportContent" rows="3" class="span3"></textarea>
 													</div>
