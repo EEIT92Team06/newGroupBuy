@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
@@ -200,6 +201,7 @@ public class RegistryServlet extends HttpServlet {
 		// 替所有圖片加入會員編號及時間，避免檔案同名造成覆蓋
 		String fileName = new SimpleDateFormat("yyyyMMddHH").format(new Date()) + part.getSubmittedFileName();
 		System.out.println("fileName=" + fileName);
-		part.write(fileName);
+		System.out.println("realPath+File.separator+fileName="+realPath+File.separator+fileName);
+		part.write(realPath+File.separator+fileName);
 	}
 }

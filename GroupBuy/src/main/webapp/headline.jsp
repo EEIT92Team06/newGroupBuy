@@ -283,7 +283,7 @@ $(document).ready(function(){
 							<div class="nav-inner">
 								<ul class="am-nav am-nav-pills am-nav-justify notifications">
 									<li class=""><a href="<c:url value='/theindex.jsp'/>">
-											<img src="<c:url value='/pictures/logo.png'/>"
+											<img src="<c:url value='/pictures/icon.png'/>"
 											style="width: 75px">
 									</a></li>
 
