@@ -10,6 +10,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import login.model.MemberBean;
+
 public class SiteMailService {
 	private SiteMailDAO siteMailDAO;
 
@@ -305,5 +307,15 @@ public class SiteMailService {
 		return statusNo;
 
 	}
-
+	//查詢個人總未讀信件
+	public int getUnReadNum(MemberBean memberBean){
+		int unReadNum=0;
+		
+		if(memberBean!=null){
+			int unReadSiteNum=siteMailDAO.countSiteMail(memberBean.getMemberNo());
+			int unReadAnnounceNum=siteMailDAO.countAnnounceMail(memberBean.getMemberNo());
+			unReadNum=unReadSiteNum+unReadAnnounceNum;
+		}
+		return unReadNum;
+	}
 }

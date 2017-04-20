@@ -44,7 +44,7 @@
 						<div class="profile_pic"></div>
 						<div class="profile_info">
 							<span>Welcome,</span>
-							<h2>管理員名字</h2>
+							<h2>${sessionScope.managerLogin.memberNickName}</h2>
 						</div>
 					</div>
 					<!-- /menu profile quick info -->
@@ -135,7 +135,7 @@
 													<tr>
 														<td>主旨<input type="text" style="margin-left: 20px"
 															name="title" placeholder="請輸入標題" autocomplete="off"
-															value="${param.title}">${errorMsg.errorMsg}</td>
+															value="${param.title}"><font style="margin-left: 10px" color="red">${errorMsg.errorMsg}${successMsg.successMsg}</font></td>
 													</tr>
 													<tr>
 														<td>內文<textarea cols="95"

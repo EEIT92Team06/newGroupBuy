@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -30,18 +31,21 @@ import creategroup.model.GroupInfoBean;
 import creategroup.model.GroupInfoDetailsBean;
 import creategroup.model.GroupInfoPicBean;
 import login.model.MemberBean;
+import wish.model.WishPoolBean;
+import wish.model.WishPoolService;
 
 @WebServlet("/createGroupServlet.do")
 @MultipartConfig
 public class CreateGroupServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CreateGroupService createGroupService;
-
+    private WishPoolService wishPoolService;
 	@Override
 	public void init() throws ServletException {
 		ServletContext application = this.getServletContext();
 		ApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(application);
 		createGroupService = (CreateGroupService) context.getBean("createGroupService");
+		wishPoolService = (WishPoolService) context.getBean("wishPoolService");
 	}
 
 	@Override
@@ -62,6 +66,8 @@ public class CreateGroupServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html charset=UTF-8");
 		session.setAttribute("successMessage", successMessage);
+
+		
 		/*
 		 * getPart()
 		 * 方法接受一個字串，代表著檔案上傳欄位的name屬性，getPart()方法上有著getHeader()、getInputStream()
@@ -249,6 +255,12 @@ public class CreateGroupServlet extends HttpServlet {
 		GroupInfoBean insertResult = createGroupService.createGroup(groupInfoBean);
 		if (insertResult != null) {
 			successMessage.put("createSuccess", "創團成功!!!");
+			List<WishPoolBean> wishDetail = (List<WishPoolBean>)session.getAttribute("wishDetail");
+			if(wishDetail!=null){
+			int wishNo = wishDetail.get(0).getWishNo();
+			Boolean deleteStatus=wishPoolService.delete(wishNo);
+	        System.out.println("deleteStatus="+deleteStatus);
+			}		
 			String path1 = request.getContextPath();
 			response.sendRedirect(path + "/creategroup/successCreate.jsp");
 			return;

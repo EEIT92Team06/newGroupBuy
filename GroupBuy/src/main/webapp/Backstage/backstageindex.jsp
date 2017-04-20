@@ -44,7 +44,7 @@
 						<div class="profile_pic"></div>
 						<div class="profile_info">
 							<span>Welcome,</span>
-							<h2>管理員名字</h2>
+							<h2>${sessionScope.managerLogin.memberNickName}</h2>
 						</div>
 					</div>
 					<!-- /menu profile quick info -->
@@ -113,7 +113,7 @@
 			<!-- page content -->
 			<div  class="right_col" role="main" style="border: 1px solid;">
 			  <div style="margin-top: 120px"><h1 style="font-weight:bolder; text-align: center;">歡迎使用GroupBuy管理系統!</h1></div>
-			  <div style="margin-top: 60px"><h1 style="font-weight:normal; ; text-align: center;">管理員xxx您好</h1></div>
+			  <div style="margin-top: 60px"><h1 style="font-weight:normal; ; text-align: center;">管理員${sessionScope.managerLogin.memberNickName}您好</h1></div>
 <!-- 				<div class=""> -->
 <!-- 					<div class="row top_tiles"> -->
 <!-- 						<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12"> -->

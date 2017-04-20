@@ -170,14 +170,31 @@
 	line-height: 29px;
 	width: 75%;
 }
+
 .topbar {
-    width: 100%;
-    background-color: #f25c27;
-    /* padding: 5px; */
-    padding-top: 15px;
+	width: 100%;
+	background-color: #f25c27;
+	/* padding: 5px; */
+	padding-top: 15px;
 }
 </style>
 
+
+<script type="text/javascript">
+$(document).ready(function(){
+	  $.get("/GroupBuy/mailAjaxServlet.do", 
+			function(data){
+		    result = JSON.parse(data);
+		    if(result.unReadNum>0){
+			$("#mailNotify").html(result.unReadNum);
+		    }
+	    })
+	
+	})
+	
+
+
+</script>
 </head>
 <body>
 
@@ -186,7 +203,7 @@
 		<!-- 全部變成漢堡  -->
 		<div class="layout-header am-hide-sm-only" style="border: 10px black">
 			<!--topbar start-->
-			<div class="topbar" style="padding-top:15px;">
+			<div class="topbar" style="padding-top: 15px;">
 				<div class="container">
 					<div class="am-g">
 						<!-- 最左  -->
@@ -220,35 +237,16 @@
 								<c:if test="${not empty loginToken}">
 									<!-- 通知 ---- 通知 ---- 通知 ---- 通知 ---- 通知 ---- 通知 ---- 通知 ---- 通知 -->
 									<ul class="notifications" id="ss1">
-										<li class="dropdown"><a href="#"
+										<li class="dropdown"><a href="<c:url value="/overViewMailServlet.do"/>"
 											class="dropdown-toggle notification-icon"
-											data-toggle="dropdown">
+											>
 												<p class="fa fa-envelope" style="color: #f25c27"></p> <span
-												class="badge" style="line-height: 13px">5</span>
+												class="badge" id="mailNotify" style="line-height: 13px"></span>
 										</a> <!-- 下拉選單 -->
-											<ul class="dropdown-menu" style="margin-top: 8px">
-												<li><a href="#">test1</a></li>
-												<li class="divider"></li>
-												<li><a href="#">test2</a></li>
-												<!-- 											<li data-role="listview">aaa</li> -->
-												<li><a href="<c:url value="/overViewMailServlet.do"/>">全部信件</a></li>
-
-											</ul></li>
+                                     </li>
 										<!-- 信封結束 -->
 										<!-- 鈴鐺開始 -->
-										<li class="dropdown"><a href="#"
-											class="dropdown-toggle notification-icon"
-											data-toggle="dropdown">
-												<p class="fa fa-bell" style="color: #f25c27"></p> <span
-												class="badge" style="line-height: 13px">5</span>
-										</a> <!-- 下拉選單 -->
-											<ul class="dropdown-menu" style="margin-top: 8px">
-												<li><a href="#">test1</a></li>
-												<li><a href="#">test1</a></li>
-												<li class="divider"></li>
-												<li><a href="#">test1</a></li>
-
-											</ul></li>
+<!-- 								
 										<!-- 鈴鐺結束-->
 										<!-- 頭像開始 -->
 										<li class="dropdown" style="margin: 3px;"><a href="#"
@@ -339,10 +337,6 @@
 									</c:choose>
 
 									<!-- sub-menu end-->
-								
-										<li><a
-											href="<c:url value='/Backstage/BackStageServlet.controller'/>">後臺管理</a></li>
-								
 								</ul>
 							</div>
 						</div>

@@ -270,4 +270,31 @@ public class SiteMailDAOHibernate implements SiteMailDAO {
 		return bean;
 
 	}
+	//查詢未讀狀態信
+	private static final String countSiteMail ="  select count(*) from siteMail where siteMailStatus_No=9301 and member_No=?";
+	@Override
+	public int countSiteMail(Integer memberNo){
+		int unReadNum=0;
+		if(memberNo!=null){
+			Session session=sessionFactory.getCurrentSession();
+			Query query=session.createNativeQuery(countSiteMail);
+			query.setParameter(1,memberNo);
+			unReadNum=(int)query.getSingleResult();
+		}
+		return unReadNum;
+	}
+	
+	//查詢未讀公告信
+	private static final String countAnnounceMail ="  select count(*) from annoucement where siteMailStatus_No=9301 and member_No=?";
+	@Override
+	public int countAnnounceMail(Integer memberNo){
+		int unReadNum=0;
+		if(memberNo!=null){
+			Session session=sessionFactory.getCurrentSession();
+			Query query=session.createNativeQuery(countAnnounceMail);
+			query.setParameter(1,memberNo);
+			unReadNum=(int)query.getSingleResult();
+		}
+		return unReadNum;
+	}
 }

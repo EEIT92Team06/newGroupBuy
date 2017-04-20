@@ -1,8 +1,11 @@
 package backstage.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,30 +26,43 @@ import wish.model.WishPoolService;
 public class BanWishServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private WishPoolService wishPoolService;
+
 	@Override
 	public void init() throws ServletException {
 		ServletContext application = this.getServletContext();
 		ApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(application);
-		wishPoolService = (WishPoolService)context.getBean("wishPoolService");
+		wishPoolService = (WishPoolService) context.getBean("wishPoolService");
 	}
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("UTF-8");
 		String[] checkboxs = request.getParameterValues("checkbox");
-		
-		for(String checkbox : checkboxs){
+
+		Map<String, String> errorMsg = new HashMap<String, String>();
+		if (checkboxs == null) {
+			errorMsg.put("banGroup", "請選擇封鎖許願");
+		}
+		if(!errorMsg.isEmpty()){
+			RequestDispatcher rd = request.getRequestDispatcher("/Backstage/newwishbackstage.jsp");
+			rd.forward(request, response);
+			return;
+		}
+		for (String checkbox : checkboxs) {
 			wishPoolService.delete(Integer.parseInt(checkbox));
 		}
-		
+
 		List<WishPoolBean> AllWish = wishPoolService.select(null);
 		HttpSession session = request.getSession();
 		session.setAttribute("AllWish", AllWish);
 		String contextPath = getServletContext().getContextPath();
-		response.sendRedirect(response.encodeRedirectURL(contextPath+"/Backstage/newwishbackstage.jsp"));
+		response.sendRedirect(response.encodeRedirectURL(contextPath + "/Backstage/newwishbackstage.jsp"));
 		return;
 	}
 

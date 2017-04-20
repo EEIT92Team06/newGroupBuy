@@ -52,6 +52,10 @@
 		<constructor-arg ref="announceDAO"></constructor-arg>
 	</bean>
 
+	<bean id="autocompleteDAO" class="searchgroup.model.dao.autocompleteDAO">
+		<constructor-arg ref="sessionFactory"></constructor-arg>
+	</bean>
+
 <!-- 	政維設定檔 -->
 
 <bean id="orderInfoDAO" class="eeit9212.model.dao.OrderInfoDAOHibernate">

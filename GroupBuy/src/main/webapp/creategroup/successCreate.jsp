@@ -13,7 +13,7 @@
             width: 100%;
             height: 100%;
             margin-left: 0;
-            margin-top: 100px;
+            margin-top: 150px;
             text-align: center;
         }
 </style>
@@ -23,8 +23,8 @@
 <jsp:include page="/headline.jsp"></jsp:include>
 	<jsp:include page="/secure/newLogin.jsp"/>
 <div class="full">   
-   <h1>${sessionScope.successMessage.createSuccess}</h1>
-   <a  href="<c:url value="/eeit9212/grouprecord/mycreatedgroupinfo.controller"/>">看看你創的團購</a>
+   <h1><font size="14">${sessionScope.successMessage.createSuccess}</font></h1>
+   <h2><a href="<c:url value="/eeit9212/grouprecord/mycreatedgroupinfo.controller"/>">看看你創的團購</a></h2>
 </div>
 </body>
 </html>

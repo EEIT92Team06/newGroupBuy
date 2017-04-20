@@ -39,10 +39,10 @@ public class SendMailServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("UTF-8");
 		Map<String, String> errorMsg = new HashMap<String, String>();
+		Map<String, String> successMsg = new HashMap<String, String>();
 		request.setAttribute("errorMsg", errorMsg);
+		request.setAttribute("successMsg", successMsg);
 		
-		
-		System.out.println("111");
 		String[] checkboxs = request.getParameterValues("checkbox");
 		
 		String title = request.getParameter("title");
@@ -63,14 +63,18 @@ public class SendMailServlet extends HttpServlet {
 			AnnouncementBean anncounce = new AnnouncementBean(Integer.parseInt(checkbox), 9301, title, time, siteMail,"系統公告");
 			System.out.println("announce : " + anncounce);
 			announcementService.insertMsg(anncounce);
+			successMsg.put("successMsg", "發送成功");
+			RequestDispatcher rd = request.getRequestDispatcher("/Backstage/newbackstage1.jsp");
+			rd.forward(request, response);
+			return;
 		}
 		
-		System.out.println("checkboxs : " + checkboxs);
+//		System.out.println("checkboxs : " + checkboxs);
 //		for(String checkbox : checkboxs){
 //			System.out.println("checkbox : " + checkbox);
 //		}
-		System.out.println("title : " + title);
-		System.out.println("siteMail : " + siteMail);
+//		System.out.println("title : " + title);
+//		System.out.println("siteMail : " + siteMail);
 	}
 
 }
