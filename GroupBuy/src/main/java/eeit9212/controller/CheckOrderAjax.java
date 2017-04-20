@@ -38,8 +38,8 @@ public class CheckOrderAjax extends HttpServlet {
 		String orderInfoNoTemp = request.getParameter("orderInfoNo");
 		System.out.println("orderInfoStatus=" + orderInfoStatus);
 		System.out.println("orderInfoNoTemp=" + orderInfoNoTemp);
-
-
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
 		int orderInfoNo = -1;
 		if (orderInfoNoTemp != null && orderInfoNoTemp.length() != 0) {
 			orderInfoNo = Integer.parseInt(orderInfoNoTemp);
@@ -49,7 +49,7 @@ public class CheckOrderAjax extends HttpServlet {
 			} else if ("accept".equals(orderInfoStatus)) {
 				orderInfoService.updateOrderInfoStatus(1003, orderInfoNo);
 			}
-			PrintWriter out = response.getWriter();
+			
 			out.write("success");
 		}
 		

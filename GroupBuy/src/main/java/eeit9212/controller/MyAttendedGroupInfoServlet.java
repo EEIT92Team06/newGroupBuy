@@ -24,7 +24,7 @@ import login.model.MemberBean;
 
 @WebServlet("/eeit9212/grouprecord/myattendedgroupinfo.controller")
 public class MyAttendedGroupInfoServlet extends HttpServlet {
-
+	private static final long serialVersionUID = 1L;
 	private GroupInfoService groupInfoService;
 	private OrderInfoService orderInfoService;
 
@@ -44,12 +44,8 @@ public class MyAttendedGroupInfoServlet extends HttpServlet {
 		
 		MemberBean memberBean = (MemberBean) session.getAttribute("loginToken");
 		Integer memberNo=memberBean.getMemberNo();
-		String contextPath = request.getContextPath();
 		String groupInfoNoTemp = request.getParameter("groupInfoNo");
 		String orderInfoNoTemp = request.getParameter("orderInfoNo");
-		String orderInfoAfterSuccessBankAccount = request.getParameter("account");
-		String orderInfoAfterSuccessPhone = request.getParameter("phone");
-		String orderInfoAfterSuccessDestination = request.getParameter("address");
 		String locationFrom = request.getParameter("locationFrom");
 		System.out.println("locationFrom="+locationFrom);
 		System.out.println("groupInfoNoTemp="+groupInfoNoTemp);
@@ -87,15 +83,7 @@ public class MyAttendedGroupInfoServlet extends HttpServlet {
 				groupInfoService.updateGroupStatus(groupInfoNo, 6);
 			}	
 			
-			if (orderInfoAfterSuccessBankAccount != null && orderInfoAfterSuccessBankAccount.length() != 0) {
-				System.out.println("從myattendedgroupinfo.jsp收到請求");
-				int orderInfoNoInsert = (int) session.getAttribute("orderInfoNo");
-				OrderInfoBean insertAndUpdateTransfer = orderInfoService.insertAndUpdateTransfer(orderInfoNoInsert, 1102,
-						orderInfoAfterSuccessPhone, orderInfoAfterSuccessDestination, orderInfoAfterSuccessBankAccount);
-				if (insertAndUpdateTransfer != null) {
-					request.setAttribute("selectMyOrderInfoByNo", insertAndUpdateTransfer);
-				}
-			}
+
 						
 			AttendGroupInfoBean selectMyAttendedByGroupInfoNo = groupInfoService.selectMyAttendedByGroupInfoNo(memberNo,
 					groupInfoNo);		

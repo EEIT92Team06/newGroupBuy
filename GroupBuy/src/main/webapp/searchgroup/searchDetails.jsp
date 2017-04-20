@@ -148,7 +148,7 @@ function confirmOrder(){
 
 	layer.confirm('確定報名此團購？', {
 		  btn: ['確定','取消'] //按钮
-		}, function(){
+		}, function(){ 
 			$("#orderItems").submit();
 		}, function(){
 		  layer.msg('真可惜', {
