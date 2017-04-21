@@ -182,6 +182,7 @@ public class WishFormServlet extends HttpServlet {
 					if ("picUpload".equals(part.getName())) {
 						//取得/pictures資料夾的RealPath
 						String realPath = this.getServletContext().getRealPath("/pictures");
+						System.out.println("realPath : " + realPath);
 						write(part,realPath);
 					}
 				}
