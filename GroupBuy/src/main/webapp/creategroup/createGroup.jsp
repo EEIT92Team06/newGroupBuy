@@ -124,9 +124,9 @@
 	<jsp:include page="/headline.jsp"></jsp:include>
 	<div class="container">
 
-		<form class="well form-horizontal"
-			form action="<c:url value="/createGroupServlet.do"/>"
-				enctype="multipart/form-data" method="post">
+		<form class="well form-horizontal" form
+			action="<c:url value="/createGroupServlet.do"/>"
+			enctype="multipart/form-data" method="post">
 			<center>
 				<fieldset>
 
@@ -295,7 +295,7 @@
 
 					<!-- 挑選商品圖片-->
 					<div class="form-group" style="margin-left: 230px;">
-						<label class="col-md-4 control-label">封面圖片</label>
+						<label class="col-md-4 control-label">商品圖片</label>
 						<div class="col-md-4 inputGroupContainer">
 							<div class="input-group">
 								<span class="input-group-addon"><i
@@ -335,6 +335,20 @@
 
 					<div class="form-group" style="margin-left: 230px;">
 						<label class="col-md-4 control-label">*匯款資訊</label>
+						<div class="col-md-4 inputGroupContainer">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-key"
+									aria-hidden="true"></i></span> <input name="bankAccount"
+									style="height: 30px;" placeholder="匯款帳號" class="form-control"
+									type="text" value="${param.bankAccount}" />
+							</div>
+							<small data-bv-validator="notEmpty" data-bv-validator-for="title"
+								class="help-block" style="color: red;">${errorMessages.bankAccountError}</small>
+						</div>
+					</div>
+					<!-- *寄貨方式-->
+					<div class="form-group" style="margin-left: 230px;">
+						<label class="col-md-4 control-label">*寄貨方式</label>
 						<div class="col-md-4 selectContainer">
 							<div class="input-group"
 								style="width: 150px; margin-right: 150px">
@@ -360,7 +374,8 @@
 									value="完成開團">
 									完成開團<span class="glyphicon glyphicon-send"></span>
 								</button>
-								<a href="<c:url value="/theindex.jsp"/>" style="color: lightblack">取消開團</a>
+								<a href="<c:url value="/theindex.jsp"/>"
+									style="color: lightblack">取消開團</a>
 							</div>
 						</center>
 					</div>
