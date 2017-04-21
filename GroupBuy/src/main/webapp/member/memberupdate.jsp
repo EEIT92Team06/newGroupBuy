@@ -46,6 +46,10 @@ td {
 	display: inline-block; /*讓div並排*/
 	vertical-align: top;
 }
+.img1{
+/*  style=" */
+ border-radius: 10px; height: 180px;"
+}
 </style>
 	<div>
 
@@ -77,7 +81,7 @@ td {
 							</tr>
 							<tr>
 								<td>生日</td>
-								<td>${MemberInfo.memberBirth}</td>
+								<td>${MemberInfo.formatMemberBirthday}</td>
 							</tr>
 							<tr>
 								<td>電話</td>
@@ -114,16 +118,14 @@ td {
 
 					<div style="margin: 10px 0px 0px 20px;">
 						<div id="dropZone">
-							<img style="border-radius: 10px; height: 200px;"
-								src="<c:url value='/pictures/${MemberInfo.memberPic}'/>" />
+							<img class="img1" src="<c:url value='/pictures/${MemberInfo.memberPic}'/>" />
 						</div>
 
-						<input class="button_s" style="margin-top: 5px" type="file"
+						<input id="file1" class="button_s" style="margin-top: 5px" type="file"
 							name="picUpload" value="upload" accept="image/*"
 							onchange="fileViewer()"> <input class="button_b"
 							style="float: right" type="button" value="cancel"
 							onclick="cancelChangePic()">
-
 					</div>
 				</div>
 
@@ -164,11 +166,10 @@ td {
 					var fileContent = e.target.result;
 
 					var imgObj = document.createElement("img");
-					imgObj.setAttribute("id", count);
 					imgObj.setAttribute("src", fileContent);
-					imgObj.setAttribute("class", "thumb");
 					imgObj.setAttribute("name", "pic");
-
+					imgObj.setAttribute("class", "img1");
+					
 					document.getElementById("dropZone").appendChild(imgObj);
 					count++;
 				}

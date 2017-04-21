@@ -150,21 +150,23 @@ a {
 	<div>
  <ul class="thumbnails" style="margin:0px 0px 0px 130px;text-align: center;">
 	<c:if test="${not empty relationList}">
-		<c:forEach var="member" items="${relationList}">
+		<c:forEach var="member" items="${relationList}" varStatus="x">
+			
 			<c:if test="${member.fdMemberNo!=member.memberNo || member.friendStatusNo!=2102}">
 				<form class="div1" style="float:left;margin:20px;">
+				<input type="hidden" value="${x.index}"/>
 					<table>
+					<input id="memberFriendNo${x.index}" type="hidden" name="memberFriendNo" value="${member.memberNo}" /> 
 						<tr>
 							<td rowspan="5">
 							<img style="width: 130px; height: 130px;border-radius:10px;"
 								src="<c:url value='/pictures/${member.memberPic}'/>" /></td>
 							<td><a style="text-decoration: none;font-size:20px;"
 								href="<c:url value="/member/member.controller?memberNo=${member.memberNo}"/>">${member.memberNickName}</a>
-								<input type="hidden" name="friendNo" value="${member.friendNo}" />
-								<input type="hidden" name="memberFriendNo"
-								value="${member.memberNo}" /> <input type="hidden"
-								value="${member.friendStatusNo}" /><input type="hidden"
-								value="${param.searchTxt}"></td>
+								
+								
+								<input type="hidden" value="${member.friendStatusNo}" />
+								<input type="hidden" value="${param.searchTxt}"></td>
 						</tr>
 						<tr>
 							<td>${member.memberName}</td>
@@ -172,15 +174,17 @@ a {
 
 
 						<tr>
+						<input id="friendNo${x.index}" type="hidden" name="friendNo" value="${member.friendNo}" />
 							<td><c:if test="${not empty search}">
 
 									<input type="hidden" name="SearchMark" value="${searchMark}" />
 									<c:if test="${member.friendNo==null}">
-										<input type="submit" name="RelationBtn" value="Request" class="button_s">
+										<input type="button" name="RequestBtn" value="Request" class="button_s">
+										<input type="submit" name="RelationBtn" value="Block" class="button_b">
 									</c:if>
 									<c:if
 										test="${member.memberFriendNo==member.memberNo && member.friendStatusNo==2101}">
-										<input type="submit" name="RelationBtn" value="Delete" class="button_b">
+										<input type="button" name="DeleteBtn" value="Delete" class="button_b">
 										<input type="submit" name="RelationBtn" value="Block" class="button_b">
 									</c:if>
 									<c:if
@@ -199,8 +203,12 @@ a {
 
 
 
-								</c:if> <c:if test="${not empty friendlist}">
-									<input type="submit" name="RelationBtn" value="Delete" class="button_b">
+								</c:if> 
+								
+								
+								
+								<c:if test="${not empty friendlist}">
+									<input type="button" name="DeleteBtn" value="Delete" class="button_b">
 									<input type="submit" name="RelationBtn" value="Block" class="button_b">
 								</c:if> <c:if test="${not empty blockade}">
 									<input type="submit" name="RelationBtn" value="UnBlock" class="button_s">
@@ -218,7 +226,47 @@ a {
 	</c:if>
 </ul>
 </div>
+
+<script src="<c:url value='/js/jquery-3.1.1.min.js'/>"></script>
+<script src="<c:url value='/js/layer/layer.js'/>"></script>
+<script type="text/javascript">
+$(function(){
+	$("input[name='DeleteBtn']").click(function(){
+		var deleteBtn=$(this);
+		var nowIndex=deleteBtn.parents("form").find("input").val();
+		var friendNo=$("#friendNo"+nowIndex).val();
+		var memberFriendNo=$("#memberFriendNo"+nowIndex).val();
+// 		var friendNo=deleteBtn.parents("tr").find("input").val();
+// 		var memberFriendNo=deleteBtn.parents("table").find("input").val();
+		var deleteConfirm=layer.confirm('確定要刪除好友嗎?', {
+			  btn: ['確定','取消'] //按钮
+			}, function(){
+				$.get("${pageContext.request.contextPath}/statusajax",{"RelationBtn":"Delete","friendNo":friendNo,"memberFriendNo":memberFriendNo},function(){
+					deleteBtn.parents("form").remove();
+					layer.close(deleteConfirm);
+				});
+			});	
+	});
+
+	
+})
+// $(function(){
+// 	$("input[name='RequestBtn']").click(function(){
+// 		var requestBtn=$(this);
+// 		var nowIndex=requestBtn.parents("form").find("input").val();
+// 		var memberFriendNo=$("#memberFriendNo"+nowIndex).val();
+// 	$.get("${pageContext.request.contextPath}/statusajax",{"RelationBtn":"Request","memberFriendNo":memberFriendNo},function(){
+// 		requestBtn.parents("form").remove();
+
+// 	});
+// });
+// });
+
+
+</script>
+
+
+
+
 </body>
-
-
 </html>
