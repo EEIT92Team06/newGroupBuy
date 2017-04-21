@@ -166,7 +166,7 @@ public class CreateGroupServlet extends HttpServlet {
 							errorMessages.put("bankAccountError", "請輸入匯款帳號");
 						} else {
 							try {
-								int i = Integer.parseInt(value);
+								long i = Long.parseLong(value);
 							} catch (NumberFormatException e) {
 								errorMessages.put("bankAccountError", "匯款帳號請輸入數字");
 							}
