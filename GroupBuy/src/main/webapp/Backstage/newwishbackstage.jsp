@@ -128,7 +128,7 @@
 					<form action="<c:url value="/Backstage/BanWishServlet" />"
 						method="post">
 						<ul class="nav nav-tabs" id="myTab">
-							<li class="" onclick="removeChecked()"><font size="5">刪除違規許願</font></a></li>
+							<li class="" onclick="removeChecked()"><font size="5">刪除違規許願</font><font color="red">${errorMsg.banWish}</font></li>
 						</ul>
 						<div class="tab-content">
 							<!-- 這裡是全部信件 -->

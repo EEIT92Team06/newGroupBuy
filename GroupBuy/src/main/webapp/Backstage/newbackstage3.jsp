@@ -128,7 +128,7 @@
 					<form action="<c:url value="/Backstage/banGroupServlet" />"
 						method="post">
 						<ul class="nav nav-tabs" id="myTab">
-							<li class="" onclick="removeChecked()"><font size="5">選擇封鎖團</font></a></li>
+							<li class="" onclick="removeChecked()"><font size="5">選擇封鎖團</font></li>
 							<li id="trashCan" style="display: none">
 								<button name="allMailBotton" value="allMailBotton"
 									onclick="checkDelete()" style="margin-left: 30px" type="submit">

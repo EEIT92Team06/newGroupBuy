@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -88,6 +89,9 @@ public class LoginServlet extends HttpServlet {
 
 			if (statusNum >= 9101) {
 				if (!loginService.checkStatus(memberBean.getMemberNo())) {
+					Timestamp banT = loginService.selectban(memberBean.getMemberNo());
+					session.setAttribute("loginToken", memberBean);
+					session.setAttribute("banT", banT);
 					String path = request.getContextPath();
 					banLogin.put("banUrl", path + "/secure/ban.jsp");
 					out.println(gson.toJson(banLogin));

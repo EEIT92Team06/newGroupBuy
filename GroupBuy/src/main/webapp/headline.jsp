@@ -246,19 +246,7 @@ $(document).ready(function(){
                                      </li>
 										<!-- 信封結束 -->
 										<!-- 鈴鐺開始 -->
-										<li class="dropdown"><a href="#"
-											class="dropdown-toggle notification-icon"
-											data-toggle="dropdown">
-												<p class="fa fa-bell" style="color: #f25c27"></p> <span
-												class="badge" style="line-height: 13px">5</span>
-										</a> <!-- 下拉選單 -->
-											<ul class="dropdown-menu" style="margin-top: 8px">
-												<li><a href="#">test1</a></li>
-												<li><a href="#">test1</a></li>
-												<li class="divider"></li>
-												<li><a href="#">test1</a></li>
-
-											</ul></li>
+<!-- 								
 										<!-- 鈴鐺結束-->
 										<!-- 頭像開始 -->
 										<li class="dropdown" style="margin: 3px;"><a href="#"
