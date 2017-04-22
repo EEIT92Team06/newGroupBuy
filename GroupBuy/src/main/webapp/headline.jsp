@@ -259,7 +259,7 @@ $(document).ready(function(){
 										<li class="dropdown" style="margin: 3px;"><a href="#"
 											class="profileImg" data-toggle="dropdown"> <%-- <img src="<c:url value='/Web_01Main/testPic.jpg'/>" --%>
 												<img
-												src="<c:url value='/pictures/${loginToken.memberAccount}.jpg'/>"></a>
+												src="<c:url value='/pictures/${loginToken.memberPic}'/>"></a>
 											<ul class="dropdown-menu" style="margin-top: 20px">
 												<li class="menu-item">
 												<li><a
@@ -287,38 +287,38 @@ $(document).ready(function(){
 					<div class="header-box" data-am-sticky="" style=""margin: 0 px">
 						<div class="nav-contain">
 							<div class="nav-inner">
-								<ul class="am-nav am-nav-pills am-nav-justify notifications">
+								<ul class="am-nav am-nav-pills am-nav-justify notifications" style="padding-top: 17px;padding-bottom:0px;">
 									<li class=""><a href="<c:url value='/theindex.jsp'/>">
-											<img src="<c:url value='/pictures/logo.png'/>"
+											<img src="<c:url value='/pictures/icon.png'/>"
 											style="width: 75px">
 									</a></li>
 
 									<li><c:choose>
 											<c:when test="${empty loginToken}">
-												<a class="click1">創團</a></li>
+												<a style="font-size:26px" class="click1">創團</a></li>
 									</c:when>
 									<c:when test="${!empty loginToken}">
-										<a href="<c:url value='/creategroup/createGroup.jsp'/>">創團</a>
+										<a style="font-size:26px" href="<c:url value='/creategroup/createGroup.jsp'/>">創團</a>
 										</li>
 									</c:when>
 									</c:choose>
 									<li><c:choose>
 											<c:when test="${empty loginToken}">
-												<a class="click1">搜團</a></li>
+												<a style="font-size:26px" class="click1">搜團</a></li>
 									</c:when>
 									<c:when test="${!empty loginToken}">
-										<a href="<c:url value='/headline/SearchServlet0.controller'/>">搜團</a>
+										<a style="font-size:26px" href="<c:url value='/headline/SearchServlet0.controller'/>">搜團</a>
 										</li>
 									</c:when>
 									</c:choose>
 									<li><c:choose>
 											<c:when test="${empty loginToken}">
-												<a class="click1">許願池</a></li>
+												<a style="font-size:26px" class="click1">許願池</a></li>
 									</c:when>
 									<c:when test="${!empty loginToken}">
-										<a href="<c:url value='/wish/wishpool.controller'/>">許願池</a>
+										<a style="font-size:26px" href="<c:url value='/wish/wishpool.controller'/>">許願池</a>
 										<ul class="sub-menu">
-											<li class="menu-item"><a
+											<li class="menu-item"><a 
 												href="<c:url value='/wish/wishform.jsp'/>">發起許願</a></li>
 										</ul>
 									</c:when>
@@ -326,11 +326,11 @@ $(document).ready(function(){
 
 									<li><c:choose>
 											<c:when test="${empty loginToken}">
-												<a href="<c:url value='/eeit9212/grouprecord/myattendedgroupinfo.controller'/>">我的團購</a>
+												<a style="font-size:26px" href="<c:url value='/eeit9212/grouprecord/myattendedgroupinfo.controller'/>">我的團購</a>
 												<!-- sub-menu start--></li>
 									</c:when>
 									<c:when test="${!empty loginToken}">
-										<a href="<c:url value='/eeit9212/grouprecord/myattendedgroupinfo.controller'/>">我的團購</a>
+										<a style="font-size:26px" href="<c:url value='/eeit9212/grouprecord/myattendedgroupinfo.controller'/>">我的團購</a>
 										<!-- sub-menu start-->
 										<ul class="sub-menu">
 											<li class="menu-item"><a
