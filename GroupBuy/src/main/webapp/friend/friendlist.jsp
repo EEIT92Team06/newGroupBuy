@@ -250,17 +250,17 @@ $(function(){
 
 	
 })
-// $(function(){
-// 	$("input[name='RequestBtn']").click(function(){
-// 		var requestBtn=$(this);
-// 		var nowIndex=requestBtn.parents("form").find("input").val();
-// 		var memberFriendNo=$("#memberFriendNo"+nowIndex).val();
-// 	$.get("${pageContext.request.contextPath}/statusajax",{"RelationBtn":"Request","memberFriendNo":memberFriendNo},function(){
-// 		requestBtn.parents("form").remove();
+$(function(){
+	$("input[name='RequestBtn']").click(function(){
+		var requestBtn=$(this);
+		var nowIndex=requestBtn.parents("form").find("input").val();
+		var memberFriendNo=$("#memberFriendNo"+nowIndex).val();
+	$.get("${pageContext.request.contextPath}/statusajax",{"RelationBtn":"Request","memberFriendNo":memberFriendNo},function(){
+		requestBtn.parents("form").remove();
 
-// 	});
-// });
-// });
+	});
+});
+});
 
 
 </script>
