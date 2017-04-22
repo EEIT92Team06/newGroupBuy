@@ -85,7 +85,7 @@ window.onload = function(){
 		var queryString = "groupInfoNo="+${groupInfoNo} +"&memberNo="+${memberBean.memberNo} +"&groupMsg="+Msg;
 		var url = "GroupMsgServlet.controller?"+ queryString;
 		xhr.open("GET" , url , true);
-		xhr.send();
+		xhr.send(); 
 		xhr.onreadystatechange = function(){   
 			// 向伺服器提出的請求已經收到回應  
 
@@ -95,7 +95,7 @@ window.onload = function(){
 					var data = JSON.parse(xhr.responseText);    
 
 // 				<li><a class="avtar thumbnail"><img class="img-circle" 
-// 						src="../pictures/${bean.memberPic}" alt=""></a>
+// 						src="../pictures/${bean.memberPic}" alt=""></a> 
 // 						<a class="blogtitle">${bean.memberName}</a>
 // 						<div style="width: 1000px;">
 // 							<p>${bean.groupMsgContent}</p>
