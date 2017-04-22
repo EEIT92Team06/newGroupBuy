@@ -56,19 +56,19 @@ td {
 						<table style="font-size: 18px;">
 					<tr>
 						<td>舊密碼</td>
-						<td><input type="text" name="memberPassword" value=""
+						<td><input type="password" name="memberPassword" value=""
 							style="margin-top: 15px"></td>
 					<tr>
 					
 					<tr>
 						<td>新密碼</td>
-						<td><input type="text" name="newMemberPassword1" value=""
+						<td><input type="password" name="newMemberPassword1" value=""
 							style="margin-top: 15px"></td>
 					<tr>
 					
 					<tr>
 						<td>新密碼</td>
-						<td><input type="text" name="newMemberPassword2" value=""
+						<td><input type="password" name="newMemberPassword2" value=""
 							style="margin-top: 15px"></td>
 					<tr>
 					<tr><td colspan="2">${statusKey.oldNumEmpty}${statusKey.oldNumError}</td></tr>

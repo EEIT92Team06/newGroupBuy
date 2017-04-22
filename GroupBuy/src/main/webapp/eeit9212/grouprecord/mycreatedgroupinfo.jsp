@@ -283,7 +283,7 @@
 			console.log(deadLine - nowTime);
 			
 			function groupStartAlert(){
-				var groupStartAlert=layer.alert('截止日期已到。<br>您的產品下限為:<h3>${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}</h3>，<br>您的產品數量為:<h3>${groupInfoTotalProductQt}</h3>，<br>數量已達標，按下確定後系統將自動發送站內信給報名您的團的買家請買家於三天內匯款。', {
+				var groupStartAlert=layer.alert('截止日期已到。<br>您的產品下限為:${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}，<br>您的產品數量為:${groupInfoTotalProductQt}，<br>數量已達標，按下確定後系統將自動發送站內信給報名您的團的買家請買家於三天內匯款。', {
 					  skin: 'layui-layer-molv' //样式类名
 					  ,closeBtn: 0
 					},function(){
