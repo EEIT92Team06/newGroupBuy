@@ -344,7 +344,7 @@ function orderSuc(){
 
 
 		<!--  Related Products-->
-		<section id="related" class="row">
+		<section id="related" class="row"> 
 		<div class="container">
 			<h1 class="heading1" style="width: 1000px;margin-left: 150px;"><span class="maintext">留言專區</span><span class="subtext"> See All Comments</span></h1>
 

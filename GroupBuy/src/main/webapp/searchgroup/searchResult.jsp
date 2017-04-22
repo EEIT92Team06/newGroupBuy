@@ -69,9 +69,9 @@
 						<span class="maintext">搜尋結果</span><span class="subtext"></span>
 					</h1>
 					<c:forEach var="bean" items="${groupInfo}">
-					<div style="float:left">
-					<ul class="thumbnails">
-						<li class="span3">
+					<div style="float:left;height: 404px;"> 
+					<ul class="thumbnails" style="margin-top: 30px;">  
+						<li class="span3"> 
 							<div class="thumbnail">
 								<img alt="" style="width:220px;height:170px;" src="${pageContext.servletContext.contextPath}/searchImg/getImage?id=${bean.groupInfoNo}&type=groupCover">
 								<span class="viewfancypopup">&nbsp;</span>
