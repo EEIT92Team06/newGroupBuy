@@ -46,6 +46,7 @@ public class SearchServlet0 extends HttpServlet {
 		MemberBean memberBean = (MemberBean)session.getAttribute("loginToken");
 		System.out.println("memberNo : " + memberBean.getMemberNo());
 		Integer memberNo = memberBean.getMemberNo();
+		System.out.println("memberNo : " + memberNo);
 		int groupTypeNo = searchService.selectRecommendTable(memberNo);
 		List<Map<String, String>> recommendGroup = searchService.select(groupTypeNo);
 		session.setAttribute("recommendGroup", recommendGroup);

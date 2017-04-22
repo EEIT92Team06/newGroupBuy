@@ -17,7 +17,6 @@
 </style>
 </head>
 <body>
-	<a>hello</a>
 	<jsp:include page="/headline.jsp"></jsp:include>
 
 	<div style="text-align: center;" class="cart-info container">
@@ -70,6 +69,9 @@
 				<tr>
 					<c:if test="${selectGroupInfoByGroupInfoNo.groupStatusNo==7}">
 						<th>通知</th>
+					</c:if>
+					<c:if test="${selectGroupInfoByGroupInfoNo.groupStatusNo!=7}">
+						<th id="receiveThId" style="display: none;">通知</th>
 					</c:if>
 					<th style="text-align: center;">狀態</th>
 					<th style="text-align: center;">買家</th>
@@ -264,6 +266,7 @@
 							$("#phone"+jsonEvent.fromKeyNo).empty().append(jsonObj.orderInfoAfterSuccessPhone);
 							$("#destination"+jsonEvent.fromKeyNo).empty().append(jsonObj.orderInfoAfterSuccessDestination);
 							$("#bankAccount"+jsonEvent.fromKeyNo).empty().append(jsonObj.orderInfoAfterSuccessBankAccount);
+							$("#receiveThId").show();
 							$("#receiveTdId"+jsonEvent.fromKeyNo).show();
 						});		
 					}						
@@ -340,7 +343,7 @@
 						type : 1,
 						title : '截止日期已到',
 						skin : 'layui-layer-rim', //加上边框
-						area : [ '420px', '240px' ], //宽高
+						area : [ '600px', '400px' ], //宽高
 						content : $("#deadLineDiv"),
 						closeBtn : 0 //不显示关闭按钮
 					});
@@ -358,7 +361,7 @@
 			});		
 			if(${selectGroupInfoByGroupInfoNo.groupStatusNo==6}){
 				if(${groupInfoTotalProductQt>=selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}){
-					layer.alert('延期截止日期已到。<br>您的產品下限為:<h3>${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}</h3>，<br>您的產品數量為:<h3>${groupInfoTotalProductQt}</h3>，<br>數量已達標，按下確定後系統將自動發送站內信給報名您的團的買家請買家於三天內匯款。', {
+					layer.alert('延期截止日期已到。<br>您的產品下限為:${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}，<br>您的產品數量為:${groupInfoTotalProductQt}，<br>數量已達標，按下確定後系統將自動發送站內信給報名您的團的買家請買家於三天內匯款。', {
 						  skin: 'layui-layer-molv' //样式类名
 						  ,closeBtn: 0
 						},function(){
@@ -373,7 +376,7 @@
 					);
 				}
 				else{
-				layer.alert('延期截止日期已到。<br>您的產品下限為:<h3>${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}</h3>，<br>您的產品數量為:<h3>${groupInfoTotalProductQt}</h3>，<br>數量未達標，您已經延期過一次，系統將判定您的團為:流團，數量未達標。', {
+				layer.alert('延期截止日期已到。<br>您的產品下限為:${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}，<br>您的產品數量為:${groupInfoTotalProductQt}，<br>數量未達標，您已經延期過一次，系統將判定您的團為:流團，數量未達標。', {
 					  skin: 'layui-layer-molv' //样式类名
 					  ,closeBtn: 0
 					},function(){
@@ -384,7 +387,7 @@
 			}
 			if(${selectGroupInfoByGroupInfoNo.groupStatusNo==8}){
 				if(${groupInfoTotalProductQt>=selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}){
-					var startSendAlert=layer.alert('匯款截止日期已到。<br>您的產品下限為:<h3>${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}</h3>，<br>您的買家匯款產品總數量為:<h3>${groupInfoTotalProductQt}</h3>，<br>數量已達標，系統將判定您的團為:開團中，寄貨中。<br>請盡快處理寄貨。', {
+					var startSendAlert=layer.alert('匯款截止日期已到。<br>您的產品下限為:${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}，<br>您的買家匯款產品總數量為:${groupInfoTotalProductQt}，<br>數量已達標，系統將判定您的團為:開團中，寄貨中。<br>請盡快處理寄貨。', {
 						  skin: 'layui-layer-molv' //样式类名
 						  ,closeBtn: 0
 						},function(){
@@ -416,8 +419,9 @@
 						}
 					);
 				}
-				else{ 
-					layer.alert('匯款截止日期已到。<br>您的產品下限為:<h3>${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}</h3>，<br>您的買家匯款產品總數量為:<h3>${groupInfoTotalProductQt}</h3>，<br>數量未達標，系統將判定您的團為:流團，數量未達標。<br>請盡快處理退款。', {
+				else{
+					layer.alert('匯款截止日期已到。<br>您的產品下限為:${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}，<br>您的買家匯款產品總數量為:${groupInfoTotalProductQt}，<br>數量未達標，系統將判定您的團為:流團，數量未達標。<br>請盡快處理退款。', {
+
 						  skin: 'layui-layer-molv' //样式类名
 						  ,closeBtn: 0
 						},function(){
@@ -488,7 +492,7 @@
 										"target":orderInfoNo,
 										"change":"orderStatus"
 								}						
-								webSocket.send(JSON.stringify(msg));
+								webSocket.send(JSON.stringify(msg));  
 								layer.close(checkOrder);
 
 							});							

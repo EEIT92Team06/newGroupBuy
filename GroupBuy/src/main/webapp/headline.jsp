@@ -178,29 +178,25 @@
 	padding-top: 15px;
 }
 
-.profileImg img{
-	width:55px;
-	height:55px;
+.profileImg img {
+	width: 55px;
+	height: 55px;
 	border-radius: 50%;
-	object-fit:cover;
+	object-fit: cover;
 }
 </style>
 
 
 <script type="text/javascript">
-$(document).ready(function(){
-	  $.get("/GroupBuy/mailAjaxServlet.do", 
-			function(data){
-		    result = JSON.parse(data);
-		    if(result.unReadNum>0){
-			$("#mailNotify").html(result.unReadNum);
-		    }
-	    })
-	
+	$(document).ready(function() {
+		$.get("/GroupBuy/mailAjaxServlet.do", function(data) {
+			result = JSON.parse(data);
+			if (result.unReadNum > 0) {
+				$("#mailNotify").html(result.unReadNum);
+			}
+		})
+
 	})
-	
-
-
 </script>
 </head>
 <body>
@@ -244,16 +240,15 @@ $(document).ready(function(){
 								<c:if test="${not empty loginToken}">
 									<!-- 通知 ---- 通知 ---- 通知 ---- 通知 ---- 通知 ---- 通知 ---- 通知 ---- 通知 -->
 									<ul class="notifications" id="ss1">
-										<li class="dropdown"><a href="<c:url value="/overViewMailServlet.do"/>"
-											class="dropdown-toggle notification-icon"
-											>
+										<li class="dropdown"><a
+											href="<c:url value="/overViewMailServlet.do"/>"
+											class="dropdown-toggle notification-icon">
 												<p class="fa fa-envelope" style="color: #f25c27"></p> <span
 												class="badge" id="mailNotify" style="line-height: 13px"></span>
-										</a> <!-- 下拉選單 -->
-                                     </li>
+										</a> <!-- 下拉選單 --></li>
 										<!-- 信封結束 -->
 										<!-- 鈴鐺開始 -->
-<!-- 								
+										<!-- 								
 										<!-- 鈴鐺結束-->
 										<!-- 頭像開始 -->
 										<li class="dropdown" style="margin: 3px;"><a href="#"
@@ -287,36 +282,40 @@ $(document).ready(function(){
 					<div class="header-box" data-am-sticky="" style=""margin: 0 px">
 						<div class="nav-contain">
 							<div class="nav-inner">
-								<ul class="am-nav am-nav-pills am-nav-justify notifications">
+								<ul class="am-nav am-nav-pills am-nav-justify notifications"
+									style="padding-top: 17px; padding-bottom: 0px;">
 									<li class=""><a href="<c:url value='/theindex.jsp'/>">
 											<img src="<c:url value='/pictures/icon.png'/>"
 											style="width: 75px">
 									</a></li>
 
 									<li><c:choose>
-											<c:when test="${empty loginToken}">
-												<a class="click1">創團</a></li>
+											<c:when test="${empty loginToken}"> 
+												<a style="font-size: 22px" class="click1">創團</a></li>
 									</c:when>
 									<c:when test="${!empty loginToken}">
-										<a href="<c:url value='/creategroup/createGroup.jsp'/>">創團</a>
+										<a style="font-size: 22px"
+											href="<c:url value='/creategroup/createGroup.jsp'/>">創團</a>
 										</li>
 									</c:when>
 									</c:choose>
 									<li><c:choose>
 											<c:when test="${empty loginToken}">
-												<a class="click1">搜團</a></li>
+												<a style="font-size: 22px" class="click1">搜團</a></li>
 									</c:when>
 									<c:when test="${!empty loginToken}">
-										<a href="<c:url value='/headline/SearchServlet0.controller'/>">搜團</a>
+										<a style="font-size: 22px"
+											href="<c:url value='/headline/SearchServlet0.controller'/>">搜團</a>
 										</li>
 									</c:when>
-									</c:choose> 
+									</c:choose>
 									<li><c:choose>
 											<c:when test="${empty loginToken}">
-												<a class="click1">許願池</a></li>
+												<a style="font-size: 22px" class="click1">許願池</a></li>
 									</c:when>
 									<c:when test="${!empty loginToken}">
-										<a href="<c:url value='/wish/wishpool.controller'/>">許願池</a>
+										<a style="font-size: 22px"
+											href="<c:url value='/wish/wishpool.controller'/>">許願池</a>
 										<ul class="sub-menu">
 											<li class="menu-item"><a
 												href="<c:url value='/wish/wishform.jsp'/>">發起許願</a></li>
@@ -324,13 +323,16 @@ $(document).ready(function(){
 									</c:when>
 									</c:choose>
 
-									<li>
-									  <c:choose>
-									     <c:when test="${empty loginToken}">
-										    <a class="click1">我的團購</a></li>
-								         </c:when>
-									        <c:when test="${!empty loginToken}">
-										    <a href="<c:url value='/eeit9212/grouprecord/myattendedgroupinfo.controller'/>">我的團購</a>
+									<li><c:choose>
+											<c:when test="${empty loginToken}">
+												<a style="font-size: 22px"
+													href="<c:url value='/eeit9212/grouprecord/myattendedgroupinfo.controller'/>">我的團購</a>
+												<!-- sub-menu start--></li>
+									</c:when>
+									<c:when test="${!empty loginToken}">
+										<a style="font-size: 22px"
+											href="<c:url value='/eeit9212/grouprecord/myattendedgroupinfo.controller'/>">我的團購</a>
+
 										<!-- sub-menu start-->
 										<ul class="sub-menu">
 											<li class="menu-item"><a

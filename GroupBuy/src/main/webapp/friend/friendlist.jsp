@@ -35,25 +35,27 @@ img {
 	border-radius: 5px;
 	background-color: #F25C27;
 	color: white;
-/* 	line-height: 40px; */
+	/* 	line-height: 40px; */
 	text-align: center;
 	display: inline-block;
 	margin: 0 5px;
 	text-align: center;
 	font-weight: normal;
 }
+
 .button_b {
 	font-size: 15px;
 	font-weight: normal;
 	border-radius: 5px;
 	background-color: gray;
 	color: white;
-/* 	line-height: 40px; */
+	/* 	line-height: 40px; */
 	text-align: center;
 	display: inline-block;
 	margin: 0 5px;
 	text-align: center;
 }
+
 .title1 {
 	border-radius: 5px;
 	background-color: #FDEECE;
@@ -63,8 +65,10 @@ img {
 	margin: auto;
 	padding: 10px;
 }
-form{margin:0px;
-display:inline;
+
+form {
+	margin: 0px;
+	display: inline;
 }
 </style>
 </head>
@@ -75,10 +79,9 @@ a {
 	color: #F25C27;
 	style ="text-decoration: none"
 }
-
 </style>
 	<form action="<c:url value='friend.controller'/>">
-		<table class="title1" style="margin-top: 20px;margin-bottom:20px;">
+		<table class="title1" style="margin-top: 20px; margin-bottom: 20px;">
 			<tbody>
 				<tr>
 					<c:if test="${not empty friendlist}">
@@ -148,122 +151,142 @@ a {
 
 	</c:if>
 	<div>
- <ul class="thumbnails" style="margin:0px 0px 0px 130px;text-align: center;">
-	<c:if test="${not empty relationList}">
-		<c:forEach var="member" items="${relationList}" varStatus="x">
-			
-			<c:if test="${member.fdMemberNo!=member.memberNo || member.friendStatusNo!=2102}">
-				<form class="div1" style="float:left;margin:20px;">
-				<input type="hidden" value="${x.index}"/>
-					<table>
-					<input id="memberFriendNo${x.index}" type="hidden" name="memberFriendNo" value="${member.memberNo}" /> 
-						<tr>
-							<td rowspan="5">
-							<img style="width: 130px; height: 130px;border-radius:10px;"
-								src="<c:url value='/pictures/${member.memberPic}'/>" /></td>
-							<td><a style="text-decoration: none;font-size:20px;"
-								href="<c:url value="/member/member.controller?memberNo=${member.memberNo}"/>">${member.memberNickName}</a>
-								
-								
-								<input type="hidden" value="${member.friendStatusNo}" />
-								<input type="hidden" value="${param.searchTxt}"></td>
-						</tr>
-						<tr>
-							<td>${member.memberName}</td>
-						</tr>
+		<ul class="thumbnails"
+			style="margin: 0px 0px 0px 130px; text-align: center;">
+			<c:if test="${not empty relationList}">
+				<c:forEach var="member" items="${relationList}" varStatus="x">
+
+					<c:if
+						test="${member.fdMemberNo!=member.memberNo || member.friendStatusNo!=2102}">
+						<form class="div1" style="float: left; margin: 20px;">
+							<input type="hidden" value="${x.index}" />
+							<table>
+								<input id="memberFriendNo${x.index}" type="hidden"
+									name="memberFriendNo" value="${member.memberNo}" />
+								<tr>
+									<td rowspan="5"><img
+										style="width: 130px; height: 130px; border-radius: 10px;"
+										src="<c:url value='/pictures/${member.memberPic}'/>" /></td>
+									<td><a style="text-decoration: none; font-size: 20px;"
+										href="<c:url value="/member/member.controller?memberNo=${member.memberNo}"/>">${member.memberNickName}</a>
 
 
-						<tr>
-						<input id="friendNo${x.index}" type="hidden" name="friendNo" value="${member.friendNo}" />
-							<td><c:if test="${not empty search}">
-
-									<input type="hidden" name="SearchMark" value="${searchMark}" />
-									<c:if test="${member.friendNo==null}">
-										<input type="button" name="RequestBtn" value="Request" class="button_s">
-										<input type="submit" name="RelationBtn" value="Block" class="button_b">
-									</c:if>
-									<c:if
-										test="${member.memberFriendNo==member.memberNo && member.friendStatusNo==2101}">
-										<input type="button" name="DeleteBtn" value="Delete" class="button_b">
-										<input type="submit" name="RelationBtn" value="Block" class="button_b">
-									</c:if>
-									<c:if
-										test="${member.memberFriendNo==member.memberNo && member.friendStatusNo==2102}">
-										<input type="submit" name="RelationBtn" value="UnBlock" class="button_s">
-									</c:if>
-									<c:if
-										test="${member.fdMemberNo==member.memberNo && member.friendStatusNo==2103}">
-										<input type="submit" name="RelationBtn" value="BeFriend" class="button_s">
-										<input type="submit" name="RelationBtn" value="Refuse" class="button_b">
-									</c:if>
-									<c:if
-										test="${member.memberFriendNo==member.memberNo && member.friendStatusNo==2103}">
-										<input type="submit" name="RelationBtn" value="CancelRequest" class="button_b">
-									</c:if>
+										<input type="hidden" value="${member.friendStatusNo}" /> <input
+										type="hidden" value="${param.searchTxt}"></td>
+								</tr>
+								<tr>
+									<td>${member.memberName}</td>
+								</tr>
 
 
+								<tr>
+									<input id="friendNo${x.index}" type="hidden" name="friendNo"
+										value="${member.friendNo}" />
+									<td><c:if test="${not empty search}">
 
-								</c:if> 
-								
-								
-								
-								<c:if test="${not empty friendlist}">
-									<input type="button" name="DeleteBtn" value="Delete" class="button_b">
-									<input type="submit" name="RelationBtn" value="Block" class="button_b">
-								</c:if> <c:if test="${not empty blockade}">
-									<input type="submit" name="RelationBtn" value="UnBlock" class="button_s">
-								</c:if> <c:if test="${not empty requested}">
-									<input type="submit" name="RelationBtn" value="BeFriend" class="button_s">
-									<input type="submit" name="RelationBtn" value="Refuse" class="button_b">
-								</c:if> <c:if test="${not empty requesting}">
-									<input type="submit" name="RelationBtn" value="CancelRequest" class="button_b">
-								</c:if></td>
-						</tr>
-					</table>
-				</form>
+											<input type="hidden" name="SearchMark" value="${searchMark}" />
+											<c:if test="${member.friendNo==null}">
+												<input type="button" name="RequestBtn" value="Request"
+													class="button_s">
+												<input type="submit" name="RelationBtn" value="Block"
+													class="button_b">
+											</c:if>
+											<c:if
+												test="${member.memberFriendNo==member.memberNo && member.friendStatusNo==2101}">
+												<input type="button" name="DeleteBtn" value="Delete"
+													class="button_b">
+												<input type="submit" name="RelationBtn" value="Block"
+													class="button_b">
+											</c:if>
+											<c:if
+												test="${member.memberFriendNo==member.memberNo && member.friendStatusNo==2102}">
+												<input type="submit" name="RelationBtn" value="UnBlock"
+													class="button_s">
+											</c:if>
+											<c:if
+												test="${member.fdMemberNo==member.memberNo && member.friendStatusNo==2103}">
+												<input type="submit" name="RelationBtn" value="BeFriend"
+													class="button_s">
+												<input type="submit" name="RelationBtn" value="Refuse"
+													class="button_b">
+											</c:if>
+											<c:if
+												test="${member.memberFriendNo==member.memberNo && member.friendStatusNo==2103}">
+												<input type="submit" name="RelationBtn"
+													value="CancelRequest" class="button_b">
+											</c:if>
+
+
+
+										</c:if> <c:if test="${not empty friendlist}">
+											<input type="button" name="DeleteBtn" value="Delete"
+												class="button_b">
+											<input type="submit" name="RelationBtn" value="Block"
+												class="button_b">
+										</c:if> <c:if test="${not empty blockade}">
+											<input type="submit" name="RelationBtn" value="UnBlock"
+												class="button_s">
+										</c:if> <c:if test="${not empty requested}">
+											<input type="submit" name="RelationBtn" value="BeFriend"
+												class="button_s">
+											<input type="submit" name="RelationBtn" value="Refuse"
+												class="button_b">
+										</c:if> <c:if test="${not empty requesting}">
+											<input type="submit" name="RelationBtn" value="CancelRequest"
+												class="button_b">
+										</c:if></td>
+								</tr>
+							</table>
+						</form>
+					</c:if>
+				</c:forEach>
 			</c:if>
-		</c:forEach>
-	</c:if>
-</ul>
-</div>
+		</ul>
+	</div>
 
-<script src="<c:url value='/js/jquery-3.1.1.min.js'/>"></script>
-<script src="<c:url value='/js/layer/layer.js'/>"></script>
-<script type="text/javascript">
-$(function(){
-	$("input[name='DeleteBtn']").click(function(){
-		var deleteBtn=$(this);
-		var nowIndex=deleteBtn.parents("form").find("input").val();
-		var friendNo=$("#friendNo"+nowIndex).val();
-		var memberFriendNo=$("#memberFriendNo"+nowIndex).val();
-// 		var friendNo=deleteBtn.parents("tr").find("input").val();
-// 		var memberFriendNo=deleteBtn.parents("table").find("input").val();
-		var deleteConfirm=layer.confirm('確定要刪除好友嗎?', {
-			  btn: ['確定','取消'] //按钮
-			}, function(){
-				$.get("${pageContext.request.contextPath}/statusajax",{"RelationBtn":"Delete","friendNo":friendNo,"memberFriendNo":memberFriendNo},function(){
-					deleteBtn.parents("form").remove();
-					layer.close(deleteConfirm);
+	<script src="<c:url value='/js/jquery-3.1.1.min.js'/>"></script>
+	<script src="<c:url value='/js/layer/layer.js'/>"></script>
+	<script type="text/javascript">
+		$(function() {
+			$("input[name='DeleteBtn']").click(function() {
+				var deleteBtn = $(this);
+				var nowIndex = deleteBtn.parents("form").find("input").val();
+				var friendNo = $("#friendNo" + nowIndex).val();
+				var memberFriendNo = $("#memberFriendNo" + nowIndex).val();
+				// 		var friendNo=deleteBtn.parents("tr").find("input").val();
+				// 		var memberFriendNo=deleteBtn.parents("table").find("input").val();
+				var deleteConfirm = layer.confirm('確定要刪除好友嗎?', {
+					btn : [ '確定', '取消' ]
+				//按钮
+				}, function() {
+					$.get("${pageContext.request.contextPath}/statusajax", {
+						"RelationBtn" : "Delete",
+						"friendNo" : friendNo,
+						"memberFriendNo" : memberFriendNo
+					}, function() {
+						deleteBtn.parents("form").remove();
+						layer.close(deleteConfirm);
+					});
 				});
-			});	
-	});
+			});
 
-	
-})
-$(function(){
-	$("input[name='RequestBtn']").click(function(){
-		var requestBtn=$(this);
-		var nowIndex=requestBtn.parents("form").find("input").val();
-		var memberFriendNo=$("#memberFriendNo"+nowIndex).val();
-	$.get("${pageContext.request.contextPath}/statusajax",{"RelationBtn":"Request","memberFriendNo":memberFriendNo},function(){
-		requestBtn.parents("form").remove();
+		})
+		$(function() {
+			$("input[name='RequestBtn']").click(function() {
+				var requestBtn = $(this);
+				var nowIndex = requestBtn.parents("form").find("input").val();
+				var memberFriendNo = $("#memberFriendNo" + nowIndex).val();
+				$.get("${pageContext.request.contextPath}/statusajax", {
+					"RelationBtn" : "Request",
+					"memberFriendNo" : memberFriendNo
+				}, function() {
+					requestBtn.after("<button>f</button>");
+// 					requestBtn.parents("form").remove();
 
-	});
-});
-});
-
-
-</script>
+				});
+			});
+		});
+	</script>
 
 
 
