@@ -31,7 +31,7 @@ import wish.model.WishPoolBean;
 import wish.model.WishPoolService;
 
 @WebServlet("/wish/wishform.controller")
-@MultipartConfig(location = "C:/temp")
+@MultipartConfig()
 public class WishFormServlet extends HttpServlet {
 	Integer memberNo;
 	private WishPoolService wishPoolService;
