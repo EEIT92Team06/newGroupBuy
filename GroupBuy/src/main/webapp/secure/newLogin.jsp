@@ -358,11 +358,11 @@ div.right a.google-plus:hover {
 				<br /> <label for="password">密碼</label><font size="2" id="passwordError"
 					style="margin-left: 7px;"  color="red"></font><br /> <input type="password"
 					name="password" id="pass" value="" /><br /> <input
-					style="margin-left: 58px" class="submit" type="button" value="Login"
+					style="" class="submit" type="button" value="Login"
 					onclick="loginCheck()" /> <a
 					href="<c:url value="/secure/newRegistry.jsp"/>"
-					style="color: gray; text-decoration: none; margin-top: 10px"
-					style="color:gray;">免費註冊</a>
+					style="color: gray;margin-left:20px; text-decoration: none; margin-top: 10px"
+				     >免費註冊</a>
 			</div>
 			<div class="right">
 				<div class="connect">透過Google帳號登入</div>
