@@ -31,6 +31,9 @@ import creategroup.model.GroupInfoBean;
 import creategroup.model.GroupInfoDetailsBean;
 import creategroup.model.GroupInfoPicBean;
 import login.model.MemberBean;
+import sitemail.model.SiteMailService;
+import wish.model.WishInterestBean;
+import wish.model.WishInterestService;
 import wish.model.WishPoolBean;
 import wish.model.WishPoolService;
 
@@ -40,12 +43,16 @@ public class CreateGroupServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CreateGroupService createGroupService;
     private WishPoolService wishPoolService;
+    private WishInterestService wishInterestService;
+    private SiteMailService siteMailService;
 	@Override
 	public void init() throws ServletException {
 		ServletContext application = this.getServletContext();
 		ApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(application);
 		createGroupService = (CreateGroupService) context.getBean("createGroupService");
 		wishPoolService = (WishPoolService) context.getBean("wishPoolService");
+		wishInterestService = (WishInterestService) context.getBean("wishInterestService");
+		siteMailService = (SiteMailService)context.getBean("siteMailService");
 	}
 
 	@Override
@@ -256,11 +263,22 @@ public class CreateGroupServlet extends HttpServlet {
 		if (insertResult != null) {
 			successMessage.put("createSuccess", "創團成功!!!");
 			List<WishPoolBean> wishDetail = (List<WishPoolBean>)session.getAttribute("wishDetail");
-			if(wishDetail!=null){
-			int wishNo = wishDetail.get(0).getWishNo();
-			Boolean deleteStatus=wishPoolService.delete(wishNo);
-	        System.out.println("deleteStatus="+deleteStatus);
-			}		
+			
+			if (wishDetail != null) {
+				int wishNo = wishDetail.get(0).getWishNo();
+				List<WishInterestBean> members = wishInterestService.interestMembers(wishNo);
+				Boolean deleteStatus = wishPoolService.delete(wishNo);
+				System.out.println("deleteStatus=" + deleteStatus);
+				for (WishInterestBean member : members) {
+					int memberNo = member.getMemberNo();
+					bean.setMemberNo(memberNo);
+					siteMailService.sendMail(bean, 4);
+					int count = 0;
+					count++;
+					System.out.println("count="+count);
+				}
+			}
+			
 			String path1 = request.getContextPath();
 			response.sendRedirect(path + "/creategroup/successCreate.jsp");
 			return;

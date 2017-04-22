@@ -1,5 +1,8 @@
 package wish.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.SessionFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -12,6 +15,21 @@ public class WishInterestService {
 	public WishInterestService(WishInterestDAO wishInterestDAO) {
 		this.wishInterestDAO = wishInterestDAO;
 	}
+	public List<WishInterestBean> interestMembers(int wishNo){
+		System.out.println("QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ");
+		List<WishInterestBean> list=null;
+		List<Object[]> results = wishInterestDAO.select(wishNo);
+        list = new ArrayList<WishInterestBean>();
+        for(Object[] result : results){
+        	 WishInterestBean bean = new WishInterestBean();
+        	 bean.setWishNo(Integer.parseInt(result[0].toString()));
+        	 bean.setMemberNo(Integer.parseInt(result[1].toString()));
+        	 
+        	 list.add(bean);
+        }
+		return list;	
+	}
+	
     public int likeCount(int wishNo){
     	int count = wishInterestDAO.count(wishNo);
     	return count;
@@ -49,7 +67,7 @@ public class WishInterestService {
 //		WishInterestBean bean = new WishInterestBean();
 //		bean.setWishNo(1);
 //		bean.setMemberNo(1);
-//		boolean xxx = wishInterestService.likeOrNot(3, 2);
+//		List<WishInterestBean> xxx = wishInterestService.interestMembers(3);
 //		System.out.println(xxx);
 //		
 //		sessionFactory.getCurrentSession().getTransaction().commit();
