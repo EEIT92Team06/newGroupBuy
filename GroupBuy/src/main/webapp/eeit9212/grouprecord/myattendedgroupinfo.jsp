@@ -399,46 +399,39 @@
 			// 			}
 
 			//彈出評分視窗
-			$("#stuffSub")
-					.click(
-							function() {
-								var layerOpen = layer.open({
-									type : 1,
-									title : '評分',
-									skin : 'layui-layer-rim', //加上边框
-									area : [ '420px', '240px' ], //宽高
-									content : $("#scoreDiv"),
-									closeBtn : 0
-								//不显示关闭按钮
-								});
+		$(":input[name='scoreBtn']").on('click',function() {
+			var thisBtn=$(this);
+				var layerOpen = layer.open({
+					type : 1,
+					title : '評分',
+					skin : 'layui-layer-rim', //加上边框
+					area : [ '420px', '240px' ], //宽高
+					content : $("#scoreDiv"),
+					closeBtn : 0
+					//不显示关闭按钮
+				});
 								//特地用Ajax練習，更新完評分根狀態直接重新載入當前頁面
-								$('#scoreButton')
-										.one(
-												'click',
-												function() {
-													$
-															.get(
-																	"creditajax",
-																	{
-																		"score" : $(
-																				":checked[name='score']")
-																				.val(),
-																		"groupInfoNo" : "${selectMyAttendedByGroupInfoNo.groupInfoNo}",
-																		"groupInfoMemberNo" : "${selectMyAttendedByGroupInfoNo.groupInfoMemberNo}"
-																	},
-																	function(
-																			data) {
-																		layer
-																				.close(layerOpen);
-																		webSocket
-																				.send('${selectMyAttendedByGroupInfoNo.groupInfoNo}');
-																		location
-																				.replace('myattendedgroupinfo.controller?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}&orderInfoNo=${selectMyAttendedByGroupInfoNo.orderInfoNo}');
-
-																	});
-												});
-							});
-
+			$('#scoreButton').one('click',function() {
+				
+			
+					$.get("${pageContext.request.contextPath}/eeit9212/grouprecord/creditajax",{"score" : $(":checked[name='score']").val(),
+							"groupInfoMemberNo" : "${selectMyAttendedByGroupInfoNo.groupInfoMemberNo}"},function(data) {																				
+									$.get("${pageContext.request.contextPath}/eeit9212/grouprecord/selectajax",{"groupInfoNo":${selectMyAttendedByGroupInfoNo.groupInfoNo}},function(data){
+										var jsonObj = JSON.parse(data);
+										$("#creditTd").empty().append(jsonObj.grouperCredit);
+										$("#orderStatus").empty().append("已收貨");
+										thisBtn.remove();
+										
+										var msg={
+												"target":'${selectMyAttendedByGroupInfoNo.groupInfoNo}',
+												"change":"orderStatus"
+										}						
+										webSocket.send(JSON.stringify(msg));
+									layer.close(layerOpen);
+									});													
+								});
+					});
+			});
 			//按下檢舉按鈕
 // 			var reportOpen;
 // 			$("#report").on('click',function() {
@@ -450,13 +443,13 @@
 // 					content : $("#reportDiv")
 // 				});
 // 			});
-			$("#sendReport").on('click',function() {	
-						var thisReport=$(this);
-						var reportTarget = thisReport.parents("form").find(
+			$("#sendReport").on('click',
+					function() {
+						var reportTarget = $(this).parents("form").find(
 								"input[name='reportTarget']").val();
-						var reportTypeNo = thisReport.parents("form").find(
+						var reportTypeNo = $(this).parents("form").find(
 								"select[name='reportTypeNo']").val();
-						var reportContent = thisReport.parents("form").find(
+						var reportContent = $(this).parents("form").find(
 								"textarea[name='reportContent']").val();
 
 						$.get("${pageContext.request.contextPath}/reportajax",
@@ -472,7 +465,6 @@
 									}, function() {
 										layer.close(reportAlert);
 										layer.close(reportOpen);
-// 										thisReport.css({"display":"none"});
 									});
 								});
 					});
@@ -520,25 +512,28 @@
 													function() {
 														$
 																.get(
-																		"${pageContext.request.contextPath}/eeit9212/grouprecord/myattendedgroupinfo.controller",
-																		{
-																			"groupInfoNo" : groupInfoNo,
-																			"orderInfoNo" : orderInfoNo,
-																			"account" : account
-																					.val(),
-																			"phone" : phone
-																					.val(),
-																			"address" : address
-																					.val()
+																		"${pageContext.request.contextPath}/eeit9212/grouprecord/aftersuccessajax",
+																		{"orderInfoNo" :orderInfoNo,
+																			"account" :account.val(),
+																			"phone" :phone.val(),
+																			"address" :address.val()
 																		},
 																		function(
 																				data) {
-																			webSocket
-																					.send('${selectMyAttendedByGroupInfoNo.groupInfoNo}');
-																			layer
-																					.close(payConfirm);
-																			location
-																					.reload();
+																			
+																			$("#orderStatus").empty().append("已匯款");
+																			account.parent().before("<div>匯款時間:"+data+"</div");
+																			account.parent().empty().append("帳號末五碼:"+account.val());
+																			phone.parent().empty().append("連絡電話:"+phone.val());
+																			address.parent().empty().append("寄送地址:"+address.val());
+																			$("#paySub").remove();
+																			var msg={
+																					"target":'${selectMyAttendedByGroupInfoNo.groupInfoNo}',
+																					"change":"payReady"
+																			}						
+																			webSocket.send(JSON.stringify(msg));
+																			layer.close(payConfirm);
+																			
 																		});
 
 													});

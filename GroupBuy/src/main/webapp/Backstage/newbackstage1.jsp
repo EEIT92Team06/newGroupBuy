@@ -117,7 +117,7 @@
 			<!-- 主要內容 -->
 			<div class="right_col" role="main">
 				<div class="productdesc" 
-					style="width: 800px;margin-left: 25%;margin-top: 6%" >
+					style="width: 800px;margin-left: 15%;margin-top: 6%" >
 					<form action="<c:url value="/Backstage/SendMailServlet"/>"	method="post">
 						<ul class="nav nav-tabs" id="myTab">
 							<li class="" onclick="removeChecked()"><font size="5">系統公告</font></a></li>
