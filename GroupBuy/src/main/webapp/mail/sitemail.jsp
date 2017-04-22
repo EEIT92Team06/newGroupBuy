@@ -144,9 +144,9 @@
 <body>
 	<jsp:include page="/headline.jsp" />
 	<div class="productdesc"
-		style="width: 1195px; margin-left:8%; margin-top: 80px">
+		style="width: 1195px; margin-left:12%; margin-top: 80px">
 		<form action="" style="float: right;">
-			<i style="margin-right: 9px;" class="fa fa-search" aria-hidden="true"></i><input
+			<i style="margin-right: 9px%;" class="fa fa-search" aria-hidden="true"></i><input
 				type="text" style="margin-bottom: 3px; width: 300px; height: 40px"
 				name="searchKeyWord" class="input-medium search-query"
 				placeholder="Search Here…">

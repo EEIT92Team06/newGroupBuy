@@ -1,6 +1,8 @@
 package searchgroup.model;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,14 +44,17 @@ public class SearchDetailsService {
 		sessionFactory.getCurrentSession().getTransaction().commit();
 		((ConfigurableApplicationContext) context).close();
 	}
+	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 	public Map<String, String> selectDetails(int groupInfoNo){
 		Object[] result = searchDetailsDAO.selectDetails(groupInfoNo);
 		Map<String, String>map = new HashMap<String, String>();
 		map.put("memberNo", result[0].toString());
 		map.put("groupInfoName", result[1].toString());
 		map.put("memberName", result[2].toString());
-		map.put("groupInfoStartDate", result[3].toString());
-		map.put("groupInfoDeadLine", result[4].toString());
+		String formatStartDate = format.format((Date)result[3]);
+		map.put("groupInfoStartDate", formatStartDate);
+		String formatDeadLine = format.format((Date)result[4]);
+		map.put("groupInfoDeadLine", formatDeadLine);
 		if(result[5] == null){
 			map.put("groupInfoContent", "");
 		}else{

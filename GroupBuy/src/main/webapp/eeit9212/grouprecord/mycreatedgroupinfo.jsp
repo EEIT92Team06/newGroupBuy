@@ -17,7 +17,6 @@
 </style>
 </head>
 <body>
-	<a>hello</a>
 	<jsp:include page="/headline.jsp"></jsp:include>
 
 	<div style="text-align: center;" class="cart-info container">
@@ -493,7 +492,7 @@
 										"target":orderInfoNo,
 										"change":"orderStatus"
 								}						
-								webSocket.send(JSON.stringify(msg));
+								webSocket.send(JSON.stringify(msg));  
 								layer.close(checkOrder);
 
 							});							
