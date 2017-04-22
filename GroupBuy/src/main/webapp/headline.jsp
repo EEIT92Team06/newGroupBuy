@@ -259,7 +259,7 @@ $(document).ready(function(){
 										<li class="dropdown" style="margin: 3px;"><a href="#"
 											class="profileImg" data-toggle="dropdown"> <%-- <img src="<c:url value='/Web_01Main/testPic.jpg'/>" --%>
 												<img
-												src="<c:url value='/pictures/${loginToken.memberAccount}.jpg'/>"></a>
+												src="<c:url value='/pictures/${loginToken.memberPic}'/>"></a>
 											<ul class="dropdown-menu" style="margin-top: 20px">
 												<li class="menu-item">
 												<li><a
@@ -289,7 +289,7 @@ $(document).ready(function(){
 							<div class="nav-inner">
 								<ul class="am-nav am-nav-pills am-nav-justify notifications">
 									<li class=""><a href="<c:url value='/theindex.jsp'/>">
-											<img src="<c:url value='/pictures/logo.png'/>"
+											<img src="<c:url value='/pictures/icon.png'/>"
 											style="width: 75px">
 									</a></li>
 

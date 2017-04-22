@@ -85,7 +85,7 @@ window.onload = function(){
 		var queryString = "groupInfoNo="+${groupInfoNo} +"&memberNo="+${memberBean.memberNo} +"&groupMsg="+Msg;
 		var url = "GroupMsgServlet.controller?"+ queryString;
 		xhr.open("GET" , url , true);
-		xhr.send();
+		xhr.send(); 
 		xhr.onreadystatechange = function(){   
 			// 向伺服器提出的請求已經收到回應  
 
