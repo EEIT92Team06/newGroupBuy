@@ -310,7 +310,7 @@ $(document).ready(function(){
 										<a href="<c:url value='/headline/SearchServlet0.controller'/>">搜團</a>
 										</li>
 									</c:when>
-									</c:choose>
+									</c:choose> 
 									<li><c:choose>
 											<c:when test="${empty loginToken}">
 												<a class="click1">許願池</a></li>
@@ -324,13 +324,13 @@ $(document).ready(function(){
 									</c:when>
 									</c:choose>
 
-									<li><c:choose>
-											<c:when test="${empty loginToken}">
-												<a href="<c:url value='/eeit9212/grouprecord/myattendedgroupinfo.controller'/>">我的團購</a>
-												<!-- sub-menu start--></li>
-									</c:when>
-									<c:when test="${!empty loginToken}">
-										<a href="<c:url value='/eeit9212/grouprecord/myattendedgroupinfo.controller'/>">我的團購</a>
+									<li>
+									  <c:choose>
+									     <c:when test="${empty loginToken}">
+										    <a class="click1">我的團購</a></li>
+								         </c:when>
+									        <c:when test="${!empty loginToken}">
+										    <a href="<c:url value='/eeit9212/grouprecord/myattendedgroupinfo.controller'/>">我的團購</a>
 										<!-- sub-menu start-->
 										<ul class="sub-menu">
 											<li class="menu-item"><a
