@@ -61,7 +61,7 @@ td {
 							</tr>
 							<tr>
 								<td>生日</td>
-								<td>${MemberInfo.memberBirth}</td>
+								<td>${MemberInfo.formatMemberBirthday}</td>
 							</tr>
 							<tr>
 								<td>電話</td>

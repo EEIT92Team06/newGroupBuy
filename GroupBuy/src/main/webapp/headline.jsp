@@ -177,6 +177,13 @@
 	/* padding: 5px; */
 	padding-top: 15px;
 }
+
+.profileImg img{
+	width:55px;
+	height:55px;
+	border-radius: 50%;
+	object-fit:cover;
+}
 </style>
 
 
@@ -250,10 +257,9 @@ $(document).ready(function(){
 										<!-- 鈴鐺結束-->
 										<!-- 頭像開始 -->
 										<li class="dropdown" style="margin: 3px;"><a href="#"
-											class="" data-toggle="dropdown"> <%-- <img src="<c:url value='/Web_01Main/testPic.jpg'/>" --%>
+											class="profileImg" data-toggle="dropdown"> <%-- <img src="<c:url value='/Web_01Main/testPic.jpg'/>" --%>
 												<img
-												src="<c:url value='/pictures/${loginToken.memberAccount}.jpg'/>"
-												width="55px" style="border-radius: 50%;"></a>
+												src="<c:url value='/pictures/${loginToken.memberPic}'/>"></a>
 											<ul class="dropdown-menu" style="margin-top: 20px">
 												<li class="menu-item">
 												<li><a
@@ -320,11 +326,11 @@ $(document).ready(function(){
 
 									<li><c:choose>
 											<c:when test="${empty loginToken}">
-												<a class="click1">我的團購</a>
+												<a href="<c:url value='/eeit9212/grouprecord/myattendedgroupinfo.controller'/>">我的團購</a>
 												<!-- sub-menu start--></li>
 									</c:when>
 									<c:when test="${!empty loginToken}">
-										<a href="<c:url value='/test'/>">我的團購</a>
+										<a href="<c:url value='/eeit9212/grouprecord/myattendedgroupinfo.controller'/>">我的團購</a>
 										<!-- sub-menu start-->
 										<ul class="sub-menu">
 											<li class="menu-item"><a
@@ -335,6 +341,7 @@ $(document).ready(function(){
 										</li>
 									</c:when>
 									</c:choose>
+
 
 									<!-- sub-menu end-->
 								</ul>

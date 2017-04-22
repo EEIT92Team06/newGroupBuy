@@ -266,13 +266,13 @@
 								</div>
 							</div>
 <!-- 		================================================= -->
-<!-- 		<div id="scoreDiv" style="display: none"> -->
-<!-- 			<input type="radio" name="score" value="1" checked="checked" />1 <input -->
-<!-- 				type="radio" name="score" value="2" />2 <input type="radio" -->
-<!-- 				name="score" value="3" />3 <input type="radio" name="score" -->
-<!-- 				value="4" />4 <input type="radio" name="score" value="5" />5 <input -->
-<!-- 				type="button" value="評分" id="scoreButton" /> -->
-<!-- 		</div> -->
+		<div id="scoreDiv" style="display: none">
+			<input type="radio" name="score" value="1" checked="checked" />1 <input
+				type="radio" name="score" value="2" />2 <input type="radio"
+				name="score" value="3" />3 <input type="radio" name="score"
+				value="4" />4 <input type="radio" name="score" value="5" />5 <input
+				type="button" value="評分" id="scoreButton" />
+		</div>
 		
 <!-- 	</div> -->
 <!-- 	<div id="reportDiv" style="display: none;"> -->
