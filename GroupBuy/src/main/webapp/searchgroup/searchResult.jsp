@@ -28,7 +28,7 @@
 		method="post">
 		<table>
 		<div style="padding-left:70px ;">
-			<div style="padding:15px;width: 200px;float:left;margin-left: 15%;">
+			<div style="padding:15px;width: 200px;float:left;margin-left: 163px;">
 				<input type="text" name="name" placeholder="請輸入 商品 關鍵字" autocomplete="off" value="${param.name}" style="width: 163.6px;">
 			</div>
 			<div style="float:left ;padding-top: 10px">
@@ -69,9 +69,9 @@
 						<span class="maintext">搜尋結果</span><span class="subtext"></span>
 					</h1>
 					<c:forEach var="bean" items="${groupInfo}">
-					<div style="float:left">
-					<ul class="thumbnails">
-						<li class="span3">
+					<div style="float:left;height: 404px;"> 
+					<ul class="thumbnails" style="margin-top: 30px;">  
+						<li class="span3"> 
 							<div class="thumbnail">
 								<img alt="" style="width:220px;height:170px;" src="${pageContext.servletContext.contextPath}/searchImg/getImage?id=${bean.groupInfoNo}&type=groupCover">
 								<span class="viewfancypopup">&nbsp;</span>
