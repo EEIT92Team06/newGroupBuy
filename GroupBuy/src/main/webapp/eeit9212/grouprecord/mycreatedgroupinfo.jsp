@@ -14,6 +14,31 @@
 .temp {
 	
 }
+.button_s {
+	font-size: 15px;
+	font-weight: normal;
+	border-radius: 5px;
+	background-color: #F25C27;
+	color: white;
+	line-height: 30px;
+	text-align: center;
+	display: inline-block;
+	margin: 0 5px;
+	text-align: center;
+}
+
+.button_b {
+	font-size: 15px;
+	font-weight: normal;
+	border-radius: 5px;
+	background-color: gray;
+	color: white;
+	line-height: 30px;
+	text-align: center;
+	display: inline-block;
+	margin: 0 5px;
+	text-align: center;
+}
 </style>
 </head>
 <body>
@@ -21,29 +46,29 @@
 
 	<div style="text-align: center;" class="cart-info container">
 		<h1>您創的團</h1>
-		<table class="table table-striped table-bordered">
+		<table style="text-align: center;">
 			<tr>
-				<th style="text-align: center;" class="image">圖片</th>
-				<th style="text-align: center;" class="name">創團日期</th>
-				<th style="text-align: center;" class="model">團名</th>
-				<th style="text-align: center;" class="quantity">狀態</th>
-				<th style="text-align: center;" class="quantity">類型</th>
-				<th style="text-align: center;" class="quantity">目前產品數量</th>
-				<th style="text-align: center;" class="quantity">寄送方式</th>
-				<th style="text-align: center;" class="quantity">匯款帳號</th>
-				<th style="text-align: center;" class="quantity">結束日期</th>
+				<th style="text-align: center;vertical-align: middle;" class="image">圖片</th>
+				<th style="text-align: center;vertical-align: middle;" class="name">創團日期</th>
+				<th style="text-align: center;vertical-align: middle;" class="model">團名</th>
+				<th style="text-align: center;vertical-align: middle;" class="quantity">狀態</th>
+				<th style="text-align: center;vertical-align: middle;" class="quantity">類型</th>
+				<th style="text-align: center;vertical-align: middle;" class="quantity">目前產品數量</th>
+				<th style="text-align: center;vertical-align: middle;" class="quantity">寄送方式</th>
+				<th style="text-align: center;vertical-align: middle;" class="quantity">匯款帳號</th>
+				<th style="text-align: center;vertical-align: middle;" class="quantity">結束日期</th>
 
 			</tr>
 
 			<tr>
-				<td style="text-align: center;" class="image"><a href="#"><img
+				<td style="text-align: center;vertical-align: middle;" class="image"><a href="#"><img
 						title="product" alt="product"
 						src="<c:url value='/eeit9212/getimage?groupInfoNo=${selectGroupInfoByGroupInfoNo.groupInfoNo}'/>"
-						height="100" width="100"></a></td>
-				<td style="text-align: center;" class="name">${selectGroupInfoByGroupInfoNo.groupInfoStartDate}</td>
-				<td style="text-align: center;" class="model">${selectGroupInfoByGroupInfoNo.groupInfoName}</td>
-				<td id="groupStatusId" style="text-align: center;" class="quantity">${selectGroupInfoByGroupInfoNo.groupStatus}</td>
-				<td style="text-align: center;" class="quantity">${selectGroupInfoByGroupInfoNo.productType}</td>
+						height="50" width="50"></a></td>
+				<td style="text-align: center;vertical-align: middle;" class="name">${selectGroupInfoByGroupInfoNo.groupInfoStartDate}</td>
+				<td style="text-align: center;vertical-align: middle;" class="model">${selectGroupInfoByGroupInfoNo.groupInfoName}</td>
+				<td id="groupStatusId" style="text-align: center;vertical-align: middle;" class="quantity">${selectGroupInfoByGroupInfoNo.groupStatus}</td>
+				<td style="text-align: center;vertical-align: middle;" class="quantity">${selectGroupInfoByGroupInfoNo.productType}</td>
 				<c:if
 					test="${empty selectGroupInfoByGroupInfoNo.groupInfoTotalProductQt}">
 					<c:set var="groupInfoTotalProductQt" scope="request" value="0" />
@@ -54,10 +79,10 @@
 						value="${selectGroupInfoByGroupInfoNo.groupInfoTotalProductQt}" />
 				</c:if>
 				<input id="groupInfoTotalProductQtId" type="hidden" value="${groupInfoTotalProductQt}"/>
-				<td id="productQtId" style="text-align: center;" class="quantity">${groupInfoTotalProductQt}/${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}</td>
-				<td style="text-align: center;" class="quantity">${selectGroupInfoByGroupInfoNo.groupInfoShippingWay}</td>
-				<td style="text-align: center;" class="quantity">${selectGroupInfoByGroupInfoNo.groupInfoBankAccount}</td>
-				<td id="deadLineId" style="text-align: center;" class="quantity">${selectGroupInfoByGroupInfoNo.formatDeadLine}</td>
+				<td id="productQtId" style="text-align: center;vertical-align: middle;" class="quantity">${groupInfoTotalProductQt}/${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}</td>
+				<td style="text-align: center;vertical-align: middle;" class="quantity">${selectGroupInfoByGroupInfoNo.groupInfoShippingWay}</td>
+				<td style="text-align: center;vertical-align: middle;" class="quantity">${selectGroupInfoByGroupInfoNo.groupInfoBankAccount}</td>
+				<td id="deadLineId" style="text-align: center;vertical-align: middle;" class="quantity">${selectGroupInfoByGroupInfoNo.formatDeadLine}</td>
 
 			</tr>
 		</table>
@@ -68,21 +93,22 @@
 			<thead>
 				<tr>
 					<c:if test="${selectGroupInfoByGroupInfoNo.groupStatusNo==7}">
-						<th>通知</th>
+						<th style="text-align: center;vertical-align: middle;">通知</th>
 					</c:if>
 					<c:if test="${selectGroupInfoByGroupInfoNo.groupStatusNo!=7}">
-						<th id="receiveThId" style="display: none;">通知</th>
+						<th id="receiveThId" style="text-align: center;vertical-align: middle;display: none;">通知</th>
+						 
 					</c:if>
-					<th style="text-align: center;">狀態</th>
-					<th style="text-align: center;">買家</th>
-					<th style="text-align: center;">出席率</th>
-					<th style="text-align: center;">總金額</th>
+					<th style="text-align: center;vertical-align: middle;">狀態</th>
+					<th style="text-align: center;vertical-align: middle;">買家</th>
+					<th style="text-align: center;vertical-align: middle;">出席率</th>
+					<th style="text-align: center;vertical-align: middle;">總金額</th>
 					<!-- 	迴圈顯示每一個團有哪些產品 -->
 					<c:forEach var="bean" items="${selectGroupInfoDetail}">
 						<c:set var="productCount" value="${productCount+1}"></c:set>
-						<th style="text-align: center;">${bean.groupInfoDetailsProdcutName}，單價:${bean.groupInfoDetailsProductPrice}</th>
+						<th style="text-align: center;vertical-align: middle;">${bean.groupInfoDetailsProdcutName}，單價:${bean.groupInfoDetailsProductPrice}</th>
 					</c:forEach>
-					<th style="text-align: center;">詳細</th>
+					<th style="text-align: center;vertical-align: middle;">詳細</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -103,23 +129,24 @@
 							<input type="hidden" value="${bean.orderInfoNo}" />
 							<c:if
 								test="${selectGroupInfoByGroupInfoNo.groupStatusNo==7&&bean.orderInfoStatusNo==1102}">
-								<td><button type="button" name="receivePayMoney">通知買家已收到匯款</button></td>
+								<td style="text-align: center;vertical-align: middle;"><button type="button" name="receivePayMoney">通知買家已收到匯款</button></td>
 							</c:if>
 							<c:if
+							
 								test="${selectGroupInfoByGroupInfoNo.groupStatusNo!=7||bean.orderInfoStatusNo!=1102}">
-								<td id="receiveTdId${bean.orderInfoNo}" style="display: none;"><button
+								<td id="receiveTdId${bean.orderInfoNo}" style="text-align: center;vertical-align: middle;display: none;"><button
 										type="button" name="receivePayMoney">通知買家已收到匯款</button></td>
 							</c:if>
 							<c:if
 								test="${selectGroupInfoByGroupInfoNo.groupStatusNo==7&&bean.orderInfoStatusNo==1105}">
-								<td>已通知</td>
+								<td style="text-align: center;vertical-align: middle;">已通知</td>
 							</c:if>
 							<c:if
 								test="${selectGroupInfoByGroupInfoNo.groupStatusNo==7&&bean.orderInfoStatusNo==1101||bean.orderInfoStatusNo==1104}">
-								<td></td>
+								<td style="text-align: center;vertical-align: middle;"></td>
 							</c:if>
 							<c:if test="${bean.orderInfoStatusNo==1001}">
-								<td>
+								<td style="text-align: center;vertical-align: middle;">
 									<button type="button" name="status" value="accept">接受</button>
 									<button type="button" name="status" value="reject">拒絕</button>
 									${bean.orderInfoStatus}
@@ -127,26 +154,26 @@
 							</c:if>
 							<c:if test="${bean.orderInfoStatusNo!=1001}">
 
-								<td id="statusId${bean.orderInfoNo}">${bean.orderInfoStatus}</td>
+								<td style="text-align: center;vertical-align: middle;" id="statusId${bean.orderInfoNo}">${bean.orderInfoStatus}</td>
 							</c:if>
 							<td>${bean.memberName}</td>
 							<c:if test="${not empty bean.groupAttendanceTotalQt}">
-								<td>${bean.groupAttendanceTotalSuccess}/${bean.groupAttendanceTotalQt}</td>
+								<td style="text-align: center;vertical-align: middle;">${bean.groupAttendanceTotalSuccess}/${bean.groupAttendanceTotalQt}</td>
 							</c:if>
 							<c:if test="${empty bean.groupAttendanceTotalQt}">
-								<td>首次參與團購</td>
+								<td style="text-align: center;vertical-align: middle;">首次參與團購</td>
 							</c:if>
-							<td>${bean.orderInfoPriceTotal}</td>
+							<td style="text-align: center;vertical-align: middle;">${bean.orderInfoPriceTotal}</td>
 							<%
 								// 	 	對所有訂單明細的list做迴圈，依產品數量分批做。
 										while (i < list.size()) {
 											if (list.get(i) != null) {
 							%>
-							<td><%=list.get(i).getOrderInfoDetailsProductQt()%>&nbsp，&nbsp$<%=list.get(i).getProductTotalPriceByQt()%></td>
+							<td style="text-align: center;vertical-align: middle;"><%=list.get(i).getOrderInfoDetailsProductQt()%>&nbsp，&nbsp$<%=list.get(i).getProductTotalPriceByQt()%></td>
 							<%
 								} else {
 							%>
-							<td>X</td>
+							<td style="text-align: center;vertical-align: middle;">X</td>
 							<%
 								}
 											i++;
@@ -156,26 +183,26 @@
 											}
 										}
 							%>
-							<td><a style="text-decoration: none;" href="#"
+							<td style="text-align: center;vertical-align: middle;"><a style="text-decoration: none;" href="#"
 								class="fa fa-sort-desc"></a></td>
 						</tr>
 
 					</c:if>
 
 						<tr id="afterPayId${bean.orderInfoNo}" style="display: none;">
-							<td colspan="${productCount+6}">
+							<td style="text-align: center;vertical-align: middle;" colspan="${productCount+6}">
 								<table>
 									<thead>	<tr>			
 											<c:if test="${selectGroupInfoByGroupInfoNo.groupStatusNo==9}">
-												<th style="text-align: center;">包裹編號</th>
+												<th style="text-align: center;vertical-align: middle;">包裹編號</th>
 											</c:if>
 <%-- 											<c:if test="${selectGroupInfoByGroupInfoNo.groupStatusNo!=9}"> --%>
-												<th id="packageNoThId${bean.orderInfoNo}" style="display:none;text-align: center;">包裹編號</th>
+												<th id="packageNoThId${bean.orderInfoNo}" style="display:none;text-align: center;vertical-align: middle;">包裹編號</th>
 <%-- 											</c:if> --%>
-											<th style="text-align: center;">匯款時間</th>
-											<th style="text-align: center;">電話</th>
-											<th style="text-align: center;">寄送地址</th>
-											<th style="text-align: center;">帳號末五碼</th>
+											<th style="text-align: center;vertical-align: middle;">匯款時間</th>
+											<th style="text-align: center;vertical-align: middle;">電話</th>
+											<th style="text-align: center;vertical-align: middle;">寄送地址</th>
+											<th style="text-align: center;vertical-align: middle;">帳號末五碼</th>
 											</tr>
 									</thead>
 									<tbody>
@@ -183,25 +210,25 @@
 											<c:if test="${selectGroupInfoByGroupInfoNo.groupStatusNo==9}">
 												<c:if
 													test="${not empty bean.orderInfoAfterSuccessPackageNo}">
-													<td>${bean.orderInfoAfterSuccessPackageNo}</td>
+													<td style="text-align: center;vertical-align: middle;">${bean.orderInfoAfterSuccessPackageNo}</td>
 												</c:if>
 												<c:if test="${empty bean.orderInfoAfterSuccessPackageNo}">
-													<td><input type="hidden" value="${bean.orderInfoNo}" />
+													<td style="text-align: center;vertical-align: middle;"><input type="hidden" value="${bean.orderInfoNo}" />
 														<input type="text" name="packageNo" /><input
 														name="statusId" type="hidden" value="${x.index}" /></td>
 												</c:if>
 											</c:if>
 <%-- 											<c:if test="${selectGroupInfoByGroupInfoNo.groupStatusNo!=9}"> --%>
 												
-													<td id="packageNoTdId${bean.orderInfoNo}" style="display: none;"><input type="hidden" value="${bean.orderInfoNo}" />
+													<td id="packageNoTdId${bean.orderInfoNo}" style="text-align: center;vertical-align: middle;display: none;"><input type="hidden" value="${bean.orderInfoNo}" />
 														<input type="text" name="packageNo" /><input
 														name="statusId" type="hidden" value="${x.index}" /></td>
 											
 <%-- 											</c:if> --%>
-											<td id="payTime${bean.orderInfoNo}">${bean.formatPayTime}</td>
-											<td id="phone${bean.orderInfoNo}">${bean.orderInfoAfterSuccessPhone}</td>
-											<td id="destination${bean.orderInfoNo}">${bean.orderInfoAfterSuccessDestination}</td>
-											<td id="bankAccount${bean.orderInfoNo}">${bean.orderInfoAfterSuccessBankAccount}</td>
+											<td style="text-align: center;vertical-align: middle;" id="payTime${bean.orderInfoNo}">${bean.formatPayTime}</td>
+											<td style="text-align: center;vertical-align: middle;" id="phone${bean.orderInfoNo}">${bean.orderInfoAfterSuccessPhone}</td>
+											<td style="text-align: center;vertical-align: middle;" id="destination${bean.orderInfoNo}">${bean.orderInfoAfterSuccessDestination}</td>
+											<td style="text-align: center;vertical-align: middle;" id="bankAccount${bean.orderInfoNo}">${bean.orderInfoAfterSuccessBankAccount}</td>
 										</tr>
 									</tbody>
 								</table>
@@ -218,8 +245,8 @@
 			您的產品數量為${groupInfoTotalProductQt}，<br>
 			數量未達標，有一次延期機會，延期時間為原截止日期加三天，或直接選擇流團。
 		</h3>
-		<button id="extension" value="extension">延期</button>
-		<button id="noExtension" value="noExtension">流團</button>
+		<button class='button_s' id="extension" value="extension">延期</button>
+		<button class='button_b' id="noExtension" value="noExtension">流團</button>
 	</div>
 	<script src="<c:url value='/js/jquery-3.1.1.min.js'></c:url>"></script>
 	<script src="<c:url value='/js/layer/layer.js'/>"></script>
@@ -288,6 +315,7 @@
 			function groupStartAlert(){
 				var groupStartAlert=layer.alert('截止日期已到。<br>您的產品下限為:${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}，<br>您的產品數量為:${groupInfoTotalProductQt}，<br>數量已達標，按下確定後系統將自動發送站內信給報名您的團的買家請買家於三天內匯款。', {
 					  skin: 'layui-layer-molv' //样式类名
+						  ,btn:'確定'
 					  ,closeBtn: 0
 					},function(){
 						$.get("${pageContext.request.contextPath}/eeit9212/grouprecord/changegroupstatus",{"locationFrom":"groupStart","groupInfoNo":'${selectGroupInfoByGroupInfoNo.groupInfoNo}'},function(data){
@@ -343,7 +371,7 @@
 						type : 1,
 						title : '截止日期已到',
 						skin : 'layui-layer-rim', //加上边框
-						area : [ '600px', '400px' ], //宽高
+						area : [ '600px', '310px' ], //宽高
 						content : $("#deadLineDiv"),
 						closeBtn : 0 //不显示关闭按钮
 					});
@@ -363,6 +391,7 @@
 				if(${groupInfoTotalProductQt>=selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}){
 					layer.alert('延期截止日期已到。<br>您的產品下限為:${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}，<br>您的產品數量為:${groupInfoTotalProductQt}，<br>數量已達標，按下確定後系統將自動發送站內信給報名您的團的買家請買家於三天內匯款。', {
 						  skin: 'layui-layer-molv' //样式类名
+							  ,btn:'確定'
 						  ,closeBtn: 0
 						},function(){
 							$.get("${pageContext.request.contextPath}/eeit9212/grouprecord/changegroupstatus",{"locationFrom":"groupStart","groupInfoNo":'${selectGroupInfoByGroupInfoNo.groupInfoNo}'},function(data){
@@ -378,6 +407,7 @@
 				else{
 				layer.alert('延期截止日期已到。<br>您的產品下限為:${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}，<br>您的產品數量為:${groupInfoTotalProductQt}，<br>數量未達標，您已經延期過一次，系統將判定您的團為:流團，數量未達標。', {
 					  skin: 'layui-layer-molv' //样式类名
+						  ,btn:'確定'
 					  ,closeBtn: 0
 					},function(){
 // 						webSocket.send("sendAllOrder");
@@ -389,6 +419,7 @@
 				if(${groupInfoTotalProductQt>=selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}){
 					var startSendAlert=layer.alert('匯款截止日期已到。<br>您的產品下限為:${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}，<br>您的買家匯款產品總數量為:${groupInfoTotalProductQt}，<br>數量已達標，系統將判定您的團為:開團中，寄貨中。<br>請盡快處理寄貨。', {
 						  skin: 'layui-layer-molv' //样式类名
+							  ,btn:'確定'
 						  ,closeBtn: 0
 						},function(){
 							$.get("${pageContext.request.contextPath}/eeit9212/grouprecord/changegroupstatus",{"locationFrom":"startSend","groupInfoNo":'${selectGroupInfoByGroupInfoNo.groupInfoNo}'},function(data){	
@@ -423,6 +454,7 @@
 					layer.alert('匯款截止日期已到。<br>您的產品下限為:${selectGroupInfoByGroupInfoNo.groupInfoMinProductQt}，<br>您的買家匯款產品總數量為:${groupInfoTotalProductQt}，<br>數量未達標，系統將判定您的團為:流團，數量未達標。<br>請盡快處理退款。', {
 
 						  skin: 'layui-layer-molv' //样式类名
+							  ,btn:'確定'
 						  ,closeBtn: 0
 						},function(){
 // 							webSocket.send("sendAllOrder");
