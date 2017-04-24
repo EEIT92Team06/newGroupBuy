@@ -120,7 +120,7 @@ window.onload = function(){
 					divis.setAttribute("style","width:1000px");
 					var p = document.createElement("p");
 					p.insertAdjacentText("BeforeEnd", data.groupMsg);
-					p.setAttribute("style","margin-left:70px");
+					p.setAttribute("style","margin-left:60px");
 					divis.appendChild(p); 
 					
 					var li = document.createElement("Li");
