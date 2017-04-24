@@ -42,7 +42,7 @@
 			<tr>
 			<td style="text-align: center;vertical-align: middle;" class="image"><a href="#"><img title="product"
 						alt="product" src="<c:url value='/eeit9212/getimage?groupInfoNo=${bean.groupInfoNo}'/>" height="50" width="50"></a></td>
-					<td style="text-align: center;vertical-align: middle;" class="name">${bean.groupInfoStartDate}</td>
+					<td style="text-align: center;vertical-align: middle;" class="name">${bean.formatStartDate}</td>
 			<td style="text-align: center;vertical-align: middle;" class="model">${bean.groupInfoName}</td>
 				<td style="text-align: center;vertical-align: middle;" class="quantity">${bean.groupStatus}</td>
 				<td style="text-align: center;vertical-align: middle;" class="quantity">${bean.productType}</td>

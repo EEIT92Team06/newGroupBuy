@@ -19,15 +19,24 @@ public class CreateGroupInfoBean{
 	private String groupInfoShippingWay;
 	private String groupInfoBankAccount;
 	private Blob groupInfoCoverPic;
+	private String formatStartDate;
 	private String formatDeadLine;
 	
-	
+	public String getFormatStartDate() {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		return formatStartDate = format.format(groupInfoStartDate);
+	}
+
+	public void setFormatStartDate() {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		this.formatStartDate = format.format(groupInfoStartDate);
+	}
 	public String getFormatDeadLine() {
-		SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return formatDeadLine= format.format(getGroupInfoDeadLine());
 	}
 	public void setFormatDeadLine() {
-		SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm");	
+		SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");	
 		this.formatDeadLine = format.format(getGroupInfoDeadLine());
 	}
 

@@ -92,11 +92,35 @@ public class ChangeGroupStatusAjax extends HttpServlet {
 		if("selectGroupInfo".equals(locationFrom)){
 			CreateGroupInfoBean selectGroupInfoByGroupInfoNo = groupInfoService.selectGroupInfoByGroupInfoNo(groupInfoNo);
 			selectGroupInfoByGroupInfoNo.setFormatDeadLine();
+			selectGroupInfoByGroupInfoNo.setFormatStartDate();
 			Gson gson = new Gson();
 			String json = gson.toJson(selectGroupInfoByGroupInfoNo);
 			System.out.println(json);
 			out.write(json);
 		}
+		if("extension".equals(locationFrom)){
+			String deadLineTemp=request.getParameter("deadLine");
+			Timestamp deadLine=null;
+			if(deadLineTemp!=null&&deadLineTemp.length()!=0){
+				try{
+				deadLine=Timestamp.valueOf(deadLineTemp);
+				groupInfoService.updateGroupStatus(groupInfoNo, 3);
+				groupInfoService.updateGroupInfoDeadLine(groupInfoNo, deadLine);
+				CreateGroupInfoBean selectGroupInfoByGroupInfoNo = groupInfoService.selectGroupInfoByGroupInfoNo(groupInfoNo);
+				selectGroupInfoByGroupInfoNo.setFormatDeadLine();
+				selectGroupInfoByGroupInfoNo.setFormatStartDate();
+				Gson gson = new Gson();
+				String json = gson.toJson(selectGroupInfoByGroupInfoNo);
+				System.out.println(json);
+				out.write(json);
+				}catch(Exception e){
+					System.out.println("deadLineTemp格式錯誤="+deadLineTemp);
+				}
+			}				
+		}
+		if("againTimeout".equals(locationFrom)){
+			groupInfoService.updateGroupStatus(groupInfoNo, 6);
+		}	
 		if("groupStart".equals(locationFrom)){	
 			CreateGroupInfoBean selectGroupInfoByGroupInfoNo = groupInfoService.selectGroupInfoByGroupInfoNo(groupInfoNo);
 			if(selectGroupInfoByGroupInfoNo.getGroupStatusNo()==2||selectGroupInfoByGroupInfoNo.getGroupStatusNo()==6){

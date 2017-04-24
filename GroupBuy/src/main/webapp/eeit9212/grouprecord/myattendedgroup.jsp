@@ -37,7 +37,7 @@
 					<a href="#"><img title="product"
 						alt="product" src="<c:url value='/eeit9212/getimage?groupInfoNo=${bean.groupInfoNo}'/>" height="50" width="50"></a>	
 					</td>
-					<td style="text-align: center;vertical-align: middle;">${bean.groupInfoStartDate}</td>
+					<td style="text-align: center;vertical-align: middle;">${bean.formatStartDate}</td>
 					<td style="text-align: center;vertical-align: middle;">${bean.memberName}</td>
 					<td style="text-align: center;vertical-align: middle;">${bean.formatGrouperCredit}</td>
 					<td style="text-align: center;vertical-align: middle;">${bean.groupInfoName}</td>
