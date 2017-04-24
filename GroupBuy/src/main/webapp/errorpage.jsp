@@ -7,18 +7,55 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<jsp:include page="/headline.jsp"/>
+<style type="text/css">
+.button_s {
+	font-size: 15px;
+	font-weight: normal;
+	border-radius: 5px;
+	background-color: #F25C27;
+	color: white;
+	line-height: 40px;
+	text-align: center;
+	display: inline-block;
+	margin: 0 5px;
+	text-align: center;
+}
+.button_b {
+	font-size: 30px;
+	font-weight: normal;
+	border-radius: 10px;
+	background-color: gray;
+	color: white;
+	line-height: 40px;
+	text-align: center;
+	display: inline-block;
+	margin: 0 5px;
+	text-align: center;
+	width: 170px;
+	height: 70px;
+	
+}
+
+</style>
 </head>
-<body>
+<body style="background-color:#DDDDDD;">
+
+
+<div style="text-align:center;margin-top:230px;">
 	<c:if test="${statusCode==404}">
-		<h1>${statusCode}</h1>
-		<h4>找不到您輸入的位置:${requestUri}。</h4>
+		<div style="font-size: 50px">
+		很抱歉，找不到您輸入的位置:<br>${requestUri}。<br>
+		請重新輸入。
+		</div>
 	</c:if>
 	<c:if test="${statusCode!=404}">
-		<h1>${statusCode}</h1>
-		<h4>系統發生錯誤，請稍後在試。</h4>
+		<div style="font-size: 50px">
+		很抱歉，系統忙碌中，請稍後再試。
+		</div>
 	</c:if>
-
-
-	<a href="<c:url value='/test.jsp'/>">回首頁</a>
+	<button style="margin-top:20px" class="button_b" onclick="history.back()">上一頁</button>
+</div>
+	
 </body>
 </html>

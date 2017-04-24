@@ -95,7 +95,7 @@ html #layuicss-skinlayercss {
 }
 
 .layui-layer {
-	border-radius: 5px;
+	border-radius: 2px;
 	-webkit-animation-fill-mode: both;
 	animation-fill-mode: both;
 	-webkit-animation-duration: .3s;
@@ -596,8 +596,8 @@ opacity
 }
 
 .layui-layer-dialog {
-	min-width: 260px
 	border-radius:5px;
+	min-width: 260px
 }
 
 .layui-layer-dialog .layui-layer-content {
@@ -606,7 +606,7 @@ opacity
 	line-height: 24px;
 	word-break: break-all;
 	overflow: hidden;
-	font-size: 18px;
+	font-size: 14px;
 	overflow-x: hidden;
 	overflow-y: auto
 }
@@ -810,13 +810,14 @@ opacity
 }
 
 .layui-layer-molv .layui-layer-title {
-	background: #009f95;
-	color: #fff;
+	background: #FDEECE;
+	color: #F25C27;
 	border: none
 }
 
 .layui-layer-molv .layui-layer-btn a {
-	background: #009f95
+	background: #F25C27
+
 }
 
 .layui-layer-molv .layui-layer-btn .layui-layer-btn1 {
