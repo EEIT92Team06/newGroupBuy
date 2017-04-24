@@ -454,7 +454,7 @@
 			</div>
 		</form>
 	</div>
-
+    
 	<script src="../js/js/jquery.js"></script>
 	<script src="../js/js/bootstrap.js"></script>
 	<script src="../js/js/respond.min.js"></script>
@@ -472,5 +472,6 @@
 	<script type="text/javascript"
 		src="../js/js/jquery.ba-throttle-debounce.min.js"></script>
 	<script defer src="../js/js/custom.js"></script>
+	
 </body>
 </html>
