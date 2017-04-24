@@ -6,29 +6,87 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
 <link href="../../css/bootstrap.css" rel="stylesheet">
 <link href="../../css/style.css" rel="stylesheet">
 <link href="../../css/flexslider.css" type="text/css" media="screen" rel="stylesheet" />
+<jsp:include page="/headline.jsp"></jsp:include>
+<style type="text/css">
+.tablink {
+     background-color: white;
+    
+/*     color: white; */
+/*     float: left; */
+     border-top: none; 
+      border-left: none;
+       border-right: none;
+       margin-left:35px; 
+/*       border-bottom: 1px;  
+/*      outline: none;  */
+/*     cursor: pointer; */
+/*     padding: 14px 16px; */
+/*     font-size: 17px; */
+/*     width: 25%; */
+}
+.tablink1 {
+     background-color: white;
+    
+/*     color: white; */
+/*     float: left; */
+     border-bottom: none; 
+ 
+       margin-left:35px; 
+/*       border-bottom: 1px;  
+/*      outline: none;  */
+/*     cursor: pointer; */
+/*     padding: 14px 16px; */
+/*     font-size: 17px; */
+/*     width: 25%; */
+}
+.button_s {
+	font-size: 15px;
+	font-weight: normal;
+	border-radius: 5px;
+	background-color: #F25C27;
+	color: white;
+	line-height: 30px;
+	text-align: center;
+	display: inline-block;
+	margin: 0 5px;
+	text-align: center;
+}
 
+.button_b {
+	font-size: 15px;
+	font-weight: normal;
+	border-radius: 5px;
+	background-color: gray;
+	color: white;
+	line-height: 30px;
+	text-align: center;
+	display: inline-block;
+	margin: 0 5px;
+	text-align: center;
+}
+</style>
 </head>
 <body>
-	<jsp:include page="/headline.jsp"></jsp:include>
+	
 	<div class="cart-info container">
 		<h1 style="text-align: center;">您參加的團</h1>
 		<table class="table table-striped table-bordered">
 			<thead>
 				<tr>
-					<th style="text-align: center;">圖片</th>
-					<th style="text-align: center;">創團日期</th>
-					<th style="text-align: center;">主揪</th>
-					<th style="text-align: center;">主揪評分</th>
-					<th style="text-align: center;">團名</th>
-					<th style="text-align: center;">狀態</th>
-					<th style="text-align: center;">類型</th>
-					<th style="text-align: center;">目前產品數量</th>
-					<th style="text-align: center;">結束日期</th>
-					<th style="text-align: center;">訂單狀態</th>
-					<th style="text-align: center;">寄送方式</th>
+					<th style="text-align: center;vertical-align: middle;">圖片</th>
+					<th style="text-align: center;vertical-align: middle;">創團日期</th>
+					<th style="text-align: center;vertical-align: middle;">主揪</th>
+					<th style="text-align: center;vertical-align: middle;">主揪評分</th>
+					<th style="text-align: center;vertical-align: middle;">狀態</th>
+					<th style="text-align: center;vertical-align: middle;">類型</th>
+					<th style="text-align: center;vertical-align: middle;">目前產品數量</th>
+					<th style="text-align: center;vertical-align: middle;">結束日期</th>
+					<th style="text-align: center;vertical-align: middle;">訂單狀態</th>
+					
 				</tr>
 			</thead>
 			<tbody>
@@ -36,15 +94,14 @@
 				<tr>
 
 				
-					<td><a href="#"><img title="product" alt="product"
+					<td style="text-align: center;vertical-align: middle;"><a href="#"><img title="product" alt="product"
 							src="<c:url value='/eeit9212/getimage?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}'/>"
-							height="100" width="100"></a></td>
-					<td style="text-align: center;">${selectMyAttendedByGroupInfoNo.groupInfoStartDate}</td>
-					<td style="text-align: center;">${selectMyAttendedByGroupInfoNo.memberName}</td>
-					<td style="text-align: center;" id="creditTd">${selectMyAttendedByGroupInfoNo.formatGrouperCredit}</td>
-					<td style="text-align: center;">${selectMyAttendedByGroupInfoNo.groupInfoName}</td>
-					<td style="text-align: center;" id="groupStatusId">${selectMyAttendedByGroupInfoNo.groupStatus}</td>
-					<td style="text-align: center;">${selectMyAttendedByGroupInfoNo.productType}</td>
+							height="50" width="50"></a></td>
+					<td style="text-align: center;vertical-align: middle;">${selectMyAttendedByGroupInfoNo.formatStartDate}</td>
+					<td style="text-align: center;vertical-align: middle;">${selectMyAttendedByGroupInfoNo.memberName}</td>
+					<td style="text-align: center;vertical-align: middle;" id="creditTd">${selectMyAttendedByGroupInfoNo.formatGrouperCredit}</td>
+					<td style="text-align: center;vertical-align: middle;" id="groupStatusId">${selectMyAttendedByGroupInfoNo.groupStatus}</td>
+					<td style="text-align: center;vertical-align: middle;">${selectMyAttendedByGroupInfoNo.productType}</td>
 					<c:if
 						test="${empty selectMyAttendedByGroupInfoNo.groupInfoTotalProductQt}">
 						<c:set var="groupInfoTotalProductQt" value="0" />
@@ -54,12 +111,9 @@
 						<c:set var="groupInfoTotalProductQt"
 							value="${selectMyAttendedByGroupInfoNo.groupInfoTotalProductQt}" />
 					</c:if>
-					<td style="text-align: center;" id="productQtId">${groupInfoTotalProductQt}/${selectMyAttendedByGroupInfoNo.groupInfoMinProductQt}</td>
-					<td style="text-align: center;" id="deadLineId">${selectMyAttendedByGroupInfoNo.formatDeadLine}</td>
-					<td style="text-align: center;" id="orderStatus">${selectMyAttendedByGroupInfoNo.orderStatus}</td>
-					<td style="text-align: center;">${selectMyAttendedByGroupInfoNo.groupInfoShippingWay}
-
-					</td>
+					<td style="text-align: center;vertical-align: middle;" id="productQtId">${groupInfoTotalProductQt}/${selectMyAttendedByGroupInfoNo.groupInfoMinProductQt}</td>
+					<td style="text-align: center;vertical-align: middle;" id="deadLineId">${selectMyAttendedByGroupInfoNo.formatDeadLine}</td>
+					<td style="text-align: center;vertical-align: middle;" id="orderStatus">${selectMyAttendedByGroupInfoNo.orderStatus}</td>
 				</tr>
 			</tbody>
 		</table>
@@ -88,42 +142,59 @@
 			</table>
 
 		</c:if>
+<!-- 		<div class="span5"> -->
+<!-- 			<ul class="thumbnails mainimage"> -->
+<!-- 				<li class="span5"><a -->
+<!-- 					rel="position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4" -->
+<!-- 					class="thumbnail cloud-zoom" -->
+<%-- 					href="<c:url value='/eeit9212/getimage?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}'/>"> --%>
+<!-- 						<img style="width: 300px; height: 250px" -->
+<%-- 						src="<c:url value='/eeit9212/getimage?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}'/>" --%>
+<!-- 						alt="" title=""> -->
+<!-- 				</a></li> -->
+<%-- 				<c:forEach var="bean" items="${selectGroupInfoPic}"> --%>
+<!-- 					<li class="span5"><a -->
+<!-- 						rel="position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4" -->
+<!-- 						class="thumbnail cloud-zoom" -->
+<%-- 						href='<c:url value='/eeit9212/getimage?groupInfoPicNo=${bean.groupInfoPicNo}'/>'> --%>
+<!-- 							<img style="width: 470px; height: 313px" -->
+<%-- 							src='<c:url value='/eeit9212/getimage?groupInfoPicNo=${bean.groupInfoPicNo}'/>' --%>
+<!-- 							alt="" title=""> -->
+<!-- 					</a></li> -->
+<%-- 				</c:forEach> --%>
+<!-- 			</ul> -->
+<!-- 			<ul class="thumbnails mainimage"> -->
+<!-- 				<li class="producthtumb"><a class="thumbnail"> <img -->
+<%-- 						src="<c:url value='/eeit9212/getimage?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}'/>" --%>
+<!-- 						alt="" title=""> -->
+<!-- 				</a></li> -->
+<%-- 				<c:forEach var="bean" items="${selectGroupInfoPic}"> --%>
+
+<!-- 					<li class="producthtumb"><a class="thumbnail"> <img -->
+<%-- 							src='<c:url value='/eeit9212/getimage?groupInfoPicNo=${bean.groupInfoPicNo}'/>' --%>
+<!-- 							alt="" title=""> -->
+<!-- 					</a></li> -->
+
+<%-- 				</c:forEach> --%>
+<!-- 			</ul> -->
+<!-- 		</div> -->
 		<div class="span5">
-			<ul class="thumbnails mainimage">
-				<li class="span5"><a
-					rel="position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4"
-					class="thumbnail cloud-zoom"
-					href="<c:url value='/eeit9212/getimage?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}'/>">
-						<img style="width: 470px; height: 313px"
-						src="<c:url value='/eeit9212/getimage?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}'/>"
-						alt="" title="">
-				</a></li>
+		<div><img id="bigImg" style="width: 300px; height: 250px;border-radius: 5px"
+					src="<c:url value='/eeit9212/getimage?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}'/>"
+					alt="" title=""></div>
+					<div style="margin-top: 5px">
+						<a><img name="smallImgs" src='<c:url value='/eeit9212/getimage?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}'/>'
+							style="width: 100px;border-radius: 2.5px"></a>		
 				<c:forEach var="bean" items="${selectGroupInfoPic}">
-					<li class="span5"><a
-						rel="position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4"
-						class="thumbnail cloud-zoom"
-						href='<c:url value='/eeit9212/getimage?groupInfoPicNo=${bean.groupInfoPicNo}'/>'>
-							<img style="width: 470px; height: 313px"
-							src='<c:url value='/eeit9212/getimage?groupInfoPicNo=${bean.groupInfoPicNo}'/>'
-							alt="" title="">
-					</a></li>
+					<a><img name="smallImgs" src='<c:url value='/eeit9212/getimage?groupInfoPicNo=${bean.groupInfoPicNo}'/>'
+							style="width: 100px;border-radius: 2.5px"></a>
+				
 				</c:forEach>
-			</ul>
-			<ul class="thumbnails mainimage">
-				<li class="producthtumb"><a class="thumbnail"> <img
-						src="<c:url value='/eeit9212/getimage?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}'/>"
-						alt="" title="">
-				</a></li>
-				<c:forEach var="bean" items="${selectGroupInfoPic}">
-
-					<li class="producthtumb"><a class="thumbnail"> <img
-							src='<c:url value='/eeit9212/getimage?groupInfoPicNo=${bean.groupInfoPicNo}'/>'
-							alt="" title="">
-					</a></li>
-
-				</c:forEach>
-			</ul>
+					</div>
 		</div>
+		
+		
+		
 		<div style="font-size:20px;margin-left:480px">
 
 <%-- 			<div>賣家敘述:${selectMyAttendedByGroupInfoNo.groupInfoContent}</div> --%>
@@ -162,7 +233,7 @@
 							name="address" value="${param.address}" /><span
 							style="color: red" id="addressSp"></span>
 					</div>			
-					<input id="paySub" type="button" name="paySubmit" value="通知賣家已匯款" />				
+					<input class='button_s' id="paySub" type="button" name="paySubmit" value="通知賣家已匯款" />				
 				</form>
 			</c:if>
 			<c:if
@@ -189,7 +260,7 @@
 							name="address" value="${param.address}" /><span
 							style="color: red" id="addressSp"></span>
 					</div>			
-					<input id="paySub" type="button" name="paySubmit" value="通知賣家已匯款" />				
+					<input class='button_s' id="paySub" type="button" name="paySubmit" value="通知賣家已匯款" />				
 				</form>
 			</c:if>
 			<c:if test="${selectMyAttendedByGroupInfoNo.groupStatusNo>=9}">
@@ -218,25 +289,25 @@
 				<div id="destinationDiv">
 					寄送地址:${selectMyOrderInfoByNo.orderInfoAfterSuccessDestination}</div>			
 				<c:if test="${selectMyAttendedByGroupInfoNo.orderStatusNo==1203}">
-					<input id="stuffSub" type="button" name="scoreBtn" value="通知賣家已收貨" />
+					<input class='button_s' id="stuffSub" type="button" name="scoreBtn" value="通知賣家已收貨" />
 				</c:if>
 			</c:if>
 			<c:if test="${selectMyAttendedByGroupInfoNo.orderStatusNo!=1203}">
-					<input style="display: none" id="stuffSub" type="button" name="scoreBtn" value="通知賣家已收貨" />
+					<input class='button_s' style="display: none" id="stuffSub" type="button" name="scoreBtn" value="通知賣家已收貨" />
 				</c:if>
 		</div>
 					<!-- Product Description tab & comments-->
-							<div style="margin-left:450px" class="productdesc">
-								<ul class="nav nav-tabs" id="myTab" style="width: 250px;height: 35px">
-									<li class="active"><a href="#description">賣家敘述</a></li>
-									<li><a href="#review">檢舉</a></li>
-									<li><a href="#specification">評分</a></li>		
-								</ul>
-								<div class="tab-content" style="width: 532px;padding-left: 35px;">
-									<div class="tab-pane active" id="description">
-										${selectMyAttendedByGroupInfoNo.groupInfoContent} <br>
-									</div>	
-									<div class="tab-pane" id="review">
+							<div style="margin-left:450px;margin-top: 20px">
+									
+								<button class="tablink" id="defaultOpen" value="content">賣家敘述</button>
+								<button class="tablink" id="reviewBtn" value="review">檢舉</button>
+								<div style="height:350px;width: 532px;padding-left: 35px;">
+									<div style="display: none;" id="description">
+									 	團名:${selectMyAttendedByGroupInfoNo.groupInfoName}<br>
+										寄送方式:${selectMyAttendedByGroupInfoNo.groupInfoShippingWay}<br>
+										賣家敘述:${selectMyAttendedByGroupInfoNo.groupInfoContent} <br>
+									</div>						
+									<div style="display: none;" id="review">
 										<h3>Write a Review</h3>
 										<form class="form-vertical">
 											<fieldset>
@@ -267,11 +338,15 @@
 							</div>
 <!-- 		================================================= -->
 		<div id="scoreDiv" style="display: none">
+			<div style="text-align: center;vertical-align: middle;margin-top: 5px">
 			<input type="radio" name="score" value="1" checked="checked" />1 <input
 				type="radio" name="score" value="2" />2 <input type="radio"
 				name="score" value="3" />3 <input type="radio" name="score"
-				value="4" />4 <input type="radio" name="score" value="5" />5 <input
-				type="button" value="評分" id="scoreButton" />
+				value="4" />4 <input type="radio" name="score" value="5" />5 
+			</div>
+			<div style="text-align: center;vertical-align: middle;margin-top: 5px">
+				<input class='button_s' type="button" value="評分" id="scoreButton" />
+				</div>
 		</div>
 		
 <!-- 	</div> -->
@@ -295,9 +370,7 @@
 		</div>	
 	<script src="<c:url value='/js/jquery-3.1.1.min.js'/>"></script>
 	<script src="<c:url value='/js/layer/layer.js'/>"></script>
-	<script src="<c:url value='/Web_01Main/js/jquery.js'/>"></script>
-	<script src="<c:url value='/Web_01Main/js/cloud-zoom.1.0.2.js'/>"></script>
-	<script defer src="<c:url value='/Web_01Main/js/custom.js'/>"></script>
+
 	<script type="text/javascript">
 		$(function() {
 
@@ -356,6 +429,15 @@
 					$("#groupStatusId").empty().append("開團中_寄貨中");
 					$("#PackageNo").show();
 				}
+				if(jsonEvent.change=="extension"){			
+					$("#groupStatusId").empty().append("創建中已延期");
+					$.get("${pageContext.request.contextPath}/eeit9212/grouprecord/changegroupstatus",{"locationFrom":"selectGroupInfo","groupInfoNo":'${selectMyAttendedByGroupInfoNo.groupInfoNo}'},function(data){							
+						var jsonObj2 = JSON.parse(data);
+						$("#deadLineId").empty().append(jsonObj2.formatDeadLine);
+		
+					});
+				}
+				
 			}
 			//  建立與server的連接.
 			function onOpen(event) {
@@ -365,7 +447,33 @@
 			function onError(event) {
 				// 			      alert(event.data);
 			}
-
+			
+			//切換檢舉和賣家敘述
+			$("button.tablink").click(changeDiv);
+			$("#defaultOpen").click();
+			function changeDiv(){
+				var thisBtn=$(this);
+				
+				if(thisBtn.val()=="content"){
+					thisBtn.attr('class','tablink1');
+					$("#reviewBtn").attr('class','tablink');
+					$("#description").show();
+					$("#review").hide();
+				}
+				else if(thisBtn.val()=="review"){
+					thisBtn.attr('class','tablink1');
+					$("#defaultOpen").attr('class','tablink');
+					$("#review").show();
+					$("#description").hide();		
+				}
+			}
+			
+			
+			//小圖變大圖
+			var bigImg=$("#bigImg");
+			$("img[name='smallImgs']").click(function(){
+				bigImg.attr('src',$(this).attr('src'));		
+			});
 			//判斷這團的時間，即時更新團的狀態。
 			var deadLine = new Date(
 					"${selectMyAttendedByGroupInfoNo.groupInfoDeadLine}");
@@ -405,7 +513,7 @@
 					type : 1,
 					title : '評分',
 					skin : 'layui-layer-rim', //加上边框
-					area : [ '420px', '240px' ], //宽高
+					area : [ '420px', '150px' ], //宽高
 					content : $("#scoreDiv"),
 					closeBtn : 0
 					//不显示关闭按钮
@@ -418,7 +526,7 @@
 							"groupInfoMemberNo" : "${selectMyAttendedByGroupInfoNo.groupInfoMemberNo}"},function(data) {																				
 									$.get("${pageContext.request.contextPath}/eeit9212/grouprecord/selectajax",{"groupInfoNo":${selectMyAttendedByGroupInfoNo.groupInfoNo}},function(data){
 										var jsonObj = JSON.parse(data);
-										$("#creditTd").empty().append(jsonObj.grouperCredit);
+										$("#creditTd").empty().append(jsonObj.formatGrouperCredit);
 										$("#orderStatus").empty().append("已收貨");
 										thisBtn.remove();
 										
@@ -460,6 +568,7 @@
 								}, function(data) {
 									var reportAlert = layer.alert(data, {
 										skin : 'layui-layer-molv' //样式类名
+											,btn:'確定'
 										,
 										closeBtn : 0
 									}, function() {
@@ -544,23 +653,7 @@
 		});
 		
 	</script>
-	<script src="../../myWeb_01Main/js/jquery.js"></script>
-	<script src="../../myWeb_01Main/js/bootstrap.js"></script>
-	<script src="../../myWeb_01Main/js/respond.min.js"></script>
-	<script src="../../myWeb_01Main/js/application.js"></script>
-	<script src="../../myWeb_01Main/js/bootstrap-tooltip.js"></script>
-	<script defer src="../../myWeb_01Main/js/jquery.fancybox.js"></script>
-	<script defer src="../../myWeb_01Main/js/jquery.flexslider.js"></script>
-	<script type="text/javascript" src="../../myWeb_01Main/js/jquery.tweet.js"></script>
-	<script src="../../myWeb_01Main/js/cloud-zoom.1.0.2.js"></script>
-	<script type="text/javascript" src="../../myWeb_01Main/js/jquery.validate.js"></script>
-	<script type="text/javascript"
-		src="../../myWeb_01Main/js/jquery.carouFredSel-6.1.0-packed.js"></script>
-	<script type="text/javascript" src="../../myWeb_01Main/js/jquery.mousewheel.min.js"></script>
-	<script type="text/javascript" src="../../myWeb_01Main/js/jquery.touchSwipe.min.js"></script>
-	<script type="text/javascript"
-		src="../../myWeb_01Main/js/jquery.ba-throttle-debounce.min.js"></script>
-	<script defer src="../../myWeb_01Main/js/custom.js"></script>
+
 
 </body>
 </html>

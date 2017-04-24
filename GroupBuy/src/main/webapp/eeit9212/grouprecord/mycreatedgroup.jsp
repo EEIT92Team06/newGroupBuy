@@ -28,32 +28,33 @@
 	<h1>您創的團</h1>
 		<table class="table table-striped table-bordered">
 			<tr>
-				<th class="image">圖片</th>
-				<th class="name">創團日期</th>
-				<th class="model">團名</th>
-				<th class="quantity">狀態</th>
-				<th class="quantity">類型</th>
-				<th class="quantity">目前產品數量</th>
-				<th class="quantity">結束日期</th>
+				<th style="text-align: center;vertical-align: middle;" class="image">圖片</th>
+				<th style="text-align: center;vertical-align: middle;" class="name">創團日期</th>
+				<th style="text-align: center;vertical-align: middle;" class="model">團名</th>
+				<th style="text-align: center;vertical-align: middle;" class="quantity">狀態</th>
+				<th style="text-align: center;vertical-align: middle;" class="quantity">類型</th>
+				<th style="text-align: center;vertical-align: middle;" class="quantity">目前產品數量</th>
+				<th style="text-align: center;vertical-align: middle;" class="quantity">結束日期</th>
+				<th style="text-align: center;vertical-align: middle;" class="quantity">明細</th>
 
 			</tr>
 		<c:forEach var="bean" items="${selectMyCreatedGroupInfo}">
 			<tr>
-			<td class="image"><a href="#"><img title="product"
+			<td style="text-align: center;vertical-align: middle;" class="image"><a href="#"><img title="product"
 						alt="product" src="<c:url value='/eeit9212/getimage?groupInfoNo=${bean.groupInfoNo}'/>" height="50" width="50"></a></td>
-					<td class="name">${bean.groupInfoStartDate}</td>
-			<td class="model">${bean.groupInfoName}</td>
-				<td class="quantity">${bean.groupStatus}</td>
-				<td class="quantity">${bean.productType}</td>
-				<td class="quantity"><c:if test="${empty bean.groupInfoTotalProductQt}">0</c:if>
+					<td style="text-align: center;vertical-align: middle;" class="name">${bean.formatStartDate}</td>
+			<td style="text-align: center;vertical-align: middle;" class="model">${bean.groupInfoName}</td>
+				<td style="text-align: center;vertical-align: middle;" class="quantity">${bean.groupStatus}</td>
+				<td style="text-align: center;vertical-align: middle;" class="quantity">${bean.productType}</td>
+				<td style="text-align: center;vertical-align: middle;" class="quantity"><c:if test="${empty bean.groupInfoTotalProductQt}">0</c:if>
 					<c:if test="${not empty bean.groupInfoTotalProductQt}">${bean.groupInfoTotalProductQt}</c:if>/${bean.groupInfoMinProductQt}
 				</td>
 				
 
-				<td class="quantity">${bean.formatDeadLine}
-				<a href="<c:url value='/eeit9212/grouprecord/mycreatedgroupinfo.controller?groupInfoNo=${bean.groupInfoNo}'/>">查看明細
-				</a>
+				<td style="text-align: center;vertical-align: middle;" class="quantity">${bean.formatDeadLine}
 				</td>
+				<td style="text-align: center;vertical-align: middle;" class="quantity"><a href="<c:url value='/eeit9212/grouprecord/mycreatedgroupinfo.controller?groupInfoNo=${bean.groupInfoNo}'/>">查看明細
+				</a></td>
 
 			</tr>
 			<c:if test="${bean.groupStatusNo==2||bean.groupStatusNo==6}">
@@ -76,12 +77,14 @@
 
 						layer.alert('您創的團名:<br>${groupName}截止日期已到，請盡快處理。', {
 							  skin: 'layui-layer-molv' //样式类名
+							  ,btn:'確定'
 							  ,closeBtn: 0}
 						);
 					}
 					if(${not empty needCheckPayGroupName}){
 						layer.alert('您創的團名:<br>${needCheckPayGroupName}匯款截止日期已到，請再次確認匯款資訊後開始寄貨。', {
 							  skin: 'layui-layer-molv' //样式类名
+								,btn:'確定'
 							  ,closeBtn: 0
 							});
 					}

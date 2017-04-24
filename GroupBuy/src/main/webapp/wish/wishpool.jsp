@@ -80,7 +80,7 @@
          <ul class="thumbnails" style="width: 932px;">
          
          <c:forEach var='wish' items="${wishCollection}">
-         <li class="span3">
+         <li class="span3" style="margin-right: 30px;height: 280px;">
             <div class="thumbnail">
               <img alt="" src="../pictures/${wish.coverPic}" style="width:270px; height:170px"><span class="viewfancypopup">&nbsp;</span>
               <div class="caption">

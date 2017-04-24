@@ -325,13 +325,13 @@
 
 									<li><c:choose>
 											<c:when test="${empty loginToken}">
-												<a style="font-size: 22px"
-													href="<c:url value='/eeit9212/grouprecord/myattendedgroupinfo.controller'/>">我的團購</a>
+												<a style="font-size: 22px"  class="click1"
+													>我的團購</a>
 												<!-- sub-menu start--></li>
 									</c:when>
 									<c:when test="${!empty loginToken}">
 										<a style="font-size: 22px"
-											href="<c:url value='/eeit9212/grouprecord/myattendedgroupinfo.controller'/>">我的團購</a>
+											href="#">我的團購</a>
 
 										<!-- sub-menu start-->
 										<ul class="sub-menu">

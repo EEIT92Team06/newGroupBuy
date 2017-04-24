@@ -361,14 +361,14 @@ div.right a.google-plus:hover {
 					style="" class="submit" type="button" value="Login"
 					onclick="loginCheck()" /> <a
 					href="<c:url value="/secure/newRegistry.jsp"/>"
-					style="color: gray;margin-left:20px; text-decoration: none; margin-top: 10px"
-				     >免費註冊</a>
+					style="color: gray; text-decoration: none; margin-top: 10px;margin-left: 10px"
+					>免費註冊</a>
 			</div>
 			<div class="right">
 				<div class="connect">透過Google帳號登入</div>
-				<a  style="margin-top:30px"
-					href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/GroupBuy/googleLoginServlet.do&response_type=code&client_id=111067976661-usc5t395cjrcsvfcsqnkvf4snj7q704c.apps.googleusercontent.com&approval_prompt=force"
-					><img width="100px" src="pictures/googleIcon.png">
+				<span></span><br />
+				<a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/GroupBuy/googleLoginServlet.do&response_type=code&client_id=111067976661-usc5t395cjrcsvfcsqnkvf4snj7q704c.apps.googleusercontent.com&approval_prompt=force"
+				><img style="width: 110px"  src="pictures/google.png">	
 				</a>
 			</div>
 		</form>

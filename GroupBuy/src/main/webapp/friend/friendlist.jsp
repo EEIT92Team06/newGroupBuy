@@ -70,6 +70,7 @@ form {
 	margin: 0px;
 	display: inline;
 }
+
 </style>
 </head>
 <body>
@@ -79,6 +80,7 @@ a {
 	color: #F25C27;
 	style ="text-decoration: none"
 }
+
 </style>
 	<form action="<c:url value='friend.controller'/>">
 		<table class="title1" style="margin-top: 20px; margin-bottom: 20px;">
@@ -136,22 +138,20 @@ a {
 	<c:if test="${not empty requested || not empty requesting}">
 		<c:if test="${not empty requested}">
 			<div style="margin-left: 120px;">
-				<a href="<c:url value='friend.controller?x=requested'/>"
-					style="font-size: 18px; font-weight: bold;">收到的邀請</a> <a
-					href="<c:url value="/friend/friend.controller?x=requesting"/>">送出的邀請</a>
+				<a id="requested" style="font-size: 18px; font-weight: bold;">收到的邀請</a> <a
+					id="requesting">送出的邀請</a>
 			</div>
 		</c:if>
 		<c:if test="${not empty requesting}">
 			<div style="margin-left: 120px;">
-				<a href="<c:url value='friend.controller?x=requested'/>">收到的邀請</a> <a
-					href="<c:url value="/friend/friend.controller?x=requesting"/>"
-					style="font-size: 18px; font-weight: bold;">送出的邀請</a>
+				<a id="requested">收到的邀請</a>
+				 <a id="requesting" style="font-size: 18px; font-weight: bold;">送出的邀請</a>
 			</div>
 		</c:if>
 
 	</c:if>
 	<div>
-		<ul class="thumbnails"
+		<ul id="ulId" class="thumbnails"
 			style="margin: 0px 0px 0px 130px; text-align: center;">
 			<c:if test="${not empty relationList}">
 				<c:forEach var="member" items="${relationList}" varStatus="x">
@@ -188,7 +188,7 @@ a {
 											<c:if test="${member.friendNo==null}">
 												<input type="button" name="RequestBtn" value="Request"
 													class="button_s">
-												<input type="submit" name="RelationBtn" value="Block"
+												<input id="block${x.index}" type="submit" name="RelationBtn" value="Block"
 													class="button_b">
 											</c:if>
 											<c:if
@@ -234,7 +234,14 @@ a {
 										</c:if> <c:if test="${not empty requesting}">
 											<input type="submit" name="RelationBtn" value="CancelRequest"
 												class="button_b">
-										</c:if></td>
+										</c:if>
+										
+<%-- 										<c:if test="${empty requesting}"> --%>
+<%-- 											<input id="requesting${x.index}" style="display: none;" type="submit" name="RelationBtn" value="CancelRequest" --%>
+<!-- 												class="button_b"> -->
+<%-- 										</c:if> --%>
+										
+										</td>
 								</tr>
 							</table>
 						</form>
@@ -248,6 +255,77 @@ a {
 	<script src="<c:url value='/js/layer/layer.js'/>"></script>
 	<script type="text/javascript">
 		$(function() {
+			$("a[id='requested']").click(function(){
+				var ulId=$("#ulId");
+				ulId.empty();
+				$('#requested').css({'font-size':'18px','font-weight':'bold'});
+				$('#requesting').removeAttr('style');
+				$.get("${pageContext.request.contextPath}/statusajax",{
+					"RelationBtn":"requested"
+				},function(data){
+					var dataJson=JSON.parse(data);
+					$.each(dataJson,function(index,value){
+						var theform=$("<form></form>").addClass("div1").css({'float':'left','margin':'20px'});
+						var thetable=$("<table></table>");
+						var thetr=$("<tr></tr>");
+						var imgtd=$("<td></td>").attr('rowspan','5');
+						var img1=$("<img />").css({'width':'130px','height':'130px','border-radius':'10px'}).attr('src','${pageContext.request.contextPath}/pictures/'+value.memberPic);		
+						imgtd.append(img1);
+						var td2=$("<td></td>");
+						var namelink=$("<a></a>").css({'text-decoration':'none','font-size':'20px'}).attr('href','${pageContext.request.contextPath}/member/member.controller?memberNo='+value.memberNo).append(value.memberNickName);
+						td2.append(namelink);
+						thetr.append([imgtd,td2]);
+						var tr2=$("<tr></tr>");
+						var td3=$("<td></td>").append(value.memberName);
+						tr2.append(td3);
+						var tr3=$("<tr></tr>");
+						var td4=$("<td></td>");
+						var befriend=$("<input />").attr({'type':'submit','value':'BeFriend'}).addClass("button_s");
+						var refuse=$("<input />").attr({'type':'submit','value':'Refuse'}).addClass("button_b");
+						td4.append([befriend,refuse]);
+						tr3.append(td4);
+						thetable.append([thetr,tr2,tr3]);
+						theform.append(thetable);
+						ulId.append(theform);
+					});
+				});
+			});
+			
+			$("a[id='requesting']").click(function(){
+				var ulId=$("#ulId");
+				ulId.empty();
+				$('#requesting').css({'font-size':'18px','font-weight':'bold'});
+				$('#requested').removeAttr("style");
+				$.get("${pageContext.request.contextPath}/statusajax",{
+					"RelationBtn":"requesting"
+				},function(data){
+					var dataJson=JSON.parse(data);
+					$.each(dataJson,function(index,value){
+						var theform=$("<form></form>").addClass("div1").css({'float':'left','margin':'20px'});
+						var thetable=$("<table></table>");
+						var thetr=$("<tr></tr>");
+						var imgtd=$("<td></td>").attr('rowspan','5');
+						var img1=$("<img />").css({'width':'130px','height':'130px','border-radius':'10px'}).attr('src','${pageContext.request.contextPath}/pictures/'+value.memberPic);		
+						imgtd.append(img1);
+						var td2=$("<td></td>");
+						var namelink=$("<a></a>").css({'text-decoration':'none','font-size':'20px'}).attr('href','${pageContext.request.contextPath}/member/member.controller?memberNo='+value.memberNo).append(value.memberNickName);
+						td2.append(namelink);
+						thetr.append([imgtd,td2]);
+						var tr2=$("<tr></tr>");
+						var td3=$("<td></td>").append(value.memberName);
+						tr2.append(td3);
+						var tr3=$("<tr></tr>");
+						var td4=$("<td></td>");
+						var cancelRequest=$("<input />").attr({'type':'submit','value':'CancelRequest'}).addClass("button_b");
+						td4.append(cancelRequest);
+						tr3.append(td4);
+						thetable.append([thetr,tr2,tr3]);
+						theform.append(thetable);
+						ulId.append(theform);
+					});
+				});
+			});
+			
 			$("input[name='DeleteBtn']").click(function() {
 				var deleteBtn = $(this);
 				var nowIndex = deleteBtn.parents("form").find("input").val();
@@ -256,6 +334,7 @@ a {
 				// 		var friendNo=deleteBtn.parents("tr").find("input").val();
 				// 		var memberFriendNo=deleteBtn.parents("table").find("input").val();
 				var deleteConfirm = layer.confirm('確定要刪除好友嗎?', {
+					title:'提示',
 					btn : [ '確定', '取消' ]
 				//按钮
 				}, function() {
@@ -269,23 +348,31 @@ a {
 					});
 				});
 			});
-
-		})
-		$(function() {
 			$("input[name='RequestBtn']").click(function() {
 				var requestBtn = $(this);
+				
 				var nowIndex = requestBtn.parents("form").find("input").val();
+				var blockBtn = $("#block"+nowIndex);
 				var memberFriendNo = $("#memberFriendNo" + nowIndex).val();
 				$.get("${pageContext.request.contextPath}/statusajax", {
 					"RelationBtn" : "Request",
 					"memberFriendNo" : memberFriendNo
 				}, function() {
-					requestBtn.after("<button>f</button>");
-// 					requestBtn.parents("form").remove();
-
+					requestBtn.replaceWith("<input type='submit' name='RelationBtn' value='CancelRequest' class='button_b'>");
+					blockBtn.remove();
+					// 					requestBtn.remove();
+// 					$("#requesting"+nowIndex).show();
 				});
 			});
-		});
+			
+			
+			
+			
+			
+			
+			
+		})
+		
 	</script>
 
 

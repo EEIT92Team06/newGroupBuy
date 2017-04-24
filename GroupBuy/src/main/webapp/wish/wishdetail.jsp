@@ -98,7 +98,7 @@
                 <div class="tab-content" style="width: 532px;">
                   <div class="tab-pane active" id="description">
                     <h2>${wishDetail.title}</h2>
-                    ${wishDetail.content}<br>
+                    <pre>${wishDetail.content}</pre><br>
                     <br>
                   </div>
                   <div class="tab-pane " id="specification">

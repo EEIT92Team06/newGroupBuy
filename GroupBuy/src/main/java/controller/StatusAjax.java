@@ -1,8 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
-
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +13,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
+
+import com.google.gson.Gson;
 
 import login.model.MemberBean;
 import model.FriendBean;
@@ -36,10 +38,11 @@ public class StatusAjax extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter out=response.getWriter();
 		HttpSession session = request.getSession();
 
 		List<FriendBean> list = null;
-
 		String relationBtn = request.getParameter("RelationBtn");
 		String friendNo1 = request.getParameter("friendNo");
 		String memberFriendNo1 = request.getParameter("memberFriendNo");
@@ -67,8 +70,18 @@ public class StatusAjax extends HttpServlet {
 		}
 
 		int loginMemberNo = (Integer) ((MemberBean) session.getAttribute("loginToken")).getMemberNo(); // 拿session內memberNo
-		
-		
+		if ("requested".equals(relationBtn)) {
+			list = friendService.selectRequestedList(loginMemberNo, 2103);
+			Gson gson=new Gson();
+			String listJson=gson.toJson(list);
+			out.write(listJson);
+		}
+		if ("requesting".equals(relationBtn)) {
+			list = friendService.selectRelationList(loginMemberNo, 2103);
+			Gson gson=new Gson();
+			String listJson=gson.toJson(list);
+			out.write(listJson);
+		}
 		// 邀請成為朋友
 				if ("Request".equals(relationBtn)) {
 					friendService.requestFriend(loginMemberNo, memberFriendNo);
@@ -78,6 +91,7 @@ public class StatusAjax extends HttpServlet {
 			friendService.deleteFriend(friendNo, memberFriendNo, loginMemberNo);
 			request.setAttribute("friendlist", 1);
 		}
+		
 		
 	}
 
