@@ -97,7 +97,7 @@
 					<td style="text-align: center;vertical-align: middle;"><a href="#"><img title="product" alt="product"
 							src="<c:url value='/eeit9212/getimage?groupInfoNo=${selectMyAttendedByGroupInfoNo.groupInfoNo}'/>"
 							height="50" width="50"></a></td>
-					<td style="text-align: center;vertical-align: middle;">${selectMyAttendedByGroupInfoNo.groupInfoStartDate}</td>
+					<td style="text-align: center;vertical-align: middle;">${selectMyAttendedByGroupInfoNo.formatStartDate}</td>
 					<td style="text-align: center;vertical-align: middle;">${selectMyAttendedByGroupInfoNo.memberName}</td>
 					<td style="text-align: center;vertical-align: middle;" id="creditTd">${selectMyAttendedByGroupInfoNo.formatGrouperCredit}</td>
 					<td style="text-align: center;vertical-align: middle;" id="groupStatusId">${selectMyAttendedByGroupInfoNo.groupStatus}</td>
@@ -338,11 +338,15 @@
 							</div>
 <!-- 		================================================= -->
 		<div id="scoreDiv" style="display: none">
+			<div style="text-align: center;vertical-align: middle;margin-top: 5px">
 			<input type="radio" name="score" value="1" checked="checked" />1 <input
 				type="radio" name="score" value="2" />2 <input type="radio"
 				name="score" value="3" />3 <input type="radio" name="score"
-				value="4" />4 <input type="radio" name="score" value="5" />5 <input
-				type="button" value="評分" id="scoreButton" />
+				value="4" />4 <input type="radio" name="score" value="5" />5 
+			</div>
+			<div style="text-align: center;vertical-align: middle;margin-top: 5px">
+				<input class='button_s' type="button" value="評分" id="scoreButton" />
+				</div>
 		</div>
 		
 <!-- 	</div> -->
@@ -425,6 +429,15 @@
 					$("#groupStatusId").empty().append("開團中_寄貨中");
 					$("#PackageNo").show();
 				}
+				if(jsonEvent.change=="extension"){			
+					$("#groupStatusId").empty().append("創建中已延期");
+					$.get("${pageContext.request.contextPath}/eeit9212/grouprecord/changegroupstatus",{"locationFrom":"selectGroupInfo","groupInfoNo":'${selectMyAttendedByGroupInfoNo.groupInfoNo}'},function(data){							
+						var jsonObj2 = JSON.parse(data);
+						$("#deadLineId").empty().append(jsonObj2.formatDeadLine);
+		
+					});
+				}
+				
 			}
 			//  建立與server的連接.
 			function onOpen(event) {
@@ -513,7 +526,7 @@
 							"groupInfoMemberNo" : "${selectMyAttendedByGroupInfoNo.groupInfoMemberNo}"},function(data) {																				
 									$.get("${pageContext.request.contextPath}/eeit9212/grouprecord/selectajax",{"groupInfoNo":${selectMyAttendedByGroupInfoNo.groupInfoNo}},function(data){
 										var jsonObj = JSON.parse(data);
-										$("#creditTd").empty().append(jsonObj.grouperCredit);
+										$("#creditTd").empty().append(jsonObj.formatGrouperCredit);
 										$("#orderStatus").empty().append("已收貨");
 										thisBtn.remove();
 										

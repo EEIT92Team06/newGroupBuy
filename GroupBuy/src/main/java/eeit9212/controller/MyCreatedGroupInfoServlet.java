@@ -64,9 +64,7 @@ public class MyCreatedGroupInfoServlet extends HttpServlet {
 				groupInfoNo = Integer.parseInt(groupInfoNoTemp);			
 				
 					
-				if("againTimeout".equals(locationFrom)){
-					groupInfoService.updateGroupStatus(groupInfoNo, 6);
-				}	
+				
 			
 				if("noExtension".equals(locationFrom)){
 					groupInfoService.updateGroupStatus(groupInfoNo, 4);
@@ -75,24 +73,7 @@ public class MyCreatedGroupInfoServlet extends HttpServlet {
 					orderInfoService.updateOrderInfoStatusByOrderStatusNo(groupInfoNo, 1005, 1001);
 				
 				}
-				
-				
-				
-				
-				if("extension".equals(locationFrom)){
-					String deadLineTemp=request.getParameter("deadLine");
-					Timestamp deadLine=null;
-					if(deadLineTemp!=null&&deadLineTemp.length()!=0){
-						try{
-						deadLine=Timestamp.valueOf(deadLineTemp);
-						groupInfoService.updateGroupStatus(groupInfoNo, 3);
-						groupInfoService.updateGroupInfoDeadLine(groupInfoNo, deadLine);
-						
-						}catch(Exception e){
-							System.out.println("deadLineTemp格式錯誤="+deadLineTemp);
-						}
-					}				
-				}
+		
 				if("groupEnd".equals(locationFrom)){
 					groupInfoService.updateGroupStatus(groupInfoNo, 11);
 				}

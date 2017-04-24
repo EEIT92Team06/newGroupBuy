@@ -68,6 +68,9 @@ public class SelectAjax extends HttpServlet {
 		if (groupInfoNo != -1) {
 			AttendGroupInfoBean selectMyAttendedByGroupInfoNo = groupInfoService.selectMyAttendedByGroupInfoNo(memberNo,
 					groupInfoNo);
+			selectMyAttendedByGroupInfoNo.setFormatDeadLine();
+			selectMyAttendedByGroupInfoNo.setFormatStartDate();
+			selectMyAttendedByGroupInfoNo.setFormatGrouperCredit();
 			Gson gson = new Gson();
 			String json = gson.toJson(selectMyAttendedByGroupInfoNo);
 			System.out.println(json);

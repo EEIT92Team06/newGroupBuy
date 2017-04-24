@@ -282,7 +282,7 @@ function orderSuc(){
 								</ul>
 								<div class="tab-content" style="width: 532px;">
 									<div class="tab-pane active" id="description">
-										${result.groupInfoContent} <br>
+										<pre>${result.groupInfoContent}</pre><br>
 									</div>
 									<div class="tab-pane " id="specification">
 										<ul class="productinfo">
