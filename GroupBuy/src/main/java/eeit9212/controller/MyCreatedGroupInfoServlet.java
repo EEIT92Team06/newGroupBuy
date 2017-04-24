@@ -56,7 +56,6 @@ public class MyCreatedGroupInfoServlet extends HttpServlet {
 		
 		CreateGroupInfoBean selectGroupInfoByGroupInfoNo=null;
 		
-		
 		int groupInfoNo = -1;
 		// 判斷是否從mycreatedgroup.jsp呼叫的，我有帶參數groupInfoNo。
 		if (groupInfoNoTemp != null && groupInfoNoTemp.length() != 0) {

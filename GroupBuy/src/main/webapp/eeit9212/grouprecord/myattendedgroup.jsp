@@ -16,39 +16,39 @@
 		<thead>
 			<tr>
 
-				<th>圖片</th>
-				<th>創團日期</th>
-				<th>主揪</th>
-				<th>主揪評分</th>
-				<th>團名</th>
-				<th>狀態</th>
-				<th>類型</th>
-				<th>目前產品數量</th>
-				<th>結束日期</th>
-				<th>訂單狀態</th>
-				<th>查看訂單明細</th>
+				<th style="text-align: center;vertical-align: middle;">圖片</th>
+				<th style="text-align: center;vertical-align: middle;">創團日期</th>
+				<th style="text-align: center;vertical-align: middle;">主揪</th>
+				<th style="text-align: center;vertical-align: middle;">主揪評分</th>
+				<th style="text-align: center;vertical-align: middle;">團名</th>
+				<th style="text-align: center;vertical-align: middle;">狀態</th>
+				<th style="text-align: center;vertical-align: middle;">類型</th>
+				<th style="text-align: center;vertical-align: middle;">目前產品數量</th>
+				<th style="text-align: center;vertical-align: middle;">結束日期</th>
+				<th style="text-align: center;vertical-align: middle;">訂單狀態</th>
+				<th style="text-align: center;vertical-align: middle;">明細</th>
 				
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="bean" items="${selectMyAttendedGroupInfo}">
 				<tr>
-					<td>
+					<td style="text-align: center;vertical-align: middle;">
 					<a href="#"><img title="product"
 						alt="product" src="<c:url value='/eeit9212/getimage?groupInfoNo=${bean.groupInfoNo}'/>" height="50" width="50"></a>	
 					</td>
-					<td>${bean.groupInfoStartDate}</td>
-					<td>${bean.memberName}</td>
-					<td>${bean.formatGrouperCredit}</td>
-					<td>${bean.groupInfoName}</td>
-					<td>${bean.groupStatus}</td>
-					<td>${bean.productType}</td>
-					<td><c:if test="${empty bean.groupInfoTotalProductQt}">0</c:if>
+					<td style="text-align: center;vertical-align: middle;">${bean.groupInfoStartDate}</td>
+					<td style="text-align: center;vertical-align: middle;">${bean.memberName}</td>
+					<td style="text-align: center;vertical-align: middle;">${bean.formatGrouperCredit}</td>
+					<td style="text-align: center;vertical-align: middle;">${bean.groupInfoName}</td>
+					<td style="text-align: center;vertical-align: middle;">${bean.groupStatus}</td>
+					<td style="text-align: center;vertical-align: middle;">${bean.productType}</td>
+					<td style="text-align: center;vertical-align: middle;"><c:if test="${empty bean.groupInfoTotalProductQt}">0</c:if>
 					<c:if test="${not empty bean.groupInfoTotalProductQt}">${bean.groupInfoTotalProductQt}</c:if>/${bean.groupInfoMinProductQt}</td>
-					<td>${bean.formatDeadLine}</td>
-					<td>${bean.orderStatus}</td>
-					<td><a
-						href="<c:url value='/eeit9212/grouprecord/myattendedgroupinfo.controller?groupInfoNo=${bean.groupInfoNo}&orderInfoNo=${bean.orderInfoNo}'/>">查看訂單明細</a>
+					<td style="text-align: center;vertical-align: middle;">${bean.formatDeadLine}</td>
+					<td style="text-align: center;vertical-align: middle;">${bean.orderStatus}</td>
+					<td style="text-align: center;vertical-align: middle;"><a
+						href="<c:url value='/eeit9212/grouprecord/myattendedgroupinfo.controller?groupInfoNo=${bean.groupInfoNo}&orderInfoNo=${bean.orderInfoNo}'/>">查看明細</a>
 						</td>
 						
 				</tr>
@@ -85,6 +85,7 @@
 			if(${not empty notPayGroupName}){
 				layer.alert('您參加的團名:<br>${notPayGroupName}時間剩不到24H，請盡快匯款。', {
 					  skin: 'layui-layer-molv' //样式类名
+						  ,btn:'確定'
 					  ,closeBtn: 0
 					});
 			}

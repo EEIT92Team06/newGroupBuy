@@ -188,7 +188,7 @@ a {
 											<c:if test="${member.friendNo==null}">
 												<input type="button" name="RequestBtn" value="Request"
 													class="button_s">
-												<input type="submit" name="RelationBtn" value="Block"
+												<input id="block${x.index}" type="submit" name="RelationBtn" value="Block"
 													class="button_b">
 											</c:if>
 											<c:if
@@ -234,7 +234,14 @@ a {
 										</c:if> <c:if test="${not empty requesting}">
 											<input type="submit" name="RelationBtn" value="CancelRequest"
 												class="button_b">
-										</c:if></td>
+										</c:if>
+										
+<%-- 										<c:if test="${empty requesting}"> --%>
+<%-- 											<input id="requesting${x.index}" style="display: none;" type="submit" name="RelationBtn" value="CancelRequest" --%>
+<!-- 												class="button_b"> -->
+<%-- 										</c:if> --%>
+										
+										</td>
 								</tr>
 							</table>
 						</form>
@@ -256,6 +263,7 @@ a {
 				// 		var friendNo=deleteBtn.parents("tr").find("input").val();
 				// 		var memberFriendNo=deleteBtn.parents("table").find("input").val();
 				var deleteConfirm = layer.confirm('確定要刪除好友嗎?', {
+					title:'提示',
 					btn : [ '確定', '取消' ]
 				//按钮
 				}, function() {
@@ -269,23 +277,31 @@ a {
 					});
 				});
 			});
-
-		})
-		$(function() {
 			$("input[name='RequestBtn']").click(function() {
 				var requestBtn = $(this);
+				
 				var nowIndex = requestBtn.parents("form").find("input").val();
+				var blockBtn = $("#block"+nowIndex);
 				var memberFriendNo = $("#memberFriendNo" + nowIndex).val();
 				$.get("${pageContext.request.contextPath}/statusajax", {
 					"RelationBtn" : "Request",
 					"memberFriendNo" : memberFriendNo
 				}, function() {
-					requestBtn.after("<button>f</button>");
-// 					requestBtn.parents("form").remove();
-
+					requestBtn.replaceWith("<input type='submit' name='RelationBtn' value='CancelRequest' class='button_b'>");
+					blockBtn.remove();
+					// 					requestBtn.remove();
+// 					$("#requesting"+nowIndex).show();
 				});
 			});
-		});
+			
+			
+			
+			
+			
+			
+			
+		})
+		
 	</script>
 
 
