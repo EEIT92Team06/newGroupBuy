@@ -358,18 +358,18 @@ div.right a.google-plus:hover {
 				<br /> <label for="password">密碼</label><font size="2" id="passwordError"
 					style="margin-left: 7px;"  color="red"></font><br /> <input type="password"
 					name="password" id="pass" value="" /><br /> <input
-					style="margin-left: 58px" class="submit" type="button" value="Login"
+					style="" class="submit" type="button" value="Login"
 					onclick="loginCheck()" /> <a
 					href="<c:url value="/secure/newRegistry.jsp"/>"
-					style="color: gray; text-decoration: none; margin-top: 10px"
-					style="color:gray;">免費註冊</a>
+					style="color: gray; text-decoration: none; margin-top: 10px;margin-left: 10px"
+					>免費註冊</a>
 			</div>
 			<div class="right">
 				<div class="connect">透過Google帳號登入</div>
-				<span></span><br /> <span></span><br /> <span></span><br /> <span></span><br />
+				<span></span><br />
 				<a
 					href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/GroupBuy/googleLoginServlet.do&response_type=code&client_id=111067976661-usc5t395cjrcsvfcsqnkvf4snj7q704c.apps.googleusercontent.com&approval_prompt=force"
-					class="google-plus"> <span class="fontawesome-google-plus"></span>
+				><img style="width: 110px"  src="pictures/google.png">	
 				</a>
 			</div>
 		</form>
