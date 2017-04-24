@@ -105,7 +105,7 @@ public class SearchDAOhb implements SearchDAO {
 			+ "join groupStatus on groupInfo.groupStatus_No = groupStatus.groupStatus_No "
 			+ "join member on groupInfo.member_No = member.member_No "
 			+ "Left Outer join grouperCredit on grouperCredit.member_No = member.member_No "
-			+ "where groupInfo_Name like ?";
+			+ "where groupInfo_Name like ? order by groupInfo_No desc";
 
 	@Override
 	public List select(String groupName) {
@@ -119,7 +119,7 @@ public class SearchDAOhb implements SearchDAO {
 			+ "from groupInfo join productType on groupInfo.productType_No = productType.productType_No "
 			+ "join groupStatus on groupInfo.groupStatus_No = groupStatus.groupStatus_No "
 			+ "join member on groupInfo.member_No = member.member_No "
-			+ "Left Outer join grouperCredit on grouperCredit.member_No = member.member_No ";
+			+ "Left Outer join grouperCredit on grouperCredit.member_No = member.member_No order by groupInfo_No desc";
 
 	@Override
 	public List<Object[]> select() {
@@ -133,7 +133,7 @@ public class SearchDAOhb implements SearchDAO {
 			+ "join groupStatus on groupInfo.groupStatus_No = groupStatus.groupStatus_No "
 			+ "join member on groupInfo.member_No = member.member_No "
 			+ "Left Outer join grouperCredit on grouperCredit.member_No = member.member_No "
-			+ "where productType.productType_No = ?";
+			+ "where productType.productType_No = ? order by groupInfo_No desc";
 
 	@Override
 	public List<Object[]> select(int groupTypeNo) {
