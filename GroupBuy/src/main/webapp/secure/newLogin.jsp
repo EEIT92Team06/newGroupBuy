@@ -367,8 +367,7 @@ div.right a.google-plus:hover {
 			<div class="right">
 				<div class="connect">透過Google帳號登入</div>
 				<span></span><br />
-				<a
-					href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/GroupBuy/googleLoginServlet.do&response_type=code&client_id=111067976661-usc5t395cjrcsvfcsqnkvf4snj7q704c.apps.googleusercontent.com&approval_prompt=force"
+				<a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/GroupBuy/googleLoginServlet.do&response_type=code&client_id=111067976661-usc5t395cjrcsvfcsqnkvf4snj7q704c.apps.googleusercontent.com&approval_prompt=force"
 				><img style="width: 110px"  src="pictures/google.png">	
 				</a>
 			</div>
