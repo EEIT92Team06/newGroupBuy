@@ -201,7 +201,7 @@
 			<div id="price">訂單總價:${selectTotalPrice}</div>
 			<c:if
 				test="${selectMyAttendedByGroupInfoNo.groupStatusNo>=8&&selectMyAttendedByGroupInfoNo.groupStatusNo!=11&&selectMyAttendedByGroupInfoNo.orderStatusNo!=1004}">
-				<div>賣家帳戶:${selectMyAttendedByGroupInfoNo.groupInfoBankAccount}</div>
+				<div>主揪帳戶:${selectMyAttendedByGroupInfoNo.groupInfoBankAccount}</div>
 			</c:if>
 			<c:if test="${selectMyAttendedByGroupInfoNo.groupStatusNo<9}">
 						<div>
@@ -233,7 +233,8 @@
 							name="address" value="${param.address}" /><span
 							style="color: red" id="addressSp"></span>
 					</div>			
-					<input class='button_s' id="paySub" type="button" name="paySubmit" value="通知賣家已匯款" />				
+					<input class='button_s' id="paySub" type="button" name="paySubmit" value="通知主揪已匯款" />				
+					<input id="payData" type="button" name="payData" value="一鍵輸入" />
 				</form>
 			</c:if>
 			<c:if
@@ -260,7 +261,7 @@
 							name="address" value="${param.address}" /><span
 							style="color: red" id="addressSp"></span>
 					</div>			
-					<input class='button_s' id="paySub" type="button" name="paySubmit" value="通知賣家已匯款" />	
+					<input class='button_s' id="paySub" type="button" name="paySubmit" value="通知主揪已匯款" />	
 					<input id="payData" type="button" name="payData" value="一鍵輸入" />	
 								
 				</form>
@@ -291,24 +292,24 @@
 				<div id="destinationDiv">
 					寄送地址:${selectMyOrderInfoByNo.orderInfoAfterSuccessDestination}</div>			
 				<c:if test="${selectMyAttendedByGroupInfoNo.orderStatusNo==1203}">
-					<input class='button_s' id="stuffSub" type="button" name="scoreBtn" value="通知賣家已收貨" />
+					<input class='button_s' id="stuffSub" type="button" name="scoreBtn" value="通知主揪已收貨" />
 				</c:if>
 			</c:if>
 			<c:if test="${selectMyAttendedByGroupInfoNo.orderStatusNo!=1203}">
-					<input class='button_s' style="display: none" id="stuffSub" type="button" name="scoreBtn" value="通知賣家已收貨" />
+					<input class='button_s' style="display: none" id="stuffSub" type="button" name="scoreBtn" value="通知主揪已收貨" />
 				</c:if>
 		</div>
 					<!-- Product Description tab & comments-->
 							<div style="margin-left:450px;margin-top: 20px">
 									
-								<button class="tablink" id="defaultOpen" value="content">賣家敘述</button>
+								<button class="tablink" id="defaultOpen" value="content">主揪敘述</button>
 								<button class="tablink" id="reviewBtn" value="review">檢舉</button>
 								<div style="height:350px;width: 532px;padding-left: 35px;">
 									<div style="display: none;" id="description">
 									<br>
 									 	團名:${selectMyAttendedByGroupInfoNo.groupInfoName}<br><br>
 										寄送方式:${selectMyAttendedByGroupInfoNo.groupInfoShippingWay}<br><br>
-										賣家敘述:<br>${selectMyAttendedByGroupInfoNo.groupInfoContent}<br>
+										主揪敘述:<br>${selectMyAttendedByGroupInfoNo.groupInfoContent}<br>
 									</div>						
 									<div style="display: none;" id="review">
 										<h3>Write a Review</h3>
@@ -477,7 +478,7 @@
 				
 				$("#account").val("11854");
 				$("#phone").val("0987654321");
-				$("#adress").val("新北市中和區中山路三段");
+				$("#address").val("新北市中和區中山路三段");
 				
 			});
 			//小圖變大圖
@@ -647,6 +648,8 @@
 																			phone.parent().empty().append("連絡電話:"+phone.val());
 																			address.parent().empty().append("寄送地址:"+address.val());
 																			$("#paySub").remove();
+																			$("#payData").remove();
+																			
 																			var msg={
 																					"target":'${selectMyAttendedByGroupInfoNo.groupInfoNo}',
 																					"change":"payReady"
