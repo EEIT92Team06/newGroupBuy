@@ -44,7 +44,6 @@ public class SendMailServlet extends HttpServlet {
 		request.setAttribute("successMsg", successMsg);
 		
 		String[] checkboxs = request.getParameterValues("checkbox");
-		
 		String title = request.getParameter("title");
 		String siteMail = request.getParameter("siteMail");
 		
@@ -64,10 +63,10 @@ public class SendMailServlet extends HttpServlet {
 			System.out.println("announce : " + anncounce);
 			announcementService.insertMsg(anncounce);
 			successMsg.put("successMsg", "發送成功");
-			RequestDispatcher rd = request.getRequestDispatcher("/Backstage/newbackstage1.jsp");
-			rd.forward(request, response);
-			return;
 		}
+		RequestDispatcher rd = request.getRequestDispatcher("/Backstage/newbackstage1.jsp");
+		rd.forward(request, response);
+		return;
 		
 //		System.out.println("checkboxs : " + checkboxs);
 //		for(String checkbox : checkboxs){

@@ -89,7 +89,7 @@ public class LoginServlet extends HttpServlet {
 
 			if (statusNum >= 9101) {
 				if (!loginService.checkStatus(memberBean.getMemberNo())) {
-					Timestamp banT = loginService.selectban(memberBean.getMemberNo());
+					String banT = loginService.selectban(memberBean.getMemberNo());
 					session.setAttribute("loginToken", memberBean);
 					session.setAttribute("banT", banT);
 					String path = request.getContextPath();
