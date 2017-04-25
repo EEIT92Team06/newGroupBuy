@@ -11,7 +11,7 @@ public class ProjInsertPic {
 		
 //		String inFile = "c:/temp/aaa.jpg";
 		String outFile = "test.jgp";
-		String[] inFileArray={"C:/temp/fake/214_02大紅棗01.jpg","C:/temp/fake/215_03活菌里肌肉片01.jpg","C:/temp/fake/216_01進口零食00.jpg","C:/temp/fake/217_01休族時間01.jpg","C:/temp/fake/218_01太陽眼鏡01.jpg","C:/temp/fake/219_02頭髮飾品01.jpg","C:/temp/fake/220_02化妝套01.jpg","C:/temp/fake/221_Anycast M2.jpg","C:/temp/fake/222_02迪士尼手機座01.jpg","C:/temp/fake/223_01籃球01.jpg"};
+		String[] inFileArray={"C:/temp/fake/水餃01.png","C:/temp/fake/水餃02.jpg","C:/temp/fake/216_01進口零食00.jpg","C:/temp/fake/T-shirt.jpg","C:/temp/fake/218_01太陽眼鏡01.jpg","C:/temp/fake/219_02頭髮飾品01.jpg","C:/temp/fake/220_02化妝套01.jpg","C:/temp/fake/221_Anycast M2.jpg","C:/temp/fake/222_02迪士尼手機座01.jpg","C:/temp/fake/223_01籃球01.jpg"};
 		try {     
 			String connUrl = "jdbc:sqlserver://localhost:1433;databaseName=GroupBuy";
 			conn = DriverManager.getConnection(connUrl, "sa", "passw0rd");
@@ -34,7 +34,7 @@ public class ProjInsertPic {
 //			String insertStmt = "INSERT INTO groupInfoPic VALUES(?,?)";	
 			PreparedStatement stmt = conn.prepareStatement(updateStmt);
 			stmt.setBinaryStream(1, fis);
-			stmt.setInt(2, i+6);	
+			stmt.setInt(2, i+1);	
 			stmt.executeUpdate();
 			System.out.println("Update blob is successful!");
 			}

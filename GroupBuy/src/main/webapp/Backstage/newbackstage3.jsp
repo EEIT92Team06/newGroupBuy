@@ -26,7 +26,14 @@
 <!-- Custom Theme Style -->
 <link href="build/css/custom.min.css" rel="stylesheet">
 </head>
-
+<script type="text/javascript">
+function checkAll(obj) {
+	var checkboxs = document.getElementsByName("checkbox");
+	for (var i = 0; i < checkboxs.length; i++) {
+		checkboxs[i].checked = obj.checked;
+	}
+}
+</script>
 <body class="nav-md">
 	<div class="container body">
 		<div class="main_container">
@@ -147,9 +154,9 @@
 													style="font-size: medium; margin-top: 15px">
 													<tr>
 														<th style="width:; text-align: center;" class="image"><input
-															style="width:; height: 16px" type="checkbox"
+															style="width:; height: 16px" type="checkbox" id="checkbox"
 															name="cancel"
-															onclick="checkAll(this,'allMail','announceMail')"></th>
+															onclick="checkAll(this)"></th>
 														<th style="width:; text-align: center;" class="name">編號</th>
 														<th style="width:; text-align: center;" class="quantity">團名</th>
 														<th style="width:; text-align: center;" class="model">產品分類</th>
@@ -157,7 +164,7 @@
 														<th style="width:; text-align: center;" class="model">姓名</th>
 														<th style="width:; text-align: center;" class="model">評分紀錄</th>
 													</tr>
-													<c:forEach var="bean" items="${Allgroup}">
+													<c:forEach var="bean" varStatus="count" items="${Allgroup}">
 														<tr>
 															<c:if test="${bean.groupStatus != '封鎖'}">
 																<td><input type="checkbox" name="checkbox"

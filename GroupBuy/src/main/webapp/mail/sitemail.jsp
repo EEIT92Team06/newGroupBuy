@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html  PUBLIC>
 <html>
 <head>
@@ -139,15 +140,21 @@
 
 	
 </script>
-
+                                             
 </head>
 <body>
+<div style="display: none;">
+   <jsp:useBean id="date" class="java.util.Date"></jsp:useBean>
+    <fmt:formatDate  value="${date}" pattern="yyyy-MM-dd HH:mm:ss"/> 
+    </div>
 	<jsp:include page="/headline.jsp" />
+	
 	<div class="productdesc"
-		style="width: 1195px; margin-left:12%; margin-top: 80px">
+		style="width: 1195px; margin-left: 12%; margin-top: 80px">
 		<form action="" style="float: right;">
-			<i style="margin-right: 9px%;" class="fa fa-search" aria-hidden="true"></i><input
-				type="text" style="margin-bottom: 3px; width: 300px; height: 40px"
+			<i style="margin-right: 9px%;" class="fa fa-search"
+				aria-hidden="true"></i><input type="text"
+				style="margin-bottom: 3px; width: 300px; height: 40px"
 				name="searchKeyWord" class="input-medium search-query"
 				placeholder="Search Here…">
 		</form>
@@ -205,9 +212,19 @@
 												<%-- 														<font>${allMail.siteMailTime}</font> --%>
 												<!-- 												</a></td> -->
 
-												<td><a onclick="getAllMail(${allMail.siteMailNo})">${allMail.siteMailTime}</a>
-												</td>
-
+												<td> 
+										     		<c:if test="${date > allMail.siteMailTime}">
+												       <a onclick="getAllMail(${allMail.siteMailNo})">
+												         ${allMail.siteMailTime}<img style="margin-left: 15px;width: 40px" src="../pictures/new (1).png">
+												        </a>
+												    </c:if> 
+												    
+												    <c:if  test="${date < allMail.siteMailTime}">
+												        <a onclick="getAllMail(${allMail.siteMailNo})">
+												         ${allMail.siteMailTime}
+												        </a>
+												    </c:if>
+                                                </td>
 												<td onclick="allMailAddTr()">GroupBuy團隊</td>
 												<td><a onclick="getAllMail(${allMail.siteMailNo})">
 														<font>${allMail.siteMailCanTitle}</font>
@@ -437,7 +454,7 @@
 			</div>
 		</form>
 	</div>
-
+    
 	<script src="../js/js/jquery.js"></script>
 	<script src="../js/js/bootstrap.js"></script>
 	<script src="../js/js/respond.min.js"></script>
@@ -455,5 +472,6 @@
 	<script type="text/javascript"
 		src="../js/js/jquery.ba-throttle-debounce.min.js"></script>
 	<script defer src="../js/js/custom.js"></script>
+	
 </body>
 </html>

@@ -26,7 +26,14 @@
 <!-- Custom Theme Style -->
 <link href="build/css/custom.min.css" rel="stylesheet">
 </head>
-
+<script type="text/javascript">
+function checkAll(obj) {
+	var checkboxs = document.getElementsByName("checkbox");
+	for (var i = 0; i < checkboxs.length; i++) {
+		checkboxs[i].checked = obj.checked;
+	}
+}
+</script>
 <body class="nav-md">
 	<div class="container body">
 		<div class="main_container">
@@ -135,7 +142,7 @@
 													<tr>
 														<td>主旨<input type="text" style="margin-left: 20px"
 															name="title" placeholder="請輸入標題" autocomplete="off"
-															value="${param.title}"><font style="margin-left: 10px" color="red">${errorMsg.errorMsg}${successMsg.successMsg}</font></td>
+															value="${param.title}"><font style="margin-left: 10px" color="red">${errorMsg.errorMsg}</font><font style="margin-left: 10px" color="green">${successMsg.successMsg}</font></td>
 													</tr>
 													<tr>
 														<td>內文<textarea cols="95"
@@ -156,7 +163,7 @@
 													style="font-size: medium; margin-top: 15px">
 													<tr>
 														<th style="width:; text-align: center;" class="image"><input
-															style="width:; height: 16px" type="checkbox"
+															style="width:; height: 16px" type="checkbox"  onclick="checkAll(this)"
 															name="cancel"></th>
 														<th style="width:; text-align: center;" class="name">會員編號</th>
 														<th style="width:; text-align: center;" class="quantity">會員姓名</th>

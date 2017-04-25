@@ -48,6 +48,19 @@
 			}
 		}
 	}
+	
+	
+	function enter(){
+		document.getElementById("memberPassword").setAttribute("value", "sa123456");
+		document.getElementById("checkPassword").setAttribute("value", "sa123456");
+		document.getElementById("memberName").setAttribute("value", "劉得滑");
+		document.getElementById("memberNickName").setAttribute("value", "Andy");
+		var x=document.getElementById("cityName").children[2];
+		x.setAttribute("selected", "selected");
+		document.getElementById("address").setAttribute("value", "土城區中華路105號69樓-2");
+		document.getElementById("datepicker").setAttribute("value", "1992-09-09");
+		document.getElementById("memberPhone").setAttribute("value", "0933445566");
+	}
 	</script>
 </head>
 <body>
@@ -73,7 +86,7 @@
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-envelope"
-								aria-hidden="true"></i></span> <input name="memberAccount"
+								aria-hidden="true"></i></span> <input name="memberAccount" id="memberAccount"
 								placeholder="電子郵件" class="form-control" type="text"  style="height: 30px;"
 								value="${param.memberAccount}${googleData.email}">
 						</div>
@@ -89,7 +102,7 @@
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-key"
-								aria-hidden="true"></i></span> <input name="memberPassword" style="height: 30px;"
+								aria-hidden="true"></i></span> <input name="memberPassword" style="height: 30px;" id="memberPassword"
 								placeholder="輸入8到16碼含中英文及特殊符號" class="form-control"
 								type="password" />
 						</div>
@@ -105,7 +118,7 @@
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-key"
-								aria-hidden="true"></i></span> <input name="checkPassword" style="height: 30px;"
+								aria-hidden="true"></i></span> <input name="checkPassword" style="height: 30px;" id="checkPassword"
 								placeholder="輸入一致的密碼" class="form-control" type="password"
 								value="">
 						</div>
@@ -121,7 +134,7 @@
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-user-o"
-								aria-hidden="true"></i> </span> <input name="memberName" style="height: 30px;"
+								aria-hidden="true"></i> </span> <input name="memberName" style="height: 30px;" id="memberName"
 								placeholder="中文全名" class="form-control" type="text"
 								value="${param.memberName}">
 						</div>
@@ -137,7 +150,7 @@
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-child"
-								aria-hidden="true"></i></span> <input name="memberNickName" style="height: 30px;"
+								aria-hidden="true"></i></span> <input name="memberNickName" style="height: 30px;" id="memberNickName"
 								placeholder="綽號" class="form-control" type="text"
 								value="${param.memberNickName}">
 						</div>
@@ -153,7 +166,7 @@
 						<div class="input-group"  style="width: 150px;margin-right: 150px">
 							<span class="input-group-addon"><i class="fa fa-map-marker" aria-hidden="true"></i>
 							</span> 
-							<select name="cityName" class="form-control selectpicker">
+							<select name="cityName" class="form-control selectpicker" id="cityName">
 								<option value="台北市">台北市</option>
 								<option value="基隆市">基隆市</option>
 								<option value="新北市">新北市</option>
@@ -179,7 +192,7 @@
 							</select>
 						</div>
 						<div class="input-group" >
-							<input style="width: 338px;height: 30px;"name="address"placeholder="完整住址" class="form-control" type="text" value="${param.address}">
+							<input style="width: 338px;height: 30px;"name="address" id="address" placeholder="完整住址" class="form-control" type="text" value="${param.address}">
 						</div>
 						<small data-bv-validator="notEmpty" data-bv-validator-for="title"
 							class="help-block" style="color: red;">${errorMessages.memberAddress}</small>
@@ -210,7 +223,7 @@
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-phone" aria-hidden="true"></i>
-                            </span><input name="memberPhone"
+                            </span><input name="memberPhone" id="memberPhone"
 								placeholder="例:09xx-xxx-ooo" class="form-control" type="text" style="height: 30px;"
 								value="${param.memberPhone}">
 						</div>
@@ -251,11 +264,18 @@
 								免費註冊<span class="glyphicon glyphicon-send"></span>
 							</button>
 						</div>
+
 					</center>
+							<button type="button"  onclick="enter()" value="">
+								一鍵輸入
+							</button>
 				</div>
+				
 			</fieldset>
 			</center>
+			
 		</form>
+		
 	</div>
 	</div>
 	<!-- /.container -->
