@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:comp/env/jdbc/groupbuy"></property>
+	</bean>
+
+	<bean id="sessionFactory" destroy-method="destroy"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
+	</bean>
+<!-- 士凱設定檔 -->
+	<bean id="searchDAO" class="searchgroup.model.dao.SearchDAOhb">
+		<constructor-arg ref="sessionFactory" />
+	</bean>
+
+	<bean id="searchService" class="searchgroup.model.SearchService">
+		<constructor-arg ref="searchDAO" />
+	</bean>
+
+	<bean id="searchDetailsDAO" class="searchgroup.model.dao.SearchDetailsDAOhb">
+		<constructor-arg ref="sessionFactory" />
+	</bean>
+
+	<bean id="searchDetailsService" class="searchgroup.model.SearchDetailsService">
+		<constructor-arg ref="searchDetailsDAO" />
+	</bean>
+
+	<bean id="groupMsgDAO" class="searchgroup.model.dao.GroupMsgDAOhb">
+		<constructor-arg ref="sessionFactory" />
+	</bean>
+
+	<bean id="groupMsgService" class="searchgroup.model.GroupMsgService">
+		<constructor-arg ref="groupMsgDAO" />
+	</bean>
+
+	<bean id="orderDAO" class="searchgroup.model.dao.OrderDAOhb">
+		<constructor-arg ref="sessionFactory" />
+	</bean>
+
+	<bean id="orderService" class="searchgroup.model.OrderService">
+		<constructor-arg ref="orderDAO" />
+	</bean>
+	<bean id="announceDAO" class="insertAnnounce.mode.dao.AnnounceDAOhb">
+		<constructor-arg ref="sessionFactory" />
+	</bean>
+
+	<bean id="announceService" class="insertAnnounce.model.AnnouncementService">
+		<constructor-arg ref="announceDAO"></constructor-arg>
+	</bean>
+
+	<bean id="autocompleteDAO" class="searchgroup.model.dao.autocompleteDAO">
+		<constructor-arg ref="sessionFactory"></constructor-arg>
+	</bean>
+
+<!-- 	政維設定檔 -->
+
+<bean id="orderInfoDAO" class="eeit9212.model.dao.OrderInfoDAOHibernate">
+		<constructor-arg ref="sessionFactory"></constructor-arg>
+	</bean>
+	
+	<bean id="groupInfoService" class="eeit9212.model.GroupInfoService">
+		<constructor-arg>
+			<bean class="eeit9212.model.dao.GroupInfoDAOHibernate">
+				<constructor-arg ref="sessionFactory"></constructor-arg>
+			</bean>
+		</constructor-arg>
+		<constructor-arg>
+			<bean class="eeit9212.model.dao.GroupInfoPicDAOHibernate">
+				<constructor-arg ref="sessionFactory"></constructor-arg>
+			</bean>
+		</constructor-arg>
+		<constructor-arg>
+			<bean class="eeit9212.model.dao.GroupInfoDetailsDAOHibernate">
+				<constructor-arg ref="sessionFactory"></constructor-arg>
+			</bean>
+		</constructor-arg>
+		<constructor-arg ref="orderInfoDAO"/>
+		<constructor-arg ref="creditAttendanceService"/>
+	</bean>
+
+	
+	<bean id="orderInfoService" class="eeit9212.model.OrderInfoService">
+		<constructor-arg ref="orderInfoDAO"/>
+		<constructor-arg>
+			<bean class="eeit9212.model.dao.OrderInfoDetailsDAOHibernate">
+				<constructor-arg ref="sessionFactory"></constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+
+	<bean id="creditAttendanceService" class="eeit9212.model.CreditAttendanceService">
+		<constructor-arg>
+			<bean class="eeit9212.model.dao.GrouperCreditDAOHibernate">
+				<constructor-arg ref="sessionFactory"></constructor-arg>
+			</bean>
+		</constructor-arg>
+		<constructor-arg>
+			<bean class="eeit9212.model.dao.GroupAttendanceDAOHibernate">
+				<constructor-arg ref="sessionFactory"></constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+	<bean id="reportService" class="eeit9212.model.ReportService">
+		<constructor-arg ref="reportDAO"></constructor-arg>
+	</bean>
+	<bean id="reportDAO" class="eeit9212.model.dao.ReportDAOHibernate">
+		<constructor-arg ref="sessionFactory"></constructor-arg>
+	</bean>
+	
+
+</beans>
