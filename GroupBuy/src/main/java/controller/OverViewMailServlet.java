@@ -1,7 +1,10 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -52,16 +55,42 @@ public class OverViewMailServlet extends HttpServlet {
 
 		MemberBean memberBean = (MemberBean) session.getAttribute("loginToken");
 		// 查詢全部信件
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		List<MailBean> allMail = siteMailService.selectMailByMemberNo(memberBean);
+		List<String> allMailTime = new ArrayList<String>();
+		for(int i=0;i<allMail.size();i++){
+			String temp = format.format(allMail.get(i).getSiteMailTime());
+			allMailTime.add(temp);
+		}
+		session.setAttribute("allMailTime", allMailTime);
 		session.setAttribute("allMail", allMail);
 		List<AnnouncementBean> announceMail = siteMailService.selectAnnounceMail(memberBean.getMemberNo());
+		List<String> announceMailTime = new ArrayList<String>();
+		for(int i=0;i<announceMail.size();i++){
+			String temp1 = format.format(announceMail.get(i).getSiteMailTime());
+			announceMailTime.add(temp1);
+		}
+		session.setAttribute("announceMailTime", announceMailTime);
 		session.setAttribute("announceMail", announceMail);
 		String path = request.getContextPath();
 
 		// 查詢未讀信件
 		List<MailBean> unReadMail = siteMailService.selectUnReadMailByMemberNo(memberBean);
+		List<String> unReadMailTime = new ArrayList<String>();
+		for(int i=0;i<unReadMail.size();i++){
+			String temp1 = format.format(unReadMail.get(i).getSiteMailTime());
+			unReadMailTime.add(temp1);
+		}
+		session.setAttribute("unReadMailTime", unReadMailTime);
 		session.setAttribute("unReadMail", unReadMail);
+		
 		List<AnnouncementBean> unReadannounceMail = siteMailService.selectUnReadAnnounceMail(memberBean.getMemberNo());
+		List<String> unReadannounceMailTime = new ArrayList<String>();
+		for(int i=0;i<unReadannounceMail.size();i++){
+			String temp1 = format.format(unReadannounceMail.get(i).getSiteMailTime());
+			unReadannounceMailTime.add(temp1);
+		}
+		session.setAttribute("unReadannounceMailTime", unReadannounceMailTime);
 		session.setAttribute("unReadannounceMail", unReadannounceMail);
 		response.sendRedirect(path + "/mail/sitemail.jsp");
 		return;

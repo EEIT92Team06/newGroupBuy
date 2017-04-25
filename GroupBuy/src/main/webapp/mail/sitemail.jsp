@@ -215,20 +215,20 @@
 												<td> 
 										     		<c:if test="${date > allMail.siteMailTime}">
 												       <a onclick="getAllMail(${allMail.siteMailNo})">
-												         ${allMail.siteMailTime}<img style="margin-left: 15px;width: 40px" src="../pictures/new (1).png">
+												         ${allMailTime[time.index]}
 												        </a>
 												    </c:if> 
 												    
 												    <c:if  test="${date < allMail.siteMailTime}">
 												        <a onclick="getAllMail(${allMail.siteMailNo})">
-												         ${allMail.siteMailTime}
+												         ${allMailTime[time.index]}
 												        </a>
 												    </c:if>
                                                 </td>
 												<td onclick="allMailAddTr()">GroupBuy團隊</td>
 												<td><a onclick="getAllMail(${allMail.siteMailNo})">
 														<font>${allMail.siteMailCanTitle}</font>
-												</a></td>
+												</a></td> 
 											</tr>
 											<script>
 												function getAllMail(obj){
@@ -271,9 +271,9 @@
 												<td style="text-align: center;"><input
 													style="width: 16px; height: 16px" type="checkbox"
 													onclick="check1()" id="announceMail${time.count}"
-													name="announceMail" value="${announceMail.siteMailNo}"></td>
+													name="announceMail" value="${announceMail.siteMailNo}"></td> 
 												<td><a
-													onclick="getAllMail1(${announceMail.siteMailNo})"><font>${announceMail.siteMailTime}</font></a>
+													onclick="getAllMail1(${announceMail.siteMailNo})"><font>${announceMailTime[time.index]}</font></a>
 												</td>
 												<td>GroupBuy團隊</td>
 												<td><a><font>系統公告</font></a></td>
@@ -348,7 +348,7 @@
 													onclick="checkUnRead()" id="mail${time.count}"
 													name="allMail1" value="${unReadMail.siteMailNo}"></td>
 												<td><a
-													onclick="getUnReadAllMail(${unReadMail.siteMailNo})"><font>${unReadMail.siteMailTime}</font></a>
+													onclick="getUnReadAllMail(${unReadMail.siteMailNo})"><font>${unReadMailTime[time.index]}</font></a>
 												</td>
 												<td>GroupBuy團隊</td>
 												<td><a
@@ -404,7 +404,7 @@
 													name="announceMail1"
 													value="${unReadannounceMail.siteMailNo}"></td>
 												<td><a
-													onclick="getUnReadAnnounceMail(${unReadannounceMail.siteMailNo})"><font>${unReadannounceMail.siteMailTime}</font>
+													onclick="getUnReadAnnounceMail(${unReadannounceMail.siteMailNo})"><font>${unReadannounceMailTime[time.index]}</font>
 												</a></td>
 												<td>GroupBuy團隊</td>
 												<td><a
