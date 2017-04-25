@@ -211,7 +211,7 @@
 
 												<td>
 												  <a onclick="getAllMail(${allMail.siteMailNo})">
-														${allMail.siteMailTime} </a> 
+														${allMailTime[time.index]} </a> 
 													<c:if test="${allMail.siteMailStatusNo==9301}">
 												      <img src="../pictures/new (1).png">
 												    </c:if>

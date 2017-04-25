@@ -136,10 +136,6 @@
 	    document.getElementById('productName').setAttribute("value","高麗菜水餃");
 	    document.getElementById('productPrice').setAttribute("value","379");
 		document.getElementById('1').setAttribute("style","");
-		document.getElementById('2').setAttribute("style","");
-		document.getElementById('3').setAttribute("style","");
-		document.getElementById('4').setAttribute("style","");
-
 
 	}
 </script>
@@ -316,84 +312,6 @@
 										aria-hidden='true'></i></span> <input name='productPrice'
 										style='height: 30px;' id='m"+txtId+"' placeholder='價格'
 										class='form-control' type='text' value='379'>
-								</div>
-								<small data-bv-validator='notEmpty'
-									data-bv-validator-for='title' class='help-block'
-									style='color: red;'></small>
-							</div>
-						</div>
-						<div id="2" style="display: none;">
-							<label class='col-md-4 control-label'>*品項2</label>
-							<div class='col-md-4 inputGroupContainer'>
-								<div class='input-group'>
-									<span class='input-group-addon'><i class='fa fa-child'
-										aria-hidden='true'></i></span> <input name='productName'
-										id='p"+txtId+"' style='height: 30px;' placeholder='品名'
-										class='form-control' type='text' value='香蔥水餃'>
-								</div>
-								<small data-bv-validator='notEmpty'
-									data-bv-validator-for='title' class='help-block'
-									style='color: red;'></small>
-							</div>
-							<div class='col-md-4 inputGroupContainer'
-								style='display: inline;'>
-								<div class='input-group'>
-									<span class='input-group-addon'><i class='fa fa-child'
-										aria-hidden='true'></i></span> <input name='productPrice'
-										style='height: 30px;' id='m"+txtId+"' placeholder='價格'
-										class='form-control' type='text' value='420'>
-								</div>
-								<small data-bv-validator='notEmpty'
-									data-bv-validator-for='title' class='help-block'
-									style='color: red;'></small>
-							</div>
-						</div>
-						<div id="3" style="display: none;">
-							<label class='col-md-4 control-label'>*品項3</label>
-							<div class='col-md-4 inputGroupContainer'>
-								<div class='input-group'>
-									<span class='input-group-addon'><i class='fa fa-child'
-										aria-hidden='true'></i></span> <input name='productName'
-										id='p"+txtId+"' style='height: 30px;' placeholder='品名'
-										class='form-control' type='text' value='泡菜水餃'>
-								</div>
-								<small data-bv-validator='notEmpty'
-									data-bv-validator-for='title' class='help-block'
-									style='color: red;'></small>
-							</div>
-							<div class='col-md-4 inputGroupContainer'
-								style='display: inline;'>
-								<div class='input-group'>
-									<span class='input-group-addon'><i class='fa fa-child'
-										aria-hidden='true'></i></span> <input name='productPrice'
-										style='height: 30px;' id='m"+txtId+"' placeholder='價格'
-										class='form-control' type='text' value='450'>
-								</div>
-								<small data-bv-validator='notEmpty'
-									data-bv-validator-for='title' class='help-block'
-									style='color: red;'></small>
-							</div>
-						</div>
-						<div id="4" style="display: none;">
-							<label class='col-md-4 control-label'>*品項4</label>
-							<div class='col-md-4 inputGroupContainer'>
-								<div class='input-group'>
-									<span class='input-group-addon'><i class='fa fa-child'
-										aria-hidden='true'></i></span> <input name='productName'
-										id='p"+txtId+"' style='height: 30px;' placeholder='品名'
-										class='form-control' type='text' value='香菜水餃'>
-								</div>
-								<small data-bv-validator='notEmpty'
-									data-bv-validator-for='title' class='help-block'
-									style='color: red;'></small>
-							</div>
-							<div class='col-md-4 inputGroupContainer'
-								style='display: inline;'>
-								<div class='input-group'>
-									<span class='input-group-addon'><i class='fa fa-child'
-										aria-hidden='true'></i></span> <input name='productPrice'
-										style='height: 30px;' id='m"+txtId+"' placeholder='價格'
-										class='form-control' type='text' value='450'>
 								</div>
 								<small data-bv-validator='notEmpty'
 									data-bv-validator-for='title' class='help-block'

@@ -90,7 +90,7 @@
 						var timeout1 = setTimeout(function(){
 							$.get("${pageContext.request.contextPath}/eeit9212/grouprecord/changegroupstatus",{"locationFrom":"timeout","groupInfoNo":groupInfoNo},function(data){					
 								groupStatus.empty().append("等待主揪處理中");
-								layer.alert('您創的團名:'+groupInfoName+'<br>截止日期已到，請盡快處理。', {
+								layer.alert('您創的團名:<br>'+groupInfoName+'<br>截止日期已到，請盡快處理。', {
 									  skin: 'layui-layer-molv' //样式类名
 									  ,btn:'確定'
 									  ,closeBtn: 0}

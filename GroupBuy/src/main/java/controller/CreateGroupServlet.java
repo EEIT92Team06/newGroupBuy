@@ -242,6 +242,7 @@ public class CreateGroupServlet extends HttpServlet {
 			return;
 		}
 		MemberBean bean=(MemberBean)session.getAttribute("loginToken");
+		System.out.println("bean="+bean.getMemberAccount());
 		groupInfoBean.setMemberNo(bean.getMemberNo());
 		groupInfoBean.setGroupStatusNo(1);
 		groupInfoBean.setProductTypeNo(productTypeNo);
