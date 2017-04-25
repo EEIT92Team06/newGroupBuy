@@ -23,6 +23,7 @@ public class MailBean {
 	private String siteMailCanTitle;
 	@Column(name="siteMailCan_Content")
 	private String siteMailCanContent;
+	
 	public int getSiteMailNo() {
 		return siteMailNo;
 	}

@@ -161,6 +161,12 @@
 																<td><a
 																	href="<c:url value='/Backstage/newbackstage3.jsp' />">${bean.reportTarget}</a></td>
 															</c:if>
+
+															<c:if test="${bean.reportTypeNo >4 && bean.reportTypeNo <9}">
+																<td><a
+																	href="<c:url value='/Backstage/newwishbackstage.jsp' />">${bean.reportTarget}</a></td>
+															</c:if>
+
 															<c:if test="${bean.reportTypeNo >8}">
 																<td><a
 																	href="<c:url value='/Backstage/newbackstage2.jsp' />">${bean.reportTarget}</a></td>

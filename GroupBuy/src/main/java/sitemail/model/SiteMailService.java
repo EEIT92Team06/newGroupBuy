@@ -2,6 +2,7 @@ package sitemail.model;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,6 +68,7 @@ public class SiteMailService {
 
 	public List<MailBean> selectMailByMemberNo(login.model.MemberBean memberBean) {
 		List<MailBean> list = null;
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		if (memberBean != null) {
 			List<Object[]> results = siteMailDAO.selectMailByMemberNo(memberBean.getMemberNo());
 			list = new ArrayList<MailBean>();

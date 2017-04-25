@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<title>SimpleOne - A Responsive Html5 Ecommerce Template</title>
+<title>SimpleOne - A Responsive Html5 Ecommerce Template</title> 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -211,7 +211,7 @@
 
 												<td>
 												  <a onclick="getAllMail(${allMail.siteMailNo})">
-														${allMail.siteMailTime} </a> 
+														${allMailTime[time.index]} </a> 
 													<c:if test="${allMail.siteMailStatusNo==9301}">
 												      <img src="../pictures/new (1).png">
 												    </c:if>
@@ -267,12 +267,14 @@
 												<td style="text-align: center;"><input
 													style="width: 16px; height: 16px" type="checkbox"
 													onclick="check1()" id="announceMail${time.count}"
-													name="announceMail" value="${announceMail.siteMailNo}"></td>
+													name="announceMail" value="${announceMail.siteMailNo}"></td> 
 												<td><a
-													onclick="getAllMail1(${announceMail.siteMailNo})"><font>${announceMail.siteMailTime}</font></a>									
+													onclick="getAllMail1(${announceMail.siteMailNo})"><font>${announceMailTime[time.index]}</font></a>
+						
 													 <c:if test="${announceMail.siteMailStatusNo==9301}">
 												      <img src="../pictures/new (1).png">
 												    </c:if>
+
 												</td>
 												<td>GroupBuy團隊</td>
 												<td><a><font>系統公告</font></a></td>
@@ -347,8 +349,7 @@
 													onclick="checkUnRead()" id="mail${time.count}"
 													name="allMail1" value="${unReadMail.siteMailNo}"></td>
 												<td><a
-													onclick="getUnReadAllMail(${unReadMail.siteMailNo})"><font>${unReadMail.siteMailTime}</font></a>
-
+													onclick="getUnReadAllMail(${unReadMail.siteMailNo})"><font>${unReadMailTime[time.index]}</font></a>
 												</td>
 												<td>GroupBuy團隊</td>
 												<td><a
@@ -404,7 +405,7 @@
 													name="announceMail1"
 													value="${unReadannounceMail.siteMailNo}"></td>
 												<td><a
-													onclick="getUnReadAnnounceMail(${unReadannounceMail.siteMailNo})"><font>${unReadannounceMail.siteMailTime}</font>
+													onclick="getUnReadAnnounceMail(${unReadannounceMail.siteMailNo})"><font>${unReadannounceMailTime[time.index]}</font>
 												</a></td>
 												<td>GroupBuy團隊</td>
 												<td><a

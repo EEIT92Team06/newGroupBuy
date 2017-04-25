@@ -120,7 +120,7 @@ window.onload = function(){
 					divis.setAttribute("style","width:1000px");
 					var p = document.createElement("p");
 					p.insertAdjacentText("BeforeEnd", data.groupMsg);
-					p.setAttribute("style","margin-left:70px");
+					p.setAttribute("style","margin-left:60px");
 					divis.appendChild(p); 
 					
 					var li = document.createElement("Li");
@@ -352,7 +352,7 @@ function orderSuc(){
 		</section>
 
 		<section class="commentsblog" style="margin-left: 70px;">
-		<ul id="msgContent" class="comments" style="margin-left: 19%;">
+		<ul id="msgContent" class="comments" style="margin-left: 10%;">
 			<c:forEach var="bean" items="${selectMsg}">
 				<!--  			第一層Msg  -->
 				<li><a class="avtar thumbnail"><img class="img-circle" 
@@ -364,7 +364,7 @@ function orderSuc(){
 			</c:forEach>
 		</ul>
 		<br>
-		<div id="div7" style="margin-left: 10.5%;">
+		<div id="div7">
 			<form style="margin-left: 175px">
 				<textarea style="width: 1000px" id="leaveMsg" name="groupMsg"
 					rows="3" cols="400"

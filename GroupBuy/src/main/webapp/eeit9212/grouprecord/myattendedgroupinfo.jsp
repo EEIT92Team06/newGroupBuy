@@ -305,9 +305,10 @@
 								<button class="tablink" id="reviewBtn" value="review">檢舉</button>
 								<div style="height:350px;width: 532px;padding-left: 35px;">
 									<div style="display: none;" id="description">
-									 	團名:${selectMyAttendedByGroupInfoNo.groupInfoName}<br>
-										寄送方式:${selectMyAttendedByGroupInfoNo.groupInfoShippingWay}<br>
-										賣家敘述:${selectMyAttendedByGroupInfoNo.groupInfoContent} <br>
+									<br>
+									 	團名:${selectMyAttendedByGroupInfoNo.groupInfoName}<br><br>
+										寄送方式:${selectMyAttendedByGroupInfoNo.groupInfoShippingWay}<br><br>
+										賣家敘述:<br>${selectMyAttendedByGroupInfoNo.groupInfoContent}<br>
 									</div>						
 									<div style="display: none;" id="review">
 										<h3>Write a Review</h3>

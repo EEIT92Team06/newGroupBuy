@@ -291,30 +291,30 @@
 
 									<li><c:choose>
 											<c:when test="${empty loginToken}"> 
-												<a style="font-size: 22px" class="click1">創團</a></li>
+												<a style="font-size: 20px" class="click1">創團</a></li>
 									</c:when>
 									<c:when test="${!empty loginToken}">
-										<a style="font-size: 22px"
+										<a style="font-size: 20px"
 											href="<c:url value='/creategroup/createGroup.jsp'/>">創團</a>
 										</li>
 									</c:when>
 									</c:choose>
 									<li><c:choose>
 											<c:when test="${empty loginToken}">
-												<a style="font-size: 22px" class="click1">搜團</a></li>
+												<a style="font-size: 20px" class="click1">搜團</a></li>
 									</c:when>
 									<c:when test="${!empty loginToken}">
-										<a style="font-size: 22px"
+										<a style="font-size: 20px"
 											href="<c:url value='/headline/SearchServlet0.controller'/>">搜團</a>
 										</li>
 									</c:when>
 									</c:choose>
 									<li><c:choose>
 											<c:when test="${empty loginToken}">
-												<a style="font-size: 22px" class="click1">許願池</a></li>
+												<a style="font-size: 20px" class="click1">許願池</a></li>
 									</c:when>
 									<c:when test="${!empty loginToken}">
-										<a style="font-size: 22px"
+										<a style="font-size: 20px"
 											href="<c:url value='/wish/wishpool.controller'/>">許願池</a>
 										<ul class="sub-menu">
 											<li class="menu-item"><a
@@ -325,12 +325,12 @@
 
 									<li><c:choose>
 											<c:when test="${empty loginToken}">
-												<a style="font-size: 22px"  class="click1"
-													>我的團購</a>
+												<a style="font-size: 20px"
+													href="#">我的團購</a>
 												<!-- sub-menu start--></li>
 									</c:when>
 									<c:when test="${!empty loginToken}">
-										<a style="font-size: 22px"
+										<a style="font-size: 20px"
 											href="#">我的團購</a>
 
 										<!-- sub-menu start-->
