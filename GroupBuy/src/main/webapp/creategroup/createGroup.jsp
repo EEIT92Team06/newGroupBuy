@@ -140,7 +140,7 @@
 	}
 </script>
 </head>
-<body>
+<body> 
 	<jsp:include page="/headline.jsp"></jsp:include>
 	<div class="container">
 
