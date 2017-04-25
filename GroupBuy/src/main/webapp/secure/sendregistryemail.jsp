@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title></title>
+<title>GroupBuy團購網</title>
 <style type="text/css">
 .full {
 	left: 0;

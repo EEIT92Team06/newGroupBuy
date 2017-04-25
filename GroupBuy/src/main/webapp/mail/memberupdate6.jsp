@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>MemberInformation</title>
+<title>GroupBuy團購網</title>
 <style>
 #table1 {
 	width: 400px;

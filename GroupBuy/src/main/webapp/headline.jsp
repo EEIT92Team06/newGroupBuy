@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>我是TITLE</title>
+<title>GroupBuy團購網</title>
 <link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'/>">
 <!-- <link rel="stylesheet" -->
 <!-- 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
