@@ -5,9 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<%-- <link rel="icon" href="<c:url value='/pictures/favicon.ico'/>" type="image/x-icon" /> --%>
-<%-- <link rel="shortcut icon" href="<c:url value='/pictures/favaaaicon.ico'/>" type="image/x-icon" /> --%>
+
+<link rel="shortcut icon" href="<c:url value='/pictures/groupicon.ico'/>" type="image/x-icon" />
+<title>GroupBuy團購網</title>
+
 <%-- <link href="<c:url value='/css/bootstrap.css'/>" rel="stylesheet"> --%>
 <%-- <link href="<c:url value='/css/bootstrap-responsive.css'/>" rel="stylesheet"> --%>
 <link href="<c:url value='/css/style.css'/>" rel="stylesheet">

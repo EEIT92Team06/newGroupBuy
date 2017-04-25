@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>MemberInformation</title>
+<title>GroupBuy團購網</title>
 <link href="<c:url value='/css/style.css'/>" rel="stylesheet">
 <link rel="shortcut icon" href="<c:url value='/pictures/groupicon.ico'/>" type="image/x-icon" />
 </head>

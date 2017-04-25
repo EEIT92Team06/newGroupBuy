@@ -74,7 +74,6 @@ public class LoginServlet extends HttpServlet {
 		MemberBean memberBean = loginService.login(account, password);
 		if (memberBean != null) {
 			// 0415 Kai加的----------------------------------
-			memberBean.getMemberNo();
 			try {
 				int xxx = searchService.selectRecommendTable(memberBean.getMemberNo());
 			} catch (Exception e) {
@@ -97,6 +96,7 @@ public class LoginServlet extends HttpServlet {
 					out.println(gson.toJson(banLogin));
 					out.close();			
 				} else if((statusNum==9101) ||(statusNum==9102)) {
+					System.out.println("memberNoLoginServlet : " + memberBean.getMemberNo());
 					session.setAttribute("loginToken", memberBean);
 					String path = request.getContextPath();
 					successLogin.put("indexUrl", path+"/theindex.jsp");

@@ -6,7 +6,7 @@
 <head>
 <link rel="shortcut icon" href="<c:url value='/pictures/groupicon.ico'/>" type="image/x-icon" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Wish Form</title>
+<title>GroupBuy團購網</title>
 <style type="text/css">
     #success_message{ display: none;}
      .thumb {

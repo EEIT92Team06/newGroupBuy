@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1"> 
 
-<title>Insert title here</title>
+<title>GroupBuy團購網</title>
 
 <link rel="shortcut icon" href="<c:url value='/pictures/groupicon.ico'/>" type="image/x-icon" />
 <link rel="stylesheet" type="text/css" href="https://www.ihergo.com/design/css/index_2016.css?v=2017042009" />
