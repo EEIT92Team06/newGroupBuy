@@ -1,7 +1,9 @@
 package controller;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -50,6 +52,7 @@ public class OverViewMailServlet extends HttpServlet {
 			return;
 		}
 
+		
 		MemberBean memberBean = (MemberBean) session.getAttribute("loginToken");
 		// 查詢全部信件
 		List<MailBean> allMail = siteMailService.selectMailByMemberNo(memberBean);
@@ -57,7 +60,6 @@ public class OverViewMailServlet extends HttpServlet {
 		List<AnnouncementBean> announceMail = siteMailService.selectAnnounceMail(memberBean.getMemberNo());
 		session.setAttribute("announceMail", announceMail);
 		String path = request.getContextPath();
-
 		// 查詢未讀信件
 		List<MailBean> unReadMail = siteMailService.selectUnReadMailByMemberNo(memberBean);
 		session.setAttribute("unReadMail", unReadMail);
@@ -65,6 +67,10 @@ public class OverViewMailServlet extends HttpServlet {
 		session.setAttribute("unReadannounceMail", unReadannounceMail);
 		response.sendRedirect(path + "/mail/sitemail.jsp");
 		return;
+		
+		
+		
+		
 
 	}
 

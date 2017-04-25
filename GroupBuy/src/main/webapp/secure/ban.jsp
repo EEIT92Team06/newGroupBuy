@@ -20,7 +20,7 @@
 </style>
 </head>
 <body>
-<jsp:include page="/headline.jsp"/>
+<jsp:include page="/headline2.jsp"/>
 <jsp:include page="/secure/newLogin.jsp"/>
 	<div class="full">
 		<h1><font size="12">Hi，親愛的 ${sessionScope.loginToken.memberNickName} 您好!!</font></h1>

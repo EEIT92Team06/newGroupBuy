@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html  PUBLIC>
 <html>
 <head>
@@ -142,12 +143,15 @@
 
 </head>
 <body>
+
 	<jsp:include page="/headline.jsp" />
+
 	<div class="productdesc"
-		style="width: 1195px; margin-left:12%; margin-top: 80px">
+		style="width: 1195px; margin-left: 12%; margin-top: 80px">
 		<form action="" style="float: right;">
-			<i style="margin-right: 9px%;" class="fa fa-search" aria-hidden="true"></i><input
-				type="text" style="margin-bottom: 3px; width: 300px; height: 40px"
+			<i style="margin-right: 9px%;" class="fa fa-search"
+				aria-hidden="true"></i><input type="text"
+				style="margin-bottom: 3px; width: 300px; height: 40px"
 				name="searchKeyWord" class="input-medium search-query"
 				placeholder="Search Here…">
 		</form>
@@ -205,13 +209,22 @@
 												<%-- 														<font>${allMail.siteMailTime}</font> --%>
 												<!-- 												</a></td> -->
 
-												<td><a onclick="getAllMail(${allMail.siteMailNo})">${allMail.siteMailTime}</a>
+												<td>
+												  <a onclick="getAllMail(${allMail.siteMailNo})">
+														${allMail.siteMailTime} </a> 
+													<c:if test="${allMail.siteMailStatusNo==9301}">
+												      <img src="../pictures/new (1).png">
+												    </c:if>
 												</td>
-
-												<td onclick="allMailAddTr()">GroupBuy團隊</td>
-												<td><a onclick="getAllMail(${allMail.siteMailNo})">
+												<td onclick="allMailAddTr()">
+												 GroupBuy團隊
+												
+												</td>
+												<td>
+												   <a onclick="getAllMail(${allMail.siteMailNo})">
 														<font>${allMail.siteMailCanTitle}</font>
-												</a></td>
+												    </a>
+												</td>
 											</tr>
 											<script>
 												function getAllMail(obj){
@@ -256,7 +269,10 @@
 													onclick="check1()" id="announceMail${time.count}"
 													name="announceMail" value="${announceMail.siteMailNo}"></td>
 												<td><a
-													onclick="getAllMail1(${announceMail.siteMailNo})"><font>${announceMail.siteMailTime}</font></a>
+													onclick="getAllMail1(${announceMail.siteMailNo})"><font>${announceMail.siteMailTime}</font></a>									
+													 <c:if test="${announceMail.siteMailStatusNo==9301}">
+												      <img src="../pictures/new (1).png">
+												    </c:if>
 												</td>
 												<td>GroupBuy團隊</td>
 												<td><a><font>系統公告</font></a></td>
@@ -332,6 +348,7 @@
 													name="allMail1" value="${unReadMail.siteMailNo}"></td>
 												<td><a
 													onclick="getUnReadAllMail(${unReadMail.siteMailNo})"><font>${unReadMail.siteMailTime}</font></a>
+
 												</td>
 												<td>GroupBuy團隊</td>
 												<td><a
@@ -455,5 +472,6 @@
 	<script type="text/javascript"
 		src="../js/js/jquery.ba-throttle-debounce.min.js"></script>
 	<script defer src="../js/js/custom.js"></script>
+
 </body>
 </html>
