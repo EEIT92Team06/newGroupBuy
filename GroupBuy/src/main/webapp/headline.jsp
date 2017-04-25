@@ -229,9 +229,9 @@
 						<!-- 最右 -->
 						<div class="am-u-md-9">
 							<div class="topbar-right am-text-right am-fr">
-								Follow us <i class="am-icon-facebook"
-									style="padding-left: 10px; padding-right: 25px; opacity: .3;"></i>
-
+							<c:if test="${not empty loginToken}">
+								${loginToken.memberNickName}，您好 
+							</c:if>
 								<c:if test="${empty loginToken}">
 									<%-- 									<a href="<c:url value='/secure/newLogin.jsp'/>" --%>
 									<label class="click1" style="color: white">登入</label>

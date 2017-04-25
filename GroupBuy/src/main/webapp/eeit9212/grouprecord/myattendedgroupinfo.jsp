@@ -447,7 +447,8 @@
 			function onError(event) {
 				// 			      alert(event.data);
 			}
-			
+			//加入評分CSS
+			$("input[name='score']").css({'margin':'0px 8px 0px 8px'});
 			//切換檢舉和賣家敘述
 			$("button.tablink").click(changeDiv);
 			$("#defaultOpen").click();

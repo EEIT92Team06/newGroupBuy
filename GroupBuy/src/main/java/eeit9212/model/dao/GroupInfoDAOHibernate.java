@@ -146,7 +146,6 @@ public class GroupInfoDAOHibernate implements GroupInfoDAO {
 		query.setParameter(0, memberNo);	
 		result = query.getResultList();
 		return result;
-
 	}
 
 	@Override
