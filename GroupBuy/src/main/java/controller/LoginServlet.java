@@ -103,6 +103,7 @@ public class LoginServlet extends HttpServlet {
 					out.println(gson.toJson(successLogin));
 					out.close();
 				}else if(statusNum==9104){
+					session.setAttribute("loginToken", memberBean);
 					session.setAttribute("managerLogin", memberBean);
 					String path = request.getContextPath();
 					successLogin.put("backStageUrl", path+"/Backstage/BackStageServlet.controller");

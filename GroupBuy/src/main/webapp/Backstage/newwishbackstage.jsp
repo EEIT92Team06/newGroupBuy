@@ -99,7 +99,7 @@
 							</a>
 								<ul class="dropdown-menu dropdown-usermenu pull-right">
 									<li><a href="<c:url value="/theindex.jsp" />">返回GroupBuy首頁</a></li>
-									<li><a href="login.html"><i
+									<li><a href="<c:url value="/secure/logout.jsp"/>"><i
 											class="fa fa-sign-out pull-right"></i>登出</a></li>
 								</ul></li>
 
@@ -150,7 +150,7 @@
 															<td><input type="checkbox" name="checkbox"
 																value=${bean.wishNo}></td>
 															<td>${bean.wishNo}</td>
-															<td>${bean.title}</td>
+															<td><a href="<c:url value="/wish/wishdetail.controller?wishNo=${bean.wishNo}" />">${bean.title}</a></td>
 															<td>${bean.productName}</td>
 														</tr>
 													</c:forEach>

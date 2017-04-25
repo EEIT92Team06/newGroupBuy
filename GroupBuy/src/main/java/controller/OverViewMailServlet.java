@@ -1,10 +1,8 @@
 package controller;
 
 import java.io.IOException;
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -21,8 +19,6 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 import login.model.MemberBean;
 import sitemail.model.AnnouncementBean;
 import sitemail.model.MailBean;
-import sitemail.model.SiteMailBean;
-import sitemail.model.SiteMailCanBean;
 import sitemail.model.SiteMailService;
 
 @WebServlet("/overViewMailServlet.do")
@@ -53,6 +49,7 @@ public class OverViewMailServlet extends HttpServlet {
 			return;
 		}
 
+		
 		MemberBean memberBean = (MemberBean) session.getAttribute("loginToken");
 		// 查詢全部信件
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -73,7 +70,6 @@ public class OverViewMailServlet extends HttpServlet {
 		session.setAttribute("announceMailTime", announceMailTime);
 		session.setAttribute("announceMail", announceMail);
 		String path = request.getContextPath();
-
 		// 查詢未讀信件
 		List<MailBean> unReadMail = siteMailService.selectUnReadMailByMemberNo(memberBean);
 		List<String> unReadMailTime = new ArrayList<String>();
@@ -94,6 +90,10 @@ public class OverViewMailServlet extends HttpServlet {
 		session.setAttribute("unReadannounceMail", unReadannounceMail);
 		response.sendRedirect(path + "/mail/sitemail.jsp");
 		return;
+		
+		
+		
+		
 
 	}
 

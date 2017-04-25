@@ -106,7 +106,7 @@ function checkAll(obj) {
 							</a>
 								<ul class="dropdown-menu dropdown-usermenu pull-right">
 									<li><a href="<c:url value="/theindex.jsp" />">返回GroupBuy首頁</a></li>
-									<li><a href="login.html"><i
+									<li><a href="<c:url value="/secure/logout.jsp"/>"><i
 											class="fa fa-sign-out pull-right"></i>登出</a></li>
 								</ul></li>
 
