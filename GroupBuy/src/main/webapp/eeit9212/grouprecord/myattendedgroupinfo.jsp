@@ -260,7 +260,9 @@
 							name="address" value="${param.address}" /><span
 							style="color: red" id="addressSp"></span>
 					</div>			
-					<input class='button_s' id="paySub" type="button" name="paySubmit" value="通知賣家已匯款" />				
+					<input class='button_s' id="paySub" type="button" name="paySubmit" value="通知賣家已匯款" />	
+					<input id="payData" type="button" name="payData" value="一鍵輸入" />	
+								
 				</form>
 			</c:if>
 			<c:if test="${selectMyAttendedByGroupInfoNo.groupStatusNo>=9}">
@@ -469,7 +471,14 @@
 				}
 			}
 			
-			
+			//一鍵輸入
+			$("#payData").click(function(){
+				
+				$("#account").val("11854");
+				$("#phone").val("0987654321");
+				$("#adress").val("新北市中和區中山路三段");
+				
+			});
 			//小圖變大圖
 			var bigImg=$("#bigImg");
 			$("img[name='smallImgs']").click(function(){
