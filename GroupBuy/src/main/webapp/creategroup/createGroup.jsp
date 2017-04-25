@@ -7,7 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Wish Form</title>
 <style type="text/css">
-#success_message { 
+
+#success_message {
 	display: none;
 }
 
@@ -36,6 +37,7 @@
 	// 			dateFormat : 'yy-mm-dd'
 	// 		});//minDate表示最小可以選的日期為哪一天, maxDate則表最大可選天數
 	// 	})
+	
 	function fileViewer() {
 		document.getElementById("memberPic").innerHTML = "";
 		var files = document.getElementById("newFile").files
@@ -66,7 +68,7 @@
 										.append(
 												"<div id="+txtId+"><label class='col-md-4 control-label'>*品項"
 														+ txtId
-														+ "</label><div  class='col-md-4 inputGroupContainer'><div class='input-group'> <span class='input-group-addon'><i class='fa fa-child' aria-hidden='true'></i></span> <input name='productName'style='height: 30px;' placeholder='品名' class='form-control'type='text' value='${param.productName}'></div><small data-bv-validator='notEmpty' data-bv-validator-for='title'class='help-block' style='color: red;'></small></div><div class='col-md-4 inputGroupContainer' style='display: inline;'><div class='input-group'><span class='input-group-addon'><i class='fa fa-child'aria-hidden='true'></i></span> <input name='productPrice'style='height: 30px;' placeholder='價格' class='form-control'type='text' value='${param.productPrice}'></div><small data-bv-validator='notEmpty' data-bv-validator-for='title'class='help-block' style='color: red;'></small></div></div>");
+														+ "</label><div  class='col-md-4 inputGroupContainer'><div class='input-group'> <span class='input-group-addon'><i class='fa fa-child' aria-hidden='true'></i></span> <input name='productName' id='p"+txtId+"' style='height: 30px;' placeholder='品名' class='form-control'type='text' value='${param.productName}'></div><small data-bv-validator='notEmpty' data-bv-validator-for='title'class='help-block' style='color: red;'></small></div><div class='col-md-4 inputGroupContainer' style='display: inline;'><div class='input-group'><span class='input-group-addon'><i class='fa fa-child'aria-hidden='true'></i></span> <input name='productPrice'style='height: 30px;' id='m"+txtId+"'placeholder='價格' class='form-control'type='text' value='${param.productPrice}'></div><small data-bv-validator='notEmpty' data-bv-validator-for='title'class='help-block' style='color: red;'></small></div></div>");
 								txtId++;
 							}
 						});
@@ -118,6 +120,26 @@
 			}
 		}
 	}
+	function enter(){
+		document.getElementById('groupName').setAttribute("value","蔥媽媽 爆汁手工水餃系列x1包(約50顆)");
+		document.getElementById('productNum').setAttribute("value","20");
+		document.getElementById('datepicker').setAttribute("value","2017-04-28");
+		document.getElementById('textArea').innerHTML='本商品規格:'
+ 				+'蔥媽媽爆汁手工水餃 (50大顆起/包)'
+ 				+'\n 重量：豬肉口味每顆20g/50顆，素食鮮蔬口味每顆18g/60顆'
+				+'\n 香蔥水餃：麵粉、豬肉、蔥、高麗菜、薑、醬油、糖\n'
+				+'\n 輕麻辣水餃：麵粉、高麗菜、豬肉、薑、醬油、麻辣粉\n'
+				+'\n 玉米水餃：麵粉、高麗菜、豬肉、玉米、蔥、薑、醬油\n'
+				+'\n 泡菜水餃：麵粉、高麗菜、豬肉、泡菜、泡菜粉、薑\n'
+				+'\n 香菜水餃：麵粉、豬肉、香菜、高麗菜、薑、醬油'
+		;
+		document.getElementById('bankAccount').setAttribute("value","00115114034032");
+// 		document.getElementById('').setAttribute("value",);
+// 		document.getElementById('').setAttribute("value",);
+// 		document.getElementById('').setAttribute("value",);
+// 		document.getElementById('').setAttribute("value",);
+	}
+	
 </script>
 </head>
 <body>
@@ -143,7 +165,7 @@
 						<div class="col-md-4 inputGroupContainer">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-envelope"
-									aria-hidden="true"></i></span> <input name="groupName"
+									aria-hidden="true"></i></span> <input name="groupName" id="groupName"
 									placeholder="團購團名" class="form-control" type="text"
 									style="height: 30px;" value="${param.groupName}">
 							</div>
@@ -181,7 +203,7 @@
 						<div class="col-md-4 inputGroupContainer">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-key"
-									aria-hidden="true"></i></span> <input name="productNum"
+									aria-hidden="true"></i></span> <input name="productNum" id="productNum"
 									style="height: 30px;" placeholder="開團數量" class="form-control"
 									type="text" value="${param.productNum}" />
 							</div>
@@ -253,7 +275,7 @@
 						<div class="col-md-4 inputGroupContainer">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-child"
-									aria-hidden="true"></i></span> <input name="productName"
+									aria-hidden="true"></i></span> <input name="productName" id="productName"
 									style="height: 30px;" placeholder="品名" class="form-control"
 									type="text" value="${param.productName}">
 							</div>
@@ -263,7 +285,7 @@
 						<div class="col-md-4 inputGroupContainer" style="display: inline;">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-child"
-									aria-hidden="true"></i></span> <input name="productPrice"
+									aria-hidden="true"></i></span> <input name="productPrice" id="productPrice"
 									style="height: 30px;" placeholder="價格" class="form-control"
 									type="text" value="${param.productPrice}">
 							</div>
@@ -271,6 +293,8 @@
 								class="help-block" style="color: red;"></small>
 						</div>
 					</div>
+                    
+                    
 
 
 					<!-- 挑選封面圖片-->
@@ -322,9 +346,9 @@
 							<div class="input-group">
 								<span class="input-group-addon"><i
 									class="glyphicon glyphicon-pencil"></i></span>
-								<textarea class="form-control" name="productInfo"
+								<textarea class="form-control" name="productInfo" id="textArea" wrap="Virtual"
 									style="width: 500px; height: 300px" placeholder="介紹團購的商品"
-									value=""></textarea>
+									></textarea>
 							</div>
 							<small data-bv-validator="notEmpty" data-bv-validator-for="title"
 								class="help-block" style="text-align: left; color: red;"></small>
@@ -338,7 +362,7 @@
 						<div class="col-md-4 inputGroupContainer">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-key"
-									aria-hidden="true"></i></span> <input name="bankAccount"
+									aria-hidden="true"></i></span> <input name="bankAccount" id="bankAccount"
 									style="height: 30px;" placeholder="匯款帳號" class="form-control"
 									type="text" value="${param.bankAccount}" />
 							</div>
@@ -379,6 +403,11 @@
 							</div>
 						</center>
 					</div>
+												<div>
+							  <button type="button" id="oneKey" onclick="enter()">
+							    一鍵輸入
+							  </button>
+							</div>
 				</fieldset>
 			</center>
 		</form>

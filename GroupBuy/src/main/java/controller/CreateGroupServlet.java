@@ -68,7 +68,7 @@ public class CreateGroupServlet extends HttpServlet {
 		Map<String, String> errorMessages = new HashMap<String, String>();
 		Map<String, String> successMessage = new HashMap<String, String>();
 		HttpSession session = request.getSession();
-		session.setAttribute("errorMessages", errorMessages);
+		request.setAttribute("errorMessages", errorMessages);
 		request.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html charset=UTF-8");
@@ -238,7 +238,7 @@ public class CreateGroupServlet extends HttpServlet {
 		}
 		String path = request.getContextPath();
 		if (!errorMessages.isEmpty()) {
-			response.sendRedirect(path + "/creategroup/createGroup.jsp");
+			request.getRequestDispatcher("/creategroup/createGroup.jsp").forward(request, response);
 			return;
 		}
 		MemberBean bean=(MemberBean)session.getAttribute("loginToken");
