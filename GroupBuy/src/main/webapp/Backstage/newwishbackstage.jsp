@@ -150,7 +150,7 @@
 															<td><input type="checkbox" name="checkbox"
 																value=${bean.wishNo}></td>
 															<td>${bean.wishNo}</td>
-															<td>${bean.title}</td>
+															<td><a href="<c:url value="/wish/wishdetail.controller?wishNo=${bean.wishNo}" />">${bean.title}</a></td>
 															<td>${bean.productName}</td>
 														</tr>
 													</c:forEach>
