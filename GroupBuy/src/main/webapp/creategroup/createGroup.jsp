@@ -133,13 +133,14 @@
 				+ '\n 泡菜水餃：麵粉、高麗菜、豬肉、泡菜、泡菜粉、薑\n' + '\n 香菜水餃：麵粉、豬肉、香菜、高麗菜、薑、醬油';
 		document.getElementById('bankAccount').setAttribute("value",
 				"00115114034032");
+	    document.getElementById('productName').setAttribute("value","高麗菜水餃");
+	    document.getElementById('productPrice').setAttribute("value","379");
 		document.getElementById('1').setAttribute("style","");
 		document.getElementById('2').setAttribute("style","");
 		document.getElementById('3').setAttribute("style","");
 		document.getElementById('4').setAttribute("style","");
-		// 		document.getElementById('').setAttribute("value",);
-		// 		document.getElementById('').setAttribute("value",);
-		// 		document.getElementById('').setAttribute("value",);
+
+
 	}
 </script>
 </head>
@@ -280,7 +281,7 @@
 								<span class="input-group-addon"><i class="fa fa-child"
 									aria-hidden="true"></i></span> <input name="productName"
 									id="productName" style="height: 30px;" placeholder="品名"
-									class="form-control" type="text" value="高麗菜水餃">
+									class="form-control" type="text" value="">
 							</div>
 							<small data-bv-validator="notEmpty" data-bv-validator-for="title"
 								class="help-block" style="color: red;"></small>
@@ -290,7 +291,7 @@
 								<span class="input-group-addon"><i class="fa fa-child"
 									aria-hidden="true"></i></span> <input name="productPrice"
 									id="productPrice" style="height: 30px;" placeholder="價格"
-									class="form-control" type="text" value="379">
+									class="form-control" type="text" value="">
 							</div>
 							<small data-bv-validator="notEmpty" data-bv-validator-for="title"
 								class="help-block" style="color: red;"></small>
