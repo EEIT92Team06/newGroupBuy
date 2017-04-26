@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="shortcut icon" href="<c:url value='/pictures/groupicon.ico'/>" type="image/x-icon" />
 <c:if test="${empty loginToken}">
   <c:redirect url="http://localhost:8080/GroupBuy/secure/login.jsp"/>
 </c:if>

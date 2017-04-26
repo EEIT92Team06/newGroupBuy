@@ -7,6 +7,7 @@
 <!-- 給email開通後跳轉用的網頁 -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="shortcut icon" href="<c:url value='/pictures/groupicon.ico'/>" type="image/x-icon" />
 </head>
 <body>
 <script type="text/javascript" src="../js/jquery-3.2.0.min.js"></script>
