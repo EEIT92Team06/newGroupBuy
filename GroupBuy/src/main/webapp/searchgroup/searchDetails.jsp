@@ -351,7 +351,7 @@ function orderSuc(){
 		</div>
 		</section>
 
-		<section class="commentsblog" style="margin-left: 70px;">
+		<section class="commentsblog" style="margin-left: 340px;">
 		<ul id="msgContent" class="comments" style="margin-left: 10%;">
 			<c:forEach var="bean" items="${selectMsg}">
 				<!--  			第一層Msg  -->
