@@ -72,6 +72,7 @@ public class LoginServlet extends HttpServlet {
 		}
 		// 驗證資料
 		MemberBean memberBean = loginService.login(account, password);
+		System.out.println("memberBean="+memberBean);
 		if (memberBean != null) {
 			// 0415 Kai加的----------------------------------
 			memberBean.getMemberNo();
@@ -98,6 +99,7 @@ public class LoginServlet extends HttpServlet {
 					out.close();			
 				} else if((statusNum==9101) ||(statusNum==9102)) {
 					session.setAttribute("loginToken", memberBean);
+					System.out.println("memberBean="+memberBean);
 					String path = request.getContextPath();
 					successLogin.put("indexUrl", path+"/theindex.jsp");
 					out.println(gson.toJson(successLogin));

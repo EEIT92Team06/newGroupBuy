@@ -48,6 +48,7 @@ public class MyCreatedGroupInfoServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		MemberBean memberBean = (MemberBean) session.getAttribute("loginToken");
 		Integer memberNo=memberBean.getMemberNo();
+		System.out.println("memberBean="+memberNo);
 		String contextPath = request.getContextPath();
 		String groupInfoNoTemp = request.getParameter("groupInfoNo");
 		String locationFrom = request.getParameter("locationFrom");
