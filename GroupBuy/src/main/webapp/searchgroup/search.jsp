@@ -74,14 +74,14 @@
 						<span>Categories</span>
 					</h2>
 					<ul class="nav nav-list categories">
-						<li><a href="category.html">生鮮食品 </a></li>
-						<li><a href="category.html">團購美食 </a></li>
-						<li><a href="category.html">保養美妝 </a></li>
-						<li><a href="category.html">服飾配件</a></li>
-						<li><a href="category.html">育兒親子 </a></li>
-						<li><a href="category.html">居家生活</a></li>
-						<li><a href="category.html">休閒娛樂</a></li>
-						<li><a href="category.html">3C家電 </a></li>
+						<li><a>生鮮食品 </a></li>
+						<li><a>團購美食 </a></li>
+						<li><a>保養美妝 </a></li>
+						<li><a>服飾配件</a></li>
+						<li><a>育兒親子 </a></li>
+						<li><a>居家生活</a></li>
+						<li><a>休閒娛樂</a></li>
+						<li><a>3C家電 </a></li>
 					</ul>
 				</div>
 				</aside>
