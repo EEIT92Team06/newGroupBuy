@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -246,7 +245,7 @@
 			數量未達標，有一次延期機會，延期時間為原截止日期加三天，或直接選擇流團。
 		</h3>
 		<button class='button_s' id="extension" value="extension">延期</button>
-		<button class='button_b' id="noExtension" value="noExtension">流團</button>
+		<button class='button_b' id="noExtension" value="noExtension">流團</button>	
 	</div>
 	<script src="<c:url value='/js/jquery-3.1.1.min.js'></c:url>"></script>
 	<script src="<c:url value='/js/layer/layer.js'/>"></script>
@@ -257,7 +256,7 @@
 //			我的方法按上一頁如果回到剛剛調出視窗的頁面，會再彈出一次視窗，
 //			所以為了避免這問題，以下我都用replace而不是用location.href
 // 			建立webSocket連線
-			var webSocket = new WebSocket('ws://localhost:8080/GroupBuy/groupsocket/${selectGroupInfoByGroupInfoNo.groupInfoNo}/null');//ServerEndpoint監聽的URL.
+			var webSocket = new WebSocket('ws://${pageContext.request.getServerName()}:${pageContext.request.getServerPort()}${pageContext.request.contextPath}/groupsocket/${selectGroupInfoByGroupInfoNo.groupInfoNo}/null');//ServerEndpoint監聽的URL.
 			
 			  webSocket.onerror = function(event) {
 			      onError(event)

@@ -2,7 +2,7 @@
 <Context>
 <Resource name="jdbc/groupbuy" auth="Container" type="javax.sql.DataSource"
 		maxTotal="100" maxIdle="30" maxWaitMillis="10000"
-		username="sa" password="passw0rd"
+		username="eeit92Team06@eeit92team06" password="p@ssw0rd"
 		driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
-		url="jdbc:sqlserver://localhost:1433;database=GroupBuy"/>
+		url="jdbc:sqlserver://eeit92team06.database.windows.net;database=GroupBuy"/>
 </Context>

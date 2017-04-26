@@ -379,7 +379,7 @@
 		$(function() {
 
 			var webSocket = new WebSocket(
-					'ws://localhost:8080/GroupBuy/groupsocket/${selectMyAttendedByGroupInfoNo.orderInfoNo}/${selectMyAttendedByGroupInfoNo.groupInfoNo}');//ServerEndpoint監聽的URL.
+					'ws://${pageContext.request.getServerName()}:${pageContext.request.getServerPort()}${pageContext.request.contextPath}/groupsocket/${selectMyAttendedByGroupInfoNo.orderInfoNo}/${selectMyAttendedByGroupInfoNo.groupInfoNo}');//ServerEndpoint監聽的URL.
 
 			webSocket.onerror = function(event) {
 				onError(event)

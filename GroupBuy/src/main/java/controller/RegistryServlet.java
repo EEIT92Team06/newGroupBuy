@@ -26,7 +26,7 @@ import login.model.MemberBean;
 import registry.model.RegistryService;
 
 @WebServlet("/registryServlet.do")
-@MultipartConfig(location = "C:/temp")
+@MultipartConfig()
 public class RegistryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private RegistryService registryService;
@@ -45,11 +45,18 @@ public class RegistryServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		System.out.println("Calling RegistryServlet");
+		
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("UTF-8");
 		Map<String, String> errorMessages = new HashMap<String, String>();
+		
 		HttpSession session = request.getSession();
 		session.setAttribute("errorMessages", errorMessages);
+		
+		
+		
 		// 抓資料
 		String temp1 = request.getParameter("memberAccount");
 		String memberAccount = "";
@@ -164,6 +171,8 @@ public class RegistryServlet extends HttpServlet {
 		} catch (Exception e) {
 			errorMessages.put("memberPic", "請上傳大頭貼");
 		}
+		
+		System.out.println("errorMessages="+errorMessages);
 		if (!errorMessages.isEmpty()) {
 			String path = request.getContextPath();
 			response.sendRedirect(path + "/secure/newRegistry.jsp");
