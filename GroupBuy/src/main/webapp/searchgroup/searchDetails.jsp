@@ -346,16 +346,16 @@ function orderSuc(){
 		</section>
 
 
-
+ 
 		<!--  Related Products-->
-		<section id="related" class="row"> 
+		<section id="related" class="row" style="margin-left: 200px;"> 
 		<div class="container">
-			<h1 class="heading1" style="width: 1000px;margin-left: 150px;"><span class="maintext">留言專區</span><span class="subtext"> See All Comments</span></h1>
+			<h1 class="heading1" style="width: 1000px;"><span class="maintext">留言專區</span><span class="subtext"> See All Comments</span></h1>
 
 		</div>
 		</section>
 
-		<section class="commentsblog" style="margin-left: 340px;">
+		<section class="commentsblog">
 		<ul id="msgContent" class="comments" style="margin-left: 10%;">
 			<c:forEach var="bean" items="${selectMsg}">
 				<!--  			第一層Msg  -->
@@ -369,7 +369,7 @@ function orderSuc(){
 		</ul>
 		<br>
 		<div id="div7">
-			<form style="margin-left: 175px">
+			<form style="margin-left: 195px">
 				<textarea style="width: 1000px" id="leaveMsg" name="groupMsg"
 					rows="3" cols="400"
 					style="margin-top:0px; margin-bottom: 0px; height: 86px; width: 1180px;"></textarea>

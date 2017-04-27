@@ -151,7 +151,7 @@
 	<jsp:include page="/headline.jsp" />
 
 	<div class="productdesc"
-		style="width: 1195px; margin-left: 20%; margin-top: 80px">
+		style="width: 1195px; margin-left: 3.5%; margin-top: 80px">
 		<form action="" style="float: right;">
 			<i style="margin-right: 9px%;" class="fa fa-search"
 				aria-hidden="true"></i><input type="text"
