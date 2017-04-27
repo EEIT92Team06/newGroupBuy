@@ -81,7 +81,7 @@ public class LoginService {
 		}
 		
 	}
-	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 	public String selectban(int memberNo){
 			String formatStartDate = format.format((Date)loginDAO.selectban(memberNo));
 //			Timestamp select = (Timestamp)loginDAO.selectban(memberNo);
