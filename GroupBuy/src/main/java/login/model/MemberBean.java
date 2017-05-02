@@ -33,6 +33,7 @@ public class MemberBean {
 	@Column(name="member_Pic")
 	private String memberPic;
 
+	
 	public Integer getMemberNo() {
 		return memberNo;
 	}
