@@ -100,12 +100,15 @@ public class GoogleLoginServlet extends HttpServlet {
 			Gson gson = new Gson();
 			GoogleBean googleBean = (GoogleBean) gson.fromJson(sbLines1.toString(), GoogleBean.class);
 			//System.out.println("googleBean=" + googleBean);
+			System.out.println("googleBean="+googleBean);
 			out.close();
 			reader.close();
 			MemberBean memberBean = null;
 			if (googleBean != null) {
 				memberBean = registryService.selectMemberAccount(googleBean.getEmail());
+				
 				if(memberBean!=null){
+					System.out.println("memberNO="+memberBean.getMemberNo());
 					session.setAttribute("loginToken", memberBean);
 					String path=request.getContextPath();
 					response.sendRedirect(path+"/theindex.jsp");

@@ -8,7 +8,7 @@
 <!-- Meta, title, CSS, favicons, etc. -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<link rel="shortcut icon" href="<c:url value='/pictures/groupicon.ico'/>" type="image/x-icon" />
 <title>GroupBuy後台管理系統</title>
 
 <!-- Bootstrap -->
@@ -95,7 +95,7 @@
 							</a>
 								<ul class="dropdown-menu dropdown-usermenu pull-right">
 									<li><a href="<c:url value="/theindex.jsp" />">返回GroupBuy首頁</a></li>
-									<li><a href="login.html"><i
+									<li><a href="<c:url value="/secure/logout.jsp"/>"><i
 											class="fa fa-sign-out pull-right"></i>登出</a></li>
 								</ul></li>
 

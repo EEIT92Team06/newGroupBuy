@@ -6,7 +6,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>我是TITLE</title>
+
+<link rel="shortcut icon" href="<c:url value='/pictures/groupicon.ico'/>" type="image/x-icon" />
+
+<title>GroupBuy團購網</title>
 <link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'/>">
 <!-- <link rel="stylesheet" -->
 <!-- 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
@@ -229,9 +232,9 @@
 						<!-- 最右 -->
 						<div class="am-u-md-9">
 							<div class="topbar-right am-text-right am-fr">
-								Follow us <i class="am-icon-facebook"
-									style="padding-left: 10px; padding-right: 25px; opacity: .3;"></i>
-
+							<c:if test="${not empty loginToken}">
+								${loginToken.memberNickName}，您好 
+							</c:if>
 								<c:if test="${empty loginToken}">
 									<%-- 									<a href="<c:url value='/secure/newLogin.jsp'/>" --%>
 									<label class="click1" style="color: white">登入</label>
@@ -291,30 +294,30 @@
 
 									<li><c:choose>
 											<c:when test="${empty loginToken}"> 
-												<a style="font-size: 22px" class="click1">創團</a></li>
+												<a style="font-size: 20px" class="click1">創團</a></li>
 									</c:when>
 									<c:when test="${!empty loginToken}">
-										<a style="font-size: 22px"
+										<a style="font-size: 20px"
 											href="<c:url value='/creategroup/createGroup.jsp'/>">創團</a>
 										</li>
 									</c:when>
 									</c:choose>
 									<li><c:choose>
 											<c:when test="${empty loginToken}">
-												<a style="font-size: 22px" class="click1">搜團</a></li>
+												<a style="font-size: 20px" class="click1">搜團</a></li>
 									</c:when>
 									<c:when test="${!empty loginToken}">
-										<a style="font-size: 22px"
+										<a style="font-size: 20px"
 											href="<c:url value='/headline/SearchServlet0.controller'/>">搜團</a>
 										</li>
 									</c:when>
 									</c:choose>
 									<li><c:choose>
 											<c:when test="${empty loginToken}">
-												<a style="font-size: 22px" class="click1">許願池</a></li>
+												<a style="font-size: 20px" class="click1">許願池</a></li>
 									</c:when>
 									<c:when test="${!empty loginToken}">
-										<a style="font-size: 22px"
+										<a style="font-size: 20px"
 											href="<c:url value='/wish/wishpool.controller'/>">許願池</a>
 										<ul class="sub-menu">
 											<li class="menu-item"><a
@@ -325,12 +328,12 @@
 
 									<li><c:choose>
 											<c:when test="${empty loginToken}">
-												<a style="font-size: 22px"  class="click1"
-													>我的團購</a>
+												<a style="font-size: 20px"
+													href="#">我的團購</a>
 												<!-- sub-menu start--></li>
 									</c:when>
 									<c:when test="${!empty loginToken}">
-										<a style="font-size: 22px"
+										<a style="font-size: 20px"
 											href="#">我的團購</a>
 
 										<!-- sub-menu start-->

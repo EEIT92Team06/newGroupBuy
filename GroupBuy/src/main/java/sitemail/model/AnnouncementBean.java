@@ -26,6 +26,7 @@ public class AnnouncementBean {
   private String siteMailContent;
   @Column(name="siteMail_Type")
   private String siteMailType;
+  
 public int getSiteMailNo() {
 	return siteMailNo;
 }

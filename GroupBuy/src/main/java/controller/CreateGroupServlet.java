@@ -242,6 +242,8 @@ public class CreateGroupServlet extends HttpServlet {
 			return;
 		}
 		MemberBean bean=(MemberBean)session.getAttribute("loginToken");
+		System.out.println("bean="+bean.getMemberAccount());
+		System.out.println("beanNo : " + bean.getMemberNo());
 		groupInfoBean.setMemberNo(bean.getMemberNo());
 		groupInfoBean.setGroupStatusNo(1);
 		groupInfoBean.setProductTypeNo(productTypeNo);
@@ -266,13 +268,16 @@ public class CreateGroupServlet extends HttpServlet {
 			
 			if (wishDetail != null) {
 				int wishNo = wishDetail.get(0).getWishNo();
+				System.out.println("wishNo : " + wishNo);
 				List<WishInterestBean> members = wishInterestService.interestMembers(wishNo);
 				Boolean deleteStatus = wishPoolService.delete(wishNo);
 				System.out.println("deleteStatus=" + deleteStatus);
+				MemberBean memberBean=new MemberBean();
 				for (WishInterestBean member : members) {
 					int memberNo = member.getMemberNo();
-					bean.setMemberNo(memberNo);
-					siteMailService.sendMail(bean, 4);
+					memberBean.setMemberNo(memberNo);
+//					System.out.println("memberNocreateGroupServlet : " +bean.getMemberNo());
+					siteMailService.sendMail(memberBean, 4);
 					int count = 0;
 					count++;
 					System.out.println("count="+count);

@@ -5,7 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Wish Form</title>
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<link rel="shortcut icon" href="<c:url value='/pictures/groupicon.ico'/>" type="image/x-icon" />
+
+<title>GroupBuy團購網</title>
 <style type="text/css">
 #success_message {
 	display: none;
@@ -77,7 +80,7 @@
 				<center>
 					<legend>
 						<font style="font-weight: bold;" size="5em">成為GroupBuy會員</font>
-					</legend>
+					</legend>  
 				</center>
 
 				<!-- 電子郵件 -->
@@ -283,7 +286,7 @@
 	<script
 		src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 	<script
-		src='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+		src='../js/bootstrap.min.js'></script>
 	<script
 		src='//cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
 	<script>

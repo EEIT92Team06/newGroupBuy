@@ -1,6 +1,7 @@
 package login.model;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.hibernate.SessionFactory;
@@ -80,10 +81,11 @@ public class LoginService {
 		}
 		
 	}
-	
-	public Timestamp selectban(int memberNo){
-			Timestamp select = (Timestamp)loginDAO.selectban(memberNo);
-            return select;
+	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+	public String selectban(int memberNo){
+			String formatStartDate = format.format((Date)loginDAO.selectban(memberNo));
+//			Timestamp select = (Timestamp)loginDAO.selectban(memberNo);
+            return formatStartDate;
 	}
 	
 }

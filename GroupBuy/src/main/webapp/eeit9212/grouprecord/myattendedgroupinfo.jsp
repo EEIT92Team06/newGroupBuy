@@ -5,8 +5,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<title>GroupBuy團購網</title>
+<link rel="shortcut icon" href="<c:url value='/pictures/groupicon.ico'/>" type="image/x-icon" />
 <link href="../../css/bootstrap.css" rel="stylesheet">
 <link href="../../css/style.css" rel="stylesheet">
 <link href="../../css/flexslider.css" type="text/css" media="screen" rel="stylesheet" />
@@ -201,7 +202,7 @@
 			<div id="price">訂單總價:${selectTotalPrice}</div>
 			<c:if
 				test="${selectMyAttendedByGroupInfoNo.groupStatusNo>=8&&selectMyAttendedByGroupInfoNo.groupStatusNo!=11&&selectMyAttendedByGroupInfoNo.orderStatusNo!=1004}">
-				<div>賣家帳戶:${selectMyAttendedByGroupInfoNo.groupInfoBankAccount}</div>
+				<div>主揪帳戶:${selectMyAttendedByGroupInfoNo.groupInfoBankAccount}</div>
 			</c:if>
 			<c:if test="${selectMyAttendedByGroupInfoNo.groupStatusNo<9}">
 						<div>
@@ -233,7 +234,8 @@
 							name="address" value="${param.address}" /><span
 							style="color: red" id="addressSp"></span>
 					</div>			
-					<input class='button_s' id="paySub" type="button" name="paySubmit" value="通知賣家已匯款" />				
+					<input class='button_s' id="paySub" type="button" name="paySubmit" value="通知主揪已匯款" />				
+					<input id="payData" type="button" name="payData" value="一鍵輸入" />
 				</form>
 			</c:if>
 			<c:if
@@ -260,7 +262,9 @@
 							name="address" value="${param.address}" /><span
 							style="color: red" id="addressSp"></span>
 					</div>			
-					<input class='button_s' id="paySub" type="button" name="paySubmit" value="通知賣家已匯款" />				
+					<input class='button_s' id="paySub" type="button" name="paySubmit" value="通知主揪已匯款" />	
+					<input id="payData" type="button" name="payData" value="一鍵輸入" />	
+								
 				</form>
 			</c:if>
 			<c:if test="${selectMyAttendedByGroupInfoNo.groupStatusNo>=9}">
@@ -289,23 +293,24 @@
 				<div id="destinationDiv">
 					寄送地址:${selectMyOrderInfoByNo.orderInfoAfterSuccessDestination}</div>			
 				<c:if test="${selectMyAttendedByGroupInfoNo.orderStatusNo==1203}">
-					<input class='button_s' id="stuffSub" type="button" name="scoreBtn" value="通知賣家已收貨" />
+					<input class='button_s' id="stuffSub" type="button" name="scoreBtn" value="通知主揪已收貨" />
 				</c:if>
 			</c:if>
 			<c:if test="${selectMyAttendedByGroupInfoNo.orderStatusNo!=1203}">
-					<input class='button_s' style="display: none" id="stuffSub" type="button" name="scoreBtn" value="通知賣家已收貨" />
+					<input class='button_s' style="display: none" id="stuffSub" type="button" name="scoreBtn" value="通知主揪已收貨" />
 				</c:if>
 		</div>
 					<!-- Product Description tab & comments-->
 							<div style="margin-left:450px;margin-top: 20px">
 									
-								<button class="tablink" id="defaultOpen" value="content">賣家敘述</button>
+								<button class="tablink" id="defaultOpen" value="content">主揪敘述</button>
 								<button class="tablink" id="reviewBtn" value="review">檢舉</button>
 								<div style="height:350px;width: 532px;padding-left: 35px;">
 									<div style="display: none;" id="description">
-									 	團名:${selectMyAttendedByGroupInfoNo.groupInfoName}<br>
-										寄送方式:${selectMyAttendedByGroupInfoNo.groupInfoShippingWay}<br>
-										賣家敘述:${selectMyAttendedByGroupInfoNo.groupInfoContent} <br>
+									<br>
+									 	團名:${selectMyAttendedByGroupInfoNo.groupInfoName}<br><br>
+										寄送方式:${selectMyAttendedByGroupInfoNo.groupInfoShippingWay}<br><br>
+										主揪敘述:<br>${selectMyAttendedByGroupInfoNo.groupInfoContent}<br>
 									</div>						
 									<div style="display: none;" id="review">
 										<h3>Write a Review</h3>
@@ -375,7 +380,7 @@
 		$(function() {
 
 			var webSocket = new WebSocket(
-					'ws://localhost:8080/GroupBuy/groupsocket/${selectMyAttendedByGroupInfoNo.orderInfoNo}/${selectMyAttendedByGroupInfoNo.groupInfoNo}');//ServerEndpoint監聽的URL.
+					'ws://${pageContext.request.getServerName()}:${pageContext.request.getServerPort()}${pageContext.request.contextPath}/groupsocket/${selectMyAttendedByGroupInfoNo.orderInfoNo}/${selectMyAttendedByGroupInfoNo.groupInfoNo}');//ServerEndpoint監聽的URL.
 
 			webSocket.onerror = function(event) {
 				onError(event)
@@ -447,7 +452,8 @@
 			function onError(event) {
 				// 			      alert(event.data);
 			}
-			
+			//加入評分CSS
+			$("input[name='score']").css({'margin':'0px 8px 0px 8px'});
 			//切換檢舉和賣家敘述
 			$("button.tablink").click(changeDiv);
 			$("#defaultOpen").click();
@@ -468,7 +474,14 @@
 				}
 			}
 			
-			
+			//一鍵輸入
+			$("#payData").click(function(){
+				
+				$("#account").val("11854");
+				$("#phone").val("0987654321");
+				$("#address").val("新北市中和區中山路三段");
+				
+			});
 			//小圖變大圖
 			var bigImg=$("#bigImg");
 			$("img[name='smallImgs']").click(function(){
@@ -636,6 +649,8 @@
 																			phone.parent().empty().append("連絡電話:"+phone.val());
 																			address.parent().empty().append("寄送地址:"+address.val());
 																			$("#paySub").remove();
+																			$("#payData").remove();
+																			
 																			var msg={
 																					"target":'${selectMyAttendedByGroupInfoNo.groupInfoNo}',
 																					"change":"payReady"

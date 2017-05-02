@@ -5,7 +5,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title></title>
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<title>GroupBuy團購網</title>
+<link rel="shortcut icon" href="<c:url value='/pictures/groupicon.ico'/>" type="image/x-icon" />
 <style type="text/css">
  .full{
             left: 0;
@@ -23,25 +25,10 @@
 <jsp:include page="/headline.jsp"></jsp:include>
 	<jsp:include page="/secure/newLogin.jsp"/>
 <div class="full">   
+
    <h1><font size="14">${sessionScope.successMessage.createSuccess}</font></h1>
    <h2><a href="<c:url value="/eeit9212/grouprecord/mycreatedgroupinfo.controller"/>">看看你創的團購</a></h2>
 </div>
-<!-- Footer -->
-<footer id="footer">
-  <section class="footerlinks">
-    <div class="container">
-      <div id="footersocial">
-        <a href="#" title="Facebook" class="facebook">Facebook</a>
-        <a href="#" title="Twitter" class="twitter">Twitter</a>
-        <a href="#" title="Linkedin" class="linkedin">Linkedin</a>
-        <a href="#" title="rss" class="rss">rss</a>
-        <a href="#" title="Googleplus" class="googleplus">Googleplus</a>
-        <a href="#" title="Skype" class="skype">Skype</a>
-        <a href="#" title="Flickr" class="flickr">Flickr</a>
-      </div>
-    </div>
-  </section>
-  <a id="gotop" href="#">Back to top</a>
-</footer>
+
 </body>
 </html>

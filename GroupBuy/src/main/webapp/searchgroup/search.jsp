@@ -5,7 +5,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+<link rel="shortcut icon" href="<c:url value='/pictures/groupicon.ico'/>" type="image/x-icon" />
+
+<title>GroupBuy團購網</title>
+
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
@@ -46,7 +51,7 @@
 
 		
 		<div style="padding-left:70px">
-			<div style="padding:15px;width: 200px;float:left;margin-left: 163px;">
+			<div style="padding:15px;width: 200px;float:left;margin-left: 215px;">
 <%-- 				<input type="text" name="name" placeholder="請輸入 商品 關鍵字" autocomplete="off" value="${param.name}" style="width: 163.6px;"> --%>
 
               	<input  type="text" id="autoText" name="name" placeholder="請輸入 商品 關鍵字" autocomplete="off" maxlength="20" style="width: 163.6px "/>     
@@ -74,14 +79,14 @@
 						<span>Categories</span>
 					</h2>
 					<ul class="nav nav-list categories">
-						<li><a href="category.html">生鮮食品 </a></li>
-						<li><a href="category.html">團購美食 </a></li>
-						<li><a href="category.html">保養美妝 </a></li>
-						<li><a href="category.html">服飾配件</a></li>
-						<li><a href="category.html">育兒親子 </a></li>
-						<li><a href="category.html">居家生活</a></li>
-						<li><a href="category.html">休閒娛樂</a></li>
-						<li><a href="category.html">3C家電 </a></li>
+						<li><a>生鮮食品 </a></li>
+						<li><a>團購美食 </a></li>
+						<li><a>保養美妝 </a></li>
+						<li><a>服飾配件</a></li>
+						<li><a>育兒親子 </a></li>
+						<li><a>居家生活</a></li>
+						<li><a>休閒娛樂</a></li>
+						<li><a>3C家電 </a></li>
 					</ul>
 				</div>
 				</aside>

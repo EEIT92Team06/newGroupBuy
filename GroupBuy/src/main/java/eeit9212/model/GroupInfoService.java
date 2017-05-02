@@ -48,7 +48,7 @@ public class GroupInfoService {
 
 	public int updateGroupInfoDeadLine(int groupInfoNo, Timestamp deadLine) {
 		int result = -1;
-		result = groupInfoDAO.updateGroupInfoDeadLine(groupInfoNo, new Timestamp(new java.util.Date().getTime() + 60000));
+		result = groupInfoDAO.updateGroupInfoDeadLine(groupInfoNo, new Timestamp(new java.util.Date().getTime() + 30000));
 		return result;
 
 	}

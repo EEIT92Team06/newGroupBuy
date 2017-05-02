@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
+<link rel="shortcut icon" href="<c:url value='/pictures/groupicon.ico'/>" type="image/x-icon" />
 <style type="text/css">
 .full {
 	left: 0;
@@ -20,7 +21,7 @@
 </style>
 </head>
 <body>
-<jsp:include page="/headline.jsp"/>
+<jsp:include page="/headline2.jsp"/>
 <jsp:include page="/secure/newLogin.jsp"/>
 	<div class="full">
 		<h1><font size="12">Hi，親愛的 ${sessionScope.loginToken.memberNickName} 您好!!</font></h1>

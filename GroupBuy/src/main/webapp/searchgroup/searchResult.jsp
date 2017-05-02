@@ -5,7 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Display</title>
+
+<link rel="shortcut icon" href="<c:url value='/pictures/groupicon.ico'/>" type="image/x-icon" />
+
+<title>GroupBuy團購網</title>
+
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
@@ -28,7 +32,7 @@
 		method="post">
 		<table>
 		<div style="padding-left:70px ;">
-			<div style="padding:15px;width: 200px;float:left;margin-left: 163px;">
+			<div style="padding:15px;width: 200px;float:left;margin-left: 215px;">
 				<input type="text" name="name" placeholder="請輸入 商品 關鍵字" autocomplete="off" value="${param.name}" style="width: 163.6px;">
 			</div>
 			<div style="float:left ;padding-top: 10px">

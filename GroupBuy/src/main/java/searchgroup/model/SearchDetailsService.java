@@ -1,5 +1,6 @@
 package searchgroup.model;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -84,6 +85,7 @@ public class SearchDetailsService {
 		return list;
 	}
 	
+	DecimalFormat formatPrice = new DecimalFormat("0.0");
 	public List<Map<String, String>> selectGroupProdsDetails(int groupInfoNo) {
 		List<Object[]> results = searchDetailsDAO.selectGroupProdsDetails(groupInfoNo);
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
@@ -91,7 +93,7 @@ public class SearchDetailsService {
 			Map<String, String>map = new HashMap<String, String>();
 			map.put("groupInfoDetailsNo", result[0].toString());
 			map.put("groupInfoDetailsProdcutName", result[1].toString());
-			map.put("groupInfoDetailsProductPrice", result[2].toString());
+			map.put("groupInfoDetailsProductPrice", formatPrice.format(result[2]));
 			list.add(map);
 		}
 		return list;

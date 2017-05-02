@@ -8,7 +8,7 @@
 <!-- Meta, title, CSS, favicons, etc. -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<link rel="shortcut icon" href="<c:url value='/pictures/groupicon.ico'/>" type="image/x-icon" />
 <title>GroupBuy後台管理系統</title>
 
 <!-- Bootstrap -->
@@ -99,7 +99,7 @@
 							</a>
 								<ul class="dropdown-menu dropdown-usermenu pull-right">
 									<li><a href="<c:url value="/theindex.jsp" />">返回GroupBuy首頁</a></li>
-									<li><a href="login.html"><i
+									<li><a href="<c:url value="/secure/logout.jsp"/>"><i
 											class="fa fa-sign-out pull-right"></i>登出</a></li>
 								</ul></li>
 
@@ -161,6 +161,12 @@
 																<td><a
 																	href="<c:url value='/Backstage/newbackstage3.jsp' />">${bean.reportTarget}</a></td>
 															</c:if>
+
+															<c:if test="${bean.reportTypeNo >4 && bean.reportTypeNo <9}">
+																<td><a
+																	href="<c:url value='/Backstage/newwishbackstage.jsp' />">${bean.reportTarget}</a></td>
+															</c:if>
+
 															<c:if test="${bean.reportTypeNo >8}">
 																<td><a
 																	href="<c:url value='/Backstage/newbackstage2.jsp' />">${bean.reportTarget}</a></td>

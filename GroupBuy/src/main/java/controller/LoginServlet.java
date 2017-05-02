@@ -72,9 +72,9 @@ public class LoginServlet extends HttpServlet {
 		}
 		// 驗證資料
 		MemberBean memberBean = loginService.login(account, password);
+		System.out.println("memberBean="+memberBean);
 		if (memberBean != null) {
 			// 0415 Kai加的----------------------------------
-			memberBean.getMemberNo();
 			try {
 				int xxx = searchService.selectRecommendTable(memberBean.getMemberNo());
 			} catch (Exception e) {
@@ -89,7 +89,7 @@ public class LoginServlet extends HttpServlet {
 
 			if (statusNum >= 9101) {
 				if (!loginService.checkStatus(memberBean.getMemberNo())) {
-					Timestamp banT = loginService.selectban(memberBean.getMemberNo());
+					String banT = loginService.selectban(memberBean.getMemberNo());
 					session.setAttribute("loginToken", memberBean);
 					session.setAttribute("banT", banT);
 					String path = request.getContextPath();
@@ -97,12 +97,15 @@ public class LoginServlet extends HttpServlet {
 					out.println(gson.toJson(banLogin));
 					out.close();			
 				} else if((statusNum==9101) ||(statusNum==9102)) {
+					System.out.println("memberNoLoginServlet : " + memberBean.getMemberNo());
 					session.setAttribute("loginToken", memberBean);
+					System.out.println("memberBean="+memberBean);
 					String path = request.getContextPath();
 					successLogin.put("indexUrl", path+"/theindex.jsp");
 					out.println(gson.toJson(successLogin));
 					out.close();
 				}else if(statusNum==9104){
+					session.setAttribute("loginToken", memberBean);
 					session.setAttribute("managerLogin", memberBean);
 					String path = request.getContextPath();
 					successLogin.put("backStageUrl", path+"/Backstage/BackStageServlet.controller");

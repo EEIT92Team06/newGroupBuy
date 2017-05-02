@@ -5,7 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>searchDetails</title>
+
+<link rel="shortcut icon" href="<c:url value='/pictures/groupicon.ico'/>" type="image/x-icon" />
+
+<title>GroupBuy團購網</title>
+
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
@@ -120,7 +124,7 @@ window.onload = function(){
 					divis.setAttribute("style","width:1000px");
 					var p = document.createElement("p");
 					p.insertAdjacentText("BeforeEnd", data.groupMsg);
-					p.setAttribute("style","margin-left:70px");
+					p.setAttribute("style","margin-left:60px");
 					divis.appendChild(p); 
 					
 					var li = document.createElement("Li");
@@ -342,17 +346,17 @@ function orderSuc(){
 		</section>
 
 
-
+ 
 		<!--  Related Products-->
-		<section id="related" class="row"> 
+		<section id="related" class="row" style="margin-left: 200px;"> 
 		<div class="container">
-			<h1 class="heading1" style="width: 1000px;margin-left: 150px;"><span class="maintext">留言專區</span><span class="subtext"> See All Comments</span></h1>
+			<h1 class="heading1" style="width: 1000px;"><span class="maintext">留言專區</span><span class="subtext"> See All Comments</span></h1>
 
 		</div>
 		</section>
 
-		<section class="commentsblog" style="margin-left: 70px;">
-		<ul id="msgContent" class="comments" style="margin-left: 19%;">
+		<section class="commentsblog">
+		<ul id="msgContent" class="comments" style="margin-left: 10%;">
 			<c:forEach var="bean" items="${selectMsg}">
 				<!--  			第一層Msg  -->
 				<li><a class="avtar thumbnail"><img class="img-circle" 
@@ -364,8 +368,8 @@ function orderSuc(){
 			</c:forEach>
 		</ul>
 		<br>
-		<div id="div7" style="margin-left: 10.5%;">
-			<form style="margin-left: 175px">
+		<div id="div7">
+			<form style="margin-left: 195px">
 				<textarea style="width: 1000px" id="leaveMsg" name="groupMsg"
 					rows="3" cols="400"
 					style="margin-top:0px; margin-bottom: 0px; height: 86px; width: 1180px;"></textarea>
