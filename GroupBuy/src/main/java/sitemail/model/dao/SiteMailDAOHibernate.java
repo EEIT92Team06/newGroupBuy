@@ -11,7 +11,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import javassist.bytecode.analysis.Analyzer;
 import sitemail.model.AnnouncementBean;
 import sitemail.model.MailBean;
 import sitemail.model.SiteMailBean;
@@ -108,15 +107,18 @@ public class SiteMailDAOHibernate implements SiteMailDAO {
 	private static final String selectAnnounceMail = "select *from annoucement  where member_No=? order by siteMail_Time desc";
 	@Override
 	public List<Object[]> selectAnnounceMailByMemberNo(Integer memberNo) {
-		Query query = sessionFactory.getCurrentSession().createNativeQuery(selectAnnounceMail);
-		query.setParameter(1, memberNo);
-		return query.getResultList();
+	
+		return temp(memberNo, selectAnnounceMail);
 	}
 	//查詢公告信(未讀)
-	private static final String selectReadAnnounceMail = "select *from annoucement  where member_No=? and sitemailStatus_No=9301 order by siteMail_Time desc";
+	private static final String queryStr = "select *from annoucement  where member_No=? and sitemailStatus_No=9301 order by siteMail_Time desc";
 	@Override
 	public List<Object[]> selectUnReadAnnounceMailByMemberNo(Integer memberNo) {
-		Query query = sessionFactory.getCurrentSession().createNativeQuery(selectReadAnnounceMail);
+		return temp(memberNo, queryStr);
+	}
+
+	private List<Object[]> temp(Integer memberNo, String queryStr) {
+		Query query = sessionFactory.getCurrentSession().createNativeQuery(queryStr);
 		query.setParameter(1, memberNo);
 		return query.getResultList();
 	}

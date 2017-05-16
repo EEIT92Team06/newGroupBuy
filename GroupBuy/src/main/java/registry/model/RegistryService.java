@@ -71,7 +71,7 @@ public class RegistryService {
 		String text = "Dear GroupBuy用戶";
 		String account="";
 		String context ="<h1>GroupBuy用戶您好!!請點擊下列連結開通帳號</h1>"
-				+ "<a href='http://groupbuy92.azurewebsites.net/GroupBuy/finishedRegistryServlet.do?memberAccount="
+				+ "<a href='http://localhost:8080/GroupBuy/finishedRegistryServlet.do?memberAccount="
 				+recipients
 				+ "'>"
 				+ "<h2>點此開通帳號</h2></a>";

@@ -13,8 +13,8 @@ public class ProjInsertPic {
 		String outFile = "test.jgp";
 		String[] inFileArray={"C:/temp/fake/水餃01.png","C:/temp/fake/水餃02.jpg","C:/temp/fake/216_01進口零食00.jpg","C:/temp/fake/T-shirt.jpg","C:/temp/fake/218_01太陽眼鏡01.jpg","C:/temp/fake/219_02頭髮飾品01.jpg","C:/temp/fake/220_02化妝套01.jpg","C:/temp/fake/221_Anycast M2.jpg","C:/temp/fake/222_02迪士尼手機座01.jpg","C:/temp/fake/t91.jpg"};
 		try {     
-			String connUrl = "jdbc:sqlserver://eeit92team06.database.windows.net:1433;databaseName=GroupBuy";
-			conn = DriverManager.getConnection(connUrl, "eeit92Team06@eeit92team06", "p@ssw0rd");
+			String connUrl = "jdbc:sqlserver://localhost:1433;databaseName=GroupBuy";
+			conn = DriverManager.getConnection(connUrl, "sa", "passw0rd");
 			
 //			PreparedStatement stmt = conn.prepareStatement(qryStmt);
 //			stmt.setString(1, inFile);
